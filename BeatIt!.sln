@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeatIt!", "BeatIt!\BeatIt!.csproj", "{8C2E410B-4304-4948-916B-4D6E4B82FA61}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{14D63F34-659A-4D22-909D-604A7297938D}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeatItTest", "BeatItTest\BeatItTest.csproj", "{EF80F3C2-15B0-4921-A5CB-72F00587BBFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8C2E410B-4304-4948-916B-4D6E4B82FA61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C2E410B-4304-4948-916B-4D6E4B82FA61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C2E410B-4304-4948-916B-4D6E4B82FA61}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{8C2E410B-4304-4948-916B-4D6E4B82FA61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C2E410B-4304-4948-916B-4D6E4B82FA61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C2E410B-4304-4948-916B-4D6E4B82FA61}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{EF80F3C2-15B0-4921-A5CB-72F00587BBFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF80F3C2-15B0-4921-A5CB-72F00587BBFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF80F3C2-15B0-4921-A5CB-72F00587BBFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF80F3C2-15B0-4921-A5CB-72F00587BBFF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

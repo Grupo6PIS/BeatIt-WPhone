@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8C2E410B-4304-4948-916B-4D6E4B82FA61}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BeatIt_</RootNamespace>
+    <AssemblyName>BeatIt!</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>es-ES;en-US
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>BeatIt_.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>BeatIt_.App</SilverlightAppEntry>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Facebook">
+      <HintPath>Librerias\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Phone.Controls, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Phone.Controls.Toolkit">
+      <HintPath>Librerias\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="Microsoft.Phone.Reactive" />
+    <Reference Include="Microsoft.Xna.Framework" />
+    <Reference Include="System.Device" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppCode\Challenges\ChallengeDetail1.cs" />
+    <Compile Include="AppCode\Challenges\ChallengeDetail10.cs" />
+    <Compile Include="AppCode\Challenges\ChallengeDetail2.cs" />
+    <Compile Include="AppCode\Challenges\ChallengeDetail3.cs" />
+    <Compile Include="AppCode\Challenges\ChallengeDetail4.cs" />
+    <Compile Include="AppCode\Challenges\ChallengeDetail5.cs" />
+    <Compile Include="AppCode\Challenges\ChallengeDetail6.cs" />
+    <Compile Include="AppCode\Challenges\ChallengeDetail7.cs" />
+    <Compile Include="AppCode\Challenges\ChallengeDetail8.cs" />
+    <Compile Include="AppCode\Challenges\ChallengeDetail9.cs" />
+    <Compile Include="AppCode\Challenges\UsainBolt.cs" />
+    <Compile Include="AppCode\Classes\Challenge.cs" />
+    <Compile Include="AppCode\Classes\Round.cs" />
+    <Compile Include="AppCode\Classes\State.cs" />
+    <Compile Include="AppCode\Classes\User.cs" />
+    <Compile Include="AppCode\Controllers\ChallengeController.cs" />
+    <Compile Include="AppCode\Controllers\FacadeController.cs" />
+    <Compile Include="AppCode\CustomControls\ChallenesListItem.xaml.cs">
+      <DependentUpon>ChallenesListItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppCode\CustomControls\RankingListItem.xaml.cs">
+      <DependentUpon>RankingListItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppCode\Datatypes\DTRanking.cs" />
+    <Compile Include="AppCode\Enums\ChallengeType.cs" />
+    <Compile Include="AppCode\Datatypes\DTChallenge.cs" />
+    <Compile Include="AppCode\Interfaces\IChallengeController.cs" />
+    <Compile Include="AppCode\Interfaces\IFacadeController.cs" />
+    <Compile Include="AppCode\Pages\Challenge10.xaml.cs">
+      <DependentUpon>Challenge10.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppCode\Pages\Challenge2.xaml.cs">
+      <DependentUpon>Challenge2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppCode\Pages\Challenge3.xaml.cs">
+      <DependentUpon>Challenge3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppCode\Pages\Challenge4.xaml.cs">
+      <DependentUpon>Challenge4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppCode\Pages\Challenge5.xaml.cs">
+      <DependentUpon>Challenge5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppCode\Pages\Challenge6.xaml.cs">
+      <DependentUpon>Challenge6.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppCode\Pages\Challenge7.xaml.cs">
+      <DependentUpon>Challenge7.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppCode\Pages\Challenge8.xaml.cs">
+      <DependentUpon>Challenge8.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppCode\Pages\Challenge9.xaml.cs">
+      <DependentUpon>Challenge9.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\AppResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\AppResources.es-ES.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.es-ES.resx</DependentUpon>
+    </Compile>
+    <Compile Include="AppCode\Utilities\LocalizedStrings.cs" />
+    <Compile Include="AppCode\Pages\Challenge1.xaml.cs">
+      <DependentUpon>Challenge1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppCode\Pages\ChallengeDetail.xaml.cs">
+      <DependentUpon>ChallengeDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppCode\Pages\Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppCode\Pages\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="AppCode\CustomControls\ChallenesListItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppCode\CustomControls\RankingListItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppCode\Pages\Challenge1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppCode\Pages\Challenge10.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppCode\Pages\Challenge2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppCode\Pages\Challenge3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppCode\Pages\Challenge4.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppCode\Pages\Challenge5.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppCode\Pages\Challenge6.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppCode\Pages\Challenge7.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppCode\Pages\Challenge8.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppCode\Pages\Challenge9.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppCode\Pages\ChallengeDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppCode\Pages\Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppCode\Pages\Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\WMAppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ApplicationIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Background.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Images\Desafios-V2-Mini.png" />
+    <Resource Include="Images\Desafios-V2-HD.png" />
+    <Resource Include="Images\UB.png" />
+    <Resource Include="Images\profileImage.jpg" />
+    <Resource Include="Images\Correr.png" />
+    <Resource Include="Images\Gps.png" />
+    <Resource Include="Images\Jugar.png" />
+    <Resource Include="Images\Mapa.png" />
+    <Resource Include="Images\Musica.png" />
+    <Resource Include="Images\camara.png" />
+    <Resource Include="Sounds\dog_bark.wav" />
+    <Resource Include="Images\icon_challenge_1.png" />
+    <Resource Include="Images\icon_challenge_10.png" />
+    <Resource Include="Images\icon_challenge_2.png" />
+    <Resource Include="Images\icon_challenge_3.png" />
+    <Resource Include="Images\icon_challenge_4.png" />
+    <Resource Include="Images\icon_challenge_5.png" />
+    <Resource Include="Images\icon_challenge_6.png" />
+    <Resource Include="Images\icon_challenge_7.png" />
+    <Resource Include="Images\icon_challenge_8.png" />
+    <Resource Include="Images\icon_challenge_9.png" />
+    <Content Include="SplashScreenImage.jpg" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AppResources.es-ES.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.es-ES.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\AppResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+</Project>

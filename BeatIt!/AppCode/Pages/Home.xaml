@@ -1,0 +1,118 @@
+﻿<phone:PhoneApplicationPage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
+    x:Class="BeatIt_.Pages.Home" 
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <!--Pivot Control-->
+        <controls:Pivot Title="BeatIt!" Margin="10,10,10,10">
+            <!--Pivot item one-->
+            <controls:PivotItem Header="{Binding Path=AppResources.HomePage_ChallengesPivotTitle, Source={StaticResource LocalizedStrings}}">
+                <Grid x:Name="ChallengesGrid">
+                    <ListBox Margin="0,0,0,0" Name="ChallengesListBox">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <toolkit:WrapPanel Orientation="Horizontal" FlowDirection="LeftToRight"  ItemWidth="210" ItemHeight="210"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
+                </Grid>
+                <!--<ScrollViewer x:Name="ChallengesScrollViewer" Margin="12,0,12,0">
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="1050" Margin="10,0,10,0" Name="home">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="210" />
+                            <RowDefinition Height="210" />
+                            <RowDefinition Height="210" />
+                            <RowDefinition Height="210" />
+                            <RowDefinition Height="210" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="210" />
+                            <ColumnDefinition Width="210" />
+                        </Grid.ColumnDefinitions>
+
+                        <Rectangle Fill="#FF008A00"  Grid.Row="0" Grid.Column="0" Margin="2,2,8,8" />
+                        <Image Name="Ch1Image"  Grid.Row="0" Grid.Column="0" Margin="2,2,8,8" Source="/BeatIt!;component/Images/Correr.png" />
+                        <HyperlinkButton Content="" Grid.Row="0" Grid.Column="0" Height="200" Margin="0" Name="hyperlinkButton1" Width="200" Click="hyperlinkButton1_Click" Background="#00FF0000" IsEnabled="True" />
+                        
+                        <Rectangle Fill="#3C1CA1E3"  Grid.Row="0" Grid.Column="1" Margin="8,2,2,8" />
+                        <Image Name="Ch2Image"  Grid.Row="0" Grid.Column="1" Margin="2,2,8,8" Source="/BeatIt!;component/Images/Jugar.png" DataContext="{Binding}" OpacityMask="#19000000" />
+                        <HyperlinkButton Content="" Grid.Row="0" Grid.Column="1" Height="200" Margin="0" Name="hyperlinkButton2" Width="200" Click="hyperlinkButton2_Click" IsEnabled="True" />
+                        
+                        <Rectangle Fill="#3CFA6800"  Grid.Row="1" Grid.Column="0" Margin="2,8,8,8" />
+                        <Image Name="Ch3Image"  Grid.Row="1" Grid.Column="0" Margin="2,2,8,8" Source="/BeatIt!;component/Images/Musica.png" OpacityMask="#19000000" />
+                        
+                        <Rectangle Fill="#3CE3C900"  Grid.Row="1" Grid.Column="1" Margin="8,8,2,8" />
+                        <Image Name="Ch4Image"  Grid.Row="1" Grid.Column="1" Margin="2,2,8,8" Source="/BeatIt!;component/Images/camara.png" OpacityMask="#19000000" />
+                        
+                        <Rectangle Fill="#3CAA00FF"  Grid.Row="2" Grid.Column="0" Margin="2,8,8,8" />
+                        <Image Name="Ch5Image"  Grid.Row="2" Grid.Column="0" Margin="2,2,8,8" Source="/BeatIt!;component/Images/Mapa.png" OpacityMask="#19000000" />
+                        
+                        <Rectangle Fill="#3CE21300"  Grid.Row="2" Grid.Column="1" Margin="8,8,2,8" />
+                        <Image Name="Ch6Image"  Grid.Row="2" Grid.Column="1" Margin="2,2,8,8" Source="/BeatIt!;component/Images/Gps.png" OpacityMask="#19000000" />
+                        
+                        <Rectangle Fill="#3CFA6800"  Grid.Row="3" Grid.Column="0" Margin="2,8,8,8" />
+                        <Image Name="Ch7Image"  Grid.Row="3" Grid.Column="0" Margin="2,2,8,8" Source="/BeatIt!;component/Images/Musica.png" OpacityMask="#19000000" />
+                        
+                        <Rectangle Fill="#3C008A00"  Grid.Row="3" Grid.Column="1" Margin="8,8,2,8" />
+                        <Image Name="Ch8Image"  Grid.Row="3" Grid.Column="1" Margin="2,2,8,2" Source="/BeatIt!;component/Images/Correr.png" OpacityMask="#19000000" />
+
+                        <Rectangle Fill="#3C1CA1E3"  Grid.Row="4" Grid.Column="0" Margin="2,8,8,8" />
+                        <Image Name="Ch9Image"  Grid.Row="4" Grid.Column="0" Margin="2,2,8,8" Source="/BeatIt!;component/Images/Jugar.png" OpacityMask="#19000000" />
+                        
+                        <Rectangle Fill="#3CE3C900"  Grid.Row="4" Grid.Column="1" Margin="8,8,2,8" />
+                        <Image Name="Ch10Image"  Grid.Row="4" Grid.Column="1" Margin="2,2,8,2" Source="/BeatIt!;component/Images/camara.png" OpacityMask="#19000000" />
+                        
+                    </Grid>
+                </ScrollViewer>-->
+            </controls:PivotItem>
+
+            <!--Pivot item two-->
+            <controls:PivotItem Header="{Binding Path=AppResources.HomePage_RankingPivotTitle, Source={StaticResource LocalizedStrings}}">
+                <Grid x:Name="RankingGrid">
+                    <ListBox Margin="1,0,0,0" Name="RankingListBox" />
+                </Grid>
+            </controls:PivotItem>
+
+            <!--Pivot item three-->
+            <controls:PivotItem Header="{Binding Path=AppResources.HomePage_ProfilePivotTitle, Source={StaticResource LocalizedStrings}}">
+                <Grid x:Name="ProfileGrid" ShowGridLines="False">
+                    <Button Content="{Binding Path=AppResources.HomePage_LogoutBtnTitle, Source={StaticResource LocalizedStrings}}" Height="60" HorizontalAlignment="Left" Margin="270,108,0,0" x:Name="logoutBtn" VerticalAlignment="Top" Width="160" Click="logoutBtn_Click" FontSize="16" Padding="0,0,0,3" />
+                    <Image Height="140" HorizontalAlignment="Left" Margin="15,15,0,0" x:Name="profileImage" Stretch="Fill" VerticalAlignment="Top" Width="140" Source="/BeatIt!;component/Images/profileImage.jpg" />
+                    <TextBlock Height="50" HorizontalAlignment="Left" Margin="170,15,0,0" x:Name="profileNameTxtBlock" Text="Juan Perez" VerticalAlignment="Top" Width="260" FontSize="32" />
+                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="15,190,0,0" x:Name="profileSettingsTxtBlock" Text="{Binding Path=AppResources.HomePage_SettingsTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="410" FontSize="22" Foreground="Green" />
+                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="169,84,0,0" x:Name="profileCountryTxtBlock" Text="Uruguay" VerticalAlignment="Top" Width="260" FontSize="18" />
+                    <TextBlock FontSize="18" Height="30" HorizontalAlignment="Left" Margin="170,60,0,0" x:Name="profileEmailTextBlock" Text="jperez@gmail.com" VerticalAlignment="Top" Width="260" />
+                </Grid>
+            </controls:PivotItem>
+        </controls:Pivot>
+    </Grid>
+
+
+    <!--Sample code showing usage of ApplicationBar-->
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton x:Name="appbar_button1" IconUri="/Images/appbar_button1.png" Text="Button 1"/>
+            <shell:ApplicationBarIconButton x:Name="appbar_button2" IconUri="/Images/appbar_button2.png" Text="Button 2"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem x:Name="menuItem1" Text="MenuItem 1"/>
+                <shell:ApplicationBarMenuItem x:Name="menuItem2" Text="MenuItem 2"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+    
+</phone:PhoneApplicationPage>

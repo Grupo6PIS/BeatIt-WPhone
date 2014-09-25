@@ -1,0 +1,45 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="BeatIt_.Pages.Login"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="768*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0">
+            <Button Content="{Binding Path=AppResources.LoginPage_LoginBtnTitle, Source={StaticResource LocalizedStrings}}" Height="72" HorizontalAlignment="Center" Name="loginBtn" VerticalAlignment="Bottom" Width="280" Click="loginBtn_Click" FontSize="20" Background="#FF3B5998" BorderThickness="2" UseLayoutRounding="True" Margin="0,0,0,80" />
+            <Image Height="80" HorizontalAlignment="Left" Name="logoImage" Stretch="Fill" VerticalAlignment="Center" Width="80" Source="/BeatIt!;component/Images/Desafios-V2-HD.png" Margin="50,80,0,600" />
+            <TextBlock Height="123" Name="titleTextBlock" Text="BeatIt!" VerticalAlignment="Top" FontSize="100" TextAlignment="Center" FontFamily="Segoe WP SemiLight" HorizontalAlignment="Center" Margin="100,50,0,0" />
+            <TextBlock Height="350" HorizontalAlignment="Left" Margin="50,215,0,0" Name="textBlock1" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." VerticalAlignment="Top" Width="377" TextWrapping="Wrap" TextAlignment="Left" FontSize="21" />
+            <phone:WebBrowser x:Name="AuthenticationBrowser" Visibility="Collapsed" Navigated="BrowserNavigated" IsScriptEnabled="True" />
+            
+        </Grid>
+    </Grid>
+ 
+    <!--Sample code showing usage of ApplicationBar-->
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
+                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+
+</phone:PhoneApplicationPage>
