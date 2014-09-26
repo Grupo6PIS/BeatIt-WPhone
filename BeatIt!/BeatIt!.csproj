@@ -249,6 +249,7 @@
     <Resource Include="Images\icon_challenge_7.png" />
     <Resource Include="Images\icon_challenge_8.png" />
     <Resource Include="Images\icon_challenge_9.png" />
+    <Content Include="Images\appbar_refresh.png" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup />

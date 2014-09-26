@@ -19,7 +19,7 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <!--Pivot Control-->
-        <controls:Pivot Title="BeatIt!" Margin="10,10,10,10">
+        <controls:Pivot Title="BeatIt!" Margin="10,10,10,10" SelectionChanged="Pivot_SelectionChanged" Name="Pivot">
             <!--Pivot item one-->
             <controls:PivotItem Header="{Binding Path=AppResources.HomePage_ChallengesPivotTitle, Source={StaticResource LocalizedStrings}}">
                 <Grid x:Name="ChallengesGrid">

@@ -19,12 +19,12 @@ using BeatIt_.AppCode.Classes;
 using BeatIt_.AppCode.Interfaces;
 using BeatIt_.AppCode.Controllers;
 using BeatIt_.AppCode.Datatypes;
+using Microsoft.Phone.Shell;
 
 namespace BeatIt_.Pages
 {
     public partial class Home : PhoneApplicationPage
     {
-
         IFacadeController ifc;
 
         public Home()
@@ -41,6 +41,18 @@ namespace BeatIt_.Pages
             TransitionService.SetNavigationInTransition(this, navigateInTransition);
             TransitionService.SetNavigationOutTransition(this, navigateOutTransition);
 
+            ApplicationBar = new ApplicationBar();
+
+            ApplicationBar.Mode = ApplicationBarMode.Minimized;
+            ApplicationBar.Opacity = 0.7;
+            ApplicationBar.IsVisible = false;
+            ApplicationBar.IsMenuEnabled = false;
+
+            ApplicationBarIconButton refreshBtn = new ApplicationBarIconButton();
+            refreshBtn.IconUri = new Uri("/Images/appbar_refresh.png", UriKind.Relative);
+            refreshBtn.Text = "Actualizar";
+            ApplicationBar.Buttons.Add(refreshBtn);
+            refreshBtn.Click += new EventHandler(refreshBtn_Click);
 
             ifc = FacadeController.getInstance();
             User loggedUser = ifc.getCurrentUser();
@@ -143,6 +155,24 @@ namespace BeatIt_.Pages
         {
             e.Cancel = true;
             base.OnBackKeyPress(e);
+        }
+
+        private void Pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int no = Pivot.SelectedIndex;
+            if (no == 1)
+            {
+                ApplicationBar.IsVisible = true;
+            }
+            else
+            {
+                ApplicationBar.IsVisible = false;
+            }
+        }
+
+        private void refreshBtn_Click(object sender, EventArgs e) 
+        {
+            
         }
     }
 }
