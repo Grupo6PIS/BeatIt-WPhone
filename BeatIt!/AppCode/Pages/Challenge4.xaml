@@ -29,7 +29,7 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Margin="12,160,12,28" Grid.RowSpan="2">
             <Rectangle Fill="#FFE3C900" Height="200" Width="200" VerticalAlignment="top" HorizontalAlignment="Left" Margin="12,20,8,8" />
-            <Image Height="200" HorizontalAlignment="Left" Margin="10,21,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="200" ImageFailed="image1_ImageFailed" Source="/BeatIt!;component/Images/Correr.png" />
+            <Image Height="200" HorizontalAlignment="Left" Margin="10,21,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="200" ImageFailed="image1_ImageFailed" Source="/BeatIt!;component/Images/icon_challenge_4.png" />
             <TextBlock Height="30" Margin="230,20,0,0" Name="textDetail" Text="{Binding Path=AppResources.Challenge1_DetailsTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Left" Width="196" />
             <TextBlock FontWeight="Light" Foreground="#FF867A7A" Height="30" HorizontalAlignment="Left" Margin="230,55,0,0" Name="textStartTime" Text="{Binding Path=AppResources.Challenge1_StartTimeTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="196" />
             <TextBlock FontWeight="Light" Foreground="#FF867A7A" Height="30" HorizontalAlignment="Left" Margin="230,110,0,0" Name="textDuration" Text="{Binding Path=AppResources.Challenge1_DurationTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="196" />

@@ -14,6 +14,7 @@ using BeatIt_.AppCode.Classes;
 using BeatIt_.AppCode.Interfaces;
 using BeatIt_.AppCode.Controllers;
 using System.Windows.Media.Imaging;
+using Microsoft.Phone.Shell;
 
 namespace BeatIt_.Pages
 {
@@ -38,10 +39,27 @@ namespace BeatIt_.Pages
             IFacadeController ifc = FacadeController.getInstance();
             challenge = ifc.getCurrentChallenge();
 
+            ApplicationBar = new ApplicationBar();
+
+            ApplicationBar.Mode = ApplicationBarMode.Minimized;
+            ApplicationBar.Opacity = 0.7;
+            ApplicationBar.IsVisible = challenge.State.getCurrentAttempt() < challenge.MaxAttempt;
+            ApplicationBar.IsMenuEnabled = false;
+
+            ApplicationBarIconButton retryBtn = new ApplicationBarIconButton();
+            retryBtn.IconUri = new Uri("/Images/appbar_retry.png", UriKind.Relative);
+            retryBtn.Text = "Reintentar";
+            ApplicationBar.Buttons.Add(retryBtn);
+            retryBtn.Click += new EventHandler(retryBtn_Click);
+
             this.PageTitle.Text = challenge.Name;
             imageRec.Fill = GetColorFromHexa(challenge.ColorHex);
+            lastScoreRec.Fill = GetColorFromHexa(challenge.ColorHex);
+            bestScoreRec.Fill = GetColorFromHexa(challenge.ColorHex);
             Uri uri = new Uri("/BeatIt!;component/Images/icon_challenge_" + challenge.ChallengeId + ".png", UriKind.Relative);
             iconImage.Source = new BitmapImage(uri);
+            startDateTxtBlock.Text = challenge.getDTChallenge().getStartTime().ToString();
+            attemptsTxtBlock.Text = challenge.State.getCurrentAttempt() + "/" + challenge.MaxAttempt;
         }
 
         public static SolidColorBrush GetColorFromHexa(string hexaColor)
@@ -54,6 +72,11 @@ namespace BeatIt_.Pages
                     Convert.ToByte(hexaColor.Substring(7, 2), 16)
                 )
             );
+        }
+
+        private void retryBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

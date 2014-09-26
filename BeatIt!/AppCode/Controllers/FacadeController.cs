@@ -132,7 +132,9 @@ namespace BeatIt_.AppCode.Controllers
             ch10State.setChallenge(ch10);
 
             //Se setea el desafio callar al perro con un intento para ingresar al detalle del desafio
-            ch4State.setCurrentAttempt(1);
+            ch4State.setCurrentAttempt(2);
+            //Se setea el desafio 5 con 3 intentos para probar que no muestre el boton de reintentar
+            ch5State.setCurrentAttempt(3);
 
             this.currentRound = round;
 

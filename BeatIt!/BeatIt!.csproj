@@ -230,14 +230,7 @@
     </Content>
     <Resource Include="Images\Desafios-V2-Mini.png" />
     <Resource Include="Images\Desafios-V2-HD.png" />
-    <Resource Include="Images\UB.png" />
     <Resource Include="Images\profileImage.jpg" />
-    <Resource Include="Images\Correr.png" />
-    <Resource Include="Images\Gps.png" />
-    <Resource Include="Images\Jugar.png" />
-    <Resource Include="Images\Mapa.png" />
-    <Resource Include="Images\Musica.png" />
-    <Resource Include="Images\camara.png" />
     <Resource Include="Sounds\dog_bark.wav" />
     <Resource Include="Images\icon_challenge_1.png" />
     <Resource Include="Images\icon_challenge_10.png" />
@@ -250,6 +243,7 @@
     <Resource Include="Images\icon_challenge_8.png" />
     <Resource Include="Images\icon_challenge_9.png" />
     <Content Include="Images\appbar_refresh.png" />
+    <Content Include="Images\appbar_retry.png" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup />
