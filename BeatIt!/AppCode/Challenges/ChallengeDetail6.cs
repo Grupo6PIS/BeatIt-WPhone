@@ -20,7 +20,7 @@ namespace BeatIt_.AppCode.Challenges
             this.Name = "Challenge 6";
             this.ColorHex = "#FFE61300";
             this.Description = "Description 6";
-            this.IsEnabled = true;
+            this.IsEnabled = false;
             this.Level = 1;
             this.MaxAttempt = 3;
         }

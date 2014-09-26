@@ -90,6 +90,12 @@ namespace BeatIt_.Pages
                 listItem.image.Source = new BitmapImage(uri);
                 listItem.linkBtn.Click += linkBtn_Click;
                 listItem.linkBtn.Tag = ch.ChallengeId;
+                if (!ch.IsEnabled)
+                {
+                    listItem.backgroundRec.Opacity = 0.2;
+                    listItem.image.Opacity = 0.2;
+                }
+                listItem.linkBtn.IsEnabled = ch.IsEnabled;
                 ChallengesListBox.Items.Add(listItem);
             }
         }
