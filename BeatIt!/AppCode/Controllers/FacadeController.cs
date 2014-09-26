@@ -24,6 +24,7 @@ namespace BeatIt_.AppCode.Controllers
         private User currentUser;
         private Round currentRound;
         private List<DTRanking> ranking;
+        private Challenge currentChallenge;
 
         private FacadeController()
         {
@@ -130,6 +131,9 @@ namespace BeatIt_.AppCode.Controllers
             ch10.State = ch10State;
             ch10State.setChallenge(ch10);
 
+            //Se setea el desafio callar al perro con un intento para ingresar al detalle del desafio
+            ch4State.setCurrentAttempt(1);
+
             this.currentRound = round;
 
             DTRanking r1 = new DTRanking(this.currentUser.UserId, 1, 280, this.currentUser.FirstName + " " + this.currentUser.LastName, this.currentUser.ImageUrl);
@@ -164,6 +168,16 @@ namespace BeatIt_.AppCode.Controllers
         public Dictionary<int, Challenge> getChallenges() 
         {
             return this.currentRound.Challenges;
+        }
+
+        public void setCurrentChallenge(Challenge challenge)
+        {
+            this.currentChallenge = challenge;
+        }
+
+        public Challenge getCurrentChallenge()
+        {
+            return this.currentChallenge;
         }
     }
 }

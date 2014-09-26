@@ -27,7 +27,10 @@
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0"></Grid>
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Rectangle Fill="#FF008A00" Height="210" HorizontalAlignment="Center" Name="imageRec" Stroke="Black" StrokeThickness="1" VerticalAlignment="Top" Width="438" Margin="10,0" />
+            <Image Height="210" HorizontalAlignment="Center" Name="iconImage" Stretch="Fill" VerticalAlignment="Top" Width="210" Source="/BeatIt!;component/Images/Correr.png" />
+        </Grid>
     </Grid>
  
     <!--Sample code showing usage of ApplicationBar-->

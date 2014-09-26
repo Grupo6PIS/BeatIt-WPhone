@@ -88,6 +88,8 @@ namespace BeatIt_.Pages
             int tag = Convert.ToInt32(linkBtn.Tag);
             Challenge ch = ifc.getChallenge(tag);
 
+            ifc.setCurrentChallenge(ch);
+
             String pagePath = "";
             if (ch.State.getCurrentAttempt() == 0)
             {

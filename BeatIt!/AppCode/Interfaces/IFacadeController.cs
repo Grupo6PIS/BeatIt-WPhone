@@ -16,5 +16,7 @@ namespace BeatIt_.AppCode.Interfaces
         void logoutUser();
         Challenge getChallenge(int challengeId);
         Dictionary<int, Challenge> getChallenges();
+        void setCurrentChallenge(Challenge challenge);
+        Challenge getCurrentChallenge();
     }
 }
