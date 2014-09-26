@@ -1,11 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BeatIt_.AppCode.Challenges;
-using BeatIt_.AppCode.Controllers;
-using BeatIt_.AppCode.Interfaces.Controllers;
 
 //ojo
 
-namespace BeatItTest
+namespace BeatIt.Tests
 {
     [TestClass]
     public class TestingUb
