@@ -76,7 +76,8 @@ namespace BeatIt_.Pages
 
         private void retryBtn_Click(object sender, EventArgs e)
         {
-
+            Uri uri = new Uri("/BeatIt!;component/AppCode/Pages/Challenge" + challenge.ChallengeId + ".xaml", UriKind.Relative);
+            NavigationService.Navigate(uri);
         }
     }
 }

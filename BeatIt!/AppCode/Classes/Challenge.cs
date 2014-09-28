@@ -96,5 +96,43 @@ namespace BeatIt_.AppCode.Classes
                                    this.state.getStartDate(),
                                    this.state.getBestTime());
         }
+
+        /// <summary>
+        /// Retorna un string con el tiempo restante para realizar el desafio.
+        /// </summary>
+        /// <param name="roundDate">Es el tiempo de finalizacion de la ronda,</param>
+        /// <returns></returns>
+        public string getDurationString()
+        {
+            String result = "";
+            DateTime dateToday = DateTime.Now;
+            TimeSpan dif = this.round.EndDate - dateToday;
+            int days = dif.Days;
+            if (days > 0)
+            {
+                result = days + " dias";
+            }
+            else
+            {
+                int hours = dif.Hours % 24;
+                if (hours > 0)
+                {
+                    result = hours + " horas";
+                }
+                else
+                {
+                    int minutes = dif.Minutes % 60;
+                    if (minutes > 0)
+                    {
+                        result = minutes + " minutos";
+                    }
+                    else
+                    {
+                        result = "Menos de un minuto!!";
+                    }
+                }
+            }
+            return result;
+        }
     }
 }

@@ -77,8 +77,7 @@ namespace BeatIt_.Pages
             // INICIALIZAMOS LAS ETIQUETAS DEL DETALLE DEL DESAFIO
             this.ShowST.Text = this.currentChallenge.getDTChallenge().getStartTime().ToString(); // Ojo ver el tema de la fecha y hora (Cuando estamos en el limite de una ronda y la otra).
             this.ShowToBeat.Text = this.currentChallenge.State.getScore() + " pts";
-            DateTime roundDate = new DateTime(2014, 9, 28, 22, 0, 0);
-            this.ShowDuration.Text = getDurationString(roundDate);
+            this.ShowDuration.Text = this.currentChallenge.getDurationString();
 
             this.ShowTime.Text =  minTime.ToString();
             this.ShowSpeed.Text = "0.00";
@@ -101,41 +100,7 @@ namespace BeatIt_.Pages
                 this.ShowToBeat.Text = this.currentChallenge.State.getScore() + " pts";
             }
         }
-
-
-        private string getDurationString(DateTime roundDate)
-        {
-            String result = "";
-            DateTime dateToday = DateTime.Now;
-            TimeSpan dif = roundDate - dateToday;
-            int days = dif.Days;            
-            if (days > 0)
-            {
-                result = days + " dias";
-            }
-            else
-            {
-                int hours = dif.Hours % 24;
-                if (hours > 0)
-                {
-                    result = hours + " horas";
-                }
-                else
-                {
-                    int minutes = dif.Minutes % 60;
-                    if (minutes > 0)
-                    {
-                        result = minutes + " minutos";
-                    }
-                    else
-                    {
-                        result = "Menos de un minuto!!";
-                    }
-                }
-            }
-            return result;
-        }
-
+        
         private void tickTemp(object o, EventArgs e)
         {
             if (isRunning)

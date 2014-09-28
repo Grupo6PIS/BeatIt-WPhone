@@ -144,6 +144,12 @@
   <data name="Challenge1_ToBeatTxtBlockTitle" xml:space="preserve">
     <value>To Beat:</value>
   </data>
+  <data name="Challenge2_DescriptionTxtBlockText" xml:space="preserve">
+    <value>en este desafio tienes que agitar el celular cuando piense que el timer finalizo.</value>
+  </data>
+  <data name="Challenge2_StartButton" xml:space="preserve">
+    <value>Start!</value>
+  </data>
   <data name="Challenge4_DescriptionTxtBlockText" xml:space="preserve">
     <value>In this challenge you have to ....</value>
   </data>
