@@ -55,6 +55,7 @@ namespace BeatIt_.AppCode.Challenges
         {
             this.State.setScore(this.calculatPuntaje(cantCorrectWakeUp));     // ACTUALIZAMOS EL PUNTAJE
             this.State.setCurrentAttempt(this.State.getCurrentAttempt() + 1); // INCREMENTAMOS LOS INTENTOS
+            this.State.setLastScore(this.calculatPuntaje(cantCorrectWakeUp));
             if (this.State.getCurrentAttempt() == this.MaxAttempt)            // SI YA ALCANZAMOS EL NUMERO MÁXIMO DE INTENTOS, DAMOS EL DESAFIO POR FINALIZADO.
                 this.State.setFinished(true);
         }

@@ -53,13 +53,18 @@ namespace BeatIt_.Pages
             retryBtn.Click += new EventHandler(retryBtn_Click);
 
             this.PageTitle.Text = challenge.Name;
-            imageRec.Fill = GetColorFromHexa(challenge.ColorHex);
-            lastScoreRec.Fill = GetColorFromHexa(challenge.ColorHex);
-            bestScoreRec.Fill = GetColorFromHexa(challenge.ColorHex);
+            this.imageRec.Fill = GetColorFromHexa(challenge.ColorHex);
+            
+            this.lastScoreRec.Fill = GetColorFromHexa(challenge.ColorHex);
+            this.lastScoreTxtBlock.Text = challenge.State.getLastScore().ToString();
+
+            this.bestScoreRec.Fill = GetColorFromHexa(challenge.ColorHex);
+            this.bestScoreTxtBlock.Text = challenge.State.getScore().ToString();
+
             Uri uri = new Uri("/BeatIt!;component/Images/icon_challenge_" + challenge.ChallengeId + ".png", UriKind.Relative);
-            iconImage.Source = new BitmapImage(uri);
-            startDateTxtBlock.Text = challenge.getDTChallenge().getStartTime().ToString();
-            attemptsTxtBlock.Text = challenge.State.getCurrentAttempt() + "/" + challenge.MaxAttempt;
+            this.iconImage.Source = new BitmapImage(uri);
+            this.startDateTxtBlock.Text = challenge.getDTChallenge().getStartTime().ToString();
+            this.attemptsTxtBlock.Text = challenge.State.getCurrentAttempt() + "/" + challenge.MaxAttempt;
         }
 
         public static SolidColorBrush GetColorFromHexa(string hexaColor)

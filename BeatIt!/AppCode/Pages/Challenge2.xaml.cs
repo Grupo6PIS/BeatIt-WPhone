@@ -162,7 +162,7 @@ namespace BeatIt_.AppCode.Pages
             this.timer.Start();
             this.stopwatch.Start();
 
-            this.acelerometro.CurrentValueChanged += new EventHandler<SensorReadingEventArgs<AccelerometerReading>>(acel_CurrentValueChanged);
+            this.acelerometro.CurrentValueChanged += new EventHandler<SensorReadingEventArgs<AccelerometerReading>>(acelerometro_CurrentValueChanged);
             this.acelerometro.TimeBetweenUpdates = new TimeSpan(0,0,0,0,100);
             this.acelerometro.Start();
         }
@@ -182,7 +182,7 @@ namespace BeatIt_.AppCode.Pages
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void acel_CurrentValueChanged(object sender, SensorReadingEventArgs<AccelerometerReading> e)
+        private void acelerometro_CurrentValueChanged(object sender, SensorReadingEventArgs<AccelerometerReading> e)
         {
 
             //Transladamos los datos a recoger del BackgroundThread y los enviamos al MainThread

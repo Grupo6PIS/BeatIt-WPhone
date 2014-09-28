@@ -16,6 +16,7 @@ namespace BeatIt_.AppCode.Classes
     {
         private bool finished;
         private int score;
+        private int lastScore;
         private DateTime startDate;
         private int currentAttempt;
         private int bestTime = 0;
@@ -25,6 +26,7 @@ namespace BeatIt_.AppCode.Classes
         {
             this.finished = false;
             this.score = 0;
+            this.lastScore = 0;
             this.startDate = System.DateTime.Now;
             this.currentAttempt = 0;
         }
@@ -64,6 +66,16 @@ namespace BeatIt_.AppCode.Classes
             {
                 this.score = score;
             }
+        }
+
+        public int getLastScore()
+        {
+            return this.lastScore;
+        }
+
+        public void setLastScore(int score)
+        {
+            this.lastScore = score;
         }
 
         public DateTime getStartDate()
