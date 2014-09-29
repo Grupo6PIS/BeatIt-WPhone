@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using BeatIt_.AppCode.Classes;
+using BeatIt_.AppCode.Controllers;
 
 namespace BeatIt_.AppCode.Challenges
 {
@@ -58,6 +59,8 @@ namespace BeatIt_.AppCode.Challenges
             this.State.setLastScore(this.calculatPuntaje(cantCorrectWakeUp));
             if (this.State.getCurrentAttempt() == this.MaxAttempt)            // SI YA ALCANZAMOS EL NUMERO MÁXIMO DE INTENTOS, DAMOS EL DESAFIO POR FINALIZADO.
                 this.State.setFinished(true);
+
+            bool actualizo = FacadeController.getInstance().saveState(this.State);
         }
 
 

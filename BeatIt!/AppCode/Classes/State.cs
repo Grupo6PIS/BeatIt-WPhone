@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using BeatIt_.AppCode.Enums;
+using BeatIt_.AppCode.Datatypes;
 
 namespace BeatIt_.AppCode.Classes
 {
@@ -106,6 +107,22 @@ namespace BeatIt_.AppCode.Classes
         public void setChallenge(Challenge challenge)
         {
             this.challenge = challenge;
+        }
+
+        public DTStatePersistible getDTStatePersistible()
+        {
+            DTStatePersistible dt = new DTStatePersistible();
+            dt.id = this.challenge.Round.RoundId*100 + this.challenge.ChallengeId;
+            dt.roundId = this.challenge.Round.RoundId;
+            dt.challengeId = this.challenge.ChallengeId;
+            dt.finished = this.finished;
+            dt.lastScore = this.lastScore;
+            dt.score = this.score;
+            dt.startDate = this.startDate;
+            dt.currentAttempt = this.currentAttempt;
+            dt.bestTime = this.bestTime;
+
+            return dt;
         }
     }
 }

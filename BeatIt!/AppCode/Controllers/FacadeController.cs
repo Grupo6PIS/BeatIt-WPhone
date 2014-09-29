@@ -14,12 +14,15 @@ using BeatIt_.AppCode.Classes;
 using BeatIt_.AppCode.Challenges;
 using BeatIt_.AppCode.Interfaces;
 using BeatIt_.AppCode.Datatypes;
+using SQLite;
 
 namespace BeatIt_.AppCode.Controllers
 {
     public class FacadeController : IFacadeController
     {
         private static FacadeController instance = null;
+
+        private SQLiteConnection db;
 
         private User currentUser;
         private Round currentRound;
@@ -28,7 +31,14 @@ namespace BeatIt_.AppCode.Controllers
 
         private FacadeController()
         {
-
+            try
+            {
+                db = new SQLiteConnection("BeatItDB.db");
+                db.CreateTable<DTStatePersistible>();
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         public static FacadeController getInstance()
@@ -73,6 +83,7 @@ namespace BeatIt_.AppCode.Controllers
             round.RoundId = 1;
             round.StartDate = new DateTime(2014, 09, 22, 0, 0, 0);
             round.EndDate = new DateTime(2014, 09, 29, 0, 0, 0);
+            this.currentRound = round;
 
             Dictionary<int, Challenge> challenges = new Dictionary<int, Challenge>();
             challenges.Add(ch1.ChallengeId, ch1);
@@ -99,39 +110,86 @@ namespace BeatIt_.AppCode.Controllers
             ch9.Round = round;
             ch10.Round = round;
 
-            State ch1State = new State();
-            State ch2State = new State();
-            State ch3State = new State();
-            State ch4State = new State();
-            State ch5State = new State();
-            State ch6State = new State();
-            State ch7State = new State();
-            State ch8State = new State();
-            State ch9State = new State();
-            State ch10State = new State();
+            // Vamos a asignat los estados a los desafios.
+            // Primero vemo si existen estados persistidos localmente que coincidan con la ronda actual.
+            List<DTStatePersistible> states = null;
+            states = this.db.Query<DTStatePersistible>("select * from DTStatePersistible");
 
-            ch1.State = ch1State;
-            ch1State.setChallenge(ch1);
-            ch2.State = ch2State;
-            ch2State.setChallenge(ch2);
-            ch3.State = ch3State;
-            ch3State.setChallenge(ch3);
-            ch4.State = ch4State;
-            ch4State.setChallenge(ch4);
-            ch5.State = ch5State;
-            ch5State.setChallenge(ch5);
-            ch6.State = ch6State;
-            ch6State.setChallenge(ch6);
-            ch7.State = ch7State;
-            ch7State.setChallenge(ch7);
-            ch8.State = ch8State;
-            ch8State.setChallenge(ch8);
-            ch9.State = ch9State;
-            ch9State.setChallenge(ch9);
-            ch10.State = ch10State;
-            ch10State.setChallenge(ch10);
+            bool addNewStates = false;
 
-            this.currentRound = round;
+            if (states.Count > 0) // Si hay estados guardados.
+            {
+                IEnumerator<DTStatePersistible> enumerator = states.GetEnumerator();
+                enumerator.MoveNext();
+                DTStatePersistible dt = enumerator.Current;
+                if (this.currentRound.RoundId == dt.roundId) // Si los estados guardados corresponden a la ronda actual.
+                {
+                    foreach (DTStatePersistible aux in states)
+                    {
+                        State s = new State();
+                        s.setBestTime(aux.bestTime);
+                        s.setChallenge(this.currentRound.Challenges[aux.challengeId]);
+                        s.setCurrentAttempt(aux.currentAttempt);
+                        s.setFinished(aux.finished);
+                        s.setLastScore(aux.lastScore);
+                        s.setScore(aux.score);
+                        s.setStartDate(aux.startDate);
+                                                
+                        this.currentRound.Challenges[aux.challengeId].State = s;
+                    }
+                }
+                else // Si no se corresponden con la ronda actual, los borramos ya que no los necesitamos //????????????? ES ASI?
+                {
+                    this.db.Query<DTStatePersistible>("delete from DTStatePersistible");
+                    addNewStates = true;
+                }
+            }
+            else
+                addNewStates = true;
+
+            if (addNewStates)
+            {
+                foreach (KeyValuePair<int, Challenge> aux in round.Challenges)
+                {
+                    State s = new State();
+                    s.setChallenge(aux.Value);
+                    aux.Value.State = s;
+                    DTStatePersistible dts = s.getDTStatePersistible();
+                    this.db.Insert(dts);
+                }
+            }
+
+            //State ch1State = new State();
+            //State ch2State = new State();
+            //State ch3State = new State();
+            //State ch4State = new State();
+            //State ch5State = new State();
+            //State ch6State = new State();
+            //State ch7State = new State();
+            //State ch8State = new State();
+            //State ch9State = new State();
+            //State ch10State = new State();
+
+            //ch1.State = ch1State;
+            //ch1State.setChallenge(ch1);
+            //ch2.State = ch2State;
+            //ch2State.setChallenge(ch2);
+            //ch3.State = ch3State;
+            //ch3State.setChallenge(ch3);
+            //ch4.State = ch4State;
+            //ch4State.setChallenge(ch4);
+            //ch5.State = ch5State;
+            //ch5State.setChallenge(ch5);
+            //ch6.State = ch6State;
+            //ch6State.setChallenge(ch6);
+            //ch7.State = ch7State;
+            //ch7State.setChallenge(ch7);
+            //ch8.State = ch8State;
+            //ch8State.setChallenge(ch8);
+            //ch9.State = ch9State;
+            //ch9State.setChallenge(ch9);
+            //ch10.State = ch10State;
+            //ch10State.setChallenge(ch10);
 
             DTRanking r1 = new DTRanking(this.currentUser.UserId, 1, 280, this.currentUser.FirstName + " " + this.currentUser.LastName, this.currentUser.ImageUrl);
             DTRanking r2 = new DTRanking(2, 2, 127, "Martín Berguer", "http://graph.facebook.com/100002316914037/picture?type=square");
@@ -175,6 +233,20 @@ namespace BeatIt_.AppCode.Controllers
         public Challenge getCurrentChallenge()
         {
             return this.currentChallenge;
+        }
+
+        public bool saveState(State state)
+        {
+            try
+            {
+                DTStatePersistible dts = state.getDTStatePersistible();
+                this.db.Update(dts);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }

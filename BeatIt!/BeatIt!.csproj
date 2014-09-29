@@ -50,6 +50,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Community.CsharpSqlite.SqlLiteClient.WP7">
+      <HintPath>..\packages\wp7sqlite.0.1.1\lib\sl4-windowsphone71\Community.CsharpSqlite.SqlLiteClient.WP7.dll</HintPath>
+    </Reference>
+    <Reference Include="Community.CsharpSqlite.WP7">
+      <HintPath>..\packages\wp7sqlite.0.1.1\lib\sl4-windowsphone71\Community.CsharpSqlite.WP7.dll</HintPath>
+    </Reference>
     <Reference Include="Facebook">
       <HintPath>Librerias\Facebook.dll</HintPath>
     </Reference>
@@ -86,6 +92,7 @@
     <Compile Include="AppCode\Challenges\UsainBolt.cs" />
     <Compile Include="AppCode\Classes\Challenge.cs" />
     <Compile Include="AppCode\Classes\Round.cs" />
+    <Compile Include="AppCode\Classes\SQLite.cs" />
     <Compile Include="AppCode\Classes\State.cs" />
     <Compile Include="AppCode\Classes\User.cs" />
     <Compile Include="AppCode\Controllers\ChallengeController.cs" />
@@ -97,6 +104,7 @@
       <DependentUpon>RankingListItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="AppCode\Datatypes\DTRanking.cs" />
+    <Compile Include="AppCode\Datatypes\DTStatePersistible.cs" />
     <Compile Include="AppCode\Enums\ChallengeType.cs" />
     <Compile Include="AppCode\Datatypes\DTChallenge.cs" />
     <Compile Include="AppCode\Interfaces\IChallengeController.cs" />
