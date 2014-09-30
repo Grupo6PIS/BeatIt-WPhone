@@ -150,6 +150,13 @@
   <data name="Challenge2_StartButton" xml:space="preserve">
     <value>Comenzar!</value>
   </data>
+  <data name="Challenge3_DescriptionTxtBlockText" xml:space="preserve">
+    <value>En este desafío deberás enviar invitaciones a tus amigos por medio de mensajes y redes sociales.
+Cuantos mas invites mayor puntaje!</value>
+  </data>
+  <data name="Challenge3_Title" xml:space="preserve">
+    <value>Invita amigos</value>
+  </data>
   <data name="Challenge4_DescriptionTxtBlockText" xml:space="preserve">
     <value>En este desafío debes...</value>
   </data>

@@ -145,10 +145,16 @@
     <value>To Beat:</value>
   </data>
   <data name="Challenge2_DescriptionTxtBlockText" xml:space="preserve">
-    <value>en este desafio tienes que agitar el celular cuando piense que el timer finalizo.</value>
+    <value>In this challenge you have to shake your cellphone when you think the time is 0</value>
   </data>
   <data name="Challenge2_StartButton" xml:space="preserve">
     <value>Start!</value>
+  </data>
+  <data name="Challenge3_DescriptionTxtBlockText" xml:space="preserve">
+    <value>In this challenge you have to invite your fiends using facebook or SMS. Remember more friends pore socre!</value>
+  </data>
+  <data name="Challenge3_Title" xml:space="preserve">
+    <value>Invite Friends</value>
   </data>
   <data name="Challenge4_DescriptionTxtBlockText" xml:space="preserve">
     <value>In this challenge you have to ....</value>
