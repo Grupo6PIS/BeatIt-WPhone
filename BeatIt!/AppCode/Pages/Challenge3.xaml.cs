@@ -1,22 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using BeatIt_.AppCode.Challenges;
 using BeatIt_.AppCode.Controllers;
 using BeatIt_.AppCode.Interfaces;
 using BeatIt_.Resources;
 using Facebook;
 using Microsoft.Phone.Controls;
-
+using Microsoft.Phone.Tasks;
 /* INVITA A TUS AMIGOS */
+using Microsoft.Phone.UserData;
 
 namespace BeatIt_.AppCode.Pages
 {
@@ -25,6 +18,10 @@ namespace BeatIt_.AppCode.Pages
         public Challenge3()
         {
             InitializeComponent();
+
+
+            //Codigo tasker
+            _addressTask = new AddressChooserTask();
 
             NavigationInTransition navigateInTransition = new NavigationInTransition();
             navigateInTransition.Backward = new SlideTransition {Mode = SlideTransitionMode.SlideRightFadeIn};
@@ -37,7 +34,7 @@ namespace BeatIt_.AppCode.Pages
             TransitionService.SetNavigationOutTransition(this, navigateOutTransition);
         }
 
-        private string _lastMessageId = AppResources.Challenge3_WallMessage;
+        private string _message = AppResources.Challenge3_Message;
 
         private void hyperlinkButtonPublish_Click(object sender, RoutedEventArgs e)
         {
@@ -53,16 +50,12 @@ namespace BeatIt_.AppCode.Pages
                 }
 
                 var result = (IDictionary<string, object>)args.GetResultData();
-                _lastMessageId = (string)result["id"];
 
-                Dispatcher.BeginInvoke(() =>
-                {
-                    MessageBox.Show("Message Posted successfully");
-                });
+                Dispatcher.BeginInvoke(() => MessageBox.Show("Message Posted successfully"));
             };
 
             var parameters = new Dictionary<string, object>();
-            parameters["message"] = _lastMessageId;
+            parameters["message"] = _message;
 
             fb.PostAsync("me/feed", parameters);
             
@@ -73,5 +66,21 @@ namespace BeatIt_.AppCode.Pages
             this.StartPlayGrid.Visibility = Visibility.Collapsed;
             this.InProgressGrid.Visibility = Visibility.Visible;
         }
+
+        private void hyperlinkButtonSMS_Click(object sender, RoutedEventArgs e)
+        {
+            
+            var sms = new SmsComposeTask();
+            var ifc = FacadeController.getInstance();
+            var currentChallenge = (ChallengeDetail3)ifc.getChallenge(3);
+            sms.Body = _message;
+            var contacts = new Contacts();
+            _addressTask.Show();
+        }
+
+        /*codigo copiado*/
+        private readonly AddressChooserTask _addressTask;
+        // Constructor
+
     }
 }

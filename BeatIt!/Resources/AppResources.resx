@@ -156,6 +156,11 @@
   <data name="Challenge3_DescriptionTxtBlockText" xml:space="preserve">
     <value>In this challenge you have to invite your fiends using facebook or SMS. Remember more friends pore socre!</value>
   </data>
+  <data name="Challenge3_Message" xml:space="preserve">
+    <value>Try BeatIt! 
+Windows: http://www.windowsphone.com/en-us/store/app/beatit/66fa9546-f6ae-4a10-8acb-91472ac3ff96
+Android: https://play.google.com/store/apps/details?id=com.g6pis.beatit&amp;ah=mcoN2TjRF_obuPnlAcKtanl9mFk</value>
+  </data>
   <data name="Challenge3_PostWallButton" xml:space="preserve">
     <value>Post in my wall</value>
   </data>
@@ -164,9 +169,6 @@
   </data>
   <data name="Challenge3_Title" xml:space="preserve">
     <value>Invite Friends</value>
-  </data>
-  <data name="Challenge3_WallMessage" xml:space="preserve">
-    <value>Try BeatIt! HTTP://LINK.DOMAIN.COUNTRYCODE</value>
   </data>
   <data name="Challenge4_DescriptionTxtBlockText" xml:space="preserve">
     <value>In this challenge you have to ....</value>

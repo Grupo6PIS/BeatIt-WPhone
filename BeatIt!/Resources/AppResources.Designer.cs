@@ -178,6 +178,17 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Try BeatIt! 
+        ///Windows: http://www.windowsphone.com/en-us/store/app/beatit/66fa9546-f6ae-4a10-8acb-91472ac3ff96
+        ///Android: https://play.google.com/store/apps/details?id=com.g6pis.beatit&amp;ah=mcoN2TjRF_obuPnlAcKtanl9mFk.
+        /// </summary>
+        public static string Challenge3_Message {
+            get {
+                return ResourceManager.GetString("Challenge3_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Post in my wall.
         /// </summary>
         public static string Challenge3_PostWallButton {
@@ -201,15 +212,6 @@ namespace BeatIt_.Resources {
         public static string Challenge3_Title {
             get {
                 return ResourceManager.GetString("Challenge3_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Try BeatIt! HTTP://LINK.DOMAIN.COUNTRYCODE.
-        /// </summary>
-        public static string Challenge3_WallMessage {
-            get {
-                return ResourceManager.GetString("Challenge3_WallMessage", resourceCulture);
             }
         }
         
