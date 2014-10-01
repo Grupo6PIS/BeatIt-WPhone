@@ -48,7 +48,7 @@ namespace BeatIt_.Pages
             parameters["redirect_uri"] = "https://www.facebook.com/connect/login_success.html";
             parameters["response_type"] = "token";
             parameters["display"] = "page";
-            parameters["scope"] = "email, user_friends, user_hometown, user_birthday";
+            parameters["scope"] = "user_hometown, publish_actions";
 
             var urlBuilder = new StringBuilder();
             foreach (var current in parameters)

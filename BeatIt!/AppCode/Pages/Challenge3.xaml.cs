@@ -10,7 +10,10 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BeatIt_.AppCode.Controllers;
 using BeatIt_.AppCode.Interfaces;
+using BeatIt_.Resources;
+using Facebook;
 using Microsoft.Phone.Controls;
 
 /* INVITA A TUS AMIGOS */
@@ -33,12 +36,42 @@ namespace BeatIt_.AppCode.Pages
             TransitionService.SetNavigationInTransition(this, navigateInTransition);
             TransitionService.SetNavigationOutTransition(this, navigateOutTransition);
         }
-        private void hyperlinkButtonStartRunning_Click(object sender, RoutedEventArgs e)
+
+        private string _lastMessageId = AppResources.Challenge3_WallMessage;
+
+        private void hyperlinkButtonPublish_Click(object sender, RoutedEventArgs e)
+        {
+            IFacadeController ifc = FacadeController.getInstance();
+            var fb = new FacebookClient(ifc.getCurrentUser().FbAccessToken);
+
+            fb.PostCompleted += (o, args) =>
+            {
+                if (args.Error != null)
+                {
+                    Dispatcher.BeginInvoke(() => MessageBox.Show(args.Error.Message));
+                    return;
+                }
+
+                var result = (IDictionary<string, object>)args.GetResultData();
+                _lastMessageId = (string)result["id"];
+
+                Dispatcher.BeginInvoke(() =>
+                {
+                    MessageBox.Show("Message Posted successfully");
+                });
+            };
+
+            var parameters = new Dictionary<string, object>();
+            parameters["message"] = _lastMessageId;
+
+            fb.PostAsync("me/feed", parameters);
+            
+        }
+
+        private void hyperlinkButtonStartPlay_Click(object sender, RoutedEventArgs e)
         {
             this.StartPlayGrid.Visibility = Visibility.Collapsed;
             this.InProgressGrid.Visibility = Visibility.Visible;
-
-            
         }
     }
 }

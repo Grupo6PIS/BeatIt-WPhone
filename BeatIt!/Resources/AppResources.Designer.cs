@@ -160,6 +160,15 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Delete publication form wall .
+        /// </summary>
+        public static string Challenge3_Delete {
+            get {
+                return ResourceManager.GetString("Challenge3_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a In this challenge you have to invite your fiends using facebook or SMS. Remember more friends pore socre!.
         /// </summary>
         public static string Challenge3_DescriptionTxtBlockText {
@@ -169,11 +178,38 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Post in my wall.
+        /// </summary>
+        public static string Challenge3_PostWallButton {
+            get {
+                return ResourceManager.GetString("Challenge3_PostWallButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a SMS.
+        /// </summary>
+        public static string Challenge3_SmsSend {
+            get {
+                return ResourceManager.GetString("Challenge3_SmsSend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Invite Friends.
         /// </summary>
         public static string Challenge3_Title {
             get {
                 return ResourceManager.GetString("Challenge3_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Try BeatIt! HTTP://LINK.DOMAIN.COUNTRYCODE.
+        /// </summary>
+        public static string Challenge3_WallMessage {
+            get {
+                return ResourceManager.GetString("Challenge3_WallMessage", resourceCulture);
             }
         }
         

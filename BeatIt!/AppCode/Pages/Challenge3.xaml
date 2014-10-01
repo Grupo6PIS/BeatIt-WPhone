@@ -34,27 +34,36 @@
             <TextBlock FontWeight="Light" Foreground="#FF867A7A" Height="30" HorizontalAlignment="Left" Margin="230,55,0,0" Name="textStartTime" Text="{Binding Path=AppResources.Challenge1_StartTimeTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="196" />
             <TextBlock FontWeight="Light" Foreground="#FF867A7A" Height="30" HorizontalAlignment="Left" Margin="230,110,0,0" Name="textDuration" Text="{Binding Path=AppResources.Challenge1_DurationTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="196" />
             <TextBlock FontWeight="Light" Foreground="#FF867A7A" Height="30" HorizontalAlignment="Left" Margin="230,165,0,0" Name="textToBeat" Text="{Binding Path=AppResources.Challenge1_ToBeatTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="196" />
-            <TextBlock FontWeight="Normal" Height="63" HorizontalAlignment="Left" Margin="10,240,0,0" Name="titleDescription" Text="{Binding Path=AppResources.Challenge1_DescriptionTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="246" FontSize="40" />
-            <TextBlock FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="12,300,0,0" Name="textDescription" Text="{Binding Path=AppResources.Challenge3_DescriptionTxtBlockText, Source={StaticResource LocalizedStrings}}" Width="414" Height="114" VerticalAlignment="Top" TextWrapping="Wrap" />
-
-            <!-- Estas se activan y desactivan de acuerdo si esta comenzado-->
-            <Grid Visibility="Visible" Name="StartPlayGrid">
-                <Rectangle Fill="#FFFA6800" Height="80" Width="390" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,50" IsHitTestVisible="True" Name="startPlayingRec" />
-                <TextBlock FontWeight="ExtraBlack" Height="57" HorizontalAlignment="Left" Margin="33,460,0,0" Name="Start" Text="{Binding Path=AppResources.Challenge2_StartButton, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="390" FontSize="40" TextAlignment="Center" />
-                <HyperlinkButton Content="" Height="80" HorizontalAlignment="Left" Margin="33,450,0,0" Name="StartPlay" VerticalAlignment="Top" Width="390" Click="hyperlinkButtonStartRunning_Click"/>
-            </Grid>
-
-            <!-- Estas se activan y desactivan de acuerdo si esta comenzado-->
-            <Grid Visibility="Collapsed"  Name="InProgressGrid">
-                <TextBlock FontSize="28" FontWeight="Normal" Height="52" HorizontalAlignment="Center" Margin="30,399,0,0" Name="titleTime" Text="{Binding Path=AppResources.Challenge1_TimeLeftTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="250" TextAlignment="Center" />
-                <Rectangle Fill="#FFFA6800" Height="80" Width="250" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="30,20,8,50" />
-                <TextBlock FontSize="30" FontWeight="ExtraBold" Height="50" HorizontalAlignment="Center" Margin="30,465,0,0" Name="ShowTime" Text="---" VerticalAlignment="Top" Width="250" TextAlignment="Center" />
-            </Grid>
-
             <TextBlock FontWeight="Light" Foreground="White" Height="30" HorizontalAlignment="Left" Margin="230,80,0,0" Name="ShowST" Text="---" VerticalAlignment="Top" Width="196" />
             <TextBlock FontWeight="Light" Foreground="White" Height="30" HorizontalAlignment="Left" Margin="230,135,0,0" Name="ShowDuration" Text="---" VerticalAlignment="Top" Width="196" />
             <TextBlock FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="230,190,0,0" Name="ShowToBeat" Text="---" Width="196" Height="30" VerticalAlignment="Top" />
-        </Grid>
+
+            <!-- Estas se activan y desactivan de acuerdo si esta comenzado-->
+            <Grid Visibility="Collapsed" Name="StartPlayGrid">
+                <TextBlock FontWeight="Normal" Height="63" HorizontalAlignment="Left" Margin="10,240,0,0" Name="titleDescription" Text="{Binding Path=AppResources.Challenge1_DescriptionTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="246" FontSize="40" />
+                <TextBlock FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="12,300,0,0" Name="textDescription" Text="{Binding Path=AppResources.Challenge3_DescriptionTxtBlockText, Source={StaticResource LocalizedStrings}}" Width="414" Height="114" VerticalAlignment="Top" TextWrapping="Wrap" />
+
+                <Rectangle Fill="#FFFA6800" Height="80" Width="430" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="12,0,12,50" IsHitTestVisible="True" Name="StartRec" />
+                <TextBlock FontWeight="ExtraBlack" Height="57" HorizontalAlignment="Left" Margin="33,460,0,0" Name="Start" Text="{Binding Path=AppResources.Challenge2_StartButton, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="390" FontSize="40" TextAlignment="Center" />
+                <HyperlinkButton Content="" Height="80" HorizontalAlignment="Left" Margin="33,450,0,0" Name="StartPlay" VerticalAlignment="Top" Width="390" Click="hyperlinkButtonStartPlay_Click"/>
+            </Grid>
+
+            <!-- Estas se activan y desactivan de acuerdo si esta comenzado-->
+            <Grid Visibility="Visible"  Name="InProgressGrid">
+                <Rectangle Fill="#FFFA6800" Height="80" Width="430" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="12,0,12,50" IsHitTestVisible="True" Name="PublishRec" />
+                <TextBlock VerticalAlignment="Center" FontWeight="ExtraBlack"  Height="80" Width="430" HorizontalAlignment="Left" Margin="12,458,0,42" Name="PublishBtn" Text="{Binding Path=AppResources.Challenge3_PostWallButton, Source={StaticResource LocalizedStrings}}" FontSize="40" TextAlignment="Center" />
+                <HyperlinkButton  Height="80" HorizontalAlignment="Left" Margin="12,451,0,0" Name="PublicWallHyperlinkButton" VerticalAlignment="Top" Width="430" Click="hyperlinkButtonPublish_Click"/>
+
+                <Rectangle Fill="#FFFA6800" Height="80" Width="200"  IsHitTestVisible="True" Name="SmsRec" Margin="13,340,243,160" />
+                <TextBlock VerticalAlignment="Center" FontWeight="ExtraBlack"  Height="70" Width="200" HorizontalAlignment="Left" Margin="12,351,0,159" Name="SmsBtn" Text="{Binding Path=AppResources.Challenge3_SmsSend, Source={StaticResource LocalizedStrings}}" FontSize="40" TextAlignment="Center" />
+                <HyperlinkButton  Height="80" HorizontalAlignment="Left" Margin="13,341,0,0" Name="SmsHyperlinkButton" VerticalAlignment="Top" Width="197" Click="hyperlinkButtonPublish_Click"/>
+                
+                <Rectangle Fill="#FFFA6800" Height="80" IsHitTestVisible="True"  Name="rectangle1" Width="200" Margin="242,340,14,160" />
+                <TextBlock FontSize="40" FontWeight="ExtraBlack" Height="70" HorizontalAlignment="Left" Margin="242,350,0,160" Name="textBlock1" Text="{Binding Path=AppResources.Challenge3_SmsSend, Source={StaticResource LocalizedStrings}}" TextAlignment="Center" VerticalAlignment="Center" Width="200" />
+                <HyperlinkButton Height="80" HorizontalAlignment="Left" Margin="242,341,0,0" Name="hyperlinkButton1" VerticalAlignment="Top" Width="200" />
+            </Grid>
+
+             </Grid>
 
     </Grid>
  
