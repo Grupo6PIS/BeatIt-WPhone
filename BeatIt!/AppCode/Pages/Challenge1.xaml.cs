@@ -1,23 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using Microsoft.Phone.Controls;
 using System.Device.Location;
+using System.Windows;
+using System.Windows.Media;
 using System.Windows.Threading;
 using BeatIt_.AppCode.Challenges;
 using BeatIt_.AppCode.Controllers;
 using BeatIt_.AppCode.Interfaces;
-using BeatIt_.AppCode.Classes;
 using Microsoft.Devices;
-using System.Threading;
+using Microsoft.Phone.Controls;
 
 /* USAIN BOLT */
 

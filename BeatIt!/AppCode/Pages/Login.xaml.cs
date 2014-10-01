@@ -1,21 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+using BeatIt_.AppCode.Classes;
+using BeatIt_.AppCode.Controllers;
+using BeatIt_.AppCode.Interfaces;
 using Facebook;
 using Microsoft.Phone.Controls;
-using BeatIt_.AppCode.Interfaces;
-using BeatIt_.AppCode.Controllers;
-using BeatIt_.AppCode.Classes;
 
 
 namespace BeatIt_.Pages

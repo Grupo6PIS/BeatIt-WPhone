@@ -1,25 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+using System.Diagnostics;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using Microsoft.Phone.Controls;
-using BeatIt_.AppCode.Interfaces;
+using System.Windows.Resources;
+using System.Windows.Threading;
 using BeatIt_.AppCode.Challenges;
 using BeatIt_.AppCode.Controllers;
-using System.Windows.Threading;
+using BeatIt_.AppCode.Interfaces;
 using Microsoft.Devices.Sensors;
+using Microsoft.Phone.Controls;
 using Microsoft.Xna.Framework;
-using System.Windows.Resources;
 using Microsoft.Xna.Framework.Audio;
-using System.Diagnostics;
-using System.Threading;
 
 
 /* DESPERTAME A TIEMPO */

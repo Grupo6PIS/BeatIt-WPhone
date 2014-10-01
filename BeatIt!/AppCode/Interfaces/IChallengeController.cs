@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using BeatIt_.AppCode.Classes;
 using BeatIt_.AppCode.Datatypes;
 using BeatIt_.AppCode.Enums;
-using BeatIt_.AppCode.Classes;
 
 namespace BeatIt_.AppCode.Interfaces.Controllers
 {

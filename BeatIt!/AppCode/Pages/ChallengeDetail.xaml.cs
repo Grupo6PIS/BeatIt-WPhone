@@ -1,19 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using Microsoft.Phone.Controls;
-using BeatIt_.AppCode.Classes;
-using BeatIt_.AppCode.Interfaces;
-using BeatIt_.AppCode.Controllers;
 using System.Windows.Media.Imaging;
+using BeatIt_.AppCode.Classes;
+using BeatIt_.AppCode.Controllers;
+using BeatIt_.AppCode.Interfaces;
+using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
 namespace BeatIt_.Pages
