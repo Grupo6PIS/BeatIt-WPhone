@@ -6,7 +6,7 @@ namespace BeatIt_.AppCode.Pages
     {
         public Challenge8()
         {
-            InitializeComponent()
+            InitializeComponent();
 
             NavigationInTransition navigateInTransition = new NavigationInTransition();
             navigateInTransition.Backward = new SlideTransition { Mode = SlideTransitionMode.SlideRightFadeIn };
