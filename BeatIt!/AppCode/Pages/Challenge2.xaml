@@ -39,9 +39,9 @@
 
             <!-- Estas se activan y desactivan de acuerdo si esta comenzado-->
             <Grid Visibility="Visible" Name="StartPlayGrid">
-                <Rectangle Fill="#FF1CA1E3" Height="80" Width="390" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,50" IsHitTestVisible="True" Name="startPlayingRec" />
-                <TextBlock FontWeight="ExtraBlack" Height="57" HorizontalAlignment="Left" Margin="33,460,0,0" Name="Start" Text="{Binding Path=AppResources.Challenge2_StartButton, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="390" FontSize="40" TextAlignment="Center" />
-                <HyperlinkButton Content="" Height="80" HorizontalAlignment="Left" Margin="33,450,0,0" Name="StartPlay" VerticalAlignment="Top" Width="390" Click="hyperlinkButtonStartRunning_Click"/>
+                <Rectangle Fill="#FF1CA1E3" Height="80" Width="438" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="12,0,12,50" IsHitTestVisible="True" Name="startPlayingRec" />
+                <TextBlock FontWeight="ExtraBlack" Height="57" HorizontalAlignment="Left" Margin="12,460,0,0" Name="Start" Text="{Binding Path=AppResources.Challenge2_StartButton, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="438" FontSize="40" TextAlignment="Center" />
+                <HyperlinkButton Content="" Height="80" HorizontalAlignment="Left" Margin="12,450,0,0" Name="StartPlay" VerticalAlignment="Top" Width="438" Click="hyperlinkButtonStartRunning_Click"/>
             </Grid>
 
             <!-- Estas se activan y desactivan de acuerdo si esta comenzado-->

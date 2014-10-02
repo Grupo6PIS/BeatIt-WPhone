@@ -38,9 +38,9 @@
             <TextBlock FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="12,300,0,0" Name="textDescription" Text="{Binding Path=AppResources.Challenge4_DescriptionTxtBlockText, Source={StaticResource LocalizedStrings}}" Width="414" Height="100" VerticalAlignment="Top" TextWrapping="Wrap" />
 
             <Grid Visibility="Visible" Name="PlaySoundGrid">
-                <Rectangle Fill="#FFE3C900" Height="80" Width="390" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,50" IsHitTestVisible="True" Name="playSoundRec" />
-                <TextBlock FontWeight="ExtraBlack" Height="57" HorizontalAlignment="Left" Margin="33,460,0,0" Name="playSoundTitle" Text="{Binding Path=AppResources.Challenge4_PlaySoundButton, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="390" FontSize="40" TextAlignment="Center" />
-                <HyperlinkButton Content="" Height="80" HorizontalAlignment="Left" Margin="33,450,0,0" Name="PlaySoundButton" VerticalAlignment="Top" Width="390" Click="hyperlinkButtonPlaySound_Click" />
+                <Rectangle Fill="#FFE3C900" Height="80" Width="438" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="12,0,12,50" IsHitTestVisible="True" Name="playSoundRec" />
+                <TextBlock FontWeight="ExtraBlack" Height="57" HorizontalAlignment="Left" Margin="12,460,0,0" Name="playSoundTitle" Text="{Binding Path=AppResources.Challenge4_PlaySoundButton, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="435" FontSize="40" TextAlignment="Center" />
+                <HyperlinkButton Content="" Height="80" HorizontalAlignment="Left" Margin="12,450,0,0" Name="PlaySoundButton" VerticalAlignment="Top" Width="435" Click="hyperlinkButtonPlaySound_Click" />
             </Grid>
 
             <TextBlock FontWeight="Light" Foreground="White" Height="30" HorizontalAlignment="Left" Margin="230,80,0,0" Name="ShowST" Text="---" VerticalAlignment="Top" Width="196" />

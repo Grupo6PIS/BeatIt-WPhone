@@ -54,13 +54,9 @@
                 <TextBlock VerticalAlignment="Center" FontWeight="ExtraBlack"  Height="80" Width="430" HorizontalAlignment="Left" Margin="12,458,0,42" Name="PublishBtn" Text="{Binding Path=AppResources.Challenge3_PostWallButton, Source={StaticResource LocalizedStrings}}" FontSize="40" TextAlignment="Center" />
                 <HyperlinkButton  Height="80" HorizontalAlignment="Left" Margin="12,451,0,0" Name="PublicWallHyperlinkButton" VerticalAlignment="Top" Width="430" Click="hyperlinkButtonPublish_Click"/>
 
-                <Rectangle Fill="#FFFA6800" Height="80" Width="200"  IsHitTestVisible="True" Name="SmsRec" Margin="13,340,243,160" />
-                <TextBlock VerticalAlignment="Center" FontWeight="ExtraBlack"  Height="70" Width="200" HorizontalAlignment="Left" Margin="12,351,0,159" Name="SmsBtn" Text="{Binding Path=AppResources.Challenge3_SmsSend, Source={StaticResource LocalizedStrings}}" FontSize="40" TextAlignment="Center" />
-                <HyperlinkButton  Height="80" HorizontalAlignment="Left" Margin="13,341,0,0" Name="SmsHyperlinkButton" VerticalAlignment="Top" Width="197" Click="hyperlinkButtonSMS_Click"/>
-                
-                <Rectangle Fill="#FFFA6800" Height="80" IsHitTestVisible="True"  Name="rectangle1" Width="200" Margin="242,340,14,160" />
-                <TextBlock FontSize="40" FontWeight="ExtraBlack" Height="70" HorizontalAlignment="Left" Margin="242,350,0,160" Name="textBlock1" Text="{Binding Path=AppResources.Challenge3_SmsSend, Source={StaticResource LocalizedStrings}}" TextAlignment="Center" VerticalAlignment="Center" Width="200" />
-                <HyperlinkButton Height="80" HorizontalAlignment="Left" Margin="242,341,0,0" Name="hyperlinkButton1" VerticalAlignment="Top" Width="200" />
+                <Rectangle Fill="#FFFA6800" Height="80" IsHitTestVisible="True" Name="SmsRec" Margin="13,340,14,160" />
+                <TextBlock VerticalAlignment="Center" FontWeight="ExtraBlack"  Height="70" Width="430" HorizontalAlignment="Left" Margin="12,351,0,159" Name="SmsBtn" Text="{Binding Path=AppResources.Challenge3_SmsSend, Source={StaticResource LocalizedStrings}}" FontSize="40" TextAlignment="Center" />
+                <HyperlinkButton  Height="80" HorizontalAlignment="Left" Margin="13,341,0,0" Name="SmsHyperlinkButton" VerticalAlignment="Top" Width="429" Click="hyperlinkButtonSMS_Click"/>
             </Grid>
 
              </Grid>
