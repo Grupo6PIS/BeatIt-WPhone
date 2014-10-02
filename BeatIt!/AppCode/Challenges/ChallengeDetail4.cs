@@ -1,4 +1,5 @@
 ﻿using BeatIt_.AppCode.Classes;
+using BeatIt_.AppCode.Controllers;
 
 namespace BeatIt_.AppCode.Challenges
 {
@@ -37,6 +38,7 @@ namespace BeatIt_.AppCode.Challenges
             {
                 this.State.Finished = true;
             }
+            bool actualizo = FacadeController.getInstance().saveState(this.State);
         }
     }
 }

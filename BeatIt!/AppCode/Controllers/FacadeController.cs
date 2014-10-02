@@ -203,6 +203,7 @@ namespace BeatIt_.AppCode.Controllers
         {
             this.currentUser = null;
             this.currentRound = null;
+            this.db.Query<DTStatePersistible>("delete from DTStatePersistible");
         }
 
         public Challenge getChallenge(int challengeId)

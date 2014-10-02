@@ -1,4 +1,5 @@
 ﻿using BeatIt_.AppCode.Classes;
+using BeatIt_.AppCode.Controllers;
 
 /*****************************/
 //DESAFIO USAIN BOLT
@@ -66,6 +67,7 @@ namespace BeatIt_.AppCode.Challenges
             {
                 this.State.Finished = true;
             }
+            bool actualizo = FacadeController.getInstance().saveState(this.State);
         }
     }
 }
