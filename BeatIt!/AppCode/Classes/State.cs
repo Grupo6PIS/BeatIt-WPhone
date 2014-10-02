@@ -5,112 +5,33 @@ namespace BeatIt_.AppCode.Classes
 {
     public class State
     {
-        private bool finished;
-        private int score;
-        private int lastScore;
-        private DateTime startDate;
-        private int currentAttempt;
-        private int bestTime = 0;
-        private Challenge challenge;
+        public bool Finished { get; set; }
+        public int BestScore { get; set; }
+        public int LastScore { get; set; }
+        public DateTime StartDate { get; set; }
+        public int CurrentAttempt { get; set; }
+        public Challenge Challenge { get; set; }
 
         public State()
         {
-            this.finished = false;
-            this.score = 0;
-            this.lastScore = 0;
-            this.startDate = System.DateTime.Now;
-            this.currentAttempt = 0;
-        }
-
-        public void setBestTime(int time)
-        {
-            if (this.bestTime < time)
-            {
-                this.bestTime = time;
-            }
-        }
-
-        public int getBestTime()
-        {
-            return bestTime;
-        }
-
-
-        public bool getFinished()
-        {
-            return this.finished;
-        }
-
-        public void setFinished(bool finished)
-        {
-            this.finished = finished;
-        }
-
-        public int getScore()
-        {
-            return this.score;
-        }
-
-        public void setScore(int score)
-        {
-            if (this.score < score)
-            {
-                this.score = score;
-            }
-        }
-
-        public int getLastScore()
-        {
-            return this.lastScore;
-        }
-
-        public void setLastScore(int score)
-        {
-            this.lastScore = score;
-        }
-
-        public DateTime getStartDate()
-        {
-            return this.startDate;
-        }
-
-        public void setStartDate(DateTime startDate)
-        {
-            this.startDate = startDate;
-        }
-
-        public int getCurrentAttempt()
-        {
-            return this.currentAttempt;
-        }
-
-        public void setCurrentAttempt(int attempt)
-        {
-            this.currentAttempt = attempt;
-        }
-
-        public Challenge getChallenge()
-        {
-            return this.challenge;
-        }
-
-        public void setChallenge(Challenge challenge)
-        {
-            this.challenge = challenge;
+            this.Finished = false;
+            this.BestScore = 0;
+            this.LastScore = 0;
+            this.StartDate = System.DateTime.Now;
+            this.CurrentAttempt = 0;
         }
 
         public DTStatePersistible getDTStatePersistible()
         {
             DTStatePersistible dt = new DTStatePersistible();
-            dt.id = this.challenge.Round.RoundId*100 + this.challenge.ChallengeId;
-            dt.roundId = this.challenge.Round.RoundId;
-            dt.challengeId = this.challenge.ChallengeId;
-            dt.finished = this.finished;
-            dt.lastScore = this.lastScore;
-            dt.score = this.score;
-            dt.startDate = this.startDate;
-            dt.currentAttempt = this.currentAttempt;
-            dt.bestTime = this.bestTime;
+            dt.id = this.Challenge.Round.RoundId*100 + this.Challenge.ChallengeId;
+            dt.RoundId = this.Challenge.Round.RoundId;
+            dt.ChallengeId = this.Challenge.ChallengeId;
+            dt.Finished = this.Finished;
+            dt.LastScore = this.LastScore;
+            dt.BestScore = this.BestScore;
+            dt.StartDate = this.StartDate;
+            dt.CurrentAttempt = this.CurrentAttempt;
 
             return dt;
         }

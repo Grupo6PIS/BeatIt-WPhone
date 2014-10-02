@@ -26,7 +26,7 @@ namespace BeatIt.Tests
             var currentChallenge = (ChallengeDetail1)ifc.getChallenge(1);
             currentChallenge.completeChallenge(false, 45, 42);
             //Si esta bien debería ser 174 el puntaje de en el desafío (42+45)*2
-            Assert.AreEqual(174, currentChallenge.State.getLastScore());
+            Assert.AreEqual(174, currentChallenge.State.LastScore);
 
         }
     };

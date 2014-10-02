@@ -22,14 +22,20 @@ namespace BeatIt_.AppCode.Challenges
 
         public void completeChallenge(bool error, int miliseconds)
         {
-            this.State.setCurrentAttempt(this.State.getCurrentAttempt() + 1);
+            this.State.CurrentAttempt = this.State.CurrentAttempt + 1;
             if (!error)
             {
-                this.State.setScore(this.calculateScore(miliseconds));
+                this.State.LastScore = this.calculateScore(miliseconds);
+                if (this.State.LastScore > this.State.BestScore)
+                    this.State.BestScore = this.State.LastScore;
             }
-            if (this.State.getCurrentAttempt() == this.MaxAttempt)
+            else 
             {
-                this.State.setFinished(true);
+                this.State.LastScore = 0;   
+            }
+            if (this.State.CurrentAttempt == this.MaxAttempt)
+            {
+                this.State.Finished = true;
             }
         }
     }

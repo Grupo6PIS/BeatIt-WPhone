@@ -40,20 +40,17 @@ namespace BeatIt_.AppCode.Challenges
             return result;
         }
 
-
-
         public void completeChallenge(int cantCorrectWakeUp)
         {
-            this.State.setScore(this.calculatPuntaje(cantCorrectWakeUp));     // ACTUALIZAMOS EL PUNTAJE
-            this.State.setCurrentAttempt(this.State.getCurrentAttempt() + 1); // INCREMENTAMOS LOS INTENTOS
-            this.State.setLastScore(this.calculatPuntaje(cantCorrectWakeUp));
-            if (this.State.getCurrentAttempt() == this.MaxAttempt)            // SI YA ALCANZAMOS EL NUMERO MÁXIMO DE INTENTOS, DAMOS EL DESAFIO POR FINALIZADO.
-                this.State.setFinished(true);
+            this.State.LastScore = this.calculatPuntaje(cantCorrectWakeUp);
+            if (this.State.LastScore > this.State.BestScore)
+                this.State.BestScore = this.State.LastScore;
+            this.State.CurrentAttempt = this.State.CurrentAttempt + 1;
+            if (this.State.CurrentAttempt == this.MaxAttempt)
+                this.State.Finished = true;
 
             bool actualizo = FacadeController.getInstance().saveState(this.State);
         }
-
-
 
         public int calculatPuntaje(int cantCorrectWakeUp)
         {

@@ -56,12 +56,12 @@ namespace BeatIt_.AppCode.Pages
                 ifc = FacadeController.getInstance();
                 this.currentChallenge = (ChallengeDetail6)ifc.getChallenge(6);
 
-                if (this.currentChallenge.State.getCurrentAttempt() == this.currentChallenge.MaxAttempt)
+                if (this.currentChallenge.State.CurrentAttempt == this.currentChallenge.MaxAttempt)
                     throw new Exception("Ya ha realizado el número máximo de intentos en la ronda actual.");
 
                 // INICIALIZAMOS LAS ETIQUETAS DEL DETALLE DEL DESAFIO
-                this.ShowST.Text = this.currentChallenge.getDTChallenge().getStartTime().ToString(); // Tiempo de iniciado el desafio.
-                this.ShowToBeat.Text = this.currentChallenge.State.getScore() + " pts";              // Puntaje a vencer.
+                this.ShowST.Text = this.currentChallenge.getDTChallenge().StartTime.ToString(); // Tiempo de iniciado el desafio.
+                this.ShowToBeat.Text = this.currentChallenge.State.BestScore + " pts";               // Puntaje a vencer.
                 this.ShowDuration.Text = this.currentChallenge.getDurationString();                  // Tiempo retante para realizar el desafio.   
                 this.ShowTime.Text = "---";                                                          // Tiempo transcurrido.
 
@@ -142,8 +142,8 @@ namespace BeatIt_.AppCode.Pages
                             this.currentChallenge.setTiempoEnElAire(tiempo);
                             this.StartPlayGrid.Visibility = Visibility.Visible;
                             //this.Start.Text = "Ptos. " + this.currentChallenge.CalcularPuntaje().ToString();                            
-                            this.currentChallenge.State.setScore(this.currentChallenge.CalcularPuntaje());
-                            this.currentChallenge.State.setLastScore(this.currentChallenge.CalcularPuntaje());
+                            this.currentChallenge.State.BestScore = this.currentChallenge.CalcularPuntaje();
+                            this.currentChallenge.State.LastScore = this.currentChallenge.CalcularPuntaje();
                             Uri uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
                             NavigationService.Navigate(uri);
                         }

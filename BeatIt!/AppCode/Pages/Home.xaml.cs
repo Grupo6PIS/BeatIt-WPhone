@@ -102,7 +102,7 @@ namespace BeatIt_.Pages
             ifc.setCurrentChallenge(ch);
 
             String pagePath = "";
-            if (ch.State.getCurrentAttempt() == 0)
+            if (ch.State.CurrentAttempt == 0)
             {
                 pagePath = "/BeatIt!;component/AppCode/Pages/Challenge" + tag + ".xaml"; 
             }
@@ -121,11 +121,11 @@ namespace BeatIt_.Pages
             {
                 DTRanking dtr = (DTRanking)ranking[i];
                 RankingListItem listItem = new RankingListItem();
-                listItem.selectedRec.Visibility = (ifc.getCurrentUser().UserId == dtr.getUserId()) ? System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed;
-                listItem.positionTxtBlock.Text = dtr.getPosition().ToString();
-                listItem.scoreTxtBlock.Text = dtr.getScore().ToString();
-                listItem.nameTxtBlock.Text = dtr.getName();
-                Uri uri = new Uri(dtr.getImageUrl(), UriKind.Absolute);
+                listItem.selectedRec.Visibility = (ifc.getCurrentUser().UserId == dtr.UserId) ? System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed;
+                listItem.positionTxtBlock.Text = dtr.Position.ToString();
+                listItem.scoreTxtBlock.Text = dtr.Score.ToString();
+                listItem.nameTxtBlock.Text = dtr.Name;
+                Uri uri = new Uri(dtr.ImageUrl, UriKind.Absolute);
                 listItem.userImage.Source = new BitmapImage(uri);
                 RankingListBox.Items.Add(listItem);
             }

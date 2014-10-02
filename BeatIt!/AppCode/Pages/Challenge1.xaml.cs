@@ -65,8 +65,8 @@ namespace BeatIt_.Pages
             
 
             // INICIALIZAMOS LAS ETIQUETAS DEL DETALLE DEL DESAFIO
-            this.ShowST.Text = this.currentChallenge.getDTChallenge().getStartTime().ToString(); // Ojo ver el tema de la fecha y hora (Cuando estamos en el limite de una ronda y la otra).
-            this.ShowToBeat.Text = this.currentChallenge.State.getScore() + " pts";
+            this.ShowST.Text = this.currentChallenge.getDTChallenge().StartTime.ToString(); // Ojo ver el tema de la fecha y hora (Cuando estamos en el limite de una ronda y la otra).
+            this.ShowToBeat.Text = this.currentChallenge.State.BestScore + " pts";
             this.ShowDuration.Text = this.currentChallenge.getDurationString();
 
             this.ShowTime.Text =  minTime.ToString();
@@ -87,7 +87,7 @@ namespace BeatIt_.Pages
                 this.gps.PositionChanged += positionChanged;
                 this.gps.StatusChanged += statusChanged;
                 this.gps.Start();
-                this.ShowToBeat.Text = this.currentChallenge.State.getScore() + " pts";
+                this.ShowToBeat.Text = this.currentChallenge.State.BestScore + " pts";
             }
         }
         
@@ -115,7 +115,7 @@ namespace BeatIt_.Pages
                     }
                     seconds = minTime;
                     this.currentChallenge.completeChallenge(true, 12, 15);
-                    this.ShowToBeat.Text = this.currentChallenge.State.getScore() + " pts";
+                    this.ShowToBeat.Text = this.currentChallenge.State.BestScore + " pts";
                     MessageBox.Show("Desafio completado!");
                 }
                 else

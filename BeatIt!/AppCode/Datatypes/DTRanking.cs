@@ -3,11 +3,11 @@ namespace BeatIt_.AppCode.Datatypes
 {
     public class DTRanking
     {
-        private int userId;
-        private int position;
-        private int score;
-        private string name;
-        private string imageUrl;
+        public int UserId { get; set; }
+        public int Position { get; set; }
+        public int Score { get; set; }
+        public string Name { get; set; }
+        public string ImageUrl { get; set; }
 
         public DTRanking(int userId,
                          int position,
@@ -15,21 +15,11 @@ namespace BeatIt_.AppCode.Datatypes
                          string name,
                          string imageUrl) 
         {
-            this.userId = userId;
-            this.position = position;
-            this.score = score;
-            this.name = name;
-            this.imageUrl = imageUrl;
+            this.UserId = userId;
+            this.Position = position;
+            this.Score = score;
+            this.Name = name;
+            this.ImageUrl = imageUrl;
         }
-
-        public int getUserId() { return userId; }
-
-        public int getPosition() { return position; }
-
-        public int getScore() { return score; }
-
-        public string getName() { return name; }
-
-        public string getImageUrl() { return imageUrl; }
     }
 }

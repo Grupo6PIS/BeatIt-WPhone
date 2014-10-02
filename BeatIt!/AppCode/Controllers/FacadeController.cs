@@ -113,20 +113,19 @@ namespace BeatIt_.AppCode.Controllers
                 IEnumerator<DTStatePersistible> enumerator = states.GetEnumerator();
                 enumerator.MoveNext();
                 DTStatePersistible dt = enumerator.Current;
-                if (this.currentRound.RoundId == dt.roundId) // Si los estados guardados corresponden a la ronda actual.
+                if (this.currentRound.RoundId == dt.RoundId) // Si los estados guardados corresponden a la ronda actual.
                 {
                     foreach (DTStatePersistible aux in states)
                     {
                         State s = new State();
-                        s.setBestTime(aux.bestTime);
-                        s.setChallenge(this.currentRound.Challenges[aux.challengeId]);
-                        s.setCurrentAttempt(aux.currentAttempt);
-                        s.setFinished(aux.finished);
-                        s.setLastScore(aux.lastScore);
-                        s.setScore(aux.score);
-                        s.setStartDate(aux.startDate);
+                        s.Challenge = (this.currentRound.Challenges[aux.ChallengeId]);
+                        s.CurrentAttempt = aux.CurrentAttempt;
+                        s.Finished = aux.Finished;
+                        s.LastScore = aux.LastScore;
+                        s.BestScore = aux.BestScore;
+                        s.StartDate = aux.StartDate;
                                                 
-                        this.currentRound.Challenges[aux.challengeId].State = s;
+                        this.currentRound.Challenges[aux.ChallengeId].State = s;
                     }
                 }
                 else // Si no se corresponden con la ronda actual, los borramos ya que no los necesitamos //????????????? ES ASI?
@@ -143,7 +142,7 @@ namespace BeatIt_.AppCode.Controllers
                 foreach (KeyValuePair<int, Challenge> aux in round.Challenges)
                 {
                     State s = new State();
-                    s.setChallenge(aux.Value);
+                    s.Challenge = aux.Value;
                     aux.Value.State = s;
                     DTStatePersistible dts = s.getDTStatePersistible();
                     this.db.Insert(dts);

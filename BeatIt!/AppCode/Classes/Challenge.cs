@@ -5,86 +5,32 @@ namespace BeatIt_.AppCode.Classes
 {
     public class Challenge
     {
-        private int challengeId;
-        private string name;
-        private string description;
-        private bool isEnabled;
-        private int level;
-        private int maxAttempt;
-        private string colorHex;
-        private Round round;
-        private State state;
+        public int ChallengeId { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public bool IsEnabled { get; set; }
+        public int Level { get; set; }
+        public int MaxAttempt { get; set; }
+        public string ColorHex { get; set; }
+        public Round Round { get; set; }
+        public State State { get; set; }
 
         public Challenge()
         {
         }
 
-        public int ChallengeId
-        {
-            get { return challengeId; }
-            set { challengeId = value; }
-        }
-
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
-        public string Description
-        {
-            get { return description; }
-            set { description = value; }
-        }
-
-        public bool IsEnabled
-        {
-            get { return isEnabled; }
-            set { isEnabled = value; }
-        }
-
-        public int Level
-        {
-            get { return level; }
-            set { level = value; }
-        }
-
-        public int MaxAttempt
-        {
-            get { return maxAttempt; }
-            set { maxAttempt = value; }
-        }
-
-        public string ColorHex
-        {
-            get { return colorHex; }
-            set { colorHex = value; }
-        }
-
-        public Round Round
-        {
-            get { return round; }
-            set { round = value; }
-        }
-
-        public State State
-        {
-            get { return state; }
-            set { state = value; }
-        }
-
         public DTChallenge getDTChallenge()
         {
-            return new DTChallenge(this.challengeId,
-                                   this.name,
-                                   this.description,
-                                   this.isEnabled,
-                                   this.level,
-                                   this.state.getFinished(),
-                                   this.state.getCurrentAttempt(),
-                                   this.state.getScore(),
-                                   this.state.getStartDate(),
-                                   this.state.getBestTime());
+            return new DTChallenge(this.ChallengeId,
+                                   this.Name,
+                                   this.Description,
+                                   this.IsEnabled,
+                                   this.Level,
+                                   this.State.Finished,
+                                   this.State.CurrentAttempt,
+                                   this.State.BestScore,
+                                   this.State.LastScore,
+                                   this.State.StartDate);
         }
 
         /// <summary>
@@ -96,7 +42,7 @@ namespace BeatIt_.AppCode.Classes
         {
             String result = "";
             DateTime dateToday = DateTime.Now;
-            TimeSpan dif = this.round.EndDate - dateToday;
+            TimeSpan dif = this.Round.EndDate - dateToday;
             int days = dif.Days;
             if (days > 0)
             {

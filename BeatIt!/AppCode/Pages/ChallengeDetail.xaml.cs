@@ -34,7 +34,7 @@ namespace BeatIt_.Pages
 
             ApplicationBar.Mode = ApplicationBarMode.Minimized;
             ApplicationBar.Opacity = 0.7;
-            ApplicationBar.IsVisible = challenge.State.getCurrentAttempt() < challenge.MaxAttempt;
+            ApplicationBar.IsVisible = challenge.State.CurrentAttempt < challenge.MaxAttempt;
             ApplicationBar.IsMenuEnabled = false;
 
             ApplicationBarIconButton retryBtn = new ApplicationBarIconButton();
@@ -47,15 +47,15 @@ namespace BeatIt_.Pages
             this.imageRec.Fill = GetColorFromHexa(challenge.ColorHex);
             
             this.lastScoreRec.Fill = GetColorFromHexa(challenge.ColorHex);
-            this.lastScoreTxtBlock.Text = challenge.State.getLastScore().ToString();
+            this.lastScoreTxtBlock.Text = challenge.State.LastScore.ToString();
 
             this.bestScoreRec.Fill = GetColorFromHexa(challenge.ColorHex);
-            this.bestScoreTxtBlock.Text = challenge.State.getScore().ToString();
+            this.bestScoreTxtBlock.Text = challenge.State.BestScore.ToString();
 
             Uri uri = new Uri("/BeatIt!;component/Images/icon_challenge_" + challenge.ChallengeId + ".png", UriKind.Relative);
             this.iconImage.Source = new BitmapImage(uri);
-            this.startDateTxtBlock.Text = challenge.getDTChallenge().getStartTime().ToString();
-            this.attemptsTxtBlock.Text = challenge.State.getCurrentAttempt() + "/" + challenge.MaxAttempt;
+            this.startDateTxtBlock.Text = challenge.getDTChallenge().StartTime.ToString();
+            this.attemptsTxtBlock.Text = challenge.State.CurrentAttempt + "/" + challenge.MaxAttempt;
         }
 
         public static SolidColorBrush GetColorFromHexa(string hexaColor)

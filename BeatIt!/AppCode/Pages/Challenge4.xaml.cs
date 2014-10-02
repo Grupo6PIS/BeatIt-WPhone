@@ -46,10 +46,10 @@ namespace BeatIt_.AppCode.Pages
             ifc = FacadeController.getInstance();
             this.currentChallenge = (ChallengeDetail4)ifc.getChallenge(4);
 
-            this.ShowST.Text = this.currentChallenge.getDTChallenge().getStartTime().ToString();
-            this.ShowToBeat.Text = this.currentChallenge.State.getScore() + " pts";
+            this.ShowST.Text = this.currentChallenge.getDTChallenge().StartTime.ToString();
+            this.ShowToBeat.Text = this.currentChallenge.State.BestScore + " pts";
             DateTime roundDate = new DateTime(2014, 9, 28, 22, 0, 0);
-            this.ShowDuration.Text = getDurationString(roundDate);
+            this.ShowDuration.Text = this.currentChallenge.getDurationString();
 
             soundTimer = new DispatcherTimer();
             soundTimer.Interval = new TimeSpan(0, 0, 3);
@@ -99,7 +99,7 @@ namespace BeatIt_.AppCode.Pages
             {
                 stopTimer.Stop();
                 this.currentChallenge.completeChallenge(false, ms);
-                this.ShowToBeat.Text = this.currentChallenge.State.getScore() + " pts";
+                this.ShowToBeat.Text = this.currentChallenge.State.BestScore + " pts";
                 MessageBox.Show("Desafio completado!");
             }
             else 
@@ -111,39 +111,6 @@ namespace BeatIt_.AppCode.Pages
 
             StartGrid.Visibility = System.Windows.Visibility.Visible;
             StopGrid.Visibility = System.Windows.Visibility.Collapsed;
-        }
-
-        private string getDurationString(DateTime roundDate)
-        {
-            String result = "";
-            DateTime dateToday = DateTime.Now;
-            TimeSpan dif = roundDate - dateToday;
-            int days = dif.Days;
-            if (days > 0)
-            {
-                result = days + " dias";
-            }
-            else
-            {
-                int hours = dif.Hours % 24;
-                if (hours > 0)
-                {
-                    result = hours + " horas";
-                }
-                else
-                {
-                    int minutes = dif.Minutes % 60;
-                    if (minutes > 0)
-                    {
-                        result = minutes + " minutos";
-                    }
-                    else
-                    {
-                        result = "Menos de un minuto!!";
-                    }
-                }
-            }
-            return result;
         }
 
         private void image1_ImageFailed(object sender, ExceptionRoutedEventArgs e)
