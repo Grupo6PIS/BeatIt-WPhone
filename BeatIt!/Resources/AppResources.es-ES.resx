@@ -176,6 +176,9 @@ Android: https://play.google.com/store/apps/details?id=com.g6pis.beatit&amp;ah=m
   <data name="Challenge4_PlaySoundButton" xml:space="preserve">
     <value>Reproducir sonido</value>
   </data>
+  <data name="Challenge6_DescriptionTxtBlockText" xml:space="preserve">
+    <value>Descripcion Desafio Celular Volador Español</value>
+  </data>
   <data name="HomePage_ChallengesPivotTitle" xml:space="preserve">
     <value>Desafíos</value>
   </data>

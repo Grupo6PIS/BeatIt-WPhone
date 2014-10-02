@@ -49,11 +49,11 @@ namespace BeatIt_.AppCode.Pages
             TransitionService.SetNavigationOutTransition(this, navigateOutTransition);
 
 
-            this.inicializar();
+            this.Inicializar();
         }
 
 
-        private void inicializar()
+        private void Inicializar()
         {
             try
             {
