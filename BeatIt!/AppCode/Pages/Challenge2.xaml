@@ -27,8 +27,8 @@
         </StackPanel>
         
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Margin="12,160,12,28" Grid.RowSpan="2">            
-            <Rectangle Name="image1Rectangle" Fill="#FF1CA1E3" Height="200" Width="200" VerticalAlignment="top" HorizontalAlignment="Left" Margin="12,20,8,8" />
+        <Grid x:Name="ContentPanel" Margin="12,160,12,28" Grid.RowSpan="2">
+            <Rectangle Name="image1Rectangle" Fill="#FF00aba9" Height="200" Width="200" VerticalAlignment="top" HorizontalAlignment="Left" Margin="12,20,8,8" />
             <Image Height="200" HorizontalAlignment="Left" Margin="10,21,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="200" ImageFailed="image1_ImageFailed" Source="/BeatIt!;component/Images/icon_challenge_2.png" />
             <TextBlock Height="30" Margin="230,20,0,0" Name="textDetail" Text="{Binding Path=AppResources.Challenge1_DetailsTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Left" Width="196" />
             <TextBlock FontWeight="Light" Foreground="#FF867A7A" Height="30" HorizontalAlignment="Left" Margin="230,55,0,0" Name="textStartTime" Text="{Binding Path=AppResources.Challenge1_StartTimeTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="196" />
@@ -39,7 +39,7 @@
 
             <!-- Estas se activan y desactivan de acuerdo si esta comenzado-->
             <Grid Visibility="Visible" Name="StartPlayGrid">
-                <Rectangle Fill="#FF1CA1E3" Height="80" Width="438" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="12,0,12,50" IsHitTestVisible="True" Name="startPlayingRec" />
+                <Rectangle Fill="#FF00aba9" Height="80" Width="438" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="12,0,12,50" IsHitTestVisible="True" Name="startPlayingRec" />
                 <TextBlock FontWeight="ExtraBlack" Height="57" HorizontalAlignment="Left" Margin="12,460,0,0" Name="Start" Text="{Binding Path=AppResources.Challenge2_StartButton, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="438" FontSize="40" TextAlignment="Center" />
                 <HyperlinkButton Content="" Height="80" HorizontalAlignment="Left" Margin="12,450,0,0" Name="StartPlay" VerticalAlignment="Top" Width="438" Click="hyperlinkButtonStartRunning_Click"/>
             </Grid>
@@ -47,7 +47,7 @@
             <!-- Estas se activan y desactivan de acuerdo si esta comenzado-->
             <Grid Visibility="Collapsed"  Name="InProgressGrid">
                 <TextBlock FontSize="28" FontWeight="Normal" Height="52" HorizontalAlignment="Center" Margin="30,399,0,0" Name="titleTime" Text="{Binding Path=AppResources.Challenge1_TimeLeftTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="250" TextAlignment="Center" />
-                <Rectangle Fill="#FF1CA1E3" Height="80" Width="250" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="30,20,8,50" />
+                <Rectangle Fill="#FF00aba9" Height="80" Width="250" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="30,20,8,50" />
                 <TextBlock FontSize="30" FontWeight="ExtraBold" Height="50" HorizontalAlignment="Center" Margin="30,465,0,0" Name="ShowTime" Text="---" VerticalAlignment="Top" Width="250" TextAlignment="Center" />                
             </Grid>
 

@@ -8,7 +8,7 @@ namespace BeatIt_.AppCode.Challenges
         {
             this.ChallengeId = 4;
             this.Name = "Challenge 4";
-            this.ColorHex = "#FFE3C900";
+            this.ColorHex = "#FF647687";
             this.Description = "Description 4";
             this.IsEnabled = true;
             this.Level = 1;

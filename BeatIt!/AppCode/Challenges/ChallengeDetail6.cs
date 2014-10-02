@@ -12,7 +12,7 @@ namespace BeatIt_.AppCode.Challenges
         {
             this.ChallengeId = 6;
             this.Name = "Flying Phone";
-            this.ColorHex = "#FFE61300";
+            this.ColorHex = "#FFAA00FF";
             this.Description = "Description 6";
             this.IsEnabled = true;
             this.Level = 1;

@@ -7,9 +7,9 @@ namespace BeatIt_.AppCode.Challenges
         public ChallengeDetail3() 
         {
             this.ChallengeId = 3;
-            this.Name = "Challenge 3";
-            this.ColorHex = "#FFFA6800";
-            this.Description = "Description 3";
+            this.Name = "Invite Friends";
+            this.ColorHex = "#FF3B5998";
+            this.Description = "You have to invite friends using SMS of Facebook";
             this.IsEnabled = true;
             this.Level = 1;
             this.MaxAttempt = 3;

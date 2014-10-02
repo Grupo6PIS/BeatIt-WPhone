@@ -9,7 +9,7 @@ namespace BeatIt_.AppCode.Challenges
         {
             this.ChallengeId = 2;
             this.Name = "Wake Me Up!";
-            this.ColorHex = "#FF1CA1E3";
+            this.ColorHex = "#FF00aba9";
             this.Description = "Description 2";
             this.IsEnabled = true;
             this.Level = 1;
