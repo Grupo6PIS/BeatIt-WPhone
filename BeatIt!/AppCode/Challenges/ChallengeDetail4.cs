@@ -14,5 +14,23 @@ namespace BeatIt_.AppCode.Challenges
             this.Level = 1;
             this.MaxAttempt = 3;
         }
+
+        private int calculateScore(int miliseconds)
+        {
+            return miliseconds;
+        }
+
+        public void completeChallenge(bool error, int miliseconds)
+        {
+            this.State.setCurrentAttempt(this.State.getCurrentAttempt() + 1);
+            if (!error)
+            {
+                this.State.setScore(this.calculateScore(miliseconds));
+            }
+            if (this.State.getCurrentAttempt() == this.MaxAttempt)
+            {
+                this.State.setFinished(true);
+            }
+        }
     }
 }

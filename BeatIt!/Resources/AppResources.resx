@@ -173,8 +173,11 @@ Android: https://play.google.com/store/apps/details?id=com.g6pis.beatit&amp;ah=m
   <data name="Challenge4_DescriptionTxtBlockText" xml:space="preserve">
     <value>In this challenge you have to ....</value>
   </data>
-  <data name="Challenge4_PlaySoundButton" xml:space="preserve">
-    <value>Play Sound</value>
+  <data name="Challenge4_StartButton" xml:space="preserve">
+    <value>Start!</value>
+  </data>
+  <data name="Challenge4_StopButton" xml:space="preserve">
+    <value>Stop</value>
   </data>
   <data name="Challenge6_DescriptionTxtBlockText" xml:space="preserve">
     <value>Descripcion Desafio Celular Volador Ingles</value>

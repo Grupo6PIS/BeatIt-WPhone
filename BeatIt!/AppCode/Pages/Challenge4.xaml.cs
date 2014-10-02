@@ -3,10 +3,11 @@ using System.Windows;
 using System.Windows.Resources;
 using BeatIt_.AppCode.Challenges;
 using BeatIt_.AppCode.Controllers;
-using BeatIt_.AppCode.Interfaces.Controllers;
+using BeatIt_.AppCode.Interfaces;
 using Microsoft.Phone.Controls;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
+using System.Windows.Threading;
 
 /* CALLAR AL PERRO */
 
@@ -15,7 +16,12 @@ namespace BeatIt_.AppCode.Pages
     public partial class Challenge4 : PhoneApplicationPage
     {
 
-        private UsainBolt desafio;                     // Instancia del desafio que se esta corriendo.  
+        private ChallengeDetail4 currentChallenge;
+        private IFacadeController ifc;
+        private DispatcherTimer soundTimer;
+        private DispatcherTimer stopTimer;
+        private bool soundPlayed;
+        private int ms;
 
         public Challenge4()
         {
@@ -31,14 +37,40 @@ namespace BeatIt_.AppCode.Pages
             TransitionService.SetNavigationInTransition(this, navigateInTransition);
             TransitionService.SetNavigationOutTransition(this, navigateOutTransition);
 
-            IChallengeController ich = ChallengeController.getInstance();
-            this.desafio = (UsainBolt)ich.getChallenge(AppCode.Enums.ChallengeType.CHALLENGE_TYPE.USAIN_BOLT);
+            this.initChallenge();
+        }
 
-            // INICIALIZAMOS LAS ETIQUETAS DEL DETALLE DEL DESAFIO
-            this.ShowST.Text = this.desafio.getDTChallenge().getStartTime().ToString(); // Ojo ver el tema de la fecha y hora (Cuando estamos en el limite de una ronda y la otra).
-            this.ShowToBeat.Text = this.desafio.getPuntajeObtenido() + " pts";
+        private void initChallenge()
+        {
+
+            ifc = FacadeController.getInstance();
+            this.currentChallenge = (ChallengeDetail4)ifc.getChallenge(4);
+
+            this.ShowST.Text = this.currentChallenge.getDTChallenge().getStartTime().ToString();
+            this.ShowToBeat.Text = this.currentChallenge.State.getScore() + " pts";
             DateTime roundDate = new DateTime(2014, 9, 28, 22, 0, 0);
             this.ShowDuration.Text = getDurationString(roundDate);
+
+            soundTimer = new DispatcherTimer();
+            soundTimer.Interval = new TimeSpan(0, 0, 3);
+            soundTimer.Tick += tickSoundTimer;
+
+            stopTimer = new DispatcherTimer();
+            stopTimer.Interval = new TimeSpan(0, 0, 0, 0, 1);
+            stopTimer.Tick += tickStopTimer;
+        }
+
+        private void tickSoundTimer(object o, EventArgs e)
+        {
+            soundTimer.Stop();
+            soundPlayed = true;
+            PlaySound("/BeatIt!;component/Sounds/dog_bark.wav");
+            stopTimer.Start();
+        }
+
+        private void tickStopTimer(object o, EventArgs e)
+        {
+            ms++;
         }
 
         private void PlaySound(string path)
@@ -50,14 +82,35 @@ namespace BeatIt_.AppCode.Pages
             soundInstance.Play();
         }
 
-        private void hyperlinkButtonPlaySound_Click(object sender, RoutedEventArgs e)
+        private void hyperlinkButtonStart_Click(object sender, RoutedEventArgs e)
         {
-            PlaySound("/BeatIt!;component/Sounds/dog_bark.wav");
+            StartGrid.Visibility = System.Windows.Visibility.Collapsed;
+            StopGrid.Visibility = System.Windows.Visibility.Visible;
+
+            soundPlayed = false;
+            ms = 0;
+
+            soundTimer.Start();
         }
 
-        private void image1_ImageFailed(object sender, ExceptionRoutedEventArgs e)
+        private void hyperlinkButtonStop_Click(object sender, RoutedEventArgs e)
         {
+            if (soundPlayed)
+            {
+                stopTimer.Stop();
+                this.currentChallenge.completeChallenge(false, ms);
+                this.ShowToBeat.Text = this.currentChallenge.State.getScore() + " pts";
+                MessageBox.Show("Desafio completado!");
+            }
+            else 
+            {
+                soundTimer.Stop();
+                this.currentChallenge.completeChallenge(true, 0);
+                MessageBox.Show("Desafio no completado.");
+            }
 
+            StartGrid.Visibility = System.Windows.Visibility.Visible;
+            StopGrid.Visibility = System.Windows.Visibility.Collapsed;
         }
 
         private string getDurationString(DateTime roundDate)
@@ -91,6 +144,19 @@ namespace BeatIt_.AppCode.Pages
                 }
             }
             return result;
+        }
+
+        private void image1_ImageFailed(object sender, ExceptionRoutedEventArgs e)
+        {
+
+        }
+
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            soundTimer.Stop();
+            stopTimer.Stop();
+            e.Cancel = false;
+            base.OnBackKeyPress(e);
         }
     }
 }

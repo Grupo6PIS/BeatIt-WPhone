@@ -37,10 +37,16 @@
             <TextBlock FontWeight="Normal" Height="63" HorizontalAlignment="Left" Margin="10,240,0,0" Name="titleDescription" Text="{Binding Path=AppResources.Challenge1_DescriptionTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="246" FontSize="40" />
             <TextBlock FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="12,300,0,0" Name="textDescription" Text="{Binding Path=AppResources.Challenge4_DescriptionTxtBlockText, Source={StaticResource LocalizedStrings}}" Width="414" Height="100" VerticalAlignment="Top" TextWrapping="Wrap" />
 
-            <Grid Visibility="Visible" Name="PlaySoundGrid">
-                <Rectangle Fill="#FF647687" Height="80" Width="438" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="12,0,12,50" IsHitTestVisible="True" Name="playSoundRec" />
-                <TextBlock FontWeight="ExtraBlack" Height="57" HorizontalAlignment="Left" Margin="12,460,0,0" Name="playSoundTitle" Text="{Binding Path=AppResources.Challenge4_PlaySoundButton, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="435" FontSize="40" TextAlignment="Center" />
-                <HyperlinkButton Content="" Height="80" HorizontalAlignment="Left" Margin="12,450,0,0" Name="PlaySoundButton" VerticalAlignment="Top" Width="435" Click="hyperlinkButtonPlaySound_Click" />
+            <Grid Visibility="Visible" Name="StartGrid">
+                <Rectangle Fill="#FF647687" Height="80" Width="438" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="12,0,12,50" IsHitTestVisible="True" Name="startRec" />
+                <TextBlock FontWeight="ExtraBlack" Height="57" HorizontalAlignment="Left" Margin="12,460,0,0" Name="startTitle" Text="{Binding Path=AppResources.Challenge4_StartButton, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="435" FontSize="40" TextAlignment="Center" />
+                <HyperlinkButton Content="" Height="80" HorizontalAlignment="Left" Margin="12,450,0,0" Name="startButton" VerticalAlignment="Top" Width="435" Click="hyperlinkButtonStart_Click" />
+            </Grid>
+
+            <Grid Visibility="Collapsed" Name="StopGrid">
+                <Rectangle Fill="#FFe51400" Height="80" Width="438" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="12,0,12,50" IsHitTestVisible="True" Name="stopRec" />
+                <TextBlock FontWeight="ExtraBlack" Height="57" HorizontalAlignment="Left" Margin="12,460,0,0" Name="stopTitle" Text="{Binding Path=AppResources.Challenge4_StopButton, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="435" FontSize="40" TextAlignment="Center" />
+                <HyperlinkButton Content="" Height="80" HorizontalAlignment="Left" Margin="12,450,0,0" Name="stopButton" VerticalAlignment="Top" Width="435" Click="hyperlinkButtonStop_Click" />
             </Grid>
 
             <TextBlock FontWeight="Light" Foreground="White" Height="30" HorizontalAlignment="Left" Margin="230,80,0,0" Name="ShowST" Text="---" VerticalAlignment="Top" Width="196" />
