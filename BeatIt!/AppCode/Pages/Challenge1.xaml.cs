@@ -253,7 +253,7 @@ namespace BeatIt_.Pages
 
     class GPS_SpeedEmulator
     {
-        private enum Estados { LLEGAR_A_20KM, MANTENER_TIEMPO , BAJAR_VELOCIDAD};
+        private enum Estados { LLEGAR_A_10KM, MANTENER_TIEMPO , BAJAR_VELOCIDAD};
         public delegate void EventSpeedChange(double s);
 
         public event EventSpeedChange SpeedChange;
@@ -261,14 +261,17 @@ namespace BeatIt_.Pages
         private DispatcherTimer timer;
         private Random randomNumber;
         private double speed = 0;
-        private Estados state = Estados.LLEGAR_A_20KM;
-        private int mantenerVelocidadPor,
-                    velocidadMinima = 20;
+        private Estados state = Estados.LLEGAR_A_10KM;
+        private readonly FacadeController _ifc = FacadeController.getInstance();
+        private int _mantenerVelocidadPor;
+        private readonly int _velocidadMinima;
 
         public GPS_SpeedEmulator()
         {
+            var currentChallenge = (ChallengeDetail1)_ifc.getChallenge(1);
+            _velocidadMinima = currentChallenge.MinSpeed;
             randomNumber = new Random();
-            mantenerVelocidadPor = 31;
+            _mantenerVelocidadPor = 31;
             timer = new DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 1); 
             timer.Tick += tickTimer;
@@ -282,7 +285,7 @@ namespace BeatIt_.Pages
         public void Stop(){
             timer.Stop();
             speed = 0;
-            state = Estados.LLEGAR_A_20KM;
+            state = Estados.LLEGAR_A_10KM;
         }
 
         private void tickTimer(object o, EventArgs e)
@@ -294,21 +297,21 @@ namespace BeatIt_.Pages
                 double dec = (1 + 0.0) / randomNumber.Next(1, 11),
                         delta = randomNumber.Next(1, 4) + (sumarRestar - 1) * dec + sumarRestar * dec;
 
-                if (state == Estados.LLEGAR_A_20KM)
+                if (state == Estados.LLEGAR_A_10KM)
                 {
                     speed += randomNumber.Next(1, 4) + (sumarRestar - 1) * dec + sumarRestar * dec;
-                    if (speed >= velocidadMinima)
+                    if (speed >= _velocidadMinima)
                     {
                         state = Estados.MANTENER_TIEMPO;
                     }
                 }
-                else if (state == Estados.MANTENER_TIEMPO && mantenerVelocidadPor > 0)
+                else if (state == Estados.MANTENER_TIEMPO && _mantenerVelocidadPor > 0)
                 {
-                    mantenerVelocidadPor--;
+                    _mantenerVelocidadPor--;
                     double temp = speed + (sumarRestar - 1) * dec + sumarRestar * dec;
-                    speed += temp >= velocidadMinima && temp < 24 ? temp - speed : 0;
+                    speed += temp >= _velocidadMinima && temp < 24 ? temp - speed : 0;
 
-                    if (mantenerVelocidadPor == 0)
+                    if (_mantenerVelocidadPor == 0)
                     {
                         state = Estados.BAJAR_VELOCIDAD;
                     }
@@ -316,11 +319,11 @@ namespace BeatIt_.Pages
                 else if (state == Estados.BAJAR_VELOCIDAD)
                 {
                     speed -= randomNumber.Next(1, 4) - dec;
-                    if (speed < velocidadMinima)
+                    if (speed < _velocidadMinima)
                     {
                         speed = 0;
                         timer.Stop();
-                        state = Estados.LLEGAR_A_20KM;
+                        state = Estados.LLEGAR_A_10KM;
                     }
                 }
                 SpeedChange(speed);
