@@ -32,11 +32,11 @@ namespace BeatIt_.AppCode.Challenges
 
         private int CalculateScore()
         {
-            if ((Level == 1) && ((_countFacebook >= 3) && (_countSMS >= 2)))
+            if ((Level == 1) && ((_countFacebook >= 1) && (_countSMS >= 2)))
             {
                 return (_countFacebook + 3*_countSMS)*10;
             }
-            if ((Level == 2) && ((_countFacebook >= 5) && (_countSMS >= 4)))
+            if ((Level == 2) && ((_countFacebook >= 1) && (_countSMS >= 4)))
             {
                 return (_countFacebook + 3*_countSMS)*10;
             }

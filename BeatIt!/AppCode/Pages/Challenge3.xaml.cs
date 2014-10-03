@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using BeatIt_.AppCode.Challenges;
 using BeatIt_.AppCode.Controllers;
@@ -18,14 +19,15 @@ namespace BeatIt_.AppCode.Pages
         private readonly AddressChooserTask _addressTask;
         private readonly IFacadeController _ifc;
         private readonly string _message = AppResources.Challenge3_Message;
-        private ChallengeDetail3 currentChallenge;
+        private ChallengeDetail3 _currentChallenge;
 
         public Challenge3()
         {
             InitializeComponent();
 
             _ifc = FacadeController.getInstance();
-            currentChallenge = (ChallengeDetail3)_ifc.getChallenge(3);
+            _currentChallenge = (ChallengeDetail3)_ifc.getChallenge(3);
+            _ifc.setCurrentChallenge(_currentChallenge);
             //Codigo tasker
             _addressTask = new AddressChooserTask();
 
@@ -43,9 +45,9 @@ namespace BeatIt_.AppCode.Pages
             TransitionService.SetNavigationInTransition(this, navigateInTransition);
             TransitionService.SetNavigationOutTransition(this, navigateOutTransition);
 
-            ShowST.Text = currentChallenge.getDTChallenge().StartTime.ToString(); // Ojo ver el tema de la fecha y hora (Cuando estamos en el limite de una ronda y la otra).
-            ShowToBeat.Text = currentChallenge.State.BestScore + " pts";
-            ShowDuration.Text = currentChallenge.getDurationString();
+            ShowST.Text = _currentChallenge.getDTChallenge().StartTime.ToString(); // Ojo ver el tema de la fecha y hora (Cuando estamos en el limite de una ronda y la otra).
+            ShowToBeat.Text = _currentChallenge.State.BestScore + " pts";
+            ShowDuration.Text = _currentChallenge.getDurationString();
         }
 
         //onClick start playing
@@ -59,27 +61,24 @@ namespace BeatIt_.AppCode.Pages
         private void hyperlinkButtonPublish_Click(object sender, RoutedEventArgs e)
         {
             var fb = new FacebookClient(_ifc.getCurrentUser().FbAccessToken);
-            currentChallenge = (ChallengeDetail3)_ifc.getChallenge(3);
+            _currentChallenge = (ChallengeDetail3)_ifc.getChallenge(3);
 
             fb.PostCompleted += (o, args) =>
             {
-                
-                if (args.Error != null)
-                {
-                    Dispatcher.BeginInvoke(() => MessageBox.Show(args.Error.Message));
-                    return;
-                }
 
-                //var result = (IDictionary<string, object>)args.GetResultData();
                 Dispatcher.BeginInvoke(() => MessageBox.Show("Message Posted successfully"));
             };
+
+            //Facebook no deja prublicar 2 veces lo mismo
+            //var str = "("+ _numEspacios +") " + _message; 
 
             var parameters = new Dictionary<string, object>();
             parameters["message"] = _message;
             fb.PostAsync("me/feed", parameters);
 
             //Refresh countFacebook
-            currentChallenge.AddFacebook();
+            _currentChallenge.AddFacebook();
+
         }
 
         
@@ -88,27 +87,35 @@ namespace BeatIt_.AppCode.Pages
         {
             
             var sms = new SmsComposeTask();
-            currentChallenge = (ChallengeDetail3)_ifc.getChallenge(3);
+            _currentChallenge = (ChallengeDetail3)_ifc.getChallenge(3);
             sms.Body = _message;
             var contacts = new Contacts();
             _addressTask.Show();
 
             //Refresh countSMS
-            currentChallenge.AddSms();
+            _currentChallenge.AddSms();
         }
 
         private void hyperlinkButtonFinish_Click(object sender, RoutedEventArgs e)
         {
-            currentChallenge = (ChallengeDetail3)_ifc.getChallenge(3);
-            var ks = currentChallenge.CompleteChallenge(false);
+            _currentChallenge = (ChallengeDetail3)_ifc.getChallenge(3);
+            var ks = _currentChallenge.CompleteChallenge(false);
             if (ks.Key)
             {
-                MessageBox.Show("Nuevo alto el puntaje!\n" + ks.Value + "puntos");
+                MessageBox.Show("Nuevo puntaje mas alto!");
             }
             else
             {
-                MessageBox.Show("No has superado el puntaje.\n Tienes" + ks.Value + "puntos");
+                MessageBox.Show("No has superado tu puntaje actual.");
             }
+            var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
+            NavigationService.Navigate(uri);
+        }
+
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            var uri = new Uri("/BeatIt!;component/AppCode/Pages/Home.xaml", UriKind.Relative);
+            NavigationService.Navigate(uri);
         }
     }
 }

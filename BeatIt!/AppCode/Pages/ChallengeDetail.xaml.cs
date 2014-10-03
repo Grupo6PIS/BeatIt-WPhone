@@ -75,5 +75,11 @@ namespace BeatIt_.Pages
             Uri uri = new Uri("/BeatIt!;component/AppCode/Pages/Challenge" + challenge.ChallengeId + ".xaml", UriKind.Relative);
             NavigationService.Navigate(uri);
         }
+
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            var uri = new Uri("/BeatIt!;component/AppCode/Pages/Home.xaml", UriKind.Relative);
+            NavigationService.Navigate(uri);
+        }
     }
 }

@@ -105,7 +105,8 @@ namespace BeatIt_.Pages
                 user.Country = "Uruguay";
                 user.BirthDate = new DateTime(1989, 08, 07);
                 user.ImageUrl = string.Format("https://graph.facebook.com/{0}/picture?type={1}&access_token={2}", user.FbId, "square", accessToken);
-                user.Email = (string)result["email"];
+                if (result.Keys.Contains("email"))
+                    user.Email = (string)result["email"];
                 if (result.Keys.Contains("hometown"))
                 {
                     var ht = (IDictionary<string, object>)result["hometown"];
