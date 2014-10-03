@@ -6,6 +6,7 @@ using BeatIt_.AppCode.Classes;
 using BeatIt_.AppCode.Datatypes;
 using BeatIt_.AppCode.Interfaces;
 using SQLite;
+using System.IO.IsolatedStorage;
 
 namespace BeatIt_.AppCode.Controllers
 {
@@ -204,6 +205,18 @@ namespace BeatIt_.AppCode.Controllers
             this.currentUser = null;
             this.currentRound = null;
             this.db.Query<DTStatePersistible>("delete from DTStatePersistible");
+
+            IsolatedStorageSettings.ApplicationSettings.Remove("IsLoggedUser");
+            IsolatedStorageSettings.ApplicationSettings.Remove("Id");
+            IsolatedStorageSettings.ApplicationSettings.Remove("FbId");
+            IsolatedStorageSettings.ApplicationSettings.Remove("FbAccessToken");
+            IsolatedStorageSettings.ApplicationSettings.Remove("FirstName");
+            IsolatedStorageSettings.ApplicationSettings.Remove("LastName");
+            IsolatedStorageSettings.ApplicationSettings.Remove("Country");
+            IsolatedStorageSettings.ApplicationSettings.Remove("BirthDate");
+            IsolatedStorageSettings.ApplicationSettings.Remove("ImageUrl");
+            IsolatedStorageSettings.ApplicationSettings.Remove("Email");
+            IsolatedStorageSettings.ApplicationSettings.Save();
         }
 
         public Challenge getChallenge(int challengeId)

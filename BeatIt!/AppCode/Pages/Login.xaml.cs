@@ -9,7 +9,7 @@ using BeatIt_.AppCode.Controllers;
 using BeatIt_.AppCode.Interfaces;
 using Facebook;
 using Microsoft.Phone.Controls;
-
+using System.IO.IsolatedStorage;
 
 namespace BeatIt_.Pages
 {
@@ -28,6 +28,33 @@ namespace BeatIt_.Pages
             navigateOutTransition.Forward = new SlideTransition { Mode = SlideTransitionMode.SlideLeftFadeOut };
             TransitionService.SetNavigationInTransition(this, navigateInTransition);
             TransitionService.SetNavigationOutTransition(this, navigateOutTransition);
+        }
+
+        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            bool isLoggedUser = IsolatedStorageSettings.ApplicationSettings.Contains("IsLoggedUser") ? (bool)IsolatedStorageSettings.ApplicationSettings["IsLoggedUser"] : false;
+            if (isLoggedUser)
+            {
+                User user = new User();
+
+                user.UserId = (int)IsolatedStorageSettings.ApplicationSettings["Id"];
+                user.FbId = (string)IsolatedStorageSettings.ApplicationSettings["FbId"];
+                user.FbAccessToken = (string)IsolatedStorageSettings.ApplicationSettings["FbAccessToken"];
+                user.FirstName = (string)IsolatedStorageSettings.ApplicationSettings["FirstName"];
+                user.LastName = (string)IsolatedStorageSettings.ApplicationSettings["LastName"];
+                user.Country = (string)IsolatedStorageSettings.ApplicationSettings["Country"];
+                user.BirthDate = (DateTime)IsolatedStorageSettings.ApplicationSettings["BirthDate"];
+                user.ImageUrl = (string)IsolatedStorageSettings.ApplicationSettings["ImageUrl"];
+                user.Email = (string)IsolatedStorageSettings.ApplicationSettings["Email"];
+                user.Country = (string)IsolatedStorageSettings.ApplicationSettings["Country"];
+
+                IFacadeController ifc = FacadeController.getInstance();
+                ifc.loginUser(user);
+
+                NavigationService.Navigate(new Uri("/BeatIt!;component/AppCode/Pages/Home.xaml", UriKind.Relative));
+            }
         }
 
         private readonly FacebookClient _fb = new FacebookClient();
@@ -112,6 +139,19 @@ namespace BeatIt_.Pages
                     var ht = (IDictionary<string, object>)result["hometown"];
                     user.Country = (string)ht["name"];
                 }
+
+                IsolatedStorageSettings.ApplicationSettings["IsLoggedUser"] = true;
+                IsolatedStorageSettings.ApplicationSettings["Id"] = user.UserId;
+                IsolatedStorageSettings.ApplicationSettings["FbId"] = user.FbId;
+                IsolatedStorageSettings.ApplicationSettings["FbAccessToken"] = user.FbAccessToken;
+                IsolatedStorageSettings.ApplicationSettings["FirstName"] = user.FirstName;
+                IsolatedStorageSettings.ApplicationSettings["LastName"] = user.LastName;
+                IsolatedStorageSettings.ApplicationSettings["Country"] = user.Country;
+                IsolatedStorageSettings.ApplicationSettings["BirthDate"] = user.BirthDate;
+                IsolatedStorageSettings.ApplicationSettings["ImageUrl"] = user.ImageUrl;
+                IsolatedStorageSettings.ApplicationSettings["Email"] = user.Email;
+                IsolatedStorageSettings.ApplicationSettings.Save();
+
                 IFacadeController ifc = FacadeController.getInstance();
                 ifc.loginUser(user);
 
