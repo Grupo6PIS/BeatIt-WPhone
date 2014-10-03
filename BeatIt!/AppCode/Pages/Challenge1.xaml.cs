@@ -114,6 +114,8 @@ namespace BeatIt_.Pages
                         speedEmulator.Stop();
                     }
                     seconds = minTime;
+
+                    //Hay que corregir esto... calcular las velocidades
                     this.currentChallenge.completeChallenge(true, 12, 15);
                     this.ShowToBeat.Text = this.currentChallenge.State.BestScore + " pts";
                     MessageBox.Show("Desafio completado!");

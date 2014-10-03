@@ -42,7 +42,7 @@ namespace BeatIt_.AppCode.Challenges
         {
             if ((maxSpeed > 0) && (avgSpeed > 0))
             {
-                return 2 * (maxSpeed + minSpeed);
+                return 2 * (maxSpeed + avgSpeed);
             }
             else 
             {
