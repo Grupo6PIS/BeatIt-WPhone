@@ -62,7 +62,7 @@ namespace BeatIt_.AppCode.Controllers
             WebClient wc = new WebClient();
 
             wc.DownloadStringCompleted += WcOnDownloadStringCompleted;
-            wc.DownloadStringAsync(new Uri(URL + "/round/getRound/"), "GET");
+            wc.DownloadStringAsync(new Uri(URL + "/round/getRanking/"), "GET");
         }
 
         public void SendScore(string userId, int score, CallbackWebService callbackSendScore)

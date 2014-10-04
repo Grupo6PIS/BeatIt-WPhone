@@ -19,6 +19,7 @@ namespace BeatIt_.Pages
     public partial class Home : PhoneApplicationPage
     {
         IFacadeController ifc;
+        private WebServicesController ws;
 
         public Home()
         {
@@ -49,6 +50,8 @@ namespace BeatIt_.Pages
 
             ifc = FacadeController.getInstance();
             User loggedUser = ifc.getCurrentUser();
+
+            ws = new WebServicesController();
 
             profileNameTxtBlock.Text = loggedUser.FirstName + " " + loggedUser.LastName;
             profileCountryTxtBlock.Text = loggedUser.Country;
@@ -116,7 +119,7 @@ namespace BeatIt_.Pages
         private void InitRankingListBox()
         {
             List<DTRanking> ranking = ifc.getRanking();
-
+            RankingListBox.Items.Clear();
             for (int i = 0; i < ranking.Count; i++)
             {
                 DTRanking dtr = (DTRanking)ranking[i];
@@ -171,7 +174,7 @@ namespace BeatIt_.Pages
 
         private void refreshBtn_Click(object sender, EventArgs e) 
         {
-            
+            ifc.updateRanking(InitRankingListBox);
         }
     }
 }
