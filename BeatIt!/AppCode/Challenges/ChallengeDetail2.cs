@@ -40,7 +40,7 @@ namespace BeatIt_.AppCode.Challenges
             return result;
         }
 
-        public void completeChallenge(int cantCorrectWakeUp)
+        public void CompleteChallenge(int cantCorrectWakeUp)
         {
             this.State.LastScore = this.calculatPuntaje(cantCorrectWakeUp);
             if (this.State.LastScore > this.State.BestScore)
@@ -49,7 +49,11 @@ namespace BeatIt_.AppCode.Challenges
             if (this.State.CurrentAttempt == this.MaxAttempt)
                 this.State.Finished = true;
 
-            bool actualizo = FacadeController.getInstance().saveState(this.State);
+            bool actualizo;
+
+            // Esto no se si esta bien, como en los testing no tenemos sqlite, si estamos testeando no persistimos.
+            if(!FacadeController.getInstance().GetIsForTesting())
+                actualizo = FacadeController.getInstance().saveState(this.State);
         }
 
         public int calculatPuntaje(int cantCorrectWakeUp)

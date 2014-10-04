@@ -118,7 +118,7 @@ namespace BeatIt_.AppCode.Pages
 
                 MessageBox.Show("El desafio ha finalizado, ha obtenido " + this.currentChallenge.calculatPuntaje(this.aciertos).ToString() + " puntos.");
 
-                this.currentChallenge.completeChallenge(this.aciertos);
+                this.currentChallenge.CompleteChallenge(this.aciertos);
                 
                 Uri uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
                 NavigationService.Navigate(uri);
@@ -210,7 +210,7 @@ namespace BeatIt_.AppCode.Pages
 
                     if (finalizar) // Si el desafio finalizo, ya sea porque se equivoco al despertar o porque acerto en todas las despertadas.
                     {
-                        this.currentChallenge.completeChallenge(this.aciertos);
+                        this.currentChallenge.CompleteChallenge(this.aciertos);
 
                         MessageBox.Show("El desafio ha finalizado, ha obtenido " + this.currentChallenge.calculatPuntaje(this.aciertos).ToString() + " puntos.");                                                
 

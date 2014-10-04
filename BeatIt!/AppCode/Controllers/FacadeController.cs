@@ -21,12 +21,16 @@ namespace BeatIt_.AppCode.Controllers
         private List<DTRanking> ranking;
         private Challenge currentChallenge;
 
+        private bool isForTesting;
+
         private FacadeController()
         {
             try
             {
-                db = new SQLiteConnection("BeatItDB.db");
-                db.CreateTable<DTStatePersistible>();
+                this.db = new SQLiteConnection("BeatItDB.db");
+                this.db.CreateTable<DTStatePersistible>();
+
+                this.isForTesting = false;
             }
             catch (Exception ex)
             {
@@ -36,17 +40,25 @@ namespace BeatIt_.AppCode.Controllers
         public static FacadeController getInstance()
         {
             if (FacadeController.instance == null)
-                FacadeController.instance = new FacadeController();
-
+            {
+                FacadeController.instance = new FacadeController();                
+            }
+            
             return FacadeController.instance;
         }
 
         private FacadeController(bool isForTesting)
         {
+            this.isForTesting = isForTesting;
+        }
+
+        public bool GetIsForTesting()
+        {
+            return this.isForTesting;
         }
 
         public static FacadeController getInstanceForTesting(User user, DateTime fechaDesdeRonda, DateTime fechaHastaRonda)
-        {
+        {            
             FacadeController.instance = new FacadeController(true);
 
             FacadeController.instance.currentUser = user;
