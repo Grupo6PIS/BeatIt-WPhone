@@ -5,7 +5,6 @@ namespace BeatIt_.AppCode.Challenges
 {
     public class ChallengeDetail6 : Challenge
     {
-        private double tiempoEnElAire; // En Segundos
         private const double aceleracionGravitatoria = -9.80665f;
 
         public ChallengeDetail6() 
@@ -19,18 +18,9 @@ namespace BeatIt_.AppCode.Challenges
             this.MaxAttempt = 3;
         }
 
-        /// <summary>
-        /// Setea la propiedad tiempo en el aire, la misma debe estar medida en segundos.
-        /// </summary>
-        /// <param name="tiempo"></param>
-        public void setTiempoEnElAire(double tiempo)
+        public int CalcularPuntaje(double tiempoEnElAire)
         {
-            this.tiempoEnElAire = tiempo;
-        }
-
-        public int CalcularPuntaje()
-        {
-            double aux = this.tiempoEnElAire / 2;
+            double aux = tiempoEnElAire / 2;
 
             double altura = -((aceleracionGravitatoria * aux * aux) / 2);
 

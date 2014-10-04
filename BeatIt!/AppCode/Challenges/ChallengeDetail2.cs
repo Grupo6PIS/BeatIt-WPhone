@@ -34,7 +34,7 @@ namespace BeatIt_.AppCode.Challenges
                 result[0] = 3;
                 result[1] = 5;
                 result[2] = 7;
-                result[2] = 9;
+                result[3] = 9;
             }
 
             return result;
