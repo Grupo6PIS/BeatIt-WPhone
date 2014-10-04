@@ -3,8 +3,10 @@ using BeatIt_.AppCode.Classes;
 using BeatIt_.AppCode.Controllers;
 using BeatIt_.AppCode.Datatypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Net;
 
 //ojo
+using Newtonsoft.Json.Linq;
 
 namespace BeatIt.Tests
 {
@@ -30,6 +32,17 @@ namespace BeatIt.Tests
 
             //Si esta bien debería ser 174 el puntaje de en el desafío (42+45)*2
             Assert.AreEqual(174, currentChallenge.State.LastScore);
+        }
+
+        [TestMethod]
+        public void testLogin()
+        {
+            WebServicesController ws = new WebServicesController();
+            ws.Login("joaco", response);
+        }
+
+        public void response(JObject a){
+
         }
     };
 

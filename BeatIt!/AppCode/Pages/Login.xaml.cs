@@ -10,11 +10,16 @@ using BeatIt_.AppCode.Interfaces;
 using Facebook;
 using Microsoft.Phone.Controls;
 using System.IO.IsolatedStorage;
+using Newtonsoft.Json.Linq;
 
 namespace BeatIt_.Pages
 {
     public partial class Login : PhoneApplicationPage
     {
+        private readonly FacebookClient _fb = new FacebookClient();
+        public string AccessToken { get; set; }
+        private User user;
+
         public Login()
         {
             InitializeComponent();
@@ -28,6 +33,7 @@ namespace BeatIt_.Pages
             navigateOutTransition.Forward = new SlideTransition { Mode = SlideTransitionMode.SlideLeftFadeOut };
             TransitionService.SetNavigationInTransition(this, navigateInTransition);
             TransitionService.SetNavigationOutTransition(this, navigateOutTransition);
+
         }
 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
@@ -37,7 +43,7 @@ namespace BeatIt_.Pages
             bool isLoggedUser = IsolatedStorageSettings.ApplicationSettings.Contains("IsLoggedUser") ? (bool)IsolatedStorageSettings.ApplicationSettings["IsLoggedUser"] : false;
             if (isLoggedUser)
             {
-                User user = new User();
+                user = new User();
 
                 user.UserId = (int)IsolatedStorageSettings.ApplicationSettings["Id"];
                 user.FbId = (string)IsolatedStorageSettings.ApplicationSettings["FbId"];
@@ -50,14 +56,13 @@ namespace BeatIt_.Pages
                 user.Email = (string)IsolatedStorageSettings.ApplicationSettings["Email"];
                 user.Country = (string)IsolatedStorageSettings.ApplicationSettings["Country"];
 
-                IFacadeController ifc = FacadeController.getInstance();
-                ifc.loginUser(user);
+                
 
-                NavigationService.Navigate(new Uri("/BeatIt!;component/AppCode/Pages/Home.xaml", UriKind.Relative));
+                WebServicesController ws = new WebServicesController();
+                ws.GetRound(callback); 
+                
             }
         }
-
-        private readonly FacebookClient _fb = new FacebookClient();
 
         private void loginBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -86,8 +91,6 @@ namespace BeatIt_.Pages
             AuthenticationBrowser.Visibility = Visibility.Visible;
 
         }
-
-        public string AccessToken { get; set; }
 
         private void BrowserNavigated(object sender, NavigationEventArgs e)
         {
@@ -123,7 +126,7 @@ namespace BeatIt_.Pages
 
                 var result = (IDictionary<string, object>)e.GetResultData();
 
-                User user = new User();
+                user = new User();
                 user.UserId = 1;
                 user.FbId = (string)result["id"];
                 user.FbAccessToken = accessToken;
@@ -152,13 +155,21 @@ namespace BeatIt_.Pages
                 IsolatedStorageSettings.ApplicationSettings["Email"] = user.Email;
                 IsolatedStorageSettings.ApplicationSettings.Save();
 
-                IFacadeController ifc = FacadeController.getInstance();
-                ifc.loginUser(user);
-
-                Dispatcher.BeginInvoke(() => NavigationService.Navigate(new Uri("/BeatIt!;component/AppCode/Pages/Home.xaml", UriKind.Relative)));
+                WebServicesController ws = new WebServicesController();
+                ws.GetRound(callback);
+                ws.UpdateUser(user.FbId, user.FirstName, user.ImageUrl, null);
+                
             };
 
             fb.GetAsync("me");
         }
+
+        private void callback(JObject jsonResponse)
+        {
+            IFacadeController ifc = FacadeController.getInstance();
+            ifc.loginUser(user, jsonResponse);
+            Dispatcher.BeginInvoke(() => NavigationService.Navigate(new Uri("/BeatIt!;component/AppCode/Pages/Home.xaml", UriKind.Relative)));
+        }
+
     }
 }

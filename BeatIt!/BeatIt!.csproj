@@ -68,6 +68,7 @@
     <Reference Include="Microsoft.Phone.Interop" />
     <Reference Include="Microsoft.Phone.Reactive" />
     <Reference Include="Microsoft.Xna.Framework" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="System.Device" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
@@ -95,6 +96,7 @@
     <Compile Include="AppCode\Classes\State.cs" />
     <Compile Include="AppCode\Classes\User.cs" />
     <Compile Include="AppCode\Controllers\FacadeController.cs" />
+    <Compile Include="AppCode\Controllers\WebServicesController.cs" />
     <Compile Include="AppCode\CustomControls\ChallenesListItem.xaml.cs">
       <DependentUpon>ChallenesListItem.xaml</DependentUpon>
     </Compile>

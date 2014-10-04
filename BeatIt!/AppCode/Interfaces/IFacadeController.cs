@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using BeatIt_.AppCode.Classes;
 using BeatIt_.AppCode.Datatypes;
+using Newtonsoft.Json.Linq;
 
 namespace BeatIt_.AppCode.Interfaces
 {
@@ -9,7 +10,7 @@ namespace BeatIt_.AppCode.Interfaces
         bool isLoggedUser();
         User getCurrentUser();
         List<DTRanking> getRanking();
-        void loginUser(User user);
+        void loginUser(User user, JObject jsonResponse);
         void logoutUser();
         Challenge getChallenge(int challengeId);
         Dictionary<int, Challenge> getChallenges();
