@@ -5,35 +5,39 @@ namespace BeatIt_.AppCode.Challenges
 {
     public class ChallengeDetail4 : Challenge
     {
+        public int[] TimerValues { get; set; }
+
         public ChallengeDetail4() 
         {
             this.ChallengeId = 4;
-            this.Name = "Challenge 4";
+            this.Name = "Callar al Perro";
             this.ColorHex = "#FF647687";
-            this.Description = "Description 4";
+            this.Description = "En este desafio debes callar al perro presionando el boton 'Cállate!' 3 veces.";
             this.IsEnabled = true;
             this.Level = 1;
             this.MaxAttempt = 3;
+            this.TimerValues = new int[3] { 2, 4, 6 };
         }
 
-        private int calculateScore(int miliseconds)
+        private int calculateScore(int[] miliseconds)
         {
-            return miliseconds;
+            int res = 0;
+            for (int i = 0; i < miliseconds.Length; i++) 
+            {
+                if (miliseconds[i] > 0)
+                    res = res + 100/miliseconds[i];
+            }
+            return res * 10;
         }
 
-        public void completeChallenge(bool error, int miliseconds)
+        public void completeChallenge(int[] miliseconds)
         {
             this.State.CurrentAttempt = this.State.CurrentAttempt + 1;
-            if (!error)
-            {
-                this.State.LastScore = this.calculateScore(miliseconds);
-                if (this.State.LastScore > this.State.BestScore)
-                    this.State.BestScore = this.State.LastScore;
-            }
-            else 
-            {
-                this.State.LastScore = 0;   
-            }
+
+            this.State.LastScore = this.calculateScore(miliseconds);
+            if (this.State.LastScore > this.State.BestScore)
+                this.State.BestScore = this.State.LastScore;
+    
             if (this.State.CurrentAttempt == this.MaxAttempt)
             {
                 this.State.Finished = true;

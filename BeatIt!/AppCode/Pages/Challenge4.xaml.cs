@@ -20,8 +20,9 @@ namespace BeatIt_.AppCode.Pages
         private IFacadeController ifc;
         private DispatcherTimer soundTimer;
         private DispatcherTimer stopTimer;
-        private bool soundPlayed;
         private int ms;
+        private int currentRound;
+        private int[] result;
 
         public Challenge4()
         {
@@ -46,24 +47,26 @@ namespace BeatIt_.AppCode.Pages
             ifc = FacadeController.getInstance();
             this.currentChallenge = (ChallengeDetail4)ifc.getChallenge(4);
 
+            this.PageTitle.Text = this.currentChallenge.Name;
+            this.TextDescription.Text = this.currentChallenge.Description;
             this.ShowST.Text = this.currentChallenge.getDTChallenge().StartTime.ToString();
             this.ShowToBeat.Text = this.currentChallenge.State.BestScore + " pts";
             DateTime roundDate = new DateTime(2014, 9, 28, 22, 0, 0);
             this.ShowDuration.Text = this.currentChallenge.getDurationString();
 
             soundTimer = new DispatcherTimer();
-            soundTimer.Interval = new TimeSpan(0, 0, 3);
             soundTimer.Tick += tickSoundTimer;
 
             stopTimer = new DispatcherTimer();
             stopTimer.Interval = new TimeSpan(0, 0, 0, 0, 1);
             stopTimer.Tick += tickStopTimer;
+
+            result = new int[currentChallenge.TimerValues.Length];
         }
 
         private void tickSoundTimer(object o, EventArgs e)
         {
             soundTimer.Stop();
-            soundPlayed = true;
             PlaySound("/BeatIt!;component/Sounds/dog_bark.wav");
             stopTimer.Start();
         }
@@ -87,30 +90,47 @@ namespace BeatIt_.AppCode.Pages
             StartGrid.Visibility = System.Windows.Visibility.Collapsed;
             StopGrid.Visibility = System.Windows.Visibility.Visible;
 
-            soundPlayed = false;
             ms = 0;
+            currentRound = 0;
 
+            soundTimer.Interval = new TimeSpan(0, 0, currentChallenge.TimerValues[currentRound]);
             soundTimer.Start();
         }
 
         private void hyperlinkButtonStop_Click(object sender, RoutedEventArgs e)
         {
-            if (soundPlayed)
+            if (soundTimer.IsEnabled)
             {
-                stopTimer.Stop();
-                this.currentChallenge.completeChallenge(false, ms);
-                this.ShowToBeat.Text = this.currentChallenge.State.BestScore + " pts";
-                MessageBox.Show("Desafio completado!");
+                soundTimer.Stop();
+                result[currentRound] = 0;
             }
             else 
             {
-                soundTimer.Stop();
-                this.currentChallenge.completeChallenge(true, 0);
-                MessageBox.Show("Desafio no completado.");
+                stopTimer.Stop();
+                result[currentRound] = ms;
             }
 
-            StartGrid.Visibility = System.Windows.Visibility.Visible;
-            StopGrid.Visibility = System.Windows.Visibility.Collapsed;
+            ms = 0;
+            currentRound++;
+
+            if (currentRound == currentChallenge.TimerValues.Length)
+            {
+                this.currentChallenge.completeChallenge(result);
+                this.ShowToBeat.Text = this.currentChallenge.State.BestScore + " pts";
+
+                MessageBox.Show("El desafio ha finalizado, has obtenido " + this.currentChallenge.State.BestScore + " puntos.");
+
+                Uri uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
+                NavigationService.Navigate(uri);
+
+                StartGrid.Visibility = System.Windows.Visibility.Visible;
+                StopGrid.Visibility = System.Windows.Visibility.Collapsed;
+            }
+            else
+            {
+                soundTimer.Interval = new TimeSpan(0, 0, currentChallenge.TimerValues[currentRound]);
+                soundTimer.Start();
+            }
         }
 
         private void image1_ImageFailed(object sender, ExceptionRoutedEventArgs e)
