@@ -34,16 +34,6 @@ namespace BeatIt.Tests
             Assert.AreEqual(174, currentChallenge.State.LastScore);
         }
 
-        [TestMethod]
-        public void testLogin()
-        {
-            WebServicesController ws = new WebServicesController();
-            ws.Login("joaco", response);
-        }
-
-        public void response(JObject a){
-
-        }
     };
 
     [TestClass] // Logica Wake Me Up!
