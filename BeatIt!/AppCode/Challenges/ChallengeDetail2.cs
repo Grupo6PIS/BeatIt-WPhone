@@ -5,15 +5,15 @@ namespace BeatIt_.AppCode.Challenges
 {
     public class ChallengeDetail2 : Challenge
     {
-        public ChallengeDetail2(int challengeId, string name, int level)
+        public ChallengeDetail2(int challengeId, string name, string colorHex, int level, int maxAttempts)
         {
             ChallengeId = challengeId;
             Name = name;
-            ColorHex = "#FF00ABA9";
+            ColorHex = colorHex;
             Description = "Description 2";
             IsEnabled = true;
             Level = level;
-            this.MaxAttempt = 3;
+            this.MaxAttempt = maxAttempts;
         }
 
 

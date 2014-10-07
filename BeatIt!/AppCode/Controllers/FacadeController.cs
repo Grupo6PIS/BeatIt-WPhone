@@ -109,7 +109,9 @@ namespace BeatIt_.AppCode.Controllers
                     case 1: // Usain Bolt
                         c = new ChallengeDetail1((int)jObjectTemp["id"],
                                                  (string)jObjectTemp["challengeName"],
-                                                 (int)jObjectTemp["challengeLevel"]);
+                                                 (string)jObjectTemp["colorHex"],
+                                                 (int)jObjectTemp["challengeLevel"],
+                                                 (int)jObjectTemp["maxAttemps"]);
                         c.Round = roundObj;
                         challenges.Add(1, c);
 
@@ -117,7 +119,9 @@ namespace BeatIt_.AppCode.Controllers
                     case 2: // Wake Me Up!
                         c = new ChallengeDetail2((int)jObjectTemp["id"],
                                                  (string)jObjectTemp["challengeName"],
-                                                 (int)jObjectTemp["challengeLevel"]);
+                                                 (string)jObjectTemp["colorHex"],
+                                                 (int)jObjectTemp["challengeLevel"],
+                                                 (int)jObjectTemp["maxAttemps"]);
                         c.Round = roundObj;
                         challenges.Add(2, c);
 
@@ -125,7 +129,9 @@ namespace BeatIt_.AppCode.Controllers
                     case 3: // Can you play?
                         c = new ChallengeDetail3((int)jObjectTemp["id"],
                                                  (string)jObjectTemp["challengeName"],
-                                                 (int)jObjectTemp["challengeLevel"]);
+                                                 (string)jObjectTemp["colorHex"],
+                                                 (int)jObjectTemp["challengeLevel"],
+                                                 (int)jObjectTemp["maxAttemps"]);
                         c.Round = roundObj;
                         challenges.Add(3, c);
 
@@ -133,7 +139,9 @@ namespace BeatIt_.AppCode.Controllers
                     case 4: // Calla al perro!
                         c = new ChallengeDetail4((int)jObjectTemp["id"],
                                                  (string)jObjectTemp["challengeName"],
-                                                 (int)jObjectTemp["challengeLevel"]);
+                                                 (string)jObjectTemp["colorHex"],
+                                                 (int)jObjectTemp["challengeLevel"],
+                                                 (int)jObjectTemp["maxAttemps"]);
                         c.Round = roundObj;
                         challenges.Add(4, c);
 

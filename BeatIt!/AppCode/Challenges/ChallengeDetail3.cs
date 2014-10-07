@@ -9,15 +9,15 @@ namespace BeatIt_.AppCode.Challenges
         private int _countFacebook = 0;
         private int _countSMS = 0;
 
-        public ChallengeDetail3(int challengeId, string name, int level)
+        public ChallengeDetail3(int challengeId, string name, string colorHex, int level, int maxAttempts)
         {
             ChallengeId = challengeId;
             Name = name;
-            ColorHex = "#FF3B5998";
+            ColorHex = colorHex;
             Description = "You have to invite friends using SMS of Facebook";
             IsEnabled = true;
             Level = level;
-            this.MaxAttempt = 3;
+            this.MaxAttempt = maxAttempts;
         }
 
         public ChallengeDetail3() 

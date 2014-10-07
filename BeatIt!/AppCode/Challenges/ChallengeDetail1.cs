@@ -14,17 +14,17 @@ namespace BeatIt_.AppCode.Challenges
         public int Time { get; set; }
 
 
-        public ChallengeDetail1(int challengeId, string name, int level)
+        public ChallengeDetail1(int challengeId, string name, string colorHex, int level, int maxAttempts)
         {
             ChallengeId = challengeId;
             Name = name;
-            ColorHex = "#FF008A00";
+            ColorHex = colorHex;
             MinSpeed = 10;
             Time = 30;
             Description = "Se deberrá correr una velocidad minima de " + MinSpeed.ToString() + " Km/h durante " + Time.ToString() + " s.";
             IsEnabled = true;
             Level = level;
-            MaxAttempt = 3;
+            MaxAttempt = maxAttempts;
         }
 
         public ChallengeDetail1() 
