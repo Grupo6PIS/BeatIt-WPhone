@@ -199,7 +199,7 @@ namespace BeatIt_.AppCode.Controllers
             for (int i = 0; i < rankingJson.Count; i++)
             {
                 jObjectTemp = (JObject)rankingJson[i];
-                this.ranking.Add(new DTRanking(i, i, (int)jObjectTemp["score"], (string)jObjectTemp["name"], (string)jObjectTemp["imageURL"]));
+                this.ranking.Add(new DTRanking(i, i + 1, (int)jObjectTemp["score"], (string)jObjectTemp["userName"], (string)jObjectTemp["imageURL"]));
             }
         }
 
@@ -272,7 +272,7 @@ namespace BeatIt_.AppCode.Controllers
                     for (int i = 0; i < rankingLastRound0.Count; i++)
                     {
                         jObjectTemp = (JObject)rankingLastRound0[i];
-                        this.ranking.Add(new DTRanking(i, i, (int)jObjectTemp["score"], (string)jObjectTemp["name"], (string)jObjectTemp["imageURL"]));
+                        this.ranking.Add(new DTRanking(i, i + 1, (int)jObjectTemp["score"], (string)jObjectTemp["userName"], (string)jObjectTemp["imageURL"]));
                     }
 
                     saverCallback();
