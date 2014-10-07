@@ -43,6 +43,9 @@ namespace BeatIt_.Pages
             bool isLoggedUser = IsolatedStorageSettings.ApplicationSettings.Contains("IsLoggedUser") ? (bool)IsolatedStorageSettings.ApplicationSettings["IsLoggedUser"] : false;
             if (isLoggedUser)
             {
+                loginBtn.IsEnabled = false;
+                progressBar.Visibility = System.Windows.Visibility.Visible;
+
                 user = new User();
 
                 user.UserId = (int)IsolatedStorageSettings.ApplicationSettings["Id"];
@@ -56,11 +59,12 @@ namespace BeatIt_.Pages
                 user.Email = (string)IsolatedStorageSettings.ApplicationSettings["Email"];
                 user.Country = (string)IsolatedStorageSettings.ApplicationSettings["Country"];
 
-                
-
                 WebServicesController ws = new WebServicesController();
-                ws.GetRound(callback); 
-                
+                ws.GetRound(callback);
+            }
+            else
+            {
+                progressBar.Visibility = System.Windows.Visibility.Collapsed;
             }
         }
 
@@ -168,7 +172,11 @@ namespace BeatIt_.Pages
         {
             IFacadeController ifc = FacadeController.getInstance();
             ifc.loginUser(user, jsonResponse);
-            Dispatcher.BeginInvoke(() => NavigationService.Navigate(new Uri("/BeatIt!;component/AppCode/Pages/Home.xaml", UriKind.Relative)));
+            Dispatcher.BeginInvoke(() => {
+                progressBar.Visibility = System.Windows.Visibility.Collapsed;
+                loginBtn.IsEnabled = true;
+                NavigationService.Navigate(new Uri("/BeatIt!;component/AppCode/Pages/Home.xaml", UriKind.Relative)); 
+            });
         }
 
     }
