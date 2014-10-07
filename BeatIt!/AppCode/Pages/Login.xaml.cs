@@ -106,12 +106,21 @@ namespace BeatIt_.Pages
 
             if (oauthResult.IsSuccess)
             {
+                Dispatcher.BeginInvoke(() =>
+                {
+                    AuthenticationBrowser.Visibility = Visibility.Collapsed;
+                    progressBar.Visibility = System.Windows.Visibility.Visible;
+                    loginBtn.IsEnabled = false;
+                });
                 var accessToken = oauthResult.AccessToken;
                 LoginSucceded(accessToken);
             }
             else
             {
-                MessageBox.Show(oauthResult.ErrorDescription);
+                Dispatcher.BeginInvoke(() =>
+                {
+                    MessageBox.Show(oauthResult.ErrorDescription);
+                });
             }
         }
 
@@ -123,7 +132,12 @@ namespace BeatIt_.Pages
             {
                 if (e.Error != null)
                 {
-                    Dispatcher.BeginInvoke(() => MessageBox.Show(e.Error.Message));
+                    Dispatcher.BeginInvoke(() =>
+                    {
+                        MessageBox.Show(e.Error.Message);
+                        progressBar.Visibility = System.Windows.Visibility.Collapsed;
+                        loginBtn.IsEnabled = true;
+                    });
                     return;
                 }
 
@@ -177,7 +191,12 @@ namespace BeatIt_.Pages
                 user = null;
                 IFacadeController ifc = FacadeController.getInstance();
                 ifc.logoutUser();
-                MessageBox.Show("Ha ocurrido un error al iniciar sesion");
+                Dispatcher.BeginInvoke(() =>
+                {
+                    progressBar.Visibility = System.Windows.Visibility.Collapsed;
+                    loginBtn.IsEnabled = true;
+                    MessageBox.Show("Ha ocurrido un error al iniciar sesion");
+                });
             }
         }
 
@@ -207,6 +226,5 @@ namespace BeatIt_.Pages
                 });
             }
         }
-
     }
 }

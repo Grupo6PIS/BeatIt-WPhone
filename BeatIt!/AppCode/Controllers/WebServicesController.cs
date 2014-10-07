@@ -76,18 +76,30 @@ namespace BeatIt_.AppCode.Controllers
 
         private void WcOnDownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
-            if (e.Result != null && callback != null)
+            if (e.Error == null && callback != null)
             {
                 callback(JObject.Parse(e.Result));
+                callback = null;
+            }
+            else
+            {
+                string errorStr = "{'error':true}";
+                callback(JObject.Parse(errorStr));
                 callback = null;
             }
         }
 
         public void WcOnUploadStringCompleted(object sender, UploadStringCompletedEventArgs e)
         {
-            if (e.Result != null && callback != null)
+            if (e.Error == null && callback != null)
             {
                 callback(JObject.Parse(e.Result));
+                callback = null;
+            }
+            else
+            {
+                string errorStr = "{'error':true}";
+                callback(JObject.Parse(errorStr));
                 callback = null;
             }
         }
