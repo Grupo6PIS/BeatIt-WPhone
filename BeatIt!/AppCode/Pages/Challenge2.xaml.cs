@@ -25,7 +25,7 @@ namespace BeatIt_.AppCode.Pages
          
         private int aciertos;                         // Cantidad de haciertos.
 
-        private int[] seconsToWakeMeUp;
+        private int[] secondsToWakeMeUp;
         private DateTime finishTime;
         private DateTime startTime;
 
@@ -105,7 +105,7 @@ namespace BeatIt_.AppCode.Pages
 
             // Si es tiempo de desaparecer el timer, lo borramos.
             if (tiempoTranscurrido.TotalSeconds <= FREE_TIME)
-                this.ShowTime.Text = Math.Round((this.seconsToWakeMeUp[aciertos] + FREE_TIME - tiempoTranscurrido.TotalSeconds), 0).ToString();
+                this.ShowTime.Text = Math.Round((this.secondsToWakeMeUp[aciertos] + FREE_TIME - tiempoTranscurrido.TotalSeconds), 0).ToString();
             else
                 this.ShowTime.Text = "Wake Me Up!";
 
@@ -144,9 +144,9 @@ namespace BeatIt_.AppCode.Pages
             this.StartPlayGrid.Visibility = Visibility.Collapsed;
             this.InProgressGrid.Visibility = Visibility.Visible;
 
-            this.seconsToWakeMeUp = this.currentChallenge.getSeconsToWakeMeUp();
+            this.secondsToWakeMeUp = this.currentChallenge.getSecondsToWakeMeUp();
             this.startTime = System.DateTime.Now;
-            this.finishTime = this.startTime.Add(new TimeSpan(0, 0, this.seconsToWakeMeUp[0] + FREE_TIME));
+            this.finishTime = this.startTime.Add(new TimeSpan(0, 0, this.secondsToWakeMeUp[0] + FREE_TIME));
 
             // INICIALIZAMOS EL TIMER.
             this.timer.Start();
@@ -190,15 +190,15 @@ namespace BeatIt_.AppCode.Pages
 
                     bool finalizar = false;
 
-                    if (Math.Abs(FREE_TIME * 1000 + this.seconsToWakeMeUp[this.aciertos] * 1000 - this.stopwatch.ElapsedMilliseconds) <= 500) // Si me desperto a tiempo.
+                    if (Math.Abs(FREE_TIME * 1000 + this.secondsToWakeMeUp[this.aciertos] * 1000 - this.stopwatch.ElapsedMilliseconds) <= 500) // Si me desperto a tiempo.
                     {
                         this.aciertos++;
-                        if (aciertos == this.seconsToWakeMeUp.Length)
+                        if (aciertos == this.secondsToWakeMeUp.Length)
                             finalizar = true;
                         else
                         {
                             this.startTime = System.DateTime.Now;
-                            this.finishTime = this.startTime.Add(new TimeSpan(0, 0, this.seconsToWakeMeUp[aciertos] + FREE_TIME));
+                            this.finishTime = this.startTime.Add(new TimeSpan(0, 0, this.secondsToWakeMeUp[aciertos] + FREE_TIME));
                             this.timer.Start();
                             this.stopwatch.Reset();
                             this.stopwatch.Start();

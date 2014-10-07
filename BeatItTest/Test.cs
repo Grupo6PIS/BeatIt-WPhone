@@ -36,15 +36,15 @@ namespace BeatIt.Tests
     public class TestingChallengeDetail2
     {
         [TestMethod]
-        public void TestingFunction_GetSeconsToWakeMeUp()
+        public void TestingFunction_GetSecondsToWakeMeUp()
         {
             ChallengeDetail2 ch = new ChallengeDetail2();
             ch.Level = 1;
-            int[] secondsToWakeMeUp = ch.getSeconsToWakeMeUp();
+            int[] secondsToWakeMeUp = ch.getSecondsToWakeMeUp();
             Assert.AreEqual(secondsToWakeMeUp[0], 3);
 
             ch.Level = 2;
-            secondsToWakeMeUp = ch.getSeconsToWakeMeUp();
+            secondsToWakeMeUp = ch.getSecondsToWakeMeUp();
             Assert.AreEqual(secondsToWakeMeUp[3], 9);
 
             ch = new ChallengeDetail2();
@@ -91,7 +91,7 @@ namespace BeatIt.Tests
 
             for(int i = 1; i <= challenge.MaxAttempt; i++){
                 System.Random r = new System.Random();
-                challenge.CompleteChallenge(r.Next(1, challenge.getSeconsToWakeMeUp().Length + 1));
+                challenge.CompleteChallenge(r.Next(1, challenge.getSecondsToWakeMeUp().Length + 1));
             }
 
             DTChallenge dtc = challenge.getDTChallenge();

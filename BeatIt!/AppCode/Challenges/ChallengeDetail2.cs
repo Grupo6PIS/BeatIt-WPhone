@@ -18,7 +18,7 @@ namespace BeatIt_.AppCode.Challenges
 
 
 
-        public int[] getSeconsToWakeMeUp()
+        public int[] getSecondsToWakeMeUp()
         {
             int[] result;
             if (this.Level == 1)
