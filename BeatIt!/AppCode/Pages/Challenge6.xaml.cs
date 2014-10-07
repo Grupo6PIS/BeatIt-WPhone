@@ -2,7 +2,6 @@
 ﻿using Microsoft.Phone.Controls;
 ﻿using System;
 using System.Windows;
-using System.Windows.Threading;
 using Microsoft.Devices.Sensors;
 using System.Diagnostics;
 using BeatIt_.AppCode.Interfaces;

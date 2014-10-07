@@ -8,8 +8,9 @@ using BeatIt_.Resources;
 using Facebook;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Tasks;
-/* INVITA A TUS AMIGOS */
 using Microsoft.Phone.UserData;
+
+/* INVITA A TUS AMIGOS */
 
 namespace BeatIt_.AppCode.Pages
 {

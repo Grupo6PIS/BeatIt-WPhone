@@ -3,10 +3,6 @@ using BeatIt_.AppCode.Classes;
 using BeatIt_.AppCode.Controllers;
 using BeatIt_.AppCode.Datatypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Net;
-
-//ojo
-using Newtonsoft.Json.Linq;
 
 namespace BeatIt.Tests
 {
