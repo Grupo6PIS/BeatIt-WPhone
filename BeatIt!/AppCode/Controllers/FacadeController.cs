@@ -107,25 +107,33 @@ namespace BeatIt_.AppCode.Controllers
                 switch ((int)jObjectTemp["id"])
                 {
                     case 1: // Usain Bolt
-                        c = new ChallengeDetail1();
+                        c = new ChallengeDetail1((int)jObjectTemp["id"],
+                                                 (string)jObjectTemp["challengeName"],
+                                                 (int)jObjectTemp["challengeLevel"]);
                         c.Round = roundObj;
                         challenges.Add(1, c);
 
                         break;
                     case 2: // Wake Me Up!
-                        c = new ChallengeDetail2();
+                        c = new ChallengeDetail2((int)jObjectTemp["id"],
+                                                 (string)jObjectTemp["challengeName"],
+                                                 (int)jObjectTemp["challengeLevel"]);
                         c.Round = roundObj;
                         challenges.Add(2, c);
 
                         break;
                     case 3: // Can you play?
-                        c = new ChallengeDetail3();
+                        c = new ChallengeDetail3((int)jObjectTemp["id"],
+                                                 (string)jObjectTemp["challengeName"],
+                                                 (int)jObjectTemp["challengeLevel"]);
                         c.Round = roundObj;
                         challenges.Add(3, c);
 
                         break;
                     case 4: // Calla al perro!
-                        c = new ChallengeDetail4();
+                        c = new ChallengeDetail4((int)jObjectTemp["id"],
+                                                 (string)jObjectTemp["challengeName"],
+                                                 (int)jObjectTemp["challengeLevel"]);
                         c.Round = roundObj;
                         challenges.Add(4, c);
 

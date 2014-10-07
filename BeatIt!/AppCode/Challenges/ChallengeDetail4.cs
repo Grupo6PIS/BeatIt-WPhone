@@ -7,6 +7,18 @@ namespace BeatIt_.AppCode.Challenges
     {
         public int[] TimerValues { get; set; }
 
+        public ChallengeDetail4(int challengeId, string name, int level)
+        {
+            ChallengeId = challengeId;
+            Name = name;
+            ColorHex = "#FF647687";
+            Description = "En este desafio debes callar al perro presionando el boton 'Cállate!' 3 veces.";
+            IsEnabled = true;
+            Level = level;
+            this.MaxAttempt = 3;
+            this.TimerValues = new int[3] { 2, 4, 6 };
+        }
+
         public ChallengeDetail4() 
         {
             this.ChallengeId = 4;

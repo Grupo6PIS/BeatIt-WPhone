@@ -10,32 +10,34 @@ namespace BeatIt_.AppCode.Challenges
     public class ChallengeDetail1 : Challenge
     {
 
-        private int minSpeed;
-        private int time;
+        public int MinSpeed { get; set; }
+        public int Time { get; set; }
 
-        public int MinSpeed
-        {
-            get { return minSpeed; }
-            set { minSpeed = value; }
-        }
 
-        public int Time
+        public ChallengeDetail1(int challengeId, string name, int level)
         {
-            get { return time; }
-            set { time = value; }
+            ChallengeId = challengeId;
+            Name = name;
+            ColorHex = "#FF008A00";
+            MinSpeed = 10;
+            Time = 30;
+            Description = "Se deberrá correr una velocidad minima de " + MinSpeed.ToString() + " Km/h durante " + Time.ToString() + " s.";
+            IsEnabled = true;
+            Level = level;
+            MaxAttempt = 3;
         }
 
         public ChallengeDetail1() 
         {
-            this.ChallengeId = 1;
-            this.Name = "Usain Bolt";
-            this.ColorHex = "#FF008A00";
-            this.minSpeed = 10;
-            this.time = 30;
-            this.Description = "Se deberrá correr una velocidad minima de " + this.minSpeed.ToString() + " Km/h durante " + this.time.ToString() + " s.";
-            this.IsEnabled = true;
-            this.Level = 1;
-            this.MaxAttempt = 3;
+            ChallengeId = 1;
+            Name = "Usain Bolt";
+            ColorHex = "#FF008A00";
+            MinSpeed = 10;
+            Time = 30;
+            Description = "Se deberrá correr una velocidad minima de " + MinSpeed.ToString() + " Km/h durante " + Time.ToString() + " s.";
+            IsEnabled = true;
+            Level = 1;
+            MaxAttempt = 3;
         }
 
         private int calculateScore(int maxSpeed, int avgSpeed) 
