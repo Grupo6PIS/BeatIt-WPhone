@@ -47,7 +47,6 @@ namespace BeatIt_.Pages
                 progressBar.Visibility = System.Windows.Visibility.Visible;
 
                 user = new User();
-
                 user.UserId = (int)IsolatedStorageSettings.ApplicationSettings["Id"];
                 user.FbId = (string)IsolatedStorageSettings.ApplicationSettings["FbId"];
                 user.FbAccessToken = (string)IsolatedStorageSettings.ApplicationSettings["FbAccessToken"];
@@ -60,7 +59,7 @@ namespace BeatIt_.Pages
                 user.Country = (string)IsolatedStorageSettings.ApplicationSettings["Country"];
 
                 WebServicesController ws = new WebServicesController();
-                ws.GetRound(callback);
+                ws.GetRound(GetRoundFinished);
             }
             else
             {
@@ -160,23 +159,53 @@ namespace BeatIt_.Pages
                 IsolatedStorageSettings.ApplicationSettings.Save();
 
                 WebServicesController ws = new WebServicesController();
-                ws.GetRound(callback);
-                ws.UpdateUser(user.FbId, user.FirstName, user.ImageUrl, null);
-                
+                ws.UpdateUser(user.FbId, user.FirstName, user.ImageUrl, UpdateUserFinished);
             };
 
             fb.GetAsync("me");
         }
 
-        private void callback(JObject jsonResponse)
+        private void UpdateUserFinished(JObject jsonResponse) 
         {
-            IFacadeController ifc = FacadeController.getInstance();
-            ifc.loginUser(user, jsonResponse);
-            Dispatcher.BeginInvoke(() => {
-                progressBar.Visibility = System.Windows.Visibility.Collapsed;
-                loginBtn.IsEnabled = true;
-                NavigationService.Navigate(new Uri("/BeatIt!;component/AppCode/Pages/Home.xaml", UriKind.Relative)); 
-            });
+            if (!(bool)jsonResponse["error"])
+            {
+                WebServicesController ws = new WebServicesController();
+                ws.GetRound(GetRoundFinished);   
+            }
+            else
+            {
+                user = null;
+                IFacadeController ifc = FacadeController.getInstance();
+                ifc.logoutUser();
+                MessageBox.Show("Ha ocurrido un error al iniciar sesion");
+            }
+        }
+
+        private void GetRoundFinished(JObject jsonResponse)
+        {
+            if (!(bool)jsonResponse["error"])
+            {
+                IFacadeController ifc = FacadeController.getInstance();
+                ifc.loginUser(user, jsonResponse);
+                Dispatcher.BeginInvoke(() =>
+                {
+                    progressBar.Visibility = System.Windows.Visibility.Collapsed;
+                    loginBtn.IsEnabled = true;
+                    NavigationService.Navigate(new Uri("/BeatIt!;component/AppCode/Pages/Home.xaml", UriKind.Relative));
+                });
+            }
+            else 
+            {
+                user = null;
+                IFacadeController ifc = FacadeController.getInstance();
+                ifc.logoutUser();
+                Dispatcher.BeginInvoke(() =>
+                {
+                    progressBar.Visibility = System.Windows.Visibility.Collapsed;
+                    loginBtn.IsEnabled = true;
+                    MessageBox.Show("Ha ocurrido un error al iniciar sesion");
+                });
+            }
         }
 
     }

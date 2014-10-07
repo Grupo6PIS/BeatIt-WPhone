@@ -87,126 +87,112 @@ namespace BeatIt_.AppCode.Controllers
         {
             this.currentUser = user;
 
-            if (!(bool)jsonResponse["error"])
+            // GENERO DESAFIOS DE RONDA
+            JObject round = (JObject)jsonResponse["round"],
+                    jObjectTemp;
+            JArray challengList = (JArray)round["challengeList"];
+
+            Round roundObj = new Round();
+            roundObj.RoundId = (int)round["weekNumber"];
+            roundObj.StartDate = new DateTime((long)round["start_date"], DateTimeKind.Utc);
+            roundObj.EndDate = new DateTime((long)round["end_date"], DateTimeKind.Utc);
+            this.currentRound = roundObj;
+
+            Dictionary<int, Challenge> challenges = new Dictionary<int, Challenge>();
+            Challenge c;
+
+            for (int i = 0; i < challengList.Count; i++)
             {
-
-                // GENERO DESAFIOS DE RONDA
-                JObject round = (JObject)jsonResponse["round"],
-                        jObjectTemp;
-                JArray challengList = (JArray)round["challengeList"];
-
-
-                Round roundObj = new Round();
-                roundObj.RoundId = (int)round["weekNumber"];
-                roundObj.StartDate = new DateTime((long)round["start_date"], DateTimeKind.Utc);
-                roundObj.EndDate = new DateTime((long)round["end_date"], DateTimeKind.Utc);
-                this.currentRound = roundObj;
-
-                Dictionary<int, Challenge> challenges = new Dictionary<int, Challenge>();
-                Challenge c;
-
-                for (int i = 0; i < challengList.Count; i++)
+                jObjectTemp = (JObject)challengList[i];
+                switch ((int)jObjectTemp["id"])
                 {
-                    jObjectTemp = (JObject)challengList[i];
-                    switch ((int)jObjectTemp["id"])
-                    {
-                        case 1: // Usain Bolt
-                            c = new ChallengeDetail1();
-                            c.Round = roundObj;
-                            challenges.Add(1, c);
+                    case 1: // Usain Bolt
+                        c = new ChallengeDetail1();
+                        c.Round = roundObj;
+                        challenges.Add(1, c);
 
-                            break;
-                        case 2: // Wake Me Up!
-                            c = new ChallengeDetail2();
-                            c.Round = roundObj;
-                            challenges.Add(2, c);
+                        break;
+                    case 2: // Wake Me Up!
+                        c = new ChallengeDetail2();
+                        c.Round = roundObj;
+                        challenges.Add(2, c);
 
-                            break;
-                        case 3: // Can you play?
-                            c = new ChallengeDetail3();
-                            c.Round = roundObj;
-                            challenges.Add(3, c);
+                        break;
+                    case 3: // Can you play?
+                        c = new ChallengeDetail3();
+                        c.Round = roundObj;
+                        challenges.Add(3, c);
 
-                            break;
-                        case 4: // Calla al perro!
-                            c = new ChallengeDetail4();
-                            c.Round = roundObj;
-                            challenges.Add(4, c);
+                        break;
+                    case 4: // Calla al perro!
+                        c = new ChallengeDetail4();
+                        c.Round = roundObj;
+                        challenges.Add(4, c);
 
-                            break;
-                    }
+                        break;
                 }
+            }
 
-                roundObj.Challenges = challenges;
+            roundObj.Challenges = challenges;
 
-                // GENERO ESTADOS DE DESAFIOS
+            // GENERO ESTADOS DE DESAFIOS
 
-                List<DTStatePersistible> states = null;
-                states = this.db.Query<DTStatePersistible>("select * from DTStatePersistible");
+            List<DTStatePersistible> states = null;
+            states = this.db.Query<DTStatePersistible>("select * from DTStatePersistible");
 
-                bool addNewStates = false;
+            bool addNewStates = false;
 
-                if (states.Count > 0) // Si hay estados guardados.
+            if (states.Count > 0) // Si hay estados guardados.
+            {
+                IEnumerator<DTStatePersistible> enumerator = states.GetEnumerator();
+                enumerator.MoveNext();
+                DTStatePersistible dt = enumerator.Current;
+                if (this.currentRound.RoundId == dt.RoundId) // Si los estados guardados corresponden a la ronda actual.
                 {
-                    IEnumerator<DTStatePersistible> enumerator = states.GetEnumerator();
-                    enumerator.MoveNext();
-                    DTStatePersistible dt = enumerator.Current;
-                    if (this.currentRound.RoundId == dt.RoundId) // Si los estados guardados corresponden a la ronda actual.
-                    {
-                        foreach (DTStatePersistible aux in states)
-                        {
-                            State s = new State();
-                            s.Challenge = (this.currentRound.Challenges[aux.ChallengeId]);
-                            s.CurrentAttempt = aux.CurrentAttempt;
-                            s.Finished = aux.Finished;
-                            s.LastScore = aux.LastScore;
-                            s.BestScore = aux.BestScore;
-                            s.StartDate = aux.StartDate;
-
-                            this.currentRound.Challenges[aux.ChallengeId].State = s;
-                        }
-                    }
-                    else // Si no se corresponden con la ronda actual, los borramos ya que no los necesitamos //????????????? ES ASI?
-                    {
-                        this.db.Query<DTStatePersistible>("delete from DTStatePersistible");
-                        addNewStates = true;
-                    }
-                }
-                else
-                    addNewStates = true;
-
-                if (addNewStates)
-                {
-                    foreach (KeyValuePair<int, Challenge> aux in roundObj.Challenges)
+                    foreach (DTStatePersistible aux in states)
                     {
                         State s = new State();
-                        s.Challenge = aux.Value;
-                        aux.Value.State = s;
-                        DTStatePersistible dts = s.getDTStatePersistible();
-                        this.db.Insert(dts);
+                        s.Challenge = (this.currentRound.Challenges[aux.ChallengeId]);
+                        s.CurrentAttempt = aux.CurrentAttempt;
+                        s.Finished = aux.Finished;
+                        s.LastScore = aux.LastScore;
+                        s.BestScore = aux.BestScore;
+                        s.StartDate = aux.StartDate;
+
+                        this.currentRound.Challenges[aux.ChallengeId].State = s;
                     }
                 }
-
-                // GENERO LISTA DE RANKINGS
-
-                this.ranking = new List<DTRanking>();
-                JArray rankingJson = (JArray)round["ranking"];
-
-                for (int i = 0; i < rankingJson.Count; i++)
+                else // Si no se corresponden con la ronda actual, los borramos ya que no los necesitamos //????????????? ES ASI?
                 {
-                    jObjectTemp = (JObject)rankingJson[i];
-                    this.ranking.Add(new DTRanking(i, i, (int)jObjectTemp["score"], (string)jObjectTemp["name"], (string)jObjectTemp["imageURL"]));
+                    this.db.Query<DTStatePersistible>("delete from DTStatePersistible");
+                    addNewStates = true;
                 }
-
-
             }
             else
+                addNewStates = true;
+
+            if (addNewStates)
             {
-                Debug.WriteLine("Que hago aca?");
+                foreach (KeyValuePair<int, Challenge> aux in roundObj.Challenges)
+                {
+                    State s = new State();
+                    s.Challenge = aux.Value;
+                    aux.Value.State = s;
+                    DTStatePersistible dts = s.getDTStatePersistible();
+                    this.db.Insert(dts);
+                }
             }
 
+            // GENERO LISTA DE RANKINGS
 
+            this.ranking = new List<DTRanking>();
+            JArray rankingJson = (JArray)round["ranking"];
 
+            for (int i = 0; i < rankingJson.Count; i++)
+            {
+                jObjectTemp = (JObject)rankingJson[i];
+                this.ranking.Add(new DTRanking(i, i, (int)jObjectTemp["score"], (string)jObjectTemp["name"], (string)jObjectTemp["imageURL"]));
+            }
         }
 
         public void logoutUser()

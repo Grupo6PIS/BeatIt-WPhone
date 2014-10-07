@@ -6,15 +6,11 @@ namespace BeatIt_.AppCode.Controllers
 {
     public class WebServicesController
     {
-
         private const string URL = "http://beatit-udelar.rhcloud.com";
-
-
 
         public delegate void CallbackWebService(JObject json);
 
         private CallbackWebService callback;
-
 
         public void Login(string userId, CallbackWebService callbackLogin)
         {
