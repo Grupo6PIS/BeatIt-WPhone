@@ -1,66 +1,69 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using BeatIt_.AppCode.Classes;
 using BeatIt_.AppCode.Controllers;
 using BeatIt_.AppCode.CustomControls;
-using BeatIt_.AppCode.Datatypes;
 using BeatIt_.AppCode.Interfaces;
 using Facebook;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
-namespace BeatIt_.Pages
+namespace BeatIt_.AppCode.Pages
 {
-    public partial class Home : PhoneApplicationPage
+    public partial class Home
     {
-        IFacadeController ifc;
-        private WebServicesController ws;
+        private readonly IFacadeController _facade;
 
         public Home()
         {
             InitializeComponent();
 
-            NavigationInTransition navigateInTransition = new NavigationInTransition();
-            navigateInTransition.Backward = new SlideTransition { Mode = SlideTransitionMode.SlideRightFadeIn };
-            navigateInTransition.Forward = new SlideTransition { Mode = SlideTransitionMode.SlideLeftFadeIn };
+            var navigateInTransition = new NavigationInTransition
+            {
+                Backward = new SlideTransition {Mode = SlideTransitionMode.SlideRightFadeIn},
+                Forward = new SlideTransition {Mode = SlideTransitionMode.SlideLeftFadeIn}
+            };
 
-            NavigationOutTransition navigateOutTransition = new NavigationOutTransition();
-            navigateOutTransition.Backward = new SlideTransition { Mode = SlideTransitionMode.SlideRightFadeOut };
-            navigateOutTransition.Forward = new SlideTransition { Mode = SlideTransitionMode.SlideLeftFadeOut };
+            var navigateOutTransition = new NavigationOutTransition
+            {
+                Backward = new SlideTransition {Mode = SlideTransitionMode.SlideRightFadeOut},
+                Forward = new SlideTransition {Mode = SlideTransitionMode.SlideLeftFadeOut}
+            };
             TransitionService.SetNavigationInTransition(this, navigateInTransition);
             TransitionService.SetNavigationOutTransition(this, navigateOutTransition);
 
-            ApplicationBar = new ApplicationBar();
+            ApplicationBar = new ApplicationBar
+            {
+                Mode = ApplicationBarMode.Minimized,
+                Opacity = 0.7,
+                IsVisible = false,
+                IsMenuEnabled = false
+            };
 
-            ApplicationBar.Mode = ApplicationBarMode.Minimized;
-            ApplicationBar.Opacity = 0.7;
-            ApplicationBar.IsVisible = false;
-            ApplicationBar.IsMenuEnabled = false;
-
-            ApplicationBarIconButton refreshBtn = new ApplicationBarIconButton();
-            refreshBtn.IconUri = new Uri("/Images/appbar_refresh.png", UriKind.Relative);
-            refreshBtn.Text = "Actualizar";
+            var refreshBtn = new ApplicationBarIconButton
+            {
+                IconUri = new Uri("/Images/appbar_refresh.png", UriKind.Relative),
+                Text = "Actualizar"
+            };
             ApplicationBar.Buttons.Add(refreshBtn);
-            refreshBtn.Click += new EventHandler(refreshBtn_Click);
+            refreshBtn.Click += RefreshBtn_Click;
 
-            ifc = FacadeController.getInstance();
-            User loggedUser = ifc.getCurrentUser();
+            _facade = FacadeController.getInstance();
+            var loggedUser = _facade.getCurrentUser();
 
-            ws = new WebServicesController();
+            ProfileNameTxtBlock.Text = loggedUser.FirstName + " " + loggedUser.LastName;
+            ProfileCountryTxtBlock.Text = loggedUser.Country;
+            ProfileEmailTextBlock.Text = loggedUser.Email;
+            var uri = new Uri(loggedUser.ImageUrl, UriKind.Absolute);
+            ProfileImage.Source = new BitmapImage(uri);
 
-            profileNameTxtBlock.Text = loggedUser.FirstName + " " + loggedUser.LastName;
-            profileCountryTxtBlock.Text = loggedUser.Country;
-            profileEmailTextBlock.Text = loggedUser.Email;
-            Uri uri = new Uri(loggedUser.ImageUrl, UriKind.Absolute);
-            profileImage.Source = new BitmapImage(uri);
-
-            this.initChallengesListBox();
-            this.InitRankingListBox();
+            InitChallengesListBox();
+            InitRankingListBox();
         }
 
         public static SolidColorBrush GetColorFromHexa(string hexaColor)
@@ -71,20 +74,20 @@ namespace BeatIt_.Pages
                     Convert.ToByte(hexaColor.Substring(3, 2), 16),
                     Convert.ToByte(hexaColor.Substring(5, 2), 16),
                     Convert.ToByte(hexaColor.Substring(7, 2), 16)
-                )
-            );
+                    )
+                );
         }
 
-        private void initChallengesListBox()
+        private void InitChallengesListBox()
         {
-            foreach (KeyValuePair<int, Challenge> entry in ifc.getChallenges())
+            foreach (var entry in _facade.getChallenges())
             {
-                Challenge ch = entry.Value;
-                ChallenesListItem listItem = new ChallenesListItem();
-                listItem.backgroundRec.Fill = GetColorFromHexa(ch.ColorHex);
-                Uri uri = new Uri("/BeatIt!;component/Images/icon_challenge_" + ch.ChallengeId + ".png", UriKind.Relative);
+                var ch = entry.Value;
+                var listItem = new ChallenesListItem {backgroundRec = {Fill = GetColorFromHexa(ch.ColorHex)}};
+                var uri = new Uri("/BeatIt!;component/Images/icon_challenge_" + ch.ChallengeId + ".png",
+                    UriKind.Relative);
                 listItem.image.Source = new BitmapImage(uri);
-                listItem.linkBtn.Click += linkBtn_Click;
+                listItem.linkBtn.Click += LinkBtn_Click;
                 listItem.linkBtn.Tag = ch.ChallengeId;
                 if (!ch.IsEnabled)
                 {
@@ -96,64 +99,70 @@ namespace BeatIt_.Pages
             }
         }
 
-        private void linkBtn_Click(object sender, RoutedEventArgs e)
+        private void LinkBtn_Click(object sender, RoutedEventArgs e)
         {
-            HyperlinkButton linkBtn = sender as HyperlinkButton;
-            int tag = Convert.ToInt32(linkBtn.Tag);
-            Challenge ch = ifc.getChallenge(tag);
+            var linkBtn = sender as HyperlinkButton;
+            if (linkBtn == null) return;
+            var tag = Convert.ToInt32(linkBtn.Tag);
+            var ch = _facade.getChallenge(tag);
 
-            ifc.setCurrentChallenge(ch);
+            _facade.setCurrentChallenge(ch);
 
-            String pagePath = "";
+            String pagePath;
             if (ch.State.CurrentAttempt == 0)
             {
-                pagePath = "/BeatIt!;component/AppCode/Pages/Challenge" + tag + ".xaml"; 
+                pagePath = "/BeatIt!;component/AppCode/Pages/Challenge" + tag + ".xaml";
             }
             else
             {
-                pagePath = "/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml";   
+                pagePath = "/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml";
             }
             NavigationService.Navigate(new Uri(pagePath, UriKind.Relative));
         }
 
         private void InitRankingListBox()
         {
-            List<DTRanking> ranking = ifc.getRanking();
+            var ranking = _facade.getRanking();
             RankingListBox.Items.Clear();
-            for (int i = 0; i < ranking.Count; i++)
+            foreach (var dtr in ranking)
             {
-                DTRanking dtr = (DTRanking)ranking[i];
-                RankingListItem listItem = new RankingListItem();
-                listItem.selectedRec.Visibility = (ifc.getCurrentUser().UserId == dtr.UserId) ? System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed;
-                listItem.positionTxtBlock.Text = dtr.Position.ToString();
-                listItem.scoreTxtBlock.Text = dtr.Score.ToString();
-                listItem.nameTxtBlock.Text = dtr.Name;
-                Uri uri = new Uri(dtr.ImageUrl, UriKind.Absolute);
+                var listItem = new RankingListItem
+                {
+                    selectedRec =
+                    {
+                        Visibility =
+                            (_facade.getCurrentUser().UserId == dtr.UserId) ? Visibility.Visible : Visibility.Collapsed
+                    },
+                    positionTxtBlock = {Text = dtr.Position.ToString(CultureInfo.InvariantCulture)},
+                    scoreTxtBlock = {Text = dtr.Score.ToString(CultureInfo.InvariantCulture)},
+                    nameTxtBlock = {Text = dtr.Name}
+                };
+                var uri = new Uri(dtr.ImageUrl, UriKind.Absolute);
                 listItem.userImage.Source = new BitmapImage(uri);
                 RankingListBox.Items.Add(listItem);
             }
         }
 
-        private void logoutBtn_Click(object sender, RoutedEventArgs e)
+        private void LogoutBtn_Click(object sender, RoutedEventArgs e)
         {
             var fb = new FacebookClient();
             var parameters = new Dictionary<string, object>();
             parameters["next"] = "https://www.facebook.com/connect/login_success.html";
-            parameters["access_token"] = ifc.getCurrentUser().FbAccessToken;
+            parameters["access_token"] = _facade.getCurrentUser().FbAccessToken;
             var logoutUrl = fb.GetLogoutUrl(parameters);
             var webBrowser = new WebBrowser();
             webBrowser.Navigate(logoutUrl);
             webBrowser.Navigated += (o, args) =>
             {
-                if (args.Uri.AbsoluteUri == "https://www.facebook.com/connect/login_success.html") 
+                if (args.Uri.AbsoluteUri == "https://www.facebook.com/connect/login_success.html")
                 {
-                    ifc.logoutUser();
+                    _facade.logoutUser();
                     NavigationService.Navigate(new Uri("/BeatIt!;component/AppCode/Pages/Login.xaml", UriKind.Relative));
                 }
             };
         }
 
-        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        protected override void OnBackKeyPress(CancelEventArgs e)
         {
             e.Cancel = true;
             base.OnBackKeyPress(e);
@@ -161,20 +170,13 @@ namespace BeatIt_.Pages
 
         private void Pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int no = Pivot.SelectedIndex;
-            if (no == 1)
-            {
-                ApplicationBar.IsVisible = true;
-            }
-            else
-            {
-                ApplicationBar.IsVisible = false;
-            }
+            var selectedIndex = Pivot.SelectedIndex;
+            ApplicationBar.IsVisible = selectedIndex == 1;
         }
 
-        private void refreshBtn_Click(object sender, EventArgs e) 
+        private void RefreshBtn_Click(object sender, EventArgs e)
         {
-            ifc.updateRanking(InitRankingListBox);
+            _facade.updateRanking(InitRankingListBox);
         }
     }
 }
