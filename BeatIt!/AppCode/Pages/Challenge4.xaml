@@ -27,31 +27,31 @@
             <TextBlock x:Name="PageTitle" Text="Callar al Perro" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontSize="72" />
         </StackPanel>
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Margin="12,160,12,28" Grid.RowSpan="2">
+        <Grid x:Name="ContentPanel" Margin="12,160,12,28" Grid.Row="0" Grid.RowSpan="2">
             <Rectangle Fill="#FF647687" Height="200" Width="200" VerticalAlignment="top" HorizontalAlignment="Left" Margin="12,20,8,8" />
-            <Image Height="200" HorizontalAlignment="Left" Margin="10,21,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="200" ImageFailed="image1_ImageFailed" Source="/BeatIt!;component/Images/icon_challenge_4.png" />
-            <TextBlock Height="30" Margin="230,20,0,0" Name="textDetail" Text="{Binding Path=AppResources.Challenge1_DetailsTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Left" Width="196" />
-            <TextBlock FontWeight="Light" Foreground="#FF867A7A" Height="30" HorizontalAlignment="Left" Margin="230,55,0,0" Name="textStartTime" Text="{Binding Path=AppResources.Challenge1_StartTimeTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="196" />
-            <TextBlock FontWeight="Light" Foreground="#FF867A7A" Height="30" HorizontalAlignment="Left" Margin="230,110,0,0" Name="textDuration" Text="{Binding Path=AppResources.Challenge1_DurationTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="196" />
-            <TextBlock FontWeight="Light" Foreground="#FF867A7A" Height="30" HorizontalAlignment="Left" Margin="230,165,0,0" Name="textToBeat" Text="{Binding Path=AppResources.Challenge1_ToBeatTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="196" />
-            <TextBlock FontWeight="Normal" Height="63" HorizontalAlignment="Left" Margin="10,240,0,0" Name="titleDescription" Text="{Binding Path=AppResources.Challenge1_DescriptionTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="246" FontSize="40" />
+            <Image Height="200" HorizontalAlignment="Left" Margin="10,21,0,0" Name="ChallengeImage" Stretch="Fill" VerticalAlignment="Top" Width="200" ImageFailed="image1_ImageFailed" Source="/BeatIt!;component/Images/icon_challenge_4.png" />
+            <TextBlock Height="30" Margin="230,20,0,0" Name="DeTextBlock" Text="{Binding Path=AppResources.Challenge1_DetailsTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Left" Width="196" />
+            <TextBlock FontWeight="Light" Foreground="#FF867A7A" Height="30" HorizontalAlignment="Left" Margin="230,55,0,0" Name="StartTimeTitleTextBlock" Text="{Binding Path=AppResources.Challenge1_StartTimeTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="196" />
+            <TextBlock FontWeight="Light" Foreground="#FF867A7A" Height="30" HorizontalAlignment="Left" Margin="230,110,0,0" Name="DurationTitleTextBlock" Text="{Binding Path=AppResources.Challenge1_DurationTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="196" />
+            <TextBlock FontWeight="Light" Foreground="#FF867A7A" Height="30" HorizontalAlignment="Left" Margin="230,165,0,0" Name="ToBeatTitleTextBlock" Text="{Binding Path=AppResources.Challenge1_ToBeatTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="196" />
+            <TextBlock FontWeight="Normal" Height="63" HorizontalAlignment="Left" Margin="10,240,0,0" Name="DescriptionTitleTextBlock" Text="{Binding Path=AppResources.Challenge1_DescriptionTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="246" FontSize="40" />
             <TextBlock FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="12,300,0,0" Name="TextDescription" Text="{Binding Path=AppResources.Challenge4_DescriptionTxtBlockText, Source={StaticResource LocalizedStrings}}" Width="414" Height="100" VerticalAlignment="Top" TextWrapping="Wrap" />
 
             <Grid Visibility="Visible" Name="StartGrid">
-                <Rectangle Fill="#FF647687" Height="80" Width="438" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="12,0,12,50" IsHitTestVisible="True" Name="startRec" />
-                <TextBlock FontWeight="ExtraBlack" Height="57" HorizontalAlignment="Left" Margin="12,460,0,0" Name="startTitle" Text="{Binding Path=AppResources.Challenge4_StartButton, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="435" FontSize="40" TextAlignment="Center" />
-                <HyperlinkButton Content="" Height="80" HorizontalAlignment="Left" Margin="12,450,0,0" Name="startButton" VerticalAlignment="Top" Width="435" Click="hyperlinkButtonStart_Click" />
+                <Rectangle Fill="#FF647687" Height="80" Width="438" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="12,0,12,50" IsHitTestVisible="True" Name="StartRectangle" />
+                <TextBlock FontWeight="ExtraBlack" Height="57" HorizontalAlignment="Left" Margin="12,460,0,0" Name="StartTitleTextBlock" Text="{Binding Path=AppResources.Challenge4_StartButton, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="435" FontSize="40" TextAlignment="Center" />
+                <HyperlinkButton Content="" Height="80" HorizontalAlignment="Left" Margin="12,450,0,0" Name="StartButton" VerticalAlignment="Top" Width="435" Click="hyperlinkButtonStart_Click" />
             </Grid>
 
             <Grid Visibility="Collapsed" Name="StopGrid">
-                <Rectangle Fill="#FFe51400" Height="80" Width="438" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="12,0,12,50" IsHitTestVisible="True" Name="stopRec" />
-                <TextBlock FontWeight="ExtraBlack" Height="57" HorizontalAlignment="Left" Margin="12,460,0,0" Name="stopTitle" Text="{Binding Path=AppResources.Challenge4_StopButton, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="435" FontSize="40" TextAlignment="Center" />
-                <HyperlinkButton Content="" Height="80" HorizontalAlignment="Left" Margin="12,450,0,0" Name="stopButton" VerticalAlignment="Top" Width="435" Click="hyperlinkButtonStop_Click" />
+                <Rectangle Fill="#FFe51400" Height="80" Width="438" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="12,0,12,50" IsHitTestVisible="True" Name="StopRectangle" />
+                <TextBlock FontWeight="ExtraBlack" Height="57" HorizontalAlignment="Left" Margin="12,460,0,0" Name="StopTitleTextBlock" Text="{Binding Path=AppResources.Challenge4_StopButton, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="435" FontSize="40" TextAlignment="Center" />
+                <HyperlinkButton Content="" Height="80" HorizontalAlignment="Left" Margin="12,450,0,0" Name="StopButton" VerticalAlignment="Top" Width="435" Click="hyperlinkButtonStop_Click" />
             </Grid>
 
-            <TextBlock FontWeight="Light" Foreground="White" Height="30" HorizontalAlignment="Left" Margin="230,80,0,0" Name="ShowST" Text="---" VerticalAlignment="Top" Width="196" />
-            <TextBlock FontWeight="Light" Foreground="White" Height="30" HorizontalAlignment="Left" Margin="230,135,0,0" Name="ShowDuration" Text="---" VerticalAlignment="Top" Width="196" />
-            <TextBlock FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="230,190,0,0" Name="ShowToBeat" Text="---" Width="196" Height="30" VerticalAlignment="Top" />
+            <TextBlock FontWeight="Light" Foreground="White" Height="30" HorizontalAlignment="Left" Margin="230,80,0,0" Name="StartTimeTextBlock" Text="---" VerticalAlignment="Top" Width="196" />
+            <TextBlock FontWeight="Light" Foreground="White" Height="30" HorizontalAlignment="Left" Margin="230,135,0,0" Name="DurationTextBlock" Text="---" VerticalAlignment="Top" Width="196" />
+            <TextBlock FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="230,190,0,0" Name="ToBeatTextBlock" Text="---" Width="196" Height="30" VerticalAlignment="Top" />
         </Grid>
     </Grid>
 

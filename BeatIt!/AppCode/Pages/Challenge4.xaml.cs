@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Resources;
 using BeatIt_.AppCode.Challenges;
@@ -13,123 +15,125 @@ using System.Windows.Threading;
 
 namespace BeatIt_.AppCode.Pages
 {
-    public partial class Challenge4 : PhoneApplicationPage
+    public partial class Challenge4
     {
 
-        private ChallengeDetail4 currentChallenge;
-        private IFacadeController ifc;
-        private DispatcherTimer soundTimer;
-        private DispatcherTimer stopTimer;
-        private int ms;
-        private int currentRound;
-        private int[] result;
+        private ChallengeDetail4 _currentChallenge;
+        private IFacadeController _ifc;
+        private DispatcherTimer _soundTimer;
+        private DispatcherTimer _stopTimer;
+        private int _ms;
+        private int _currentRound;
+        private int[] _result;
 
         public Challenge4()
         {
             InitializeComponent();
 
-            NavigationInTransition navigateInTransition = new NavigationInTransition();
-            navigateInTransition.Backward = new SlideTransition { Mode = SlideTransitionMode.SlideRightFadeIn };
-            navigateInTransition.Forward = new SlideTransition { Mode = SlideTransitionMode.SlideLeftFadeIn };
+            var navigateInTransition = new NavigationInTransition
+            {
+                Backward = new SlideTransition {Mode = SlideTransitionMode.SlideRightFadeIn},
+                Forward = new SlideTransition {Mode = SlideTransitionMode.SlideLeftFadeIn}
+            };
 
-            NavigationOutTransition navigateOutTransition = new NavigationOutTransition();
-            navigateOutTransition.Backward = new SlideTransition { Mode = SlideTransitionMode.SlideRightFadeOut };
-            navigateOutTransition.Forward = new SlideTransition { Mode = SlideTransitionMode.SlideLeftFadeOut };
+            var navigateOutTransition = new NavigationOutTransition
+            {
+                Backward = new SlideTransition {Mode = SlideTransitionMode.SlideRightFadeOut},
+                Forward = new SlideTransition {Mode = SlideTransitionMode.SlideLeftFadeOut}
+            };
             TransitionService.SetNavigationInTransition(this, navigateInTransition);
             TransitionService.SetNavigationOutTransition(this, navigateOutTransition);
 
-            this.initChallenge();
+            InitChallenge();
         }
 
-        private void initChallenge()
+        private void InitChallenge()
         {
 
-            ifc = FacadeController.getInstance();
-            this.currentChallenge = (ChallengeDetail4)ifc.getChallenge(4);
+            _ifc = FacadeController.getInstance();
+            _currentChallenge = (ChallengeDetail4)_ifc.getChallenge(4);
 
-            this.PageTitle.Text = this.currentChallenge.Name;
-            this.TextDescription.Text = this.currentChallenge.Description;
-            this.ShowST.Text = this.currentChallenge.getDTChallenge().StartTime.ToString();
-            this.ShowToBeat.Text = this.currentChallenge.State.BestScore + " pts";
-            DateTime roundDate = new DateTime(2014, 9, 28, 22, 0, 0);
-            this.ShowDuration.Text = this.currentChallenge.getDurationString();
+            PageTitle.Text = _currentChallenge.Name;
+            TextDescription.Text = _currentChallenge.Description;
+            StartTimeTextBlock.Text = _currentChallenge.getDTChallenge().StartTime.ToString(CultureInfo.InvariantCulture);
+            ToBeatTextBlock.Text = _currentChallenge.State.BestScore + " pts";
+            DurationTextBlock.Text = _currentChallenge.getDurationString();
 
-            soundTimer = new DispatcherTimer();
-            soundTimer.Tick += tickSoundTimer;
+            _soundTimer = new DispatcherTimer();
+            _soundTimer.Tick += TickSoundTimer;
 
-            stopTimer = new DispatcherTimer();
-            stopTimer.Interval = new TimeSpan(0, 0, 0, 0, 1);
-            stopTimer.Tick += tickStopTimer;
+            _stopTimer = new DispatcherTimer {Interval = new TimeSpan(0, 0, 0, 0, 1)};
+            _stopTimer.Tick += TickStopTimer;
 
-            result = new int[currentChallenge.TimerValues.Length];
+            _result = new int[_currentChallenge.TimerValues.Length];
         }
 
-        private void tickSoundTimer(object o, EventArgs e)
+        private void TickSoundTimer(object o, EventArgs e)
         {
-            soundTimer.Stop();
+            _soundTimer.Stop();
             PlaySound("/BeatIt!;component/Sounds/dog_bark.wav");
-            stopTimer.Start();
+            _stopTimer.Start();
         }
 
-        private void tickStopTimer(object o, EventArgs e)
+        private void TickStopTimer(object o, EventArgs e)
         {
-            ms++;
+            _ms++;
         }
 
         private void PlaySound(string path)
         {
-            StreamResourceInfo _stream = Application.GetResourceStream(new Uri(path, UriKind.Relative));
-            SoundEffect _soundeffect = SoundEffect.FromStream(_stream.Stream);
-            SoundEffectInstance soundInstance = _soundeffect.CreateInstance();
+            StreamResourceInfo stream = Application.GetResourceStream(new Uri(path, UriKind.Relative));
+            SoundEffect soundeffect = SoundEffect.FromStream(stream.Stream);
+            SoundEffectInstance soundInstance = soundeffect.CreateInstance();
             FrameworkDispatcher.Update();
             soundInstance.Play();
         }
 
         private void hyperlinkButtonStart_Click(object sender, RoutedEventArgs e)
         {
-            StartGrid.Visibility = System.Windows.Visibility.Collapsed;
-            StopGrid.Visibility = System.Windows.Visibility.Visible;
+            StartGrid.Visibility = Visibility.Collapsed;
+            StopGrid.Visibility = Visibility.Visible;
 
-            ms = 0;
-            currentRound = 0;
+            _ms = 0;
+            _currentRound = 0;
 
-            soundTimer.Interval = new TimeSpan(0, 0, currentChallenge.TimerValues[currentRound]);
-            soundTimer.Start();
+            _soundTimer.Interval = new TimeSpan(0, 0, _currentChallenge.TimerValues[_currentRound]);
+            _soundTimer.Start();
         }
 
         private void hyperlinkButtonStop_Click(object sender, RoutedEventArgs e)
         {
-            if (soundTimer.IsEnabled)
+            if (_soundTimer.IsEnabled)
             {
-                soundTimer.Stop();
-                result[currentRound] = 0;
+                _soundTimer.Stop();
+                _result[_currentRound] = 0;
             }
             else 
             {
-                stopTimer.Stop();
-                result[currentRound] = ms;
+                _stopTimer.Stop();
+                _result[_currentRound] = _ms;
             }
 
-            ms = 0;
-            currentRound++;
+            _ms = 0;
+            _currentRound++;
 
-            if (currentRound == currentChallenge.TimerValues.Length)
+            if (_currentRound == _currentChallenge.TimerValues.Length)
             {
-                this.currentChallenge.completeChallenge(result);
-                this.ShowToBeat.Text = this.currentChallenge.State.BestScore + " pts";
+                _currentChallenge.completeChallenge(_result);
+                ToBeatTextBlock.Text = _currentChallenge.State.BestScore + " pts";
 
-                MessageBox.Show("El desafio ha finalizado, has obtenido " + this.currentChallenge.State.BestScore + " puntos.");
+                MessageBox.Show("El desafio ha finalizado, has obtenido " + _currentChallenge.State.BestScore + " puntos.");
 
-                Uri uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
+                var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
                 NavigationService.Navigate(uri);
 
-                StartGrid.Visibility = System.Windows.Visibility.Visible;
-                StopGrid.Visibility = System.Windows.Visibility.Collapsed;
+                StartGrid.Visibility = Visibility.Visible;
+                StopGrid.Visibility = Visibility.Collapsed;
             }
             else
             {
-                soundTimer.Interval = new TimeSpan(0, 0, currentChallenge.TimerValues[currentRound]);
-                soundTimer.Start();
+                _soundTimer.Interval = new TimeSpan(0, 0, _currentChallenge.TimerValues[_currentRound]);
+                _soundTimer.Start();
             }
         }
 
@@ -138,10 +142,10 @@ namespace BeatIt_.AppCode.Pages
 
         }
 
-        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        protected override void OnBackKeyPress(CancelEventArgs e)
         {
-            soundTimer.Stop();
-            stopTimer.Stop();
+            _soundTimer.Stop();
+            _stopTimer.Stop();
             e.Cancel = false;
             base.OnBackKeyPress(e);
         }
