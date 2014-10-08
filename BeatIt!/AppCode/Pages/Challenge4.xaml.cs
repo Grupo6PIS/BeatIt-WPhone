@@ -3,13 +3,13 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Resources;
+using System.Windows.Threading;
 using BeatIt_.AppCode.Challenges;
 using BeatIt_.AppCode.Controllers;
 using BeatIt_.AppCode.Interfaces;
 using Microsoft.Phone.Controls;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
-using System.Windows.Threading;
 
 /* CALLAR AL PERRO */
 
@@ -17,14 +17,13 @@ namespace BeatIt_.AppCode.Pages
 {
     public partial class Challenge4
     {
-
         private ChallengeDetail4 _currentChallenge;
+        private int _currentRound;
         private IFacadeController _ifc;
+        private int _ms;
+        private int[] _result;
         private DispatcherTimer _soundTimer;
         private DispatcherTimer _stopTimer;
-        private int _ms;
-        private int _currentRound;
-        private int[] _result;
 
         public Challenge4()
         {
@@ -49,13 +48,13 @@ namespace BeatIt_.AppCode.Pages
 
         private void InitChallenge()
         {
-
             _ifc = FacadeController.getInstance();
-            _currentChallenge = (ChallengeDetail4)_ifc.getChallenge(4);
+            _currentChallenge = (ChallengeDetail4) _ifc.getChallenge(4);
 
             PageTitle.Text = _currentChallenge.Name;
             TextDescription.Text = _currentChallenge.Description;
-            StartTimeTextBlock.Text = _currentChallenge.getDTChallenge().StartTime.ToString(CultureInfo.InvariantCulture);
+            StartTimeTextBlock.Text = _currentChallenge.getDTChallenge()
+                .StartTime.ToString(CultureInfo.InvariantCulture);
             ToBeatTextBlock.Text = _currentChallenge.State.BestScore + " pts";
             DurationTextBlock.Text = _currentChallenge.getDurationString();
 
@@ -108,7 +107,7 @@ namespace BeatIt_.AppCode.Pages
                 _soundTimer.Stop();
                 _result[_currentRound] = 0;
             }
-            else 
+            else
             {
                 _stopTimer.Stop();
                 _result[_currentRound] = _ms;
@@ -122,7 +121,8 @@ namespace BeatIt_.AppCode.Pages
                 _currentChallenge.completeChallenge(_result);
                 ToBeatTextBlock.Text = _currentChallenge.State.BestScore + " pts";
 
-                MessageBox.Show("El desafio ha finalizado, has obtenido " + _currentChallenge.State.BestScore + " puntos.");
+                MessageBox.Show("El desafio ha finalizado, has obtenido " + _currentChallenge.State.BestScore +
+                                " puntos.");
 
                 var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
                 NavigationService.Navigate(uri);
@@ -139,7 +139,6 @@ namespace BeatIt_.AppCode.Pages
 
         private void image1_ImageFailed(object sender, ExceptionRoutedEventArgs e)
         {
-
         }
 
         protected override void OnBackKeyPress(CancelEventArgs e)
