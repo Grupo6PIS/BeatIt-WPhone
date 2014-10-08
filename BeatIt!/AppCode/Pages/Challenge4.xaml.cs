@@ -118,7 +118,7 @@ namespace BeatIt_.AppCode.Pages
 
             if (_currentRound == _currentChallenge.TimerValues.Length)
             {
-                _currentChallenge.completeChallenge(_result);
+                _currentChallenge.CompleteChallenge(_result);
                 ToBeatTextBlock.Text = _currentChallenge.State.BestScore + " pts";
 
                 MessageBox.Show("El desafio ha finalizado, has obtenido " + _currentChallenge.State.BestScore +

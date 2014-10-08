@@ -15,25 +15,25 @@ namespace BeatIt_.AppCode.Challenges
             Description = "En este desafio debes callar al perro presionando el boton 'Cállate!' 3 veces.";
             IsEnabled = true;
             Level = level;
-            this.MaxAttempt = maxAttempts;
-            this.TimerValues = new int[3] { 2, 4, 6 };
+            MaxAttempt = maxAttempts;
+            TimerValues = Level == 1 ? new[] { 2, 4, 6 } : new[] { 1, 2, 3, 4, 5 };
         }
 
         public ChallengeDetail4() 
         {
-            this.ChallengeId = 4;
-            this.Name = "Callar al Perro";
-            this.ColorHex = "#FF647687";
-            this.Description = "En este desafio debes callar al perro presionando el boton 'Cállate!' 3 veces.";
-            this.IsEnabled = true;
-            this.Level = 1;
-            this.MaxAttempt = 3;
-            this.TimerValues = new int[3] { 2, 4, 6 };
+            ChallengeId = 4;
+            Name = "Callar al Perro";
+            ColorHex = "#FF647687";
+            Description = "En este desafio debes callar al perro presionando el boton 'Cállate!' 3 veces.";
+            IsEnabled = true;
+            Level = 1;
+            MaxAttempt = 3;
+            TimerValues = Level == 1 ? new[] { 2, 4, 6 } : new[] { 1, 2, 3, 4, 5 };
         }
 
-        private int calculateScore(int[] miliseconds)
+        private int CalculateScore(int[] miliseconds)
         {
-            int res = 0;
+            var res = 0;
             for (int i = 0; i < miliseconds.Length; i++) 
             {
                 if (miliseconds[i] > 0)
@@ -42,19 +42,19 @@ namespace BeatIt_.AppCode.Challenges
             return res * 10;
         }
 
-        public void completeChallenge(int[] miliseconds)
+        public void CompleteChallenge(int[] miliseconds)
         {
-            this.State.CurrentAttempt = this.State.CurrentAttempt + 1;
+            State.CurrentAttempt = State.CurrentAttempt + 1;
 
-            this.State.LastScore = this.calculateScore(miliseconds);
-            if (this.State.LastScore > this.State.BestScore)
-                this.State.BestScore = this.State.LastScore;
+            State.LastScore = CalculateScore(miliseconds);
+            if (State.LastScore > State.BestScore)
+                State.BestScore = State.LastScore;
     
-            if (this.State.CurrentAttempt == this.MaxAttempt)
+            if (State.CurrentAttempt == MaxAttempt)
             {
-                this.State.Finished = true;
+                State.Finished = true;
             }
-            bool actualizo = FacadeController.getInstance().saveState(this.State);
+            FacadeController.getInstance().saveState(State);
         }
     }
 }
