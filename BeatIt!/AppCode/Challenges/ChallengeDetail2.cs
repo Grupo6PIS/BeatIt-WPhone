@@ -64,8 +64,8 @@ namespace BeatIt_.AppCode.Challenges
             bool actualizo;
 
             // Esto no se si esta bien, como en los testing no tenemos sqlite, si estamos testeando no persistimos.
-            if(!FacadeController.getInstance().GetIsForTesting())
-                actualizo = FacadeController.getInstance().saveState(this.State);
+            if(!FacadeController.GetInstance().GetIsForTesting())
+                actualizo = FacadeController.GetInstance().SaveState(this.State);
         }
 
         public int calculatPuntaje(int cantCorrectWakeUp)

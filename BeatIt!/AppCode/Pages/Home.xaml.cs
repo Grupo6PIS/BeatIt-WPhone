@@ -12,12 +12,14 @@ using BeatIt_.AppCode.Interfaces;
 using Facebook;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Newtonsoft.Json.Linq;
 
 namespace BeatIt_.AppCode.Pages
 {
     public partial class Home
     {
         private readonly IFacadeController _facade;
+        private bool _isRefreshingRanking;
 
         public Home()
         {
@@ -37,6 +39,8 @@ namespace BeatIt_.AppCode.Pages
             TransitionService.SetNavigationInTransition(this, navigateInTransition);
             TransitionService.SetNavigationOutTransition(this, navigateOutTransition);
 
+            ProgressBar.IsIndeterminate = true;
+
             ApplicationBar = new ApplicationBar
             {
                 Mode = ApplicationBarMode.Minimized,
@@ -53,7 +57,7 @@ namespace BeatIt_.AppCode.Pages
             ApplicationBar.Buttons.Add(refreshBtn);
             refreshBtn.Click += RefreshBtn_Click;
 
-            _facade = FacadeController.getInstance();
+            _facade = FacadeController.GetInstance();
             var loggedUser = _facade.getCurrentUser();
 
             ProfileNameTxtBlock.Text = loggedUser.FirstName + " " + loggedUser.LastName;
@@ -172,11 +176,31 @@ namespace BeatIt_.AppCode.Pages
         {
             var selectedIndex = Pivot.SelectedIndex;
             ApplicationBar.IsVisible = selectedIndex == 1;
+            ProgressBar.Visibility = (selectedIndex == 1 && _isRefreshingRanking) ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private void RefreshBtn_Click(object sender, EventArgs e)
         {
-            _facade.updateRanking(InitRankingListBox);
+            if (_isRefreshingRanking) return;
+            _isRefreshingRanking = true;
+            ProgressBar.Visibility = Visibility.Visible;
+            var ws = new WebServicesController();
+            ws.GetRanking(GetRankingFinished);
+        }
+
+        private void GetRankingFinished(JObject jsonResponse)
+        {
+            _isRefreshingRanking = false;
+            ProgressBar.Visibility = Visibility.Collapsed;
+            if (!(bool) jsonResponse["error"])
+            {
+                _facade.updateRanking(jsonResponse);
+                InitRankingListBox();
+            }
+            else
+            {
+                Dispatcher.BeginInvoke(() => MessageBox.Show("Ha ocurrido un error al actualizar el ranking"));   
+            }
         }
     }
 }

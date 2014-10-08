@@ -45,7 +45,7 @@ namespace BeatIt_.AppCode.Pages
         {
             base.OnNavigatedTo(e);
 
-            bool isLoggedUser = IsolatedStorageSettings.ApplicationSettings.Contains("IsLoggedUser") && (bool)IsolatedStorageSettings.ApplicationSettings["IsLoggedUser"];
+            var isLoggedUser = IsolatedStorageSettings.ApplicationSettings.Contains("IsLoggedUser") && (bool)IsolatedStorageSettings.ApplicationSettings["IsLoggedUser"];
             if (isLoggedUser)
             {
                 LoginBtn.IsEnabled = false;
@@ -76,7 +76,7 @@ namespace BeatIt_.AppCode.Pages
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
-            FacadeController.getInstance();
+            FacadeController.GetInstance();
 
             var parameters = new Dictionary<string, object>();
             parameters["client_id"] = "829846350380023";
@@ -195,7 +195,7 @@ namespace BeatIt_.AppCode.Pages
             else
             {
                 _user = null;
-                IFacadeController ifc = FacadeController.getInstance();
+                IFacadeController ifc = FacadeController.GetInstance();
                 ifc.logoutUser();
                 Dispatcher.BeginInvoke(() =>
                 {
@@ -210,7 +210,7 @@ namespace BeatIt_.AppCode.Pages
         {
             if (!(bool)jsonResponse["error"])
             {
-                IFacadeController ifc = FacadeController.getInstance();
+                IFacadeController ifc = FacadeController.GetInstance();
                 ifc.loginUser(_user, jsonResponse);
                 Dispatcher.BeginInvoke(() =>
                 {
@@ -222,7 +222,7 @@ namespace BeatIt_.AppCode.Pages
             else 
             {
                 _user = null;
-                IFacadeController ifc = FacadeController.getInstance();
+                IFacadeController ifc = FacadeController.GetInstance();
                 ifc.logoutUser();
                 Dispatcher.BeginInvoke(() =>
                 {

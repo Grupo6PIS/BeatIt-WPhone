@@ -52,7 +52,7 @@ namespace BeatIt_.Pages
         {
             // OBTENEMOS LA INSTANCIA DEL DESAFIO.
             /* hay que prolijear esto con una factory */
-            ifc = FacadeController.getInstance();
+            ifc = FacadeController.GetInstance();
             this.currentChallenge = (ChallengeDetail1)ifc.getChallenge(1);
             
             timer = new DispatcherTimer();
@@ -262,7 +262,7 @@ namespace BeatIt_.Pages
         private Random randomNumber;
         private double speed = 0;
         private Estados state = Estados.LLEGAR_A_10KM;
-        private readonly FacadeController _ifc = FacadeController.getInstance();
+        private readonly FacadeController _ifc = FacadeController.GetInstance();
         private int _mantenerVelocidadPor;
         private readonly int _velocidadMinima;
 

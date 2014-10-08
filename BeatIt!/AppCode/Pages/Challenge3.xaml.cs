@@ -26,7 +26,7 @@ namespace BeatIt_.AppCode.Pages
         {
             InitializeComponent();
 
-            _ifc = FacadeController.getInstance();
+            _ifc = FacadeController.GetInstance();
             _currentChallenge = (ChallengeDetail3)_ifc.getChallenge(3);
             _ifc.setCurrentChallenge(_currentChallenge);
             //Codigo tasker

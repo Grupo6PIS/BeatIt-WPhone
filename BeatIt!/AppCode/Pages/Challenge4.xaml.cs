@@ -48,7 +48,7 @@ namespace BeatIt_.AppCode.Pages
 
         private void InitChallenge()
         {
-            _ifc = FacadeController.getInstance();
+            _ifc = FacadeController.GetInstance();
             _currentChallenge = (ChallengeDetail4) _ifc.getChallenge(4);
 
             PageTitle.Text = _currentChallenge.Name;

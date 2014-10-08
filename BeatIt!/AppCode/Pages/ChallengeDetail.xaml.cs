@@ -27,7 +27,7 @@ namespace BeatIt_.Pages
             TransitionService.SetNavigationInTransition(this, navigateInTransition);
             TransitionService.SetNavigationOutTransition(this, navigateOutTransition);
 
-            IFacadeController ifc = FacadeController.getInstance();
+            IFacadeController ifc = FacadeController.GetInstance();
             challenge = ifc.getCurrentChallenge();
 
             ApplicationBar = new ApplicationBar();

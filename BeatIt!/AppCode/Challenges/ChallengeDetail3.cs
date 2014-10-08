@@ -78,7 +78,7 @@ namespace BeatIt_.AppCode.Challenges
             {
                 State.Finished = true;
             }
-            var actualizo = FacadeController.getInstance().saveState(this.State);
+            var actualizo = FacadeController.GetInstance().SaveState(this.State);
 
             return new KeyValuePair<bool, int>(newScore,score);
         }

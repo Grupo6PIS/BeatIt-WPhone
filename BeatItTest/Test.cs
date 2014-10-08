@@ -21,7 +21,7 @@ namespace BeatIt.Tests
             // Por eso gener un metodo a parte para generar la instancia del controlador, 
             // en este metodos esta todo hardcodeado el tema de la carga de los estados que era lo
             // que estabamos cargando de SQLite.
-            var ifc = FacadeController.getInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
+            var ifc = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
 
             var currentChallenge = (ChallengeDetail1)ifc.getChallenge(1);
             currentChallenge.completeChallenge(false, 45, 42);
@@ -55,7 +55,7 @@ namespace BeatIt.Tests
         [TestMethod]
         public void TestingFunction_CompleteChallenge()
         {
-            FacadeController cont = FacadeController.getInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
+            FacadeController cont = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
 
             ChallengeDetail2 challenge = (ChallengeDetail2)cont.getChallenge(2);
             challenge.Level = 1;
@@ -84,7 +84,7 @@ namespace BeatIt.Tests
         [TestMethod]
         public void TestingFunction_GetDTChallenge()
         {
-            FacadeController cont = FacadeController.getInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
+            FacadeController cont = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
 
             ChallengeDetail2 challenge = (ChallengeDetail2)cont.getChallenge(2);
             challenge.Level = 1;
@@ -104,16 +104,16 @@ namespace BeatIt.Tests
         [TestMethod]
         public void TestingFunction_GetDurationString()
         {
-            FacadeController cont = FacadeController.getInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6).AddMinutes(-1));
+            FacadeController cont = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6).AddMinutes(-1));
             Assert.AreEqual(cont.getChallenge(2).getDurationString(), "5 dias");
 
-            cont = FacadeController.getInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddHours(6).AddMinutes(-1));
+            cont = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddHours(6).AddMinutes(-1));
             Assert.AreEqual(cont.getChallenge(2).getDurationString(), "5 horas");
 
-            cont = FacadeController.getInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddMinutes(6).AddSeconds(-1));
+            cont = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddMinutes(6).AddSeconds(-1));
             Assert.AreEqual(cont.getChallenge(2).getDurationString(), "5 minutos");
 
-            cont = FacadeController.getInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddMinutes(1).AddSeconds(-1));
+            cont = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddMinutes(1).AddSeconds(-1));
             Assert.AreEqual(cont.getChallenge(2).getDurationString(), "Menos de un minuto!!");
         }
     }

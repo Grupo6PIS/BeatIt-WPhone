@@ -54,7 +54,7 @@ namespace BeatIt_.AppCode.Challenges
             {
                 State.Finished = true;
             }
-            FacadeController.getInstance().saveState(State);
+            FacadeController.GetInstance().SaveState(State);
         }
     }
 }

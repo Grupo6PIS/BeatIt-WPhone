@@ -69,7 +69,7 @@ namespace BeatIt_.AppCode.Challenges
             {
                 this.State.Finished = true;
             }
-            bool actualizo = FacadeController.getInstance().saveState(this.State);
+            bool actualizo = FacadeController.GetInstance().SaveState(this.State);
         }
     }
 }

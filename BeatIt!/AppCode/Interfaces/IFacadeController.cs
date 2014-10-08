@@ -13,7 +13,7 @@ namespace BeatIt_.AppCode.Interfaces
         List<DTRanking> getRanking();
         void loginUser(User user, JObject jsonResponse);
         void logoutUser();
-        void updateRanking(FacadeController.CallbackMethod callback);
+        void updateRanking(JObject jsonResponse);
         Challenge getChallenge(int challengeId);
         Dictionary<int, Challenge> getChallenges();
         void setCurrentChallenge(Challenge challenge);

@@ -52,7 +52,7 @@ namespace BeatIt_.AppCode.Pages
 
                 // OBTENEMOS LA INSTANCIA DEL DESAFIO.
                 /* hay que prolijear esto con una factory */
-                ifc = FacadeController.getInstance();
+                ifc = FacadeController.GetInstance();
                 this.currentChallenge = (ChallengeDetail6)ifc.getChallenge(6);
 
                 if (this.currentChallenge.State.CurrentAttempt == this.currentChallenge.MaxAttempt)
