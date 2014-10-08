@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO.IsolatedStorage;
 using System.Net;
 using System.Text;
 using System.Windows;
@@ -9,67 +10,73 @@ using BeatIt_.AppCode.Controllers;
 using BeatIt_.AppCode.Interfaces;
 using Facebook;
 using Microsoft.Phone.Controls;
-using System.IO.IsolatedStorage;
 using Newtonsoft.Json.Linq;
 
-namespace BeatIt_.Pages
+namespace BeatIt_.AppCode.Pages
 {
-    public partial class Login : PhoneApplicationPage
+    public partial class Login
     {
         private readonly FacebookClient _fb = new FacebookClient();
         public string AccessToken { get; set; }
-        private User user;
+        private User _user;
 
         public Login()
         {
             InitializeComponent();
 
-            NavigationInTransition navigateInTransition = new NavigationInTransition();
-            navigateInTransition.Backward = new SlideTransition { Mode = SlideTransitionMode.SlideRightFadeIn };
-            navigateInTransition.Forward = new SlideTransition { Mode = SlideTransitionMode.SlideLeftFadeIn };
+            var navigateInTransition = new NavigationInTransition
+            {
+                Backward = new SlideTransition {Mode = SlideTransitionMode.SlideRightFadeIn},
+                Forward = new SlideTransition {Mode = SlideTransitionMode.SlideLeftFadeIn}
+            };
 
-            NavigationOutTransition navigateOutTransition = new NavigationOutTransition();
-            navigateOutTransition.Backward = new SlideTransition { Mode = SlideTransitionMode.SlideRightFadeOut };
-            navigateOutTransition.Forward = new SlideTransition { Mode = SlideTransitionMode.SlideLeftFadeOut };
+            var navigateOutTransition = new NavigationOutTransition
+            {
+                Backward = new SlideTransition {Mode = SlideTransitionMode.SlideRightFadeOut},
+                Forward = new SlideTransition {Mode = SlideTransitionMode.SlideLeftFadeOut}
+            };
             TransitionService.SetNavigationInTransition(this, navigateInTransition);
             TransitionService.SetNavigationOutTransition(this, navigateOutTransition);
 
+            ProgressBar.IsIndeterminate = true;
         }
 
-        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
-            bool isLoggedUser = IsolatedStorageSettings.ApplicationSettings.Contains("IsLoggedUser") ? (bool)IsolatedStorageSettings.ApplicationSettings["IsLoggedUser"] : false;
+            bool isLoggedUser = IsolatedStorageSettings.ApplicationSettings.Contains("IsLoggedUser") && (bool)IsolatedStorageSettings.ApplicationSettings["IsLoggedUser"];
             if (isLoggedUser)
             {
-                loginBtn.IsEnabled = false;
-                progressBar.Visibility = System.Windows.Visibility.Visible;
+                LoginBtn.IsEnabled = false;
+                ProgressBar.Visibility = Visibility.Visible;
 
-                user = new User();
-                user.UserId = (int)IsolatedStorageSettings.ApplicationSettings["Id"];
-                user.FbId = (string)IsolatedStorageSettings.ApplicationSettings["FbId"];
-                user.FbAccessToken = (string)IsolatedStorageSettings.ApplicationSettings["FbAccessToken"];
-                user.FirstName = (string)IsolatedStorageSettings.ApplicationSettings["FirstName"];
-                user.LastName = (string)IsolatedStorageSettings.ApplicationSettings["LastName"];
-                user.Country = (string)IsolatedStorageSettings.ApplicationSettings["Country"];
-                user.BirthDate = (DateTime)IsolatedStorageSettings.ApplicationSettings["BirthDate"];
-                user.ImageUrl = (string)IsolatedStorageSettings.ApplicationSettings["ImageUrl"];
-                user.Email = (string)IsolatedStorageSettings.ApplicationSettings["Email"];
-                user.Country = (string)IsolatedStorageSettings.ApplicationSettings["Country"];
+                _user = new User
+                {
+                    UserId = (int) IsolatedStorageSettings.ApplicationSettings["Id"],
+                    FbId = (string) IsolatedStorageSettings.ApplicationSettings["FbId"],
+                    FbAccessToken = (string) IsolatedStorageSettings.ApplicationSettings["FbAccessToken"],
+                    FirstName = (string) IsolatedStorageSettings.ApplicationSettings["FirstName"],
+                    LastName = (string) IsolatedStorageSettings.ApplicationSettings["LastName"],
+                    Country = (string) IsolatedStorageSettings.ApplicationSettings["Country"],
+                    BirthDate = (DateTime) IsolatedStorageSettings.ApplicationSettings["BirthDate"],
+                    ImageUrl = (string) IsolatedStorageSettings.ApplicationSettings["ImageUrl"],
+                    Email = (string) IsolatedStorageSettings.ApplicationSettings["Email"]
+                };
+                _user.Country = (string)IsolatedStorageSettings.ApplicationSettings["Country"];
 
-                WebServicesController ws = new WebServicesController();
+                var ws = new WebServicesController();
                 ws.GetRound(GetRoundFinished);
             }
             else
             {
-                progressBar.Visibility = System.Windows.Visibility.Collapsed;
+                ProgressBar.Visibility = Visibility.Collapsed;
             }
         }
 
-        private void loginBtn_Click(object sender, RoutedEventArgs e)
+        private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
-            IFacadeController ifc = FacadeController.getInstance();
+            FacadeController.getInstance();
 
             var parameters = new Dictionary<string, object>();
             parameters["client_id"] = "829846350380023";
@@ -88,7 +95,7 @@ namespace BeatIt_.Pages
                 var encoded = HttpUtility.UrlEncode((string)current.Value);
                 urlBuilder.AppendFormat("{0}={1}", current.Key, encoded);
             }
-            var loginUrl = "http://www.facebook.com/dialog/oauth?" + urlBuilder.ToString();
+            var loginUrl = "http://www.facebook.com/dialog/oauth?" + urlBuilder;
 
             AuthenticationBrowser.Navigate(new Uri(loginUrl));
             AuthenticationBrowser.Visibility = Visibility.Visible;
@@ -109,18 +116,15 @@ namespace BeatIt_.Pages
                 Dispatcher.BeginInvoke(() =>
                 {
                     AuthenticationBrowser.Visibility = Visibility.Collapsed;
-                    progressBar.Visibility = System.Windows.Visibility.Visible;
-                    loginBtn.IsEnabled = false;
+                    ProgressBar.Visibility = Visibility.Visible;
+                    LoginBtn.IsEnabled = false;
                 });
                 var accessToken = oauthResult.AccessToken;
                 LoginSucceded(accessToken);
             }
             else
             {
-                Dispatcher.BeginInvoke(() =>
-                {
-                    MessageBox.Show(oauthResult.ErrorDescription);
-                });
+                Dispatcher.BeginInvoke(() => MessageBox.Show(oauthResult.ErrorDescription));
             }
         }
 
@@ -135,45 +139,47 @@ namespace BeatIt_.Pages
                     Dispatcher.BeginInvoke(() =>
                     {
                         MessageBox.Show(e.Error.Message);
-                        progressBar.Visibility = System.Windows.Visibility.Collapsed;
-                        loginBtn.IsEnabled = true;
+                        ProgressBar.Visibility = Visibility.Collapsed;
+                        LoginBtn.IsEnabled = true;
                     });
                     return;
                 }
 
                 var result = (IDictionary<string, object>)e.GetResultData();
 
-                user = new User();
-                user.UserId = 1;
-                user.FbId = (string)result["id"];
-                user.FbAccessToken = accessToken;
-                user.FirstName = (string)result["first_name"];
-                user.LastName = (string)result["last_name"];
-                user.Country = "Uruguay";
-                user.BirthDate = new DateTime(1989, 08, 07);
-                user.ImageUrl = string.Format("https://graph.facebook.com/{0}/picture?type={1}&access_token={2}", user.FbId, "square", accessToken);
+                _user = new User
+                {
+                    UserId = 1,
+                    FbId = (string) result["id"],
+                    FbAccessToken = accessToken,
+                    FirstName = (string) result["first_name"],
+                    LastName = (string) result["last_name"],
+                    Country = "Uruguay",
+                    BirthDate = new DateTime(1989, 08, 07)
+                };
+                _user.ImageUrl = string.Format("https://graph.facebook.com/{0}/picture?type={1}&access_token={2}", _user.FbId, "square", accessToken);
                 if (result.Keys.Contains("email"))
-                    user.Email = (string)result["email"];
+                    _user.Email = (string)result["email"];
                 if (result.Keys.Contains("hometown"))
                 {
                     var ht = (IDictionary<string, object>)result["hometown"];
-                    user.Country = (string)ht["name"];
+                    _user.Country = (string)ht["name"];
                 }
 
                 IsolatedStorageSettings.ApplicationSettings["IsLoggedUser"] = true;
-                IsolatedStorageSettings.ApplicationSettings["Id"] = user.UserId;
-                IsolatedStorageSettings.ApplicationSettings["FbId"] = user.FbId;
-                IsolatedStorageSettings.ApplicationSettings["FbAccessToken"] = user.FbAccessToken;
-                IsolatedStorageSettings.ApplicationSettings["FirstName"] = user.FirstName;
-                IsolatedStorageSettings.ApplicationSettings["LastName"] = user.LastName;
-                IsolatedStorageSettings.ApplicationSettings["Country"] = user.Country;
-                IsolatedStorageSettings.ApplicationSettings["BirthDate"] = user.BirthDate;
-                IsolatedStorageSettings.ApplicationSettings["ImageUrl"] = user.ImageUrl;
-                IsolatedStorageSettings.ApplicationSettings["Email"] = user.Email;
+                IsolatedStorageSettings.ApplicationSettings["Id"] = _user.UserId;
+                IsolatedStorageSettings.ApplicationSettings["FbId"] = _user.FbId;
+                IsolatedStorageSettings.ApplicationSettings["FbAccessToken"] = _user.FbAccessToken;
+                IsolatedStorageSettings.ApplicationSettings["FirstName"] = _user.FirstName;
+                IsolatedStorageSettings.ApplicationSettings["LastName"] = _user.LastName;
+                IsolatedStorageSettings.ApplicationSettings["Country"] = _user.Country;
+                IsolatedStorageSettings.ApplicationSettings["BirthDate"] = _user.BirthDate;
+                IsolatedStorageSettings.ApplicationSettings["ImageUrl"] = _user.ImageUrl;
+                IsolatedStorageSettings.ApplicationSettings["Email"] = _user.Email;
                 IsolatedStorageSettings.ApplicationSettings.Save();
 
-                WebServicesController ws = new WebServicesController();
-                ws.UpdateUser(user.FbId, user.FirstName, user.ImageUrl, UpdateUserFinished);
+                var ws = new WebServicesController();
+                ws.UpdateUser(_user.FbId, _user.FirstName, _user.ImageUrl, UpdateUserFinished);
             };
 
             fb.GetAsync("me");
@@ -183,18 +189,18 @@ namespace BeatIt_.Pages
         {
             if (!(bool)jsonResponse["error"])
             {
-                WebServicesController ws = new WebServicesController();
+                var ws = new WebServicesController();
                 ws.GetRound(GetRoundFinished);   
             }
             else
             {
-                user = null;
+                _user = null;
                 IFacadeController ifc = FacadeController.getInstance();
                 ifc.logoutUser();
                 Dispatcher.BeginInvoke(() =>
                 {
-                    progressBar.Visibility = System.Windows.Visibility.Collapsed;
-                    loginBtn.IsEnabled = true;
+                    ProgressBar.Visibility = Visibility.Collapsed;
+                    LoginBtn.IsEnabled = true;
                     MessageBox.Show("Ha ocurrido un error al iniciar sesion");
                 });
             }
@@ -205,23 +211,23 @@ namespace BeatIt_.Pages
             if (!(bool)jsonResponse["error"])
             {
                 IFacadeController ifc = FacadeController.getInstance();
-                ifc.loginUser(user, jsonResponse);
+                ifc.loginUser(_user, jsonResponse);
                 Dispatcher.BeginInvoke(() =>
                 {
-                    progressBar.Visibility = System.Windows.Visibility.Collapsed;
-                    loginBtn.IsEnabled = true;
+                    ProgressBar.Visibility = Visibility.Collapsed;
+                    LoginBtn.IsEnabled = true;
                     NavigationService.Navigate(new Uri("/BeatIt!;component/AppCode/Pages/Home.xaml", UriKind.Relative));
                 });
             }
             else 
             {
-                user = null;
+                _user = null;
                 IFacadeController ifc = FacadeController.getInstance();
                 ifc.logoutUser();
                 Dispatcher.BeginInvoke(() =>
                 {
-                    progressBar.Visibility = System.Windows.Visibility.Collapsed;
-                    loginBtn.IsEnabled = true;
+                    ProgressBar.Visibility = Visibility.Collapsed;
+                    LoginBtn.IsEnabled = true;
                     MessageBox.Show("Ha ocurrido un error al iniciar sesion");
                 });
             }
