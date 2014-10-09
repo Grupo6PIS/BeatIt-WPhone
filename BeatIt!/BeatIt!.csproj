@@ -255,6 +255,7 @@
     <Resource Include="Images\icon_challenge_9.png" />
     <Content Include="Images\appbar_refresh.png" />
     <Content Include="Images\appbar_retry.png" />
+    <Resource Include="Sounds\ring.wav" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup />

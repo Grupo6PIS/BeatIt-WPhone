@@ -9,7 +9,6 @@ namespace BeatIt.Tests
     [TestClass] // Logica Usain Bolt
     public class TestingChallengeDetail1
     {
-        [DeploymentItem("BeatItDB.db")]
         [TestMethod]
         public void TestingFunctioncalculatePuntaje()
         {
@@ -38,18 +37,13 @@ namespace BeatIt.Tests
         [TestMethod]
         public void TestingFunction_GetSecondsToWakeMeUp()
         {
-            ChallengeDetail2 ch = new ChallengeDetail2();
-            ch.Level = 1;
-            int[] secondsToWakeMeUp = ch.getSecondsToWakeMeUp();
+            var ch = new ChallengeDetail2 {Level = 1};
+            int[] secondsToWakeMeUp = ch.GetSecondsToWakeMeUp();
             Assert.AreEqual(secondsToWakeMeUp[0], 3);
 
             ch.Level = 2;
-            secondsToWakeMeUp = ch.getSecondsToWakeMeUp();
+            secondsToWakeMeUp = ch.GetSecondsToWakeMeUp();
             Assert.AreEqual(secondsToWakeMeUp[3], 9);
-
-            ch = new ChallengeDetail2();
-            ch.State = new State();
-
         }
 
         [TestMethod]
@@ -57,7 +51,7 @@ namespace BeatIt.Tests
         {
             FacadeController cont = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
 
-            ChallengeDetail2 challenge = (ChallengeDetail2)cont.getChallenge(2);
+            var challenge = (ChallengeDetail2)cont.getChallenge(2);
             challenge.Level = 1;
 
             challenge.CompleteChallenge(1);
@@ -86,12 +80,12 @@ namespace BeatIt.Tests
         {
             FacadeController cont = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
 
-            ChallengeDetail2 challenge = (ChallengeDetail2)cont.getChallenge(2);
+            var challenge = (ChallengeDetail2)cont.getChallenge(2);
             challenge.Level = 1;
 
             for(int i = 1; i <= challenge.MaxAttempt; i++){
-                System.Random r = new System.Random();
-                challenge.CompleteChallenge(r.Next(1, challenge.getSecondsToWakeMeUp().Length + 1));
+                var r = new System.Random();
+                challenge.CompleteChallenge(r.Next(1, challenge.GetSecondsToWakeMeUp().Length + 1));
             }
 
             DTChallenge dtc = challenge.getDTChallenge();

@@ -13,27 +13,27 @@ namespace BeatIt_.AppCode.Challenges
             Description = "Description 2";
             IsEnabled = true;
             Level = level;
-            this.MaxAttempt = maxAttempts;
+            MaxAttempt = maxAttempts;
         }
 
 
         public ChallengeDetail2() 
         {
-            this.ChallengeId = 2;
-            this.Name = "Wake Me Up!";
-            this.ColorHex = "#FF00aba9";
-            this.Description = "Description 2";
-            this.IsEnabled = true;
-            this.Level = 1;
-            this.MaxAttempt = 3;
+            ChallengeId = 2;
+            Name = "Wake Me Up!";
+            ColorHex = "#FF00aba9";
+            Description = "Description 2";
+            IsEnabled = true;
+            Level = 1;
+            MaxAttempt = 3;
         }
 
 
 
-        public int[] getSecondsToWakeMeUp()
+        public int[] GetSecondsToWakeMeUp()
         {
             int[] result;
-            if (this.Level == 1)
+            if (Level == 1)
             {
                 result = new int[3];
                 result[0] = 3;
@@ -54,21 +54,19 @@ namespace BeatIt_.AppCode.Challenges
 
         public void CompleteChallenge(int cantCorrectWakeUp)
         {
-            this.State.LastScore = this.calculatPuntaje(cantCorrectWakeUp);
-            if (this.State.LastScore > this.State.BestScore)
-                this.State.BestScore = this.State.LastScore;
-            this.State.CurrentAttempt = this.State.CurrentAttempt + 1;
-            if (this.State.CurrentAttempt == this.MaxAttempt)
-                this.State.Finished = true;
-
-            bool actualizo;
+            State.LastScore = CalculatPuntaje(cantCorrectWakeUp);
+            if (State.LastScore > State.BestScore)
+                State.BestScore = State.LastScore;
+            State.CurrentAttempt = State.CurrentAttempt + 1;
+            if (State.CurrentAttempt == MaxAttempt)
+                State.Finished = true;
 
             // Esto no se si esta bien, como en los testing no tenemos sqlite, si estamos testeando no persistimos.
             if(!FacadeController.GetInstance().GetIsForTesting())
-                actualizo = FacadeController.GetInstance().SaveState(this.State);
+                FacadeController.GetInstance().SaveState(State);
         }
 
-        public int calculatPuntaje(int cantCorrectWakeUp)
+        public int CalculatPuntaje(int cantCorrectWakeUp)
         {
             return cantCorrectWakeUp*20;
         }

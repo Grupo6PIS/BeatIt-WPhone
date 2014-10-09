@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Resources;
 using System.Windows.Threading;
 using BeatIt_.AppCode.Challenges;
@@ -16,151 +18,152 @@ using Microsoft.Xna.Framework.Audio;
 
 namespace BeatIt_.AppCode.Pages
 {    
-    public partial class Challenge2 : PhoneApplicationPage
+    public partial class Challenge2
     {
-        const int FREE_TIME = 5;
+        private const int FreeTime = 5;
 
-        private ChallengeDetail2 currentChallenge;    // Instancia del desafio.
-        private IFacadeController ifc;                // Interface del controlador Fachada.
+        private ChallengeDetail2 _currentChallenge;    // Instancia del desafio.
+        private IFacadeController _ifc;                // Interface del controlador Fachada.
          
-        private int aciertos;                         // Cantidad de haciertos.
+        private int _aciertos;                         // Cantidad de haciertos.
 
-        private int[] secondsToWakeMeUp;
-        private DateTime finishTime;
-        private DateTime startTime;
+        private int[] _secondsToWakeMeUp;
+        private DateTime _finishTime;
+        private DateTime _startTime;
 
-        private DispatcherTimer timer;
-        private Accelerometer acelerometro;
+        private DispatcherTimer _timer;
+        private Accelerometer _acelerometro;
 
-        private Stopwatch stopwatch = new Stopwatch(); //un objeto tipo Cronómetro
+        readonly Stopwatch _stopwatch = new Stopwatch(); //un objeto tipo Cronómetro
 
         public Challenge2() 
         {
             InitializeComponent();
 
-            NavigationInTransition navigateInTransition = new NavigationInTransition();
-            navigateInTransition.Backward = new SlideTransition { Mode = SlideTransitionMode.SlideRightFadeIn };
-            navigateInTransition.Forward = new SlideTransition { Mode = SlideTransitionMode.SlideLeftFadeIn };
+            var navigateInTransition = new NavigationInTransition
+            {
+                Backward = new SlideTransition { Mode = SlideTransitionMode.SlideRightFadeIn },
+                Forward = new SlideTransition { Mode = SlideTransitionMode.SlideLeftFadeIn }
+            };
 
-            NavigationOutTransition navigateOutTransition = new NavigationOutTransition();
-            navigateOutTransition.Backward = new SlideTransition { Mode = SlideTransitionMode.SlideRightFadeOut };
-            navigateOutTransition.Forward = new SlideTransition { Mode = SlideTransitionMode.SlideLeftFadeOut };
+            var navigateOutTransition = new NavigationOutTransition
+            {
+                Backward = new SlideTransition { Mode = SlideTransitionMode.SlideRightFadeOut },
+                Forward = new SlideTransition { Mode = SlideTransitionMode.SlideLeftFadeOut }
+            };
             TransitionService.SetNavigationInTransition(this, navigateInTransition);
             TransitionService.SetNavigationOutTransition(this, navigateOutTransition);
 
 
-            this.Inicializar();
+            Inicializar();
         }
-
-
+        
         private void Inicializar()
         {
-            try
+            // Si el acelerometro no es soportado por el dispositivo, mostramos un mensaje y volvemos al listado de desafios.
+            if (!Accelerometer.IsSupported)
             {
-                if (!Accelerometer.IsSupported)
-                    throw new Exception("Lamentablemente su dispositivo no tiene las caracteristicas necesarias para jugar este desafio.");
-
-                // OBTENEMOS LA INSTANCIA DEL DESAFIO.
-                /* hay que prolijear esto con una factory */
-                ifc = FacadeController.GetInstance();
-                this.currentChallenge = (ChallengeDetail2)ifc.getChallenge(2);
-
-                if (this.currentChallenge.State.CurrentAttempt == this.currentChallenge.MaxAttempt)
-                    throw new Exception("Ya ha realizado el número máximo de intentos en la ronda actual.");
-
-                // INICIALIZAMOS LAS ETIQUETAS DEL DETALLE DEL DESAFIO
-                this.ShowST.Text = this.currentChallenge.getDTChallenge().StartTime.ToString(); // Tiempo de iniciado el desafio.
-                this.ShowToBeat.Text = this.currentChallenge.State.BestScore + " pts";               // Puntaje a vencer.
-                this.ShowDuration.Text = this.currentChallenge.getDurationString();                  // Tiempo retante para realizar el desafio.   
-                this.ShowTime.Text = "---";                                                          // Tiempo transcurrido.
-
-                // IINICIALIZAMOS EL TIMER
-                timer = new DispatcherTimer();
-                timer.Interval = new TimeSpan(0, 0, 1);
-                timer.Tick += timerTick;
-
-                // INICIALIZAMOS EL ACELEROMETRO.
-                this.acelerometro = new Accelerometer();
-
-                // ACIERTOS            
-                this.aciertos = 0;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-
-                this.Dispatcher.BeginInvoke(delegate()
+                MessageBox.Show("Lamentablemente su dispositivo no tiene las caracteristicas necesarias para jugar este desafio.");
+                Dispatcher.BeginInvoke(delegate
                 {
-                    Uri uri = new Uri("/BeatIt!;component/AppCode/Pages/Home.xaml", UriKind.Relative);
-                    NavigationService.Navigate(uri);                    
-                });                
+                    var uri = new Uri("/BeatIt!;component/AppCode/Pages/Home.xaml", UriKind.Relative);
+                    NavigationService.Navigate(uri);
+                });
             }
+
+            // OBTENEMOS LA INSTANCIA DEL DESAFIO.
+            /* hay que prolijear esto con una factory */
+            _ifc = FacadeController.GetInstance();
+            _currentChallenge = (ChallengeDetail2) _ifc.getChallenge(2);
+
+            // Si ya juegue todos los intentos, muestro un mensaje y vuelvo al detalle del desafio
+            if (_currentChallenge.State.CurrentAttempt == _currentChallenge.MaxAttempt)
+            {
+                MessageBox.Show("Ya ha realizado el número máximo de intentos en la ronda actual.");
+                Dispatcher.BeginInvoke(delegate
+                {
+                    var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
+                    NavigationService.Navigate(uri);
+                });
+            }
+
+            // INICIALIZAMOS LAS ETIQUETAS DEL DETALLE DEL DESAFIO
+            ShowST.Text = _currentChallenge.getDTChallenge().StartTime.ToString(CultureInfo.InvariantCulture);
+                // Tiempo de iniciado el desafio.
+            ShowToBeat.Text = _currentChallenge.State.BestScore + " pts"; // Puntaje a vencer.
+            ShowDuration.Text = _currentChallenge.getDurationString(); // Tiempo retante para realizar el desafio.   
+            ShowTime.Text = "---"; // Tiempo transcurrido.
+
+            // IINICIALIZAMOS EL TIMER
+            _timer = new DispatcherTimer {Interval = new TimeSpan(0, 0, 1)};
+            _timer.Tick += TimerTick;
+
+            // INICIALIZAMOS EL ACELEROMETRO.
+            _acelerometro = new Accelerometer();
+
+            // ACIERTOS            
+            _aciertos = 0;
+
+            // Color del Boton start.
+            InProgressGridRectangle.Fill = GetColorFromHexa(_currentChallenge.ColorHex);
         }
-
-
-        private void timerTick(object sender, EventArgs e)
+        
+        private void TimerTick(object sender, EventArgs e)
         {
-            TimeSpan tiempoTranscurrido = this.stopwatch.Elapsed;
-            DateTime aux = this.startTime.Add(tiempoTranscurrido);
+            var tiempoTranscurrido = _stopwatch.Elapsed;
+            var aux = _startTime.Add(tiempoTranscurrido);
 
             // Si es tiempo de desaparecer el timer, lo borramos.
-            if (tiempoTranscurrido.TotalSeconds <= FREE_TIME)
-                this.ShowTime.Text = Math.Round((this.secondsToWakeMeUp[aciertos] + FREE_TIME - tiempoTranscurrido.TotalSeconds), 0).ToString();
-            else
-                this.ShowTime.Text = "Wake Me Up!";
-
-
-            if (aux > this.finishTime && (aux - this.finishTime).TotalMilliseconds > 500) // Si me pase del tiempo y no desperte a nadie, termina el juego.
+            if (!(tiempoTranscurrido.TotalSeconds <= FreeTime))
             {
-                this.timer.Stop();
-                this.acelerometro.Stop();
-                this.stopwatch.Stop();
+                ShowTime.Text = "Wake Me Up!";
+                InProgressGridRectangle.Fill = GetColorFromHexa("#FFe51400");
+            }
+            else
+            {
+                ShowTime.Text =
+                    Math.Round((_secondsToWakeMeUp[_aciertos] + FreeTime - tiempoTranscurrido.TotalSeconds), 0)
+                        .ToString(CultureInfo.InvariantCulture);
+                InProgressGridRectangle.Fill = GetColorFromHexa(_currentChallenge.ColorHex);
+            }
 
-                MessageBox.Show("El desafio ha finalizado, ha obtenido " + this.currentChallenge.calculatPuntaje(this.aciertos).ToString() + " puntos.");
 
-                this.currentChallenge.CompleteChallenge(this.aciertos);
+            if (aux > _finishTime && (aux - _finishTime).TotalMilliseconds > 500) // Si me pase del tiempo y no desperte a nadie, termina el juego.
+            {
+                _timer.Stop();
+                _acelerometro.Stop();
+                _stopwatch.Stop();
+
+                MessageBox.Show("El desafio ha finalizado, ha obtenido " + _currentChallenge.CalculatPuntaje(_aciertos).ToString(CultureInfo.InvariantCulture) + " puntos.");
+
+                _currentChallenge.CompleteChallenge(_aciertos);
                 
-                Uri uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
+                var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
                 NavigationService.Navigate(uri);
             }
         }
-
-
-        private void tickTemp(object sender, EventArgs e)
-        {
-
-        }
-
-
-        // VER CUAL ES LA IDEA DE ESTA FUNCION????????????????????????????????????????????????
-        private void image1_ImageFailed(object sender, ExceptionRoutedEventArgs e)
-        {
-
-        }
-
-
+        
         private void hyperlinkButtonStartRunning_Click(object sender, RoutedEventArgs e)
         {
-            this.StartPlayGrid.Visibility = Visibility.Collapsed;
-            this.InProgressGrid.Visibility = Visibility.Visible;
+            StartPlayGrid.Visibility = Visibility.Collapsed;
+            InProgressGrid.Visibility = Visibility.Visible;
 
-            this.secondsToWakeMeUp = this.currentChallenge.getSecondsToWakeMeUp();
-            this.startTime = System.DateTime.Now;
-            this.finishTime = this.startTime.Add(new TimeSpan(0, 0, this.secondsToWakeMeUp[0] + FREE_TIME));
+            _secondsToWakeMeUp = _currentChallenge.GetSecondsToWakeMeUp();
+            _startTime = DateTime.Now;
+            _finishTime = _startTime.Add(new TimeSpan(0, 0, _secondsToWakeMeUp[0] + FreeTime));
 
             // INICIALIZAMOS EL TIMER.
-            this.timer.Start();
-            this.stopwatch.Start();
+            _timer.Start();
+            _stopwatch.Start();
 
-            this.acelerometro.CurrentValueChanged += new EventHandler<SensorReadingEventArgs<AccelerometerReading>>(acelerometro_CurrentValueChanged);
-            this.acelerometro.TimeBetweenUpdates = new TimeSpan(0,0,0,0,100);
-            this.acelerometro.Start();
+            _acelerometro.CurrentValueChanged += acelerometro_CurrentValueChanged;
+            _acelerometro.TimeBetweenUpdates = new TimeSpan(0,0,0,0,100);
+            _acelerometro.Start();
         }
-
         
         /// <summary>
         /// Este metodo es llamado cuando existe un cambio en los datos del acelerometro, en el mismo se determinara
-        /// si la aceleración captada es considerable, y en dicho caso:
+        /// si la aceleración captada es considerable, en dicho caso:
         /// Si (Me desperto a tiempo)
         ///     aciertos ++
         ///     Si (no quedan por despertar)
@@ -178,31 +181,31 @@ namespace BeatIt_.AppCode.Pages
             //Transladamos los datos a recoger del BackgroundThread y los enviamos al MainThread
             Dispatcher.BeginInvoke(() =>
             {
-                Microsoft.Xna.Framework.Vector3 vector = e.SensorReading.Acceleration;
-
-                if ((Math.Abs(Math.Round(Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y + vector.Z * vector.Z), 1)) > 2) && this.stopwatch.ElapsedMilliseconds > FREE_TIME * 1000) // Si Sacudi el celular lo suficiente.
+                var vector = e.SensorReading.Acceleration;
+                
+                if ((Math.Abs(Math.Round(Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y + vector.Z * vector.Z), 1)) > 2) && _stopwatch.ElapsedMilliseconds > FreeTime * 1000) // Si Sacudi el celular lo suficiente.
                 {
-                    this.acelerometro.Stop();
-                    this.timer.Stop();
-                    this.stopwatch.Stop();
+                    _acelerometro.Stop();
+                    _timer.Stop();
+                    _stopwatch.Stop();
 
-                    PlaySound("/BeatIt!;component/Sounds/dog_bark.wav");                    
+                    PlaySound("/BeatIt!;component/Sounds/ring.wav");                    
 
                     bool finalizar = false;
 
-                    if (Math.Abs(FREE_TIME * 1000 + this.secondsToWakeMeUp[this.aciertos] * 1000 - this.stopwatch.ElapsedMilliseconds) <= 500) // Si me desperto a tiempo.
+                    if (Math.Abs(FreeTime * 1000 + _secondsToWakeMeUp[_aciertos] * 1000 - _stopwatch.ElapsedMilliseconds) <= 500) // Si me desperto a tiempo.
                     {
-                        this.aciertos++;
-                        if (aciertos == this.secondsToWakeMeUp.Length)
+                        _aciertos++;
+                        if (_aciertos == _secondsToWakeMeUp.Length)
                             finalizar = true;
                         else
                         {
-                            this.startTime = System.DateTime.Now;
-                            this.finishTime = this.startTime.Add(new TimeSpan(0, 0, this.secondsToWakeMeUp[aciertos] + FREE_TIME));
-                            this.timer.Start();
-                            this.stopwatch.Reset();
-                            this.stopwatch.Start();
-                            this.acelerometro.Start();
+                            _startTime = DateTime.Now;
+                            _finishTime = _startTime.Add(new TimeSpan(0, 0, _secondsToWakeMeUp[_aciertos] + FreeTime));
+                            _timer.Start();
+                            _stopwatch.Reset();
+                            _stopwatch.Start();
+                            _acelerometro.Start();
                         }
                     }
                     else
@@ -210,25 +213,37 @@ namespace BeatIt_.AppCode.Pages
 
                     if (finalizar) // Si el desafio finalizo, ya sea porque se equivoco al despertar o porque acerto en todas las despertadas.
                     {
-                        this.currentChallenge.CompleteChallenge(this.aciertos);
+                        _currentChallenge.CompleteChallenge(_aciertos);
 
-                        MessageBox.Show("El desafio ha finalizado, ha obtenido " + this.currentChallenge.calculatPuntaje(this.aciertos).ToString() + " puntos.");                                                
+                        // No funciona dentro del begin invoke.
+                        //MessageBox.Show("El desafio ha finalizado, ha obtenido " + _currentChallenge.CalculatPuntaje(_aciertos).ToString(CultureInfo.InvariantCulture) + " puntos.");                                                
 
-                        Uri uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
+                        var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
                         NavigationService.Navigate(uri);
                     }
                 }
             });
         }
-
-
+        
         private void PlaySound(string path)
         {
-            StreamResourceInfo _stream = Application.GetResourceStream(new Uri(path, UriKind.Relative));
-            SoundEffect _soundeffect = SoundEffect.FromStream(_stream.Stream);
-            SoundEffectInstance soundInstance = _soundeffect.CreateInstance();
+            StreamResourceInfo stream = Application.GetResourceStream(new Uri(path, UriKind.Relative));
+            SoundEffect soundeffect = SoundEffect.FromStream(stream.Stream);
+            SoundEffectInstance soundInstance = soundeffect.CreateInstance();
             FrameworkDispatcher.Update();
             soundInstance.Play();
+        }
+        
+        public static SolidColorBrush GetColorFromHexa(string hexaColor)
+        {
+            return new SolidColorBrush(
+                System.Windows.Media.Color.FromArgb(
+                    Convert.ToByte(hexaColor.Substring(1, 2), 16),
+                    Convert.ToByte(hexaColor.Substring(3, 2), 16),
+                    Convert.ToByte(hexaColor.Substring(5, 2), 16),
+                    Convert.ToByte(hexaColor.Substring(7, 2), 16)
+                )
+            );
         }
     }
 }
