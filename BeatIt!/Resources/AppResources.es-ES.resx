@@ -150,6 +150,9 @@
   <data name="Challenge2_StartButton" xml:space="preserve">
     <value>Comenzar!</value>
   </data>
+  <data name="Challenge3_BackButton" xml:space="preserve">
+    <value>Volver al desafío</value>
+  </data>
   <data name="Challenge3_Delete" xml:space="preserve">
     <value>Borrar Publicación del muro</value>
   </data>
@@ -167,6 +170,9 @@ Android: https://play.google.com/store/apps/details?id=com.g6pis.beatit&amp;ah=m
   <data name="Challenge3_PostWallButton" xml:space="preserve">
     <value>Publicar en el muro</value>
   </data>
+  <data name="Challenge3_SendBtn" xml:space="preserve">
+    <value>Enviar</value>
+  </data>
   <data name="Challenge3_SmsSend" xml:space="preserve">
     <value>Enviar SMS</value>
   </data>
@@ -174,7 +180,7 @@ Android: https://play.google.com/store/apps/details?id=com.g6pis.beatit&amp;ah=m
     <value>Invita amigos</value>
   </data>
   <data name="Challenge4_DescriptionTxtBlockText" xml:space="preserve">
-    <value>En este desafío debes...</value>
+    <value>En este desafío debes callar lo mas pronto posible a el perro presionando el botón rojo.</value>
   </data>
   <data name="Challenge4_StartButton" xml:space="preserve">
     <value>Comenzar!</value>
@@ -183,7 +189,7 @@ Android: https://play.google.com/store/apps/details?id=com.g6pis.beatit&amp;ah=m
     <value>Cállate!</value>
   </data>
   <data name="Challenge6_DescriptionTxtBlockText" xml:space="preserve">
-    <value>Descripcion Desafio Celular Volador Español</value>
+    <value>En este desafío debes lanzar el celular lo más alto que puedas.</value>
   </data>
   <data name="HomePage_ChallengesPivotTitle" xml:space="preserve">
     <value>Desafíos</value>

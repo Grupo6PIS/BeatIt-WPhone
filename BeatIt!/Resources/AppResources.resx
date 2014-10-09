@@ -150,6 +150,9 @@
   <data name="Challenge2_StartButton" xml:space="preserve">
     <value>Start!</value>
   </data>
+  <data name="Challenge3_BackButton" xml:space="preserve">
+    <value>Back to challenge</value>
+  </data>
   <data name="Challenge3_Delete" xml:space="preserve">
     <value>Delete publication form wall </value>
   </data>
@@ -165,7 +168,10 @@ Windows: http://www.windowsphone.com/en-us/store/app/beatit/66fa9546-f6ae-4a10-8
 Android: https://play.google.com/store/apps/details?id=com.g6pis.beatit&amp;ah=mcoN2TjRF_obuPnlAcKtanl9mFk</value>
   </data>
   <data name="Challenge3_PostWallButton" xml:space="preserve">
-    <value>Post in my wall</value>
+    <value>Post on my wall</value>
+  </data>
+  <data name="Challenge3_SendBtn" xml:space="preserve">
+    <value>Send</value>
   </data>
   <data name="Challenge3_SmsSend" xml:space="preserve">
     <value>Send SMS</value>
@@ -174,7 +180,7 @@ Android: https://play.google.com/store/apps/details?id=com.g6pis.beatit&amp;ah=m
     <value>Invite Friends</value>
   </data>
   <data name="Challenge4_DescriptionTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to ....</value>
+    <value>In this challenge you need to shut up the dog as quickly as you can by pressing the red button.</value>
   </data>
   <data name="Challenge4_StartButton" xml:space="preserve">
     <value>Start!</value>
@@ -183,7 +189,7 @@ Android: https://play.google.com/store/apps/details?id=com.g6pis.beatit&amp;ah=m
     <value>Stop</value>
   </data>
   <data name="Challenge6_DescriptionTxtBlockText" xml:space="preserve">
-    <value>Descripcion Desafio Celular Volador Ingles</value>
+    <value>In this challenge you have to throw your cellphone as high as you can.</value>
   </data>
   <data name="HomePage_ChallengesPivotTitle" xml:space="preserve">
     <value>Challenges</value>
