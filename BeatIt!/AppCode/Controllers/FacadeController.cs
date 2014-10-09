@@ -25,15 +25,9 @@ namespace BeatIt_.AppCode.Controllers
 
         private FacadeController()
         {
-            //try
-            //{
             _db = new SQLiteConnection("BeatItDB.db");
             _db.CreateTable<DTStatePersistible>();
             _isForTesting = false;
-            //}
-            //catch (Exception ex)
-            //{
-            //}
         }
 
         private FacadeController(bool isForTesting)
@@ -255,16 +249,10 @@ namespace BeatIt_.AppCode.Controllers
 
         public bool SaveState(State state)
         {
-            try
-            {
-                var dts = state.getDTStatePersistible();
-                _db.Update(dts);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            var dts = state.getDTStatePersistible();
+            int rowsAffected = _db.Update(dts);
+
+            return rowsAffected > 0;
         }
 
         public static FacadeController GetInstanceForTesting(User user, DateTime fechaDesdeRonda,
