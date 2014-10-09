@@ -59,7 +59,10 @@ namespace BeatIt_.AppCode.Challenges
             {
                 this.State.LastScore = this.calculateScore(maxSpeed, avgSpeed);
                 if (this.State.LastScore > this.State.BestScore)
+                {
                     this.State.BestScore = this.State.LastScore;
+                    FacadeController.GetInstance().SetHayCambiosParaEnviar();
+                }
             }
             else 
             {

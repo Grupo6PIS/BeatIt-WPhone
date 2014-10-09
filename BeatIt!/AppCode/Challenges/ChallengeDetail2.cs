@@ -56,7 +56,10 @@ namespace BeatIt_.AppCode.Challenges
         {
             State.LastScore = CalculatPuntaje(cantCorrectWakeUp);
             if (State.LastScore > State.BestScore)
+            {
                 State.BestScore = State.LastScore;
+                FacadeController.GetInstance().SetHayCambiosParaEnviar();
+            }
             State.CurrentAttempt = State.CurrentAttempt + 1;
             if (State.CurrentAttempt == MaxAttempt)
                 State.Finished = true;

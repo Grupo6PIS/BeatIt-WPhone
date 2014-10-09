@@ -57,6 +57,19 @@ namespace BeatIt_.AppCode.Pages
             ApplicationBar.Buttons.Add(refreshBtn);
             refreshBtn.Click += RefreshBtn_Click;
 
+            ////////////////////////////////////////////////////////////////////////////
+            /// OJOOOOOOOOOOOOOOO! SOLO PARA IR PROBANDO
+            ////////////////////////////////////////////////////////////////////////////
+            var sendBtn = new ApplicationBarIconButton
+            {
+                IconUri = new Uri("/Images/appbar_refresh.png", UriKind.Relative),
+                Text = "Enviar Score"
+            };
+            ApplicationBar.Buttons.Add(sendBtn);
+            sendBtn.Click += SendBtn_Click;
+            ////////////////////////////////////////////////////////////////////////////
+
+
             _facade = FacadeController.GetInstance();
             var loggedUser = _facade.getCurrentUser();
 
@@ -202,5 +215,27 @@ namespace BeatIt_.AppCode.Pages
                 Dispatcher.BeginInvoke(() => MessageBox.Show("Ha ocurrido un error al actualizar el ranking"));   
             }
         }
+
+        ////////////////////////////////////////////////////////////////////////////
+        /// OJOOOOOOOOOOOOOOO! SOLO PARA IR PROBANDO
+        ////////////////////////////////////////////////////////////////////////////
+        private void SendBtn_Click(object sender, EventArgs e)
+        {
+            //if (_isRefreshingRanking) return;
+            //_isRefreshingRanking = true;
+            ProgressBar.Visibility = Visibility.Visible;
+            FacadeController.GetInstance().UploadPuntaje(GetSendFinished);
+        }
+
+        private void GetSendFinished(JObject jsonResponse)
+        {
+            //_isRefreshingRanking = false;
+            ProgressBar.Visibility = Visibility.Collapsed;
+            if ((bool)jsonResponse["error"])
+            {
+                Dispatcher.BeginInvoke(() => MessageBox.Show("Ha ocurrido un error al actualizar el ranking"));
+            }
+        }
+        ////////////////////////////////////////////////////////////////////////////
     }
 }

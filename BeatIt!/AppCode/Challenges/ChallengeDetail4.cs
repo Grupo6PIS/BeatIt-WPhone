@@ -48,8 +48,11 @@ namespace BeatIt_.AppCode.Challenges
 
             State.LastScore = CalculateScore(miliseconds);
             if (State.LastScore > State.BestScore)
+            {
                 State.BestScore = State.LastScore;
-    
+                FacadeController.GetInstance().SetHayCambiosParaEnviar();
+            }
+
             if (State.CurrentAttempt == MaxAttempt)
             {
                 State.Finished = true;

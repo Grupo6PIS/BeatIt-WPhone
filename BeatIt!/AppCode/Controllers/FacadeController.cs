@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO.IsolatedStorage;
+using System.Linq;
 using BeatIt_.AppCode.Challenges;
 using BeatIt_.AppCode.Classes;
 using BeatIt_.AppCode.Datatypes;
@@ -22,9 +24,11 @@ namespace BeatIt_.AppCode.Controllers
         private Round _currentRound;
         private User _currentUser;
         private List<DTRanking> _ranking;
+        private bool _hayCambiosParaEnviar;
 
         private FacadeController()
         {
+            _hayCambiosParaEnviar = false;
             _db = new SQLiteConnection("BeatItDB.db");
             _db.CreateTable<DTStatePersistible>();
             _isForTesting = false;
@@ -349,6 +353,28 @@ namespace BeatIt_.AppCode.Controllers
             _instance._ranking = new List<DTRanking> {r1, r2, r3, r4, r5, r6, r7};
 
             return _instance;
+        }
+
+        public void SetHayCambiosParaEnviar()
+        {
+            _hayCambiosParaEnviar = true;
+        }
+
+        public void UploadPuntaje(WebServicesController.CallbackWebService callback)
+        {
+            // Primero Si hay cambios para enviar vemos si hay cambios para enviar, en caso positivo
+            // calculamos el puntaje total y lo enviamos.
+            if (_hayCambiosParaEnviar)
+            {
+                int totalPuntos = _currentRound.Challenges.Where(variable => variable.Value.IsEnabled).Sum(variable => variable.Value.State.BestScore);
+                var wsController = new WebServicesController();
+                wsController.SendScore(_currentUser.UserId.ToString(CultureInfo.InvariantCulture), totalPuntos, callback);
+            }
+            else
+            {
+                const string errorStr = "{'error':true}";
+                callback(JObject.Parse(errorStr));
+            }
         }
     }
 }
