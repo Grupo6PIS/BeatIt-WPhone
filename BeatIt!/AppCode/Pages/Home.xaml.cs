@@ -62,8 +62,8 @@ namespace BeatIt_.AppCode.Pages
             ////////////////////////////////////////////////////////////////////////////
             var sendBtn = new ApplicationBarIconButton
             {
-                IconUri = new Uri("/Images/appbar_refresh.png", UriKind.Relative),
-                Text = "Enviar Score"
+                IconUri = new Uri("/Images/appbar_upload.png", UriKind.Relative),
+                Text = "Enviar Puntaje"
             };
             ApplicationBar.Buttons.Add(sendBtn);
             sendBtn.Click += SendBtn_Click;
