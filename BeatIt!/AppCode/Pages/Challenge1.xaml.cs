@@ -76,10 +76,10 @@ namespace BeatIt_.AppCode.Pages
 
 
             // INICIALIZAMOS LAS ETIQUETAS DEL DETALLE DEL DESAFIO
-            StartTimeTextBlock.Text = _currentChallenge.getDTChallenge().StartTime.ToString(CultureInfo.InvariantCulture);
+            StartTimeTextBlock.Text = _currentChallenge.GetDtChallenge().StartTime.ToString(CultureInfo.InvariantCulture);
                 // Ojo ver el tema de la fecha y hora (Cuando estamos en el limite de una ronda y la otra).
             ToBeatTextBlock.Text = _currentChallenge.State.BestScore + " pts";
-            DurationTextBlock.Text = _currentChallenge.getDurationString();
+            DurationTextBlock.Text = _currentChallenge.GetDurationString();
 
             ShowTime.Text = _minTime.ToString(CultureInfo.InvariantCulture);
             ShowSpeed.Text = "0.00";

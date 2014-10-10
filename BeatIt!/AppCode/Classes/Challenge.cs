@@ -15,34 +15,29 @@ namespace BeatIt_.AppCode.Classes
         public Round Round { get; set; }
         public State State { get; set; }
 
-        public Challenge()
+        public DTChallenge GetDtChallenge()
         {
-        }
-
-        public DTChallenge getDTChallenge()
-        {
-            return new DTChallenge(this.ChallengeId,
-                                   this.Name,
-                                   this.Description,
-                                   this.IsEnabled,
-                                   this.Level,
-                                   this.State.Finished,
-                                   this.State.CurrentAttempt,
-                                   this.State.BestScore,
-                                   this.State.LastScore,
-                                   this.State.StartDate);
+            return new DTChallenge(ChallengeId,
+                                   Name,
+                                   Description,
+                                   IsEnabled,
+                                   Level,
+                                   State.Finished,
+                                   State.CurrentAttempt,
+                                   State.BestScore,
+                                   State.LastScore,
+                                   State.StartDate);
         }
 
         /// <summary>
         /// Retorna un string con el tiempo restante para realizar el desafio.
         /// </summary>
-        /// <param name="roundDate">Es el tiempo de finalizacion de la ronda,</param>
         /// <returns></returns>
-        public string getDurationString()
+        public string GetDurationString()
         {
-            String result = "";
+            String result;
             DateTime dateToday = DateTime.Now;
-            TimeSpan dif = this.Round.EndDate - dateToday;
+            TimeSpan dif = Round.EndDate - dateToday;
             int days = dif.Days;
             if (days > 0)
             {

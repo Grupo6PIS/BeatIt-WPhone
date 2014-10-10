@@ -9,10 +9,5 @@ namespace BeatIt_.AppCode.Classes
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public Dictionary<int, Challenge> Challenges { get; set; }
-
-        public Round()
-        {
-           
-        }
     }
 }

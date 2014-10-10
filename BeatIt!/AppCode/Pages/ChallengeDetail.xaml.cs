@@ -54,7 +54,7 @@ namespace BeatIt_.Pages
 
             Uri uri = new Uri("/BeatIt!;component/Images/icon_challenge_" + challenge.ChallengeId + ".png", UriKind.Relative);
             this.iconImage.Source = new BitmapImage(uri);
-            this.startDateTxtBlock.Text = challenge.getDTChallenge().StartTime.ToString();
+            this.startDateTxtBlock.Text = challenge.GetDtChallenge().StartTime.ToString();
             this.attemptsTxtBlock.Text = challenge.State.CurrentAttempt + "/" + challenge.MaxAttempt;
         }
 

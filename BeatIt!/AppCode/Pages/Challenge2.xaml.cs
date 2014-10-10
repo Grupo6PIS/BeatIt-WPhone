@@ -88,10 +88,10 @@ namespace BeatIt_.AppCode.Pages
             }
 
             // INICIALIZAMOS LAS ETIQUETAS DEL DETALLE DEL DESAFIO
-            ShowST.Text = _currentChallenge.getDTChallenge().StartTime.ToString(CultureInfo.InvariantCulture);
+            ShowST.Text = _currentChallenge.GetDtChallenge().StartTime.ToString(CultureInfo.InvariantCulture);
                 // Tiempo de iniciado el desafio.
             ShowToBeat.Text = _currentChallenge.State.BestScore + " pts"; // Puntaje a vencer.
-            ShowDuration.Text = _currentChallenge.getDurationString(); // Tiempo retante para realizar el desafio.   
+            ShowDuration.Text = _currentChallenge.GetDurationString(); // Tiempo retante para realizar el desafio.   
             ShowTime.Text = "---"; // Tiempo transcurrido.
 
             // IINICIALIZAMOS EL TIMER

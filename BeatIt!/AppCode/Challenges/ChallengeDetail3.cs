@@ -6,8 +6,8 @@ namespace BeatIt_.AppCode.Challenges
 {
     public class ChallengeDetail3 : Challenge
     {
-        private int _countFacebook = 0;
-        private int _countSMS = 0;
+        private int _countFacebook;
+        private int _countSms;
 
         public ChallengeDetail3(int challengeId, string name, string colorHex, int level, int maxAttempts)
         {
@@ -17,18 +17,18 @@ namespace BeatIt_.AppCode.Challenges
             Description = "You have to invite friends using SMS of Facebook";
             IsEnabled = true;
             Level = level;
-            this.MaxAttempt = maxAttempts;
+            MaxAttempt = maxAttempts;
         }
 
         public ChallengeDetail3() 
         {
-            this.ChallengeId = 3;
-            this.Name = "Invite Friends";
-            this.ColorHex = "#FF3B5998";
-            this.Description = "You have to invite friends using SMS of Facebook";
-            this.IsEnabled = true;
-            this.Level = 1;
-            this.MaxAttempt = 3;
+            ChallengeId = 3;
+            Name = "Invite Friends";
+            ColorHex = "#FF3B5998";
+            Description = "You have to invite friends using SMS of Facebook";
+            IsEnabled = true;
+            Level = 1;
+            MaxAttempt = 3;
         }
 
         public void AddFacebook()
@@ -38,18 +38,18 @@ namespace BeatIt_.AppCode.Challenges
 
         public void AddSms()
         {
-            _countSMS++;
+            _countSms++;
         }
 
         private int CalculateScore()
         {
-            if ((Level == 1) && ((_countFacebook >= 1) && (_countSMS >= 2)))
+            if ((Level == 1) && ((_countFacebook >= 1) && (_countSms >= 2)))
             {
-                return (_countFacebook + 3*_countSMS)*10;
+                return (_countFacebook + 3*_countSms)*10;
             }
-            if ((Level == 2) && ((_countFacebook >= 1) && (_countSMS >= 4)))
+            if ((Level == 2) && ((_countFacebook >= 1) && (_countSms >= 4)))
             {
-                return (_countFacebook + 3*_countSMS)*10;
+                return (_countFacebook + 3*_countSms)*10;
             }
             return 0;
         }
@@ -78,7 +78,7 @@ namespace BeatIt_.AppCode.Challenges
             {
                 State.Finished = true;
             }
-            var actualizo = FacadeController.GetInstance().SaveState(this.State);
+            FacadeController.GetInstance().SaveState(State);
 
             return new KeyValuePair<bool, int>(newScore,score);
         }

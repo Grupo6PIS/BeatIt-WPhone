@@ -1,4 +1,5 @@
 
+﻿using System.Globalization;
 ﻿using Microsoft.Phone.Controls;
 ﻿using System;
 using System.Windows;
@@ -13,34 +14,38 @@ using Microsoft.Xna.Framework;
 
 namespace BeatIt_.AppCode.Pages
 {
-    public partial class Challenge6 : PhoneApplicationPage
+    public partial class Challenge6
     {
-        private ChallengeDetail6 currentChallenge;    // Instancia del desafio.
-        private IFacadeController ifc;                // Interface del controlador Fachada.
+        private ChallengeDetail6 _currentChallenge;    // Instancia del desafio.
+        private IFacadeController _ifc;                // Interface del controlador Fachada.
 
-        private bool estaEnElAire;
+        private bool _isFlying;
 
         // private DispatcherTimer timer;
-        private Accelerometer acelerometro;
+        private Accelerometer _accelerometer;
 
-        private Stopwatch stopwatch = new Stopwatch(); //un objeto tipo Cronómetro
+        private readonly Stopwatch _stopwatch = new Stopwatch(); //un objeto tipo Cronómetro
 
 
         public Challenge6()
         {
             InitializeComponent();
 
-            NavigationInTransition navigateInTransition = new NavigationInTransition();
-            navigateInTransition.Backward = new SlideTransition { Mode = SlideTransitionMode.SlideRightFadeIn };
-            navigateInTransition.Forward = new SlideTransition { Mode = SlideTransitionMode.SlideLeftFadeIn };
+            var navigateInTransition = new NavigationInTransition
+            {
+                Backward = new SlideTransition {Mode = SlideTransitionMode.SlideRightFadeIn},
+                Forward = new SlideTransition {Mode = SlideTransitionMode.SlideLeftFadeIn}
+            };
 
-            NavigationOutTransition navigateOutTransition = new NavigationOutTransition();
-            navigateOutTransition.Backward = new SlideTransition { Mode = SlideTransitionMode.SlideRightFadeOut };
-            navigateOutTransition.Forward = new SlideTransition { Mode = SlideTransitionMode.SlideLeftFadeOut };
+            var navigateOutTransition = new NavigationOutTransition
+            {
+                Backward = new SlideTransition {Mode = SlideTransitionMode.SlideRightFadeOut},
+                Forward = new SlideTransition {Mode = SlideTransitionMode.SlideLeftFadeOut}
+            };
             TransitionService.SetNavigationInTransition(this, navigateInTransition);
             TransitionService.SetNavigationOutTransition(this, navigateOutTransition);
 
-            this.Inicializar();
+            Inicializar();
         }
 
         private void Inicializar()
@@ -52,31 +57,31 @@ namespace BeatIt_.AppCode.Pages
 
                 // OBTENEMOS LA INSTANCIA DEL DESAFIO.
                 /* hay que prolijear esto con una factory */
-                ifc = FacadeController.GetInstance();
-                this.currentChallenge = (ChallengeDetail6)ifc.getChallenge(6);
+                _ifc = FacadeController.GetInstance();
+                _currentChallenge = (ChallengeDetail6)_ifc.getChallenge(6);
 
-                if (this.currentChallenge.State.CurrentAttempt == this.currentChallenge.MaxAttempt)
+                if (_currentChallenge.State.CurrentAttempt == _currentChallenge.MaxAttempt)
                     throw new Exception("Ya ha realizado el número máximo de intentos en la ronda actual.");
 
                 // INICIALIZAMOS LAS ETIQUETAS DEL DETALLE DEL DESAFIO
-                this.ShowST.Text = this.currentChallenge.getDTChallenge().StartTime.ToString(); // Tiempo de iniciado el desafio.
-                this.ShowToBeat.Text = this.currentChallenge.State.BestScore + " pts";               // Puntaje a vencer.
-                this.ShowDuration.Text = this.currentChallenge.getDurationString();                  // Tiempo retante para realizar el desafio.   
-                this.ShowTime.Text = "---";                                                          // Tiempo transcurrido.
+                ShowST.Text = _currentChallenge.GetDtChallenge().StartTime.ToString(CultureInfo.InvariantCulture); // Tiempo de iniciado el desafio.
+                ShowToBeat.Text = _currentChallenge.State.BestScore + " pts";               // Puntaje a vencer.
+                ShowDuration.Text = _currentChallenge.GetDurationString();                  // Tiempo retante para realizar el desafio.   
+                ShowTime.Text = "---";                                                          // Tiempo transcurrido.
 
                 // INICIALIZAMOS EL ACELEROMETRO.
-                this.acelerometro = new Accelerometer();
+                _accelerometer = new Accelerometer();
 
                 // EL CELULAR ESTA EN EL AIRE
-                this.estaEnElAire = false;
+                _isFlying = false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
 
-                this.Dispatcher.BeginInvoke(delegate()
+                Dispatcher.BeginInvoke(delegate
                 {
-                    Uri uri = new Uri("/BeatIt!;component/AppCode/Pages/Home.xaml", UriKind.Relative);
+                    var uri = new Uri("/BeatIt!;component/AppCode/Pages/Home.xaml", UriKind.Relative);
                     NavigationService.Navigate(uri);
                 });
             }
@@ -91,14 +96,14 @@ namespace BeatIt_.AppCode.Pages
 
         private void hyperlinkButtonStartRunning_Click(object sender, RoutedEventArgs e)
         {
-            this.StartPlayGrid.Visibility = Visibility.Collapsed;
+            StartPlayGrid.Visibility = Visibility.Collapsed;
             //this.InProgressGrid.Visibility = Visibility.Visible;
 
-            this.stopwatch.Reset();
+            _stopwatch.Reset();
 
-            this.acelerometro.CurrentValueChanged += new EventHandler<SensorReadingEventArgs<AccelerometerReading>>(_Accelerometer_CurrentValueChanged);
-            this.acelerometro.TimeBetweenUpdates = new TimeSpan(0, 0, 0, 0, 50);
-            this.acelerometro.Start();
+            _accelerometer.CurrentValueChanged += _Accelerometer_CurrentValueChanged;
+            _accelerometer.TimeBetweenUpdates = new TimeSpan(0, 0, 0, 0, 50);
+            _accelerometer.Start();
         }
 
 
@@ -115,26 +120,25 @@ namespace BeatIt_.AppCode.Pages
         }
 
 
-        /// <summary>
-        /// Este metodo es llamado cuando existe un cambio en los datos del acelerometro, en el mismo se determinara
-        /// si la aceleración captada es considerable, y en dicho caso:
-        ///
-        /// </summary>
-        /// <param name="sender"></param>
+        ///  <summary>
+        ///  Este metodo es llamado cuando existe un cambio en los datos del acelerometro, en el mismo se determinara
+        ///  si la aceleración captada es considerable, y en dicho caso:
+        /// 
+        ///  </summary>
         /// <param name="e"></param>
         private void ProcessAccelerometerReading(SensorReadingEventArgs<AccelerometerReading> e)
         {
             try
             {
-                Microsoft.Xna.Framework.Vector3 vector = e.SensorReading.Acceleration;
+                Vector3 vector = e.SensorReading.Acceleration;
 
-                if (!this.estaEnElAire) // Sie el celular esta en el aire y no habia marcado dicha situacion.
+                if (!_isFlying) // Sie el celular esta en el aire y no habia marcado dicha situacion.
                 {
                     if (Math.Abs(Math.Round(Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y + vector.Z * vector.Z), 3)) < 0.2)
                     {
-                        this.estaEnElAire = true;
-                        this.stopwatch.Start();
-                        this.PlaySound("/BeatIt!;component/Sounds/dog_bark.wav");
+                        _isFlying = true;
+                        _stopwatch.Start();
+                        PlaySound("/BeatIt!;component/Sounds/dog_bark.wav");
                     }
                 }
                 else
@@ -142,21 +146,21 @@ namespace BeatIt_.AppCode.Pages
                     double normaVector = Math.Abs(Math.Round(Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y + vector.Z * vector.Z), 3) - 1);
                     if (normaVector < 0.2) // Si detectamos un vector de fuerza suficiente, y el celular estaba en el aire, es porque ya lo agarraron.
                     {
-                        this.stopwatch.Stop();
-                        this.acelerometro.Stop();
+                        _stopwatch.Stop();
+                        _accelerometer.Stop();
 
-                        this.PlaySound("/BeatIt!;component/Sounds/dog_bark.wav");
+                        PlaySound("/BeatIt!;component/Sounds/dog_bark.wav");
 
-                        double tiempo = Convert.ToDouble(this.stopwatch.ElapsedMilliseconds) / 1000;
+                        double tiempo = Convert.ToDouble(_stopwatch.ElapsedMilliseconds) / 1000;
 
-                        this.estaEnElAire = false;
+                        _isFlying = false;
 
-                        this.StartPlayGrid.Visibility = Visibility.Visible;
+                        StartPlayGrid.Visibility = Visibility.Visible;
 
-                        this.currentChallenge.State.BestScore = this.currentChallenge.CalcularPuntaje(tiempo);
-                        this.currentChallenge.State.LastScore = this.currentChallenge.CalcularPuntaje(tiempo);
+                        _currentChallenge.State.BestScore = _currentChallenge.CalcularPuntaje(tiempo);
+                        _currentChallenge.State.LastScore = _currentChallenge.CalcularPuntaje(tiempo);
 
-                        Uri uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
+                        var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
                         NavigationService.Navigate(uri);
                     }
                 }
@@ -170,9 +174,9 @@ namespace BeatIt_.AppCode.Pages
 
         private void PlaySound(string path)
         {
-            StreamResourceInfo _stream = Application.GetResourceStream(new Uri(path, UriKind.Relative));
-            SoundEffect _soundeffect = SoundEffect.FromStream(_stream.Stream);
-            SoundEffectInstance soundInstance = _soundeffect.CreateInstance();
+            StreamResourceInfo stream = Application.GetResourceStream(new Uri(path, UriKind.Relative));
+            SoundEffect soundeffect = SoundEffect.FromStream(stream.Stream);
+            SoundEffectInstance soundInstance = soundeffect.CreateInstance();
             FrameworkDispatcher.Update();
             soundInstance.Play();
         }

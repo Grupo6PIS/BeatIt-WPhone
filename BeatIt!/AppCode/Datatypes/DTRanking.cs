@@ -15,11 +15,11 @@ namespace BeatIt_.AppCode.Datatypes
                          string name,
                          string imageUrl) 
         {
-            this.UserId = userId;
-            this.Position = position;
-            this.Score = score;
-            this.Name = name;
-            this.ImageUrl = imageUrl;
+            UserId = userId;
+            Position = position;
+            Score = score;
+            Name = name;
+            ImageUrl = imageUrl;
         }
     }
 }

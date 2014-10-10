@@ -53,10 +53,10 @@ namespace BeatIt_.AppCode.Pages
 
             PageTitle.Text = _currentChallenge.Name;
             TextDescription.Text = _currentChallenge.Description;
-            StartTimeTextBlock.Text = _currentChallenge.getDTChallenge()
+            StartTimeTextBlock.Text = _currentChallenge.GetDtChallenge()
                 .StartTime.ToString(CultureInfo.InvariantCulture);
             ToBeatTextBlock.Text = _currentChallenge.State.BestScore + " pts";
-            DurationTextBlock.Text = _currentChallenge.getDurationString();
+            DurationTextBlock.Text = _currentChallenge.GetDurationString();
 
             _soundTimer = new DispatcherTimer();
             _soundTimer.Tick += TickSoundTimer;

@@ -14,24 +14,26 @@ namespace BeatIt_.AppCode.Classes
 
         public State()
         {
-            this.Finished = false;
-            this.BestScore = 0;
-            this.LastScore = 0;
-            this.StartDate = System.DateTime.Now;
-            this.CurrentAttempt = 0;
+            Finished = false;
+            BestScore = 0;
+            LastScore = 0;
+            StartDate = DateTime.Now;
+            CurrentAttempt = 0;
         }
 
-        public DTStatePersistible getDTStatePersistible()
+        public DTStatePersistible GetDtStatePersistible()
         {
-            DTStatePersistible dt = new DTStatePersistible();
-            dt.id = this.Challenge.Round.RoundId*100 + this.Challenge.ChallengeId;
-            dt.RoundId = this.Challenge.Round.RoundId;
-            dt.ChallengeId = this.Challenge.ChallengeId;
-            dt.Finished = this.Finished;
-            dt.LastScore = this.LastScore;
-            dt.BestScore = this.BestScore;
-            dt.StartDate = this.StartDate;
-            dt.CurrentAttempt = this.CurrentAttempt;
+            var dt = new DTStatePersistible
+            {
+                Id = Challenge.Round.RoundId*100 + Challenge.ChallengeId,
+                RoundId = Challenge.Round.RoundId,
+                ChallengeId = Challenge.ChallengeId,
+                Finished = Finished,
+                LastScore = LastScore,
+                BestScore = BestScore,
+                StartDate = StartDate,
+                CurrentAttempt = CurrentAttempt
+            };
 
             return dt;
         }

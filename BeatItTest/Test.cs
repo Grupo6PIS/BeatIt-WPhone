@@ -91,7 +91,7 @@ namespace BeatIt.Tests
                 challenge.CompleteChallenge(r.Next(1, challenge.GetSecondsToWakeMeUp().Length + 1));
             }
 
-            DTChallenge dtc = challenge.getDTChallenge();
+            DTChallenge dtc = challenge.GetDtChallenge();
 
             Assert.AreEqual(dtc.Attempts, challenge.MaxAttempt);
             Assert.AreEqual(dtc.Finished, true);
@@ -102,16 +102,16 @@ namespace BeatIt.Tests
         public void TestingFunction_GetDurationString()
         {
             FacadeController cont = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6).AddMinutes(-1));
-            Assert.AreEqual(cont.getChallenge(2).getDurationString(), "5 dias");
+            Assert.AreEqual(cont.getChallenge(2).GetDurationString(), "5 dias");
 
             cont = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddHours(6).AddMinutes(-1));
-            Assert.AreEqual(cont.getChallenge(2).getDurationString(), "5 horas");
+            Assert.AreEqual(cont.getChallenge(2).GetDurationString(), "5 horas");
 
             cont = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddMinutes(6).AddSeconds(-1));
-            Assert.AreEqual(cont.getChallenge(2).getDurationString(), "5 minutos");
+            Assert.AreEqual(cont.getChallenge(2).GetDurationString(), "5 minutos");
 
             cont = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddMinutes(1).AddSeconds(-1));
-            Assert.AreEqual(cont.getChallenge(2).getDurationString(), "Menos de un minuto!!");
+            Assert.AreEqual(cont.getChallenge(2).GetDurationString(), "Menos de un minuto!!");
         }
     }
 };

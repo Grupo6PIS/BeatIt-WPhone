@@ -26,16 +26,16 @@ namespace BeatIt_.AppCode.Datatypes
                            int lastScore, 
                            DateTime startTime)
         {
-            this.ChallengeId = challengeId;
-            this.ChallengeName = challengeName;
-            this.ChallengeDescription = challengeDescription;
-            this.IsEnabled = isEnabled;
-            this.ChallengeLevel = challengeLevel;
-            this.Finished = finished;
-            this.Attempts = attempts;
-            this.BestScore = bestScore;
-            this.LastScore = lastScore;
-            this.StartTime = startTime;
+            ChallengeId = challengeId;
+            ChallengeName = challengeName;
+            ChallengeDescription = challengeDescription;
+            IsEnabled = isEnabled;
+            ChallengeLevel = challengeLevel;
+            Finished = finished;
+            Attempts = attempts;
+            BestScore = bestScore;
+            LastScore = lastScore;
+            StartTime = startTime;
         }
     }
 }

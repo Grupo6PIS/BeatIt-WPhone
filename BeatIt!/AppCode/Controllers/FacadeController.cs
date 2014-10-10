@@ -164,7 +164,7 @@ namespace BeatIt_.AppCode.Controllers
                 {
                     var s = new State {Challenge = aux.Value};
                     aux.Value.State = s;
-                    var dts = s.getDTStatePersistible();
+                    var dts = s.GetDtStatePersistible();
                     _db.Insert(dts);
                 }
             }
@@ -253,7 +253,7 @@ namespace BeatIt_.AppCode.Controllers
 
         public bool SaveState(State state)
         {
-            var dts = state.getDTStatePersistible();
+            var dts = state.GetDtStatePersistible();
             int rowsAffected = _db.Update(dts);
 
             return rowsAffected > 0;

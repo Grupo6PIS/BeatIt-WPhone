@@ -6,13 +6,13 @@ namespace BeatIt_.AppCode.Challenges
     {
         public ChallengeDetail5() 
         {
-            this.ChallengeId = 5;
-            this.Name = "Challenge 5";
-            this.ColorHex = "#FFFA6800";
-            this.Description = "Description 5";
-            this.IsEnabled = false;
-            this.Level = 1;
-            this.MaxAttempt = 3;
+            ChallengeId = 5;
+            Name = "Challenge 5";
+            ColorHex = "#FFFA6800";
+            Description = "Description 5";
+            IsEnabled = false;
+            Level = 1;
+            MaxAttempt = 3;
         }
     }
 }

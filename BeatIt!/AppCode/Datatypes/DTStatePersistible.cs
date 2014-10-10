@@ -6,7 +6,7 @@ namespace BeatIt_.AppCode.Datatypes
     public class DTStatePersistible
     {
         [PrimaryKey]
-        public int id { get; set; }
+        public int Id { get; set; }
 
         public int RoundId { get; set; }
         public int ChallengeId { get; set; }

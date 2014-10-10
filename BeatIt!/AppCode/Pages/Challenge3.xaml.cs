@@ -48,10 +48,10 @@ namespace BeatIt_.AppCode.Pages
             TransitionService.SetNavigationInTransition(this, navigateInTransition);
             TransitionService.SetNavigationOutTransition(this, navigateOutTransition);
 
-            ShowST.Text = _currentChallenge.getDTChallenge().StartTime.ToString(CultureInfo.InvariantCulture);
+            ShowST.Text = _currentChallenge.GetDtChallenge().StartTime.ToString(CultureInfo.InvariantCulture);
                 // Ojo ver el tema de la fecha y hora (Cuando estamos en el limite de una ronda y la otra).
             ShowToBeat.Text = _currentChallenge.State.BestScore + " pts";
-            ShowDuration.Text = _currentChallenge.getDurationString();
+            ShowDuration.Text = _currentChallenge.GetDurationString();
         }
 
         //onClick start playing
