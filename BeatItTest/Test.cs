@@ -18,7 +18,7 @@ namespace BeatIt.Tests
             // o mas bien crear un archivo, me parece que tiene algo que ver
             // con el contexto en el que se ejecuta el test.
             // Por eso gener un metodo a parte para generar la instancia del controlador, 
-            // en este metodos esta todo hardcodeado el tema de la carga de los estados que era lo
+            // en este metodos esta hardcodeado el tema de la carga de los estados que era lo
             // que estabamos cargando de SQLite.
 
             //Comente estas lineas para que pase el test!!! 

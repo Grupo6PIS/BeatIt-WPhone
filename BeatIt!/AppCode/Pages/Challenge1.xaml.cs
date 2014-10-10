@@ -1,5 +1,7 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Device.Location;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Threading;
@@ -8,129 +10,135 @@ using BeatIt_.AppCode.Controllers;
 using BeatIt_.AppCode.Interfaces;
 using Microsoft.Devices;
 using Microsoft.Phone.Controls;
+using Environment = Microsoft.Devices.Environment;
 
 /* USAIN BOLT */
 
-namespace BeatIt_.Pages
+namespace BeatIt_.AppCode.Pages
 {
-    public partial class Challenge1 : PhoneApplicationPage
+    public partial class Challenge1
     {
-
-        /******************************************************************************************************************/
-        private GeoCoordinateWatcher gps;                                                                           // Instancia del GPS que se utilizara para el calculo de la velocidad.
-        private bool useEmulation = (Microsoft.Devices.Environment.DeviceType == DeviceType.Emulator);              // Indica si estamos corriendo la aplicacion en el emulador o en el dispositivo.
-        private ChallengeDetail1 currentChallenge;                                                                               // Instancia del desafio que se esta corriendo. 
-        private IFacadeController ifc;       
         /******************************************************************************************************************/
 
-        private GPS_SpeedEmulator speedEmulator;
-        private int seconds, minSpeed, minTime;
-        private DispatcherTimer timer;
-        private Boolean isRunning = false; //SE CAMBIA A TRUE CUANDO LA VELOCIDAD ACTUAL ES MAYOR O IGUAL A LA VELOCIDAD MINIMA DEL DESAFíO
+        private readonly bool _useEmulation = (Environment.DeviceType == DeviceType.Emulator);
+            // Indica si estamos corriendo la aplicacion en el emulador o en el dispositivo.
+
+        private ChallengeDetail1 _currentChallenge; // Instancia del desafio que se esta corriendo. 
+        private GeoCoordinateWatcher _gps; // Instancia del GPS que se utilizara para el calculo de la velocidad.
+        private IFacadeController _ifc;
+
+        private Boolean _isRunning;
+            //SE CAMBIA A TRUE CUANDO LA VELOCIDAD ACTUAL ES MAYOR O IGUAL A LA VELOCIDAD MINIMA DEL DESAFíO
+
+        /******************************************************************************************************************/
+
+        private int _minSpeed, _minTime;
+        private int _seconds;
+        private GpsSpeedEmulator _speedEmulator;
+        private DispatcherTimer _timer;
 
         public Challenge1()
         {
             // INICIALIZAMOS LOS COMPONENTES GRAFICOS.
             InitializeComponent();
 
-            NavigationInTransition navigateInTransition = new NavigationInTransition();
-            navigateInTransition.Backward = new SlideTransition { Mode = SlideTransitionMode.SlideRightFadeIn };
-            navigateInTransition.Forward = new SlideTransition { Mode = SlideTransitionMode.SlideLeftFadeIn };
+            var navigateInTransition = new NavigationInTransition
+            {
+                Backward = new SlideTransition {Mode = SlideTransitionMode.SlideRightFadeIn},
+                Forward = new SlideTransition {Mode = SlideTransitionMode.SlideLeftFadeIn}
+            };
 
-            NavigationOutTransition navigateOutTransition = new NavigationOutTransition();
-            navigateOutTransition.Backward = new SlideTransition { Mode = SlideTransitionMode.SlideRightFadeOut };
-            navigateOutTransition.Forward = new SlideTransition { Mode = SlideTransitionMode.SlideLeftFadeOut };
+            var navigateOutTransition = new NavigationOutTransition
+            {
+                Backward = new SlideTransition {Mode = SlideTransitionMode.SlideRightFadeOut},
+                Forward = new SlideTransition {Mode = SlideTransitionMode.SlideLeftFadeOut}
+            };
             TransitionService.SetNavigationInTransition(this, navigateInTransition);
             TransitionService.SetNavigationOutTransition(this, navigateOutTransition);
 
-            this.inicializar();
+            InitChallenge();
         }
 
-        
 
-        private void inicializar()
+        private void InitChallenge()
         {
             // OBTENEMOS LA INSTANCIA DEL DESAFIO.
             /* hay que prolijear esto con una factory */
-            ifc = FacadeController.GetInstance();
-            this.currentChallenge = (ChallengeDetail1)ifc.getChallenge(1);
-            
-            timer = new DispatcherTimer();
-            timer.Interval = new TimeSpan(0, 0, 1);
-            timer.Tick += tickTemp;
+            _ifc = FacadeController.GetInstance();
+            _currentChallenge = (ChallengeDetail1) _ifc.getChallenge(1);
 
-            minTime = this.currentChallenge.Time;
-            minSpeed = this.currentChallenge.MinSpeed;
-            seconds = minTime;
-            
+            _timer = new DispatcherTimer {Interval = new TimeSpan(0, 0, 1)};
+            _timer.Tick += TickTemp;
+
+            _minTime = _currentChallenge.Time;
+            _minSpeed = _currentChallenge.MinSpeed;
+            _seconds = _minTime;
+
 
             // INICIALIZAMOS LAS ETIQUETAS DEL DETALLE DEL DESAFIO
-            this.ShowST.Text = this.currentChallenge.getDTChallenge().StartTime.ToString(); // Ojo ver el tema de la fecha y hora (Cuando estamos en el limite de una ronda y la otra).
-            this.ShowToBeat.Text = this.currentChallenge.State.BestScore + " pts";
-            this.ShowDuration.Text = this.currentChallenge.getDurationString();
+            StartTimeTextBlock.Text = _currentChallenge.getDTChallenge().StartTime.ToString(CultureInfo.InvariantCulture);
+                // Ojo ver el tema de la fecha y hora (Cuando estamos en el limite de una ronda y la otra).
+            ToBeatTextBlock.Text = _currentChallenge.State.BestScore + " pts";
+            DurationTextBlock.Text = _currentChallenge.getDurationString();
 
-            this.ShowTime.Text =  minTime.ToString();
-            this.ShowSpeed.Text = "0.00";
+            ShowTime.Text = _minTime.ToString(CultureInfo.InvariantCulture);
+            ShowSpeed.Text = "0.00";
 
-            if (this.useEmulation)
+            if (_useEmulation)
             {
-                speedEmulator = new GPS_SpeedEmulator();
-                speedEmulator.SpeedChange += speedChanged;
+                _speedEmulator = new GpsSpeedEmulator();
+                _speedEmulator.SpeedChange += SpeedChanged;
             }
             else
             {
                 StartRunningButton.IsEnabled = false;
-                startRunningRec.Opacity = 0.5;
+                StartRunningRectangle.Opacity = 0.5;
 
-                this.gps = new GeoCoordinateWatcher(GeoPositionAccuracy.High);
-                this.gps.MovementThreshold = 3;
-                this.gps.PositionChanged += positionChanged;
-                this.gps.StatusChanged += statusChanged;
-                this.gps.Start();
-                this.ShowToBeat.Text = this.currentChallenge.State.BestScore + " pts";
+                _gps = new GeoCoordinateWatcher(GeoPositionAccuracy.High) {MovementThreshold = 3};
+                _gps.PositionChanged += PositionChanged;
+                _gps.StatusChanged += StatusChanged;
+                _gps.Start();
+                ToBeatTextBlock.Text = _currentChallenge.State.BestScore + " pts";
             }
         }
-        
-        private void tickTemp(object o, EventArgs e)
+
+        private void TickTemp(object o, EventArgs e)
         {
-            if (isRunning)
+            if (!_isRunning) return;
+            _seconds--;
+            if (_seconds == 0)
             {
-                seconds--;
-                if (seconds == 0)
+                //Desafio completado
+                _timer.Stop();
+                _seconds = _minTime;
+                _isRunning = false;
+
+                ShowTime.Text = "0.00";
+
+                //CAMBIO DE GRILLA (InProgressGrid ==> StartRunningGrid)
+                StartRunningGrid.Visibility = Visibility.Visible;
+                InProgressGrid.Visibility = Visibility.Collapsed;
+
+                if (_useEmulation)
                 {
-                    //Desafio completado
-                    timer.Stop();
-                    seconds = minTime;
-                    isRunning = false;
-
-                    ShowTime.Text = "0.00";
-
-                    //CAMBIO DE GRILLA (InProgressGrid ==> StartRunningGrid)
-                    StartRunningGrid.Visibility = System.Windows.Visibility.Visible;
-                    InProgressGrid.Visibility = System.Windows.Visibility.Collapsed;
-
-                    if (useEmulation)
-                    {
-                        speedEmulator.Stop();
-                    }
-                    seconds = minTime;
-
-                    //Hay que corregir esto... calcular las velocidades
-                    this.currentChallenge.completeChallenge(true, 12, 15);
-                    this.ShowToBeat.Text = this.currentChallenge.State.BestScore + " pts";
-                    MessageBox.Show("Desafio completado!");
+                    _speedEmulator.Stop();
                 }
-                else
-                {  
-                    //Desafio en curso
-                    ShowTime.Text = seconds.ToString();
-                }
+                _seconds = _minTime;
+
+                //Hay que corregir esto... calcular las velocidades
+                _currentChallenge.CompleteChallenge(true, 12, 15);
+                ToBeatTextBlock.Text = _currentChallenge.State.BestScore + " pts";
+                MessageBox.Show("Desafio completado!");
+            }
+            else
+            {
+                //Desafio en curso
+                ShowTime.Text = _seconds.ToString(CultureInfo.InvariantCulture);
             }
         }
 
-        private void updateLabels(double speed)
+        private void UpdateLabels(double speed)
         {
-
             if (speed <= 0 || double.IsNaN(speed))
             {
                 ShowSpeed.Text = "0.00";
@@ -141,56 +149,53 @@ namespace BeatIt_.Pages
             }
         }
 
-        private void positionChanged(object obj, GeoPositionChangedEventArgs<GeoCoordinate> e)
+        private void PositionChanged(object obj, GeoPositionChangedEventArgs<GeoCoordinate> e)
         {
-            double speed = e.Position.Location.Speed * 3.6;
-            this.speedChanged(speed);
+            double speed = e.Position.Location.Speed*3.6;
+            SpeedChanged(speed);
         }
 
-        private void speedChanged(double speed)
+        private void SpeedChanged(double speed)
         {
-            updateLabels(speed);
+            UpdateLabels(speed);
 
-            if (speed >= minSpeed)
+            if (speed >= _minSpeed)
             {
-                isRunning = true;
-                SolidColorBrush mySolidColorBrush = new SolidColorBrush();
-                mySolidColorBrush.Color = Color.FromArgb(255, 229, 20, 0);
-                SpeedRec.Fill = mySolidColorBrush;     
+                _isRunning = true;
+                var mySolidColorBrush = new SolidColorBrush {Color = Color.FromArgb(255, 229, 20, 0)};
+                SpeedRec.Fill = mySolidColorBrush;
 
-                if (!timer.IsEnabled) {
-                    timer.Start();
+                if (!_timer.IsEnabled)
+                {
+                    _timer.Start();
                 }
             }
             else
             {
-                isRunning = false;
-                SolidColorBrush mySolidColorBrush = new SolidColorBrush();
-                mySolidColorBrush.Color = Color.FromArgb(255, 0, 138, 0);
+                _isRunning = false;
+                var mySolidColorBrush = new SolidColorBrush {Color = Color.FromArgb(255, 0, 138, 0)};
                 SpeedRec.Fill = mySolidColorBrush;
-                if (timer.IsEnabled)
+                if (!_timer.IsEnabled) return;
+                //Desafío no completado
+                _timer.Stop();
+                _seconds = _minTime;
+
+                _currentChallenge.CompleteChallenge(false, 0, 0);
+
+                //CAMBIO DE GRILLA (InProgressGrid ==> StartRunningGrid)
+                StartRunningGrid.Visibility = Visibility.Visible;
+                InProgressGrid.Visibility = Visibility.Collapsed;
+
+                if (_useEmulation)
                 {
-                    //Desafío no completado
-                    timer.Stop();
-                    seconds = minTime;
-
-                    this.currentChallenge.completeChallenge(false, 0, 0);
-
-                    //CAMBIO DE GRILLA (InProgressGrid ==> StartRunningGrid)
-                    StartRunningGrid.Visibility = System.Windows.Visibility.Visible;
-                    InProgressGrid.Visibility = System.Windows.Visibility.Collapsed;
-
-                    if (useEmulation)
-                    {
-                        speedEmulator.Stop();
-                    }
-
-                    MessageBox.Show("Desafio no completado.");
+                    _speedEmulator.Stop();
                 }
+
+                MessageBox.Show("Desafio no completado.");
             }
         }
 
-        private void statusChanged(object obj, GeoPositionStatusChangedEventArgs e)
+        private void StatusChanged(object obj, GeoPositionStatusChangedEventArgs e)
         {
             //String statusType = "";
             if (e.Status == GeoPositionStatus.NoData)
@@ -205,7 +210,7 @@ namespace BeatIt_.Pages
             {
                 //statusType = "Ready";
                 StartRunningButton.IsEnabled = true;
-                startRunningRec.Opacity = 1.0;
+                StartRunningRectangle.Opacity = 1.0;
             }
             if (e.Status == GeoPositionStatus.Disabled)
             {
@@ -216,119 +221,121 @@ namespace BeatIt_.Pages
 
         private void hyperlinkButtonStartRunning_Click(object sender, RoutedEventArgs e)
         {
-            if (isRunning)
+            if (_isRunning)
             {
                 MessageBox.Show("Debes bajar la velocidad para comenzar el desafío");
             }
             else
             {
-                if (useEmulation) {
-                    speedEmulator.Start();
+                if (_useEmulation)
+                {
+                    _speedEmulator.Start();
                 }
-                this.ShowTime.Text = minTime.ToString();
-                this.ShowSpeed.Text = "0.00";
+                ShowTime.Text = _minTime.ToString(CultureInfo.InvariantCulture);
+                ShowSpeed.Text = "0.00";
 
                 //CAMBIO DE GRILLA (StartRunningGrid ==> InProgressGrid)
-                StartRunningGrid.Visibility = System.Windows.Visibility.Collapsed;
-                InProgressGrid.Visibility = System.Windows.Visibility.Visible;
+                StartRunningGrid.Visibility = Visibility.Collapsed;
+                InProgressGrid.Visibility = Visibility.Visible;
             }
         }
 
         private void image1_ImageFailed(object sender, ExceptionRoutedEventArgs e)
         {
-
         }
 
-        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        protected override void OnBackKeyPress(CancelEventArgs e)
         {
-            timer.Stop();
-            if (useEmulation)
+            _timer.Stop();
+            if (_useEmulation)
             {
-                speedEmulator.Stop();
+                _speedEmulator.Stop();
             }
             e.Cancel = false;
             base.OnBackKeyPress(e);
         }
     }
 
-    class GPS_SpeedEmulator
+    internal class GpsSpeedEmulator
     {
-        private enum Estados { LLEGAR_A_10KM, MANTENER_TIEMPO , BAJAR_VELOCIDAD};
         public delegate void EventSpeedChange(double s);
+
+        private readonly FacadeController _ifc = FacadeController.GetInstance();
+
+        private readonly Random _randomNumber;
+        private readonly DispatcherTimer _timer;
+        private readonly int _velocidadMinima;
+        private int _mantenerVelocidadPor;
+        private double _speed;
+        private Estados _state = Estados.LlegarA10Km;
+
+        public GpsSpeedEmulator()
+        {
+            var currentChallenge = (ChallengeDetail1) _ifc.getChallenge(1);
+            _velocidadMinima = currentChallenge.MinSpeed;
+            _randomNumber = new Random();
+            _mantenerVelocidadPor = 31;
+            _timer = new DispatcherTimer {Interval = new TimeSpan(0, 0, 1)};
+            _timer.Tick += TickTimer;
+        }
 
         public event EventSpeedChange SpeedChange;
 
-        private DispatcherTimer timer;
-        private Random randomNumber;
-        private double speed = 0;
-        private Estados state = Estados.LLEGAR_A_10KM;
-        private readonly FacadeController _ifc = FacadeController.GetInstance();
-        private int _mantenerVelocidadPor;
-        private readonly int _velocidadMinima;
-
-        public GPS_SpeedEmulator()
-        {
-            var currentChallenge = (ChallengeDetail1)_ifc.getChallenge(1);
-            _velocidadMinima = currentChallenge.MinSpeed;
-            randomNumber = new Random();
-            _mantenerVelocidadPor = 31;
-            timer = new DispatcherTimer();
-            timer.Interval = new TimeSpan(0, 0, 1); 
-            timer.Tick += tickTimer;
-        }
-
         public void Start()
         {
-            timer.Start();
+            _timer.Start();
         }
 
-        public void Stop(){
-            timer.Stop();
-            speed = 0;
-            state = Estados.LLEGAR_A_10KM;
-        }
-
-        private void tickTimer(object o, EventArgs e)
+        public void Stop()
         {
-
-            if (timer.IsEnabled)
-            {
-                int sumarRestar = randomNumber.Next(0, 2);
-                double dec = (1 + 0.0) / randomNumber.Next(1, 11),
-                        delta = randomNumber.Next(1, 4) + (sumarRestar - 1) * dec + sumarRestar * dec;
-
-                if (state == Estados.LLEGAR_A_10KM)
-                {
-                    speed += randomNumber.Next(1, 4) + (sumarRestar - 1) * dec + sumarRestar * dec;
-                    if (speed >= _velocidadMinima)
-                    {
-                        state = Estados.MANTENER_TIEMPO;
-                    }
-                }
-                else if (state == Estados.MANTENER_TIEMPO && _mantenerVelocidadPor > 0)
-                {
-                    _mantenerVelocidadPor--;
-                    double temp = speed + (sumarRestar - 1) * dec + sumarRestar * dec;
-                    speed += temp >= _velocidadMinima && temp < 24 ? temp - speed : 0;
-
-                    if (_mantenerVelocidadPor == 0)
-                    {
-                        state = Estados.BAJAR_VELOCIDAD;
-                    }
-                }
-                else if (state == Estados.BAJAR_VELOCIDAD)
-                {
-                    speed -= randomNumber.Next(1, 4) - dec;
-                    if (speed < _velocidadMinima)
-                    {
-                        speed = 0;
-                        timer.Stop();
-                        state = Estados.LLEGAR_A_10KM;
-                    }
-                }
-                SpeedChange(speed);
-            }
+            _timer.Stop();
+            _speed = 0;
+            _state = Estados.LlegarA10Km;
         }
 
+        private void TickTimer(object o, EventArgs e)
+        {
+            if (!_timer.IsEnabled) return;
+            int sumarRestar = _randomNumber.Next(0, 2);
+            double dec = (1 + 0.0)/_randomNumber.Next(1, 11);
+
+            if (_state == Estados.LlegarA10Km)
+            {
+                _speed += _randomNumber.Next(1, 4) + (sumarRestar - 1)*dec + sumarRestar*dec;
+                if (_speed >= _velocidadMinima)
+                {
+                    _state = Estados.MantenerTiempo;
+                }
+            }
+            else if (_state == Estados.MantenerTiempo && _mantenerVelocidadPor > 0)
+            {
+                _mantenerVelocidadPor--;
+                double temp = _speed + (sumarRestar - 1)*dec + sumarRestar*dec;
+                _speed += temp >= _velocidadMinima && temp < 24 ? temp - _speed : 0;
+
+                if (_mantenerVelocidadPor == 0)
+                {
+                    _state = Estados.BajarVelocidad;
+                }
+            }
+            else if (_state == Estados.BajarVelocidad)
+            {
+                _speed -= _randomNumber.Next(1, 4) - dec;
+                if (_speed < _velocidadMinima)
+                {
+                    _speed = 0;
+                    _timer.Stop();
+                    _state = Estados.LlegarA10Km;
+                }
+            }
+            SpeedChange(_speed);
+        }
+
+        private enum Estados
+        {
+            LlegarA10Km,
+            MantenerTiempo,
+            BajarVelocidad
+        };
     }
 }

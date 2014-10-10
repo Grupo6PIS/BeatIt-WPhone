@@ -1,5 +1,5 @@
-﻿<phone:PhoneApplicationPage 
-    x:Class="BeatIt_.Pages.Challenge1"
+﻿<phone:PhoneApplicationPage
+    x:Class="BeatIt_.AppCode.Pages.Challenge1"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
@@ -16,52 +16,95 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
-            <RowDefinition Height="161"/>
-            <RowDefinition Height="607*"/>
+            <RowDefinition Height="161" />
+            <RowDefinition Height="607*" />
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
 
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="ApplicationTitle" Text="BeatIt!" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="Usain Bolt" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock x:Name="ApplicationTitle" Text="BeatIt!" Style="{StaticResource PhoneTextNormalStyle}" />
+            <TextBlock x:Name="PageTitle" Text="Usain Bolt" Margin="9,-7,0,0"
+                       Style="{StaticResource PhoneTextTitle1Style}" />
         </StackPanel>
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Margin="12,160,12,28" Grid.RowSpan="2">
-            <Rectangle Fill="#FF008A00" Height="200" Width="200" VerticalAlignment="top" HorizontalAlignment="Left" Margin="12,20,8,8" />
+        <Grid x:Name="ContentPanel" Margin="12,160,12,28" Grid.Row="0" Grid.RowSpan="2">
+            <Rectangle Fill="#FF008A00" Height="200" Width="200" VerticalAlignment="top" HorizontalAlignment="Left"
+                       Margin="12,20,8,8" />
 
-            <Image Height="200" HorizontalAlignment="Left" Margin="10,21,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="200" ImageFailed="image1_ImageFailed" Source="/BeatIt!;component/Images/icon_challenge_1.png" />
-            <TextBlock Height="30" Margin="230,20,0,0" Name="textDetail" Text="{Binding Path=AppResources.Challenge1_DetailsTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Left" Width="196" />
-            <TextBlock FontWeight="Light" Foreground="#FF867A7A" Height="30" HorizontalAlignment="Left" Margin="230,55,0,0" Name="textStartTime" Text="{Binding Path=AppResources.Challenge1_StartTimeTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="196" />
-            <TextBlock FontWeight="Light" Foreground="#FF867A7A" Height="30" HorizontalAlignment="Left" Margin="230,110,0,0" Name="textDuration" Text="{Binding Path=AppResources.Challenge1_DurationTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="196" />
-            <TextBlock FontWeight="Light" Foreground="#FF867A7A" Height="30" HorizontalAlignment="Left" Margin="230,165,0,0" Name="textToBeat" Text="{Binding Path=AppResources.Challenge1_ToBeatTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="196" />
-            <TextBlock FontWeight="Normal" Height="63" HorizontalAlignment="Left" Margin="10,240,0,0" Name="titleDescription" Text="{Binding Path=AppResources.Challenge1_DescriptionTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="246" FontSize="40" />
-            <TextBlock FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="12,300,0,0" Name="textDescription" Text="{Binding Path=AppResources.Challenge1_DescriptionTxtBlockText, Source={StaticResource LocalizedStrings}}" Width="414" Height="100" VerticalAlignment="Top" TextWrapping="Wrap" />
+            <Image Height="200" HorizontalAlignment="Left" Margin="10,21,0,0" Name="ChallengeImage" Stretch="Fill"
+                   VerticalAlignment="Top" Width="200" ImageFailed="image1_ImageFailed"
+                   Source="/BeatIt!;component/Images/icon_challenge_1.png" />
+            <TextBlock Height="30" Margin="230,20,0,0" Name="DetailsTextBlock"
+                       Text="{Binding Path=AppResources.Challenge1_DetailsTxtBlockTitle, Source={StaticResource LocalizedStrings}}"
+                       VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Left" Width="196" />
+            <TextBlock FontWeight="Light" Foreground="#FF867A7A" Height="30" HorizontalAlignment="Left"
+                       Margin="230,55,0,0" Name="StartTimeTitleTextBlock"
+                       Text="{Binding Path=AppResources.Challenge1_StartTimeTxtBlockTitle, Source={StaticResource LocalizedStrings}}"
+                       VerticalAlignment="Top" Width="196" />
+            <TextBlock FontWeight="Light" Foreground="#FF867A7A" Height="30" HorizontalAlignment="Left"
+                       Margin="230,110,0,0" Name="DurationTitleTextBlock"
+                       Text="{Binding Path=AppResources.Challenge1_DurationTxtBlockTitle, Source={StaticResource LocalizedStrings}}"
+                       VerticalAlignment="Top" Width="196" />
+            <TextBlock FontWeight="Light" Foreground="#FF867A7A" Height="30" HorizontalAlignment="Left"
+                       Margin="230,165,0,0" Name="ToBeatTitleTextBlock"
+                       Text="{Binding Path=AppResources.Challenge1_ToBeatTxtBlockTitle, Source={StaticResource LocalizedStrings}}"
+                       VerticalAlignment="Top" Width="196" />
+            <TextBlock FontWeight="Normal" Height="63" HorizontalAlignment="Left" Margin="10,240,0,0"
+                       Name="DescriptionTitleTextBlock"
+                       Text="{Binding Path=AppResources.Challenge1_DescriptionTxtBlockTitle, Source={StaticResource LocalizedStrings}}"
+                       VerticalAlignment="Top" Width="246" FontSize="40" />
+            <TextBlock FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="12,300,0,0"
+                       Name="TextDescription"
+                       Text="{Binding Path=AppResources.Challenge1_DescriptionTxtBlockText, Source={StaticResource LocalizedStrings}}"
+                       Width="414" Height="100" VerticalAlignment="Top" TextWrapping="Wrap" />
 
-<!-- Estas se activan y desactivan de acuerdo si esta comenzado-->
+            <!-- Estas se activan y desactivan de acuerdo si esta comenzado-->
             <Grid Visibility="Visible" Name="StartRunningGrid">
-                <Rectangle Fill="#FF008A00" Height="80" Width="438" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="12,0,12,50" IsHitTestVisible="True" Name="startRunningRec" />
-                <TextBlock FontWeight="ExtraBlack" Height="57" HorizontalAlignment="Left" Margin="12,460,0,0" Name="Start" Text="{Binding Path=AppResources.Challenge1_StartButton, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="435" FontSize="40" TextAlignment="Center" />
-                <HyperlinkButton Content="" Height="80" HorizontalAlignment="Left" Margin="12,450,12,0" Name="StartRunningButton" VerticalAlignment="Top" Width="438" Click="hyperlinkButtonStartRunning_Click" />
+                <Rectangle Fill="#FF008A00" Height="80" Width="438" VerticalAlignment="Bottom"
+                           HorizontalAlignment="Center" Margin="12,0,12,50" IsHitTestVisible="True"
+                           Name="StartRunningRectangle" />
+                <TextBlock FontWeight="ExtraBlack" Height="57" HorizontalAlignment="Left" Margin="12,460,0,0"
+                           Name="Start"
+                           Text="{Binding Path=AppResources.Challenge1_StartButton, Source={StaticResource LocalizedStrings}}"
+                           VerticalAlignment="Top" Width="435" FontSize="40" TextAlignment="Center" />
+                <HyperlinkButton Content="" Height="80" HorizontalAlignment="Left" Margin="12,450,12,0"
+                                 Name="StartRunningButton" VerticalAlignment="Top" Width="438"
+                                 Click="hyperlinkButtonStartRunning_Click" />
             </Grid>
-            
-<!-- Estas se activan y desactivan de acuerdo si esta comenzado-->
-            <Grid Visibility="Collapsed"  Name="InProgressGrid">
-                <TextBlock FontSize="28" FontWeight="Normal" Height="52" HorizontalAlignment="Left" Margin="30,399,0,0" Name="titleTime" Text="{Binding Path=AppResources.Challenge1_TimeLeftTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="182" TextAlignment="Center" />
-                <Rectangle Fill="#FF008A00" Height="80" Width="180" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="30,20,8,50" />
 
-                <TextBlock FontSize="28" FontWeight="Normal" Height="52" HorizontalAlignment="Left" Margin="246,399,0,0" Name="textSpeed" Text="{Binding Path=AppResources.Challenge1_SpeedTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="180" TextAlignment="Center" />
-                <Rectangle Fill="#FF008A00" Height="80" Width="180" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="8,20,30,50" Name="SpeedRec" />
-                <TextBlock FontSize="30" FontWeight="ExtraBold" Height="50" HorizontalAlignment="Left" Margin="30,465,0,0" Name="ShowTime" Text="---" VerticalAlignment="Top" Width="180" TextAlignment="Center" />
-                <TextBlock FontSize="30" FontWeight="ExtraBold" Height="50" HorizontalAlignment="Right" Margin="0,465,30,0" Name="ShowSpeed" Text="---" VerticalAlignment="Top" Width="180" TextAlignment="Center" />
+            <!-- Estas se activan y desactivan de acuerdo si esta comenzado-->
+            <Grid Visibility="Collapsed" Name="InProgressGrid">
+                <TextBlock FontSize="28" FontWeight="Normal" Height="52" HorizontalAlignment="Left" Margin="30,399,0,0"
+                           Name="TimeTitleTextBlock"
+                           Text="{Binding Path=AppResources.Challenge1_TimeLeftTxtBlockTitle, Source={StaticResource LocalizedStrings}}"
+                           VerticalAlignment="Top" Width="182" TextAlignment="Center" />
+                <Rectangle Fill="#FF008A00" Height="80" Width="180" VerticalAlignment="Bottom"
+                           HorizontalAlignment="Left" Margin="30,20,8,50" />
+
+                <TextBlock FontSize="28" FontWeight="Normal" Height="52" HorizontalAlignment="Left"
+                           Margin="246,399,0,0" Name="SpeedTextBlock"
+                           Text="{Binding Path=AppResources.Challenge1_SpeedTxtBlockTitle, Source={StaticResource LocalizedStrings}}"
+                           VerticalAlignment="Top" Width="180" TextAlignment="Center" />
+                <Rectangle Fill="#FF008A00" Height="80" Width="180" VerticalAlignment="Bottom"
+                           HorizontalAlignment="Right" Margin="8,20,30,50" Name="SpeedRec" />
+                <TextBlock FontSize="30" FontWeight="ExtraBold" Height="50" HorizontalAlignment="Left"
+                           Margin="30,465,0,0" Name="ShowTime" Text="---" VerticalAlignment="Top" Width="180"
+                           TextAlignment="Center" />
+                <TextBlock FontSize="30" FontWeight="ExtraBold" Height="50" HorizontalAlignment="Right"
+                           Margin="0,465,30,0" Name="ShowSpeed" Text="---" VerticalAlignment="Top" Width="180"
+                           TextAlignment="Center" />
             </Grid>
-            
-            <TextBlock FontWeight="Light" Foreground="White" Height="30" HorizontalAlignment="Left" Margin="230,80,0,0" Name="ShowST" Text="---" VerticalAlignment="Top" Width="196" />
-            <TextBlock FontWeight="Light" Foreground="White" Height="30" HorizontalAlignment="Left" Margin="230,135,0,0" Name="ShowDuration" Text="---" VerticalAlignment="Top" Width="196" />
-            <TextBlock FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="230,190,0,0" Name="ShowToBeat" Text="---" Width="196" Height="30" VerticalAlignment="Top" />
+
+            <TextBlock FontWeight="Light" Foreground="White" Height="30" HorizontalAlignment="Left" Margin="230,80,0,0"
+                       Name="StartTimeTextBlock" Text="---" VerticalAlignment="Top" Width="196" />
+            <TextBlock FontWeight="Light" Foreground="White" Height="30" HorizontalAlignment="Left"
+                       Margin="230,135,0,0" Name="DurationTextBlock" Text="---" VerticalAlignment="Top" Width="196" />
+            <TextBlock FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="230,190,0,0"
+                       Name="ToBeatTextBlock" Text="---" Width="196" Height="30" VerticalAlignment="Top" />
         </Grid>
     </Grid>
- 
+
     <!--Sample code showing usage of ApplicationBar-->
     <!--<phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">

@@ -21,7 +21,7 @@ namespace BeatIt_.AppCode.Challenges
             ColorHex = colorHex;
             MinSpeed = 10;
             Time = 30;
-            Description = "Se deberrá correr una velocidad minima de " + MinSpeed.ToString() + " Km/h durante " + Time.ToString() + " s.";
+            Description = "Se deberrá correr una velocidad minima de " + MinSpeed + " Km/h durante " + Time + " s.";
             IsEnabled = true;
             Level = level;
             MaxAttempt = maxAttempts;
@@ -34,45 +34,42 @@ namespace BeatIt_.AppCode.Challenges
             ColorHex = "#FF008A00";
             MinSpeed = 10;
             Time = 30;
-            Description = "Se deberrá correr una velocidad minima de " + MinSpeed.ToString() + " Km/h durante " + Time.ToString() + " s.";
+            Description = "Se deberrá correr una velocidad minima de " + MinSpeed + " Km/h durante " + Time + " s.";
             IsEnabled = true;
             Level = 1;
             MaxAttempt = 3;
         }
 
-        private int calculateScore(int maxSpeed, int avgSpeed) 
+        private int calculateScore(int maxSpeed, int avgSpeed)
         {
             if ((maxSpeed > 0) && (avgSpeed > 0))
             {
                 return 2 * (maxSpeed + avgSpeed);
             }
-            else 
-            {
-                return 0;
-            }
+            return 0;
         }
 
-        public void completeChallenge(bool error, int maxSpeed, int avgSpeed)
+        public void CompleteChallenge(bool error, int maxSpeed, int avgSpeed)
         {
-            this.State.CurrentAttempt = this.State.CurrentAttempt + 1;
+            State.CurrentAttempt = State.CurrentAttempt + 1;
             if (!error)
             {
-                this.State.LastScore = this.calculateScore(maxSpeed, avgSpeed);
-                if (this.State.LastScore > this.State.BestScore)
+                State.LastScore = calculateScore(maxSpeed, avgSpeed);
+                if (State.LastScore > State.BestScore)
                 {
-                    this.State.BestScore = this.State.LastScore;
+                    State.BestScore = State.LastScore;
                     FacadeController.GetInstance().SetHayCambiosParaEnviar();
                 }
             }
             else 
             {
-                this.State.LastScore = 0;
+                State.LastScore = 0;
             }
-            if (this.State.CurrentAttempt == this.MaxAttempt)
+            if (State.CurrentAttempt == MaxAttempt)
             {
-                this.State.Finished = true;
+                State.Finished = true;
             }
-            bool actualizo = FacadeController.GetInstance().SaveState(this.State);
+            FacadeController.GetInstance().SaveState(State);
         }
     }
 }

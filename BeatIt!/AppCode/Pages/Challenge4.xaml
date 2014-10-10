@@ -34,7 +34,7 @@
             <Image Height="200" HorizontalAlignment="Left" Margin="10,21,0,0" Name="ChallengeImage" Stretch="Fill"
                    VerticalAlignment="Top" Width="200" ImageFailed="image1_ImageFailed"
                    Source="/BeatIt!;component/Images/icon_challenge_4.png" />
-            <TextBlock Height="30" Margin="230,20,0,0" Name="DeTextBlock"
+            <TextBlock Height="30" Margin="230,20,0,0" Name="DetailsTextBlock"
                        Text="{Binding Path=AppResources.Challenge1_DetailsTxtBlockTitle, Source={StaticResource LocalizedStrings}}"
                        VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Left" Width="196" />
             <TextBlock FontWeight="Light" Foreground="#FF867A7A" Height="30" HorizontalAlignment="Left"
