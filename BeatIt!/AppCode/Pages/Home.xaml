@@ -47,8 +47,7 @@
                     <Button Content="{Binding Path=AppResources.HomePage_LogoutBtnTitle, Source={StaticResource LocalizedStrings}}" Height="60" HorizontalAlignment="Left" Margin="270,108,0,0" x:Name="LogoutBtn" VerticalAlignment="Top" Width="160" Click="LogoutBtn_Click" FontSize="16" Padding="0,0,0,3" />
                     <Image Height="140" HorizontalAlignment="Left" Margin="15,15,0,0" x:Name="ProfileImage" Stretch="Fill" VerticalAlignment="Top" Width="140" Source="/BeatIt!;component/Images/profileImage.jpg" />
                     <TextBlock Height="50" HorizontalAlignment="Left" Margin="170,15,0,0" x:Name="ProfileNameTxtBlock" Text="Juan Perez" VerticalAlignment="Top" Width="260" FontSize="32" />
-                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="15,190,0,0" x:Name="ProfileSettingsTxtBlock" Text="{Binding Path=AppResources.HomePage_SettingsTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="410" FontSize="22" Foreground="Green" />
-                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="169,84,0,0" x:Name="ProfileCountryTxtBlock" Text="Uruguay" VerticalAlignment="Top" Width="260" FontSize="18" />
+                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="169,87,0,0" x:Name="ProfileCountryTxtBlock" Text="Uruguay" VerticalAlignment="Top" Width="260" FontSize="18" />
                     <TextBlock FontSize="18" Height="30" HorizontalAlignment="Left" Margin="170,60,0,0" x:Name="ProfileEmailTextBlock" Text="jperez@gmail.com" VerticalAlignment="Top" Width="260" />
                 </Grid>
             </controls:PivotItem>

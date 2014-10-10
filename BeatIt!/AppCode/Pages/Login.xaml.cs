@@ -83,7 +83,7 @@ namespace BeatIt_.AppCode.Pages
             parameters["redirect_uri"] = "https://www.facebook.com/connect/login_success.html";
             parameters["response_type"] = "token";
             parameters["display"] = "page";
-            parameters["scope"] = "user_hometown, publish_actions";
+            parameters["scope"] = "user_location, publish_actions";
 
             var urlBuilder = new StringBuilder();
             foreach (var current in parameters)
@@ -157,12 +157,12 @@ namespace BeatIt_.AppCode.Pages
                     Country = "Uruguay",
                     BirthDate = new DateTime(1989, 08, 07)
                 };
-                _user.ImageUrl = string.Format("https://graph.facebook.com/{0}/picture?type={1}&access_token={2}", _user.FbId, "square", accessToken);
+                _user.ImageUrl = string.Format("https://graph.facebook.com/{0}/picture?type={1}&width=960&height=960&access_token={2}", _user.FbId, "square", accessToken);
                 if (result.Keys.Contains("email"))
                     _user.Email = (string)result["email"];
-                if (result.Keys.Contains("hometown"))
+                if (result.Keys.Contains("location"))
                 {
-                    var ht = (IDictionary<string, object>)result["hometown"];
+                    var ht = (IDictionary<string, object>)result["location"];
                     _user.Country = (string)ht["name"];
                 }
 

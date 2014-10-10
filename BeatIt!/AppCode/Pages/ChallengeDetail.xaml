@@ -31,19 +31,19 @@
             <Rectangle Fill="#FF008A00" Height="210" HorizontalAlignment="Center" Name="imageRec" Stroke="Black" StrokeThickness="1" VerticalAlignment="Top" Width="438" Margin="10,0" />
             <Image Height="210" HorizontalAlignment="Center" Name="iconImage" Stretch="Fill" VerticalAlignment="Top" Width="210" Source="/BeatIt!;component/Images/icon_challenge_1.png" />
             <TextBlock Height="35" HorizontalAlignment="Left" Margin="12,241,0,0" Name="detailsTxtBlock" Text="Details" VerticalAlignment="Top" Width="435" FontSize="24" />
-            <Rectangle Fill="#FF008A00" Height="100" HorizontalAlignment="Center" Name="lastScoreRec" Stroke="White" StrokeThickness="1" VerticalAlignment="Bottom" Width="160" Margin="0,0,200,50" />
-            <Rectangle Fill="#FF008A00" Height="100" HorizontalAlignment="Center" Name="bestScoreRec" Margin="200,0,0,50" Stroke="White" StrokeThickness="1" VerticalAlignment="Bottom" Width="160" />
-            <TextBlock Height="73" HorizontalAlignment="Left" Margin="48,471,0,0" Name="lastScoreTxtBlock" Text="108" VerticalAlignment="Top" Width="160" TextAlignment="Center" FontSize="50" FontWeight="SemiBold" />
-            <TextBlock FontSize="50" FontWeight="SemiBold" Height="73" HorizontalAlignment="Left" Margin="248,471,0,0" Name="bestScoreTxtBlock" Text="120" TextAlignment="Center" VerticalAlignment="Top" Width="160" />
-            <TextBlock Height="35" HorizontalAlignment="Left" Margin="48,415,0,0" Name="textBlock1" Text="Last Score" VerticalAlignment="Top" Width="160" FontWeight="Medium" FontSize="24" TextAlignment="Center" />
-            <TextBlock Height="35" HorizontalAlignment="Left" Margin="248,415,0,0" Name="textBlock2" Text="Best Score" VerticalAlignment="Top" Width="160" FontWeight="Medium" FontSize="24" TextAlignment="Center" />
+            <Rectangle Fill="#FF008A00" Height="100" HorizontalAlignment="Center" Name="lastScoreRec" Stroke="White" StrokeThickness="1" VerticalAlignment="Bottom" Width="194" Margin="14,0,248,50" />
+            <Rectangle Fill="#FF008A00" Height="100" HorizontalAlignment="Center" Name="bestScoreRec" Margin="248,0,15,50" Stroke="White" StrokeThickness="1" VerticalAlignment="Bottom" Width="193" />
+            <TextBlock Height="73" HorizontalAlignment="Left" Margin="17,471,0,0" Name="lastScoreTxtBlock" Text="108" VerticalAlignment="Top" Width="191" TextAlignment="Center" FontSize="50" FontWeight="SemiBold" />
+            <TextBlock FontSize="50" FontWeight="SemiBold" Height="73" HorizontalAlignment="Left" Margin="248,471,0,0" Name="bestScoreTxtBlock" Text="120" TextAlignment="Center" VerticalAlignment="Top" Width="193" />
+            <TextBlock Height="35" HorizontalAlignment="Left" Margin="13,418,0,0" Name="textBlock1" Text="Last Score" VerticalAlignment="Top" Width="111" FontWeight="Medium" FontSize="24" TextAlignment="Center" />
+            <TextBlock Height="35" HorizontalAlignment="Left" Margin="246,417,0,0" Name="textBlock2" Text="Best Score" VerticalAlignment="Top" Width="115" FontWeight="Medium" FontSize="24" TextAlignment="Center" />
             <TextBlock Foreground="#FF867A7A" Height="30" HorizontalAlignment="Left" Margin="12,285,0,0" Name="startDateTitleTxtBlock" Text="Start Date:" VerticalAlignment="Top" Width="196" />
             <TextBlock Foreground="#FF867A7A" Height="30" HorizontalAlignment="Right" Margin="0,285,12,0" Name="attemptsTitleTxtBlock" Text="Attempts:" VerticalAlignment="Top" Width="196" />
             <TextBlock Foreground="White" Height="30" HorizontalAlignment="Left" Margin="12,321,0,0" Name="startDateTxtBlock" Text="---" VerticalAlignment="Top" Width="196" />
             <TextBlock Foreground="White" Height="30" HorizontalAlignment="Left" Margin="248,321,0,0" Name="attemptsTxtBlock" Text="---" VerticalAlignment="Top" Width="196" />
         </Grid>
     </Grid>
- 
+
     <!--Sample code showing usage of ApplicationBar-->
     <!--<phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
