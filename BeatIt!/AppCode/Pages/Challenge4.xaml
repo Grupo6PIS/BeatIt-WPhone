@@ -24,7 +24,7 @@
 
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock x:Name="ApplicationTitle" Text="BeatIt!" Style="{StaticResource PhoneTextNormalStyle}" />
-            <TextBlock x:Name="PageTitle" Text="Callar al Perro" Margin="9,-7,0,0"
+            <TextBlock x:Name="PageTitle" Text="{Binding Path=AppResources.Challenge4_Title, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0"
                        Style="{StaticResource PhoneTextTitle1Style}" FontSize="72" />
         </StackPanel>
         <!--ContentPanel - place additional content here-->

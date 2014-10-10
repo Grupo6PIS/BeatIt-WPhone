@@ -61,7 +61,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In this challenge you have to run faster than 20 km/h for 30 seconds..
+        ///   Looks up a localized string similar to In this challenge you have to run faster than 10 km/h for 30 seconds..
         /// </summary>
         public static string Challenge1_DescriptionTxtBlockText {
             get {
@@ -198,7 +198,7 @@ namespace BeatIt_.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Try BeatIt! 
         ///Windows: http://www.windowsphone.com/en-us/store/app/beatit/66fa9546-f6ae-4a10-8acb-91472ac3ff96
-        ///Android: https://play.google.com/store/apps/details?id=com.g6pis.beatit&amp;ah=mcoN2TjRF_obuPnlAcKtanl9mFk.
+        ///Also available for android!.
         /// </summary>
         public static string Challenge3_Message {
             get {
@@ -261,11 +261,20 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stop.
+        ///   Looks up a localized string similar to Shut up!.
         /// </summary>
         public static string Challenge4_StopButton {
             get {
                 return ResourceManager.GetString("Challenge4_StopButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shut up the dog!.
+        /// </summary>
+        public static string Challenge4_Title {
+            get {
+                return ResourceManager.GetString("Challenge4_Title", resourceCulture);
             }
         }
         
