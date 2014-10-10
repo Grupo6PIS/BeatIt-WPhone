@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Challenge1_DescriptionHardTxtBlockText" xml:space="preserve">
+    <value>In this challenge you have to run faster than 15 km/h for 45 seconds.</value>
+  </data>
   <data name="Challenge1_DescriptionTxtBlockText" xml:space="preserve">
     <value>In this challenge you have to run faster than 10 km/h for 30 seconds.</value>
   </data>
@@ -144,8 +147,11 @@
   <data name="Challenge1_ToBeatTxtBlockTitle" xml:space="preserve">
     <value>To Beat:</value>
   </data>
+  <data name="Challenge2_DescriptionHardTxtBlockText" xml:space="preserve">
+    <value>In this challenge you have to shake your cellphone when you think the timer reachs 0, the timer will hide 4 times so pay attention.</value>
+  </data>
   <data name="Challenge2_DescriptionTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to shake your cellphone when you think the time is 0</value>
+    <value>In this challenge you have to shake your cellphone when you think the timer reachs 0, the timer will hide 3 times so pay attention.</value>
   </data>
   <data name="Challenge2_StartButton" xml:space="preserve">
     <value>Start!</value>
@@ -156,8 +162,11 @@
   <data name="Challenge3_Delete" xml:space="preserve">
     <value>Delete publication form wall </value>
   </data>
+  <data name="Challenge3_DescriptionHardTxtBlockText" xml:space="preserve">
+    <value>In this challenge you have to invite your fiends using facebook or SMS, minimum five sms and the post on your wall. Remember more friends more score!</value>
+  </data>
   <data name="Challenge3_DescriptionTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to invite your fiends using facebook or SMS. Remember more friends pore socre!</value>
+    <value>In this challenge you have to invite your fiends using facebook or SMS, minimum two sms and the post on your wall. Remember more friends more score!</value>
   </data>
   <data name="Challenge3_Done" xml:space="preserve">
     <value>Done!</value>
@@ -179,8 +188,11 @@ Also available for android!</value>
   <data name="Challenge3_Title" xml:space="preserve">
     <value>Invite Friends</value>
   </data>
+  <data name="Challenge4_DescriptionHardTxtBlockText" xml:space="preserve">
+    <value>In this challenge you need to shut up the dog as quickly as you can by pressing the red button. The dog will bark five times.</value>
+  </data>
   <data name="Challenge4_DescriptionTxtBlockText" xml:space="preserve">
-    <value>In this challenge you need to shut up the dog as quickly as you can by pressing the red button.</value>
+    <value>In this challenge you need to shut up the dog as quickly as you can by pressing the red button. The dog will bark three times.</value>
   </data>
   <data name="Challenge4_StartButton" xml:space="preserve">
     <value>Start!</value>
@@ -189,10 +201,13 @@ Also available for android!</value>
     <value>Shut up!</value>
   </data>
   <data name="Challenge4_Title" xml:space="preserve">
-    <value>Shut up the dog!</value>
+    <value>Shut the dog!</value>
+  </data>
+  <data name="Challenge6_DescriptionHardTxtBlockText" xml:space="preserve">
+    <value>In this challenge you have to throw your cellphone as high as you can. Minimum you have to reach two meters.</value>
   </data>
   <data name="Challenge6_DescriptionTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to throw your cellphone as high as you can.</value>
+    <value>In this challenge you have to throw your cellphone as high as you can. Minimum you have to reach one meter.</value>
   </data>
   <data name="HomePage_ChallengesPivotTitle" xml:space="preserve">
     <value>Challenges</value>

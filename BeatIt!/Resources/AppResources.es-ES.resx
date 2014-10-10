@@ -117,11 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Challenge1_DescriptionHardTxtBlockText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Challenge1_DescriptionHardTxtBlockTitle" xml:space="preserve">
+    <value>En este desafío debes correr a mas de 15 km/h durante 45 segundos.</value>
+  </data>
   <data name="Challenge1_DescriptionTxtBlockText" xml:space="preserve">
     <value>En este desafío debes correr a mas de 10 km/h durante 30 segundos.</value>
-  </data>
-  <data name="Challenge1_DescriptionTxtBlockTitle" xml:space="preserve">
-    <value>Descripción</value>
   </data>
   <data name="Challenge1_DetailsTxtBlockTitle" xml:space="preserve">
     <value>Detalle</value>
@@ -144,8 +147,11 @@
   <data name="Challenge1_ToBeatTxtBlockTitle" xml:space="preserve">
     <value>A vencer:</value>
   </data>
+  <data name="Challenge2_DescriptionHardTxtBlockText" xml:space="preserve">
+    <value>En este desafío deberás agitar el celular cuando pienses que el timer finalizo.  El timer se ocultará 4 veces asi que presta atención.</value>
+  </data>
   <data name="Challenge2_DescriptionTxtBlockText" xml:space="preserve">
-    <value>En este desafío debera agitar el celular cuando piense que el timer finalizo.</value>
+    <value>En este desafío deberás agitar el celular cuando pienses que el timer finalizo. El timer se ocultará 3 veces asi que presta atención.</value>
   </data>
   <data name="Challenge2_StartButton" xml:space="preserve">
     <value>Comenzar!</value>
@@ -156,8 +162,11 @@
   <data name="Challenge3_Delete" xml:space="preserve">
     <value>Borrar Publicación del muro</value>
   </data>
+  <data name="Challenge3_DescriptionHardTxtBlockText" xml:space="preserve">
+    <value>En este desafío deberás enviar invitaciones a tus amigos por medio de mensajes y redes sociales, minimo cinco SMS y la publicación en tu muro. Cuantos mas invites mayor puntaje!</value>
+  </data>
   <data name="Challenge3_DescriptionTxtBlockText" xml:space="preserve">
-    <value>En este desafío deberás enviar invitaciones a tus amigos por medio de mensajes y redes sociales. Cuantos mas invites mayor puntaje!</value>
+    <value>En este desafío deberás enviar invitaciones a tus amigos por medio de mensajes y redes sociales, minimo dos SMS y la publicación en tu muro. Cuantos mas invites mayor puntaje!</value>
   </data>
   <data name="Challenge3_Done" xml:space="preserve">
     <value>Listo!</value>
@@ -179,8 +188,11 @@ También disponible para andoid!</value>
   <data name="Challenge3_Title" xml:space="preserve">
     <value>Invita amigos</value>
   </data>
+  <data name="Challenge4_DescriptionHardTxtBlockText" xml:space="preserve">
+    <value>En este desafío debes callar lo mas pronto posible a el perro presionando el botón rojo. El perro ladrará cinco veces.</value>
+  </data>
   <data name="Challenge4_DescriptionTxtBlockText" xml:space="preserve">
-    <value>En este desafío debes callar lo mas pronto posible a el perro presionando el botón rojo.</value>
+    <value>En este desafío debes callar lo mas pronto posible a el perro presionando el botón rojo. El perro ladrará tres veces.</value>
   </data>
   <data name="Challenge4_StartButton" xml:space="preserve">
     <value>Comenzar!</value>
@@ -191,8 +203,11 @@ También disponible para andoid!</value>
   <data name="Challenge4_Title" xml:space="preserve">
     <value>Callar al perro!</value>
   </data>
+  <data name="Challenge6_DescriptionHardTxtBlockText" xml:space="preserve">
+    <value>En este desafío debes lanzar el celular lo más alto que puedas, debiendo sobrepasar como mínimo dos metros.</value>
+  </data>
   <data name="Challenge6_DescriptionTxtBlockText" xml:space="preserve">
-    <value>En este desafío debes lanzar el celular lo más alto que puedas.</value>
+    <value>En este desafío debes lanzar el celular lo más alto que puedas, debiendo sobrepasar como mínimo un metro.</value>
   </data>
   <data name="HomePage_ChallengesPivotTitle" xml:space="preserve">
     <value>Desafíos</value>
