@@ -17,6 +17,8 @@ namespace BeatIt_.AppCode.Challenges
             Description = "You have to invite friends using SMS of Facebook";
             IsEnabled = true;
             Level = level;
+            _countFacebook = 0;
+            _countSms = 0;
             MaxAttempt = maxAttempts;
         }
 
@@ -28,6 +30,8 @@ namespace BeatIt_.AppCode.Challenges
             Description = "You have to invite friends using SMS of Facebook";
             IsEnabled = true;
             Level = 1;
+            _countFacebook = 0;
+            _countSms = 0;
             MaxAttempt = 3;
         }
 
@@ -40,6 +44,19 @@ namespace BeatIt_.AppCode.Challenges
         {
             _countSms++;
         }
+
+
+        public int GetCountFacebook()
+        {
+            return _countFacebook;
+        }
+
+        public int GetCountSms()
+        {
+            return _countSms;
+        }
+
+       
 
         private int CalculateScore()
         {
@@ -79,6 +96,9 @@ namespace BeatIt_.AppCode.Challenges
                 State.Finished = true;
             }
             FacadeController.GetInstance().SaveState(State);
+            
+            _countFacebook = 0;
+            _countSms = 0;
 
             return new KeyValuePair<bool, int>(newScore,score);
         }

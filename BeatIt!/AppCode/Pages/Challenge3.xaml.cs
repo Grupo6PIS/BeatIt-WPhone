@@ -70,9 +70,6 @@ namespace BeatIt_.AppCode.Pages
             fb.PostCompleted +=
                 (o, args) => Dispatcher.BeginInvoke(() => MessageBox.Show("Message Posted successfully"));
 
-            //Facebook no deja prublicar 2 veces lo mismo
-            //var str = "("+ _numEspacios +") " + _message; 
-
             var parameters = new Dictionary<string, object>();
             parameters["message"] = _message;
             fb.PostAsync("me/feed", parameters);
@@ -86,21 +83,12 @@ namespace BeatIt_.AppCode.Pages
         private void hyperlinkButtonSMS_Click(object sender, RoutedEventArgs e)
         {
             _phoneNumberChooserTask.Show();
-
-            //var sms = new SmsComposeTask();
-            //_currentChallenge = (ChallengeDetail3)_ifc.getChallenge(3);
-            //sms.Body = _message;
-            //var contacts = new Contacts();
-            //_addressTask.Show();
-
-            ////Refresh countSMS
-            //_currentChallenge.AddSms();
         }
 
         private void hyperlinkButtonFinish_Click(object sender, RoutedEventArgs e)
         {
             _currentChallenge = (ChallengeDetail3) _ifc.getChallenge(3);
-            KeyValuePair<bool, int> ks = _currentChallenge.CompleteChallenge(false);
+            var ks = _currentChallenge.CompleteChallenge(false);
             MessageBox.Show(ks.Key ? "Nuevo puntaje mas alto!" : "No has superado tu puntaje actual.");
             var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
             NavigationService.Navigate(uri);
@@ -115,8 +103,6 @@ namespace BeatIt_.AppCode.Pages
         private void PhoneNumberChooserTask_Completed(object sender, PhoneNumberResult e)
         {
             if (e.TaskResult != TaskResult.OK) return;
-
-            //MessageBox.Show("The phone number for " + e.DisplayName + " is " + e.PhoneNumber);
 
             var smsComposeTask = new SmsComposeTask
             {
