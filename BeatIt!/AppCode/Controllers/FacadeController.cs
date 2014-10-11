@@ -60,13 +60,16 @@ namespace BeatIt_.AppCode.Controllers
             JObject round = (JObject) jsonResponse["round"],
                 jObjectTemp;
             var challengList = (JArray) round["challengeList"];
+            
+            var unixEpoch  = new DateTime(1970, 1, 1, 0, 0, 0, 0);
 
             var roundObj = new Round
             {
                 RoundId = (int) round["weekNumber"],
-                StartDate = new DateTime((long) round["start_date"], DateTimeKind.Utc),
-                EndDate = new DateTime((long) round["end_date"], DateTimeKind.Utc)
+                StartDate = unixEpoch.AddMilliseconds((long) round["start_date"]),
+                EndDate = unixEpoch.AddMilliseconds((long) round["end_date"])
             };
+
             _currentRound = roundObj;
 
             var challenges = new Dictionary<int, Challenge>();
