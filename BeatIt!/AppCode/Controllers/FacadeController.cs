@@ -146,8 +146,7 @@ namespace BeatIt_.AppCode.Controllers
                         _currentRound.Challenges[aux.ChallengeId].State = s;
                     }
                 }
-                else
-                    // Si no se corresponden con la ronda actual, los borramos ya que no los necesitamos //????????????? ES ASI?
+                else // Si no se corresponden con la ronda actual, los borramos ya que no los necesitamos //????????????? ES ASI?
                 {
                     _db.Query<DTStatePersistible>("delete from DTStatePersistible");
                     addNewStates = true;

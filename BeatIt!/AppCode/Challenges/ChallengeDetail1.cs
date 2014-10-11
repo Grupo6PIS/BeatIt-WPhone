@@ -65,11 +65,15 @@ namespace BeatIt_.AppCode.Challenges
             {
                 State.LastScore = 0;
             }
+
             if (State.CurrentAttempt == MaxAttempt)
             {
                 State.Finished = true;
             }
-            FacadeController.GetInstance().SaveState(State);
+
+            // Esto no se si esta bien, como en los testing no tenemos sqlite, si estamos testeando no persistimos.
+            if (!FacadeController.GetInstance().GetIsForTesting())
+                FacadeController.GetInstance().SaveState(State);
         }
     }
 }

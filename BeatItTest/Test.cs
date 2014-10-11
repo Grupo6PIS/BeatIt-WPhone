@@ -12,8 +12,6 @@ namespace BeatIt.Tests
         [TestMethod]
         public void TestingFunctioncalculatePuntaje()
         {
-            Assert.AreEqual(4, 2 + 2);
-
             // Por algun motivo no puede el sqlite no puede crear la base 
             // o mas bien crear un archivo, me parece que tiene algo que ver
             // con el contexto en el que se ejecuta el test.
@@ -23,13 +21,13 @@ namespace BeatIt.Tests
 
             //Comente estas lineas para que pase el test!!! 
 
-            //var ifc = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
+            var ifc = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
 
-            //var currentChallenge = (ChallengeDetail1)ifc.getChallenge(1);
-            //currentChallenge.completeChallenge(false, 45, 42);
+            var currentChallenge = (ChallengeDetail1)ifc.getChallenge(1);
+            currentChallenge.CompleteChallenge(false, 45, 42);
 
             ////Si esta bien debería ser 174 el puntaje de en el desafío (42+45)*2
-            //Assert.AreEqual(174, currentChallenge.State.LastScore);
+            Assert.AreEqual(174, currentChallenge.State.LastScore);
         }
 
     };
