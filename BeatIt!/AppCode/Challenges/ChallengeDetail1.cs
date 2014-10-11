@@ -1,4 +1,5 @@
-﻿using BeatIt_.AppCode.Classes;
+﻿using System;
+using BeatIt_.AppCode.Classes;
 using BeatIt_.AppCode.Controllers;
 
 /*****************************/
@@ -40,16 +41,16 @@ namespace BeatIt_.AppCode.Challenges
             MaxAttempt = 3;
         }
 
-        private int calculateScore(int maxSpeed, int avgSpeed)
+        private int calculateScore(double maxSpeed, double avgSpeed)
         {
             if ((maxSpeed > 0) && (avgSpeed > 0))
             {
-                return 2 * (maxSpeed + avgSpeed);
+                return Convert.ToInt32(Math.Floor(2 * (maxSpeed + avgSpeed)));
             }
             return 0;
         }
 
-        public void CompleteChallenge(bool error, int maxSpeed, int avgSpeed)
+        public void CompleteChallenge(bool error, double maxSpeed, double avgSpeed)
         {
             State.CurrentAttempt = State.CurrentAttempt + 1;
             if (!error)

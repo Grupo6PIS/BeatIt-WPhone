@@ -28,11 +28,15 @@ namespace BeatIt_.AppCode.Pages
         private IFacadeController _ifc;
 
         private Boolean _isRunning;
+        private Boolean _finish;
             //SE CAMBIA A TRUE CUANDO LA VELOCIDAD ACTUAL ES MAYOR O IGUAL A LA VELOCIDAD MINIMA DEL DESAFíO
 
         /******************************************************************************************************************/
 
         private int _minSpeed, _minTime;
+        private double _avgSpeed;
+        private double _maxSpeed;
+        private int _count;
         private int _seconds;
         private GpsSpeedEmulator _speedEmulator;
         private DispatcherTimer _timer;
@@ -73,7 +77,10 @@ namespace BeatIt_.AppCode.Pages
             _minTime = _currentChallenge.Time;
             _minSpeed = _currentChallenge.MinSpeed;
             _seconds = _minTime;
-
+            _finish = false;
+            _maxSpeed = 0;
+            _avgSpeed = 0;
+            _count = 0;
 
             // INICIALIZAMOS LAS ETIQUETAS DEL DETALLE DEL DESAFIO
             StartTimeTextBlock.Text = _currentChallenge.GetDtChallenge().StartTime.ToString(CultureInfo.InvariantCulture);
@@ -108,27 +115,37 @@ namespace BeatIt_.AppCode.Pages
             _seconds--;
             if (_seconds == 0)
             {
-                //Desafio completado
-                _timer.Stop();
-                _seconds = _minTime;
-                _isRunning = false;
-
-                ShowTime.Text = "0.00";
-
-                //CAMBIO DE GRILLA (InProgressGrid ==> StartRunningGrid)
-                StartRunningGrid.Visibility = Visibility.Visible;
-                InProgressGrid.Visibility = Visibility.Collapsed;
-
-                if (_useEmulation)
+                if (!_finish)
                 {
-                    _speedEmulator.Stop();
-                }
-                _seconds = _minTime;
+                    //Desafio completado
+                    _timer.Stop();
+                    _seconds = _minTime;
+                    _isRunning = false;
 
-                //Hay que corregir esto... calcular las velocidades
-                _currentChallenge.CompleteChallenge(true, 12, 15);
-                ToBeatTextBlock.Text = _currentChallenge.State.BestScore + " pts";
-                MessageBox.Show("Desafio completado!");
+                    ShowTime.Text = "0.00";
+
+                    //CAMBIO DE GRILLA (InProgressGrid ==> StartRunningGrid)
+                    StartRunningGrid.Visibility = Visibility.Visible;
+                    InProgressGrid.Visibility = Visibility.Collapsed;
+
+                    if (_useEmulation)
+                    {
+                        _speedEmulator.Stop();
+                    }
+                    _seconds = _minTime;
+
+                    //Hay que corregir esto... calcular las velocidades
+
+                    
+                    MessageBox.Show("Desafio completado!");
+                    _currentChallenge = (ChallengeDetail1)_ifc.getChallenge(1);
+                    _currentChallenge.CompleteChallenge(true, _maxSpeed, (_avgSpeed / _count));
+                    _ifc.setCurrentChallenge(_currentChallenge);
+                    ToBeatTextBlock.Text = _currentChallenge.State.BestScore + " pts";
+                    var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
+                    NavigationService.Navigate(uri);
+                    _finish = true;
+                }
             }
             else
             {
@@ -152,6 +169,10 @@ namespace BeatIt_.AppCode.Pages
         private void PositionChanged(object obj, GeoPositionChangedEventArgs<GeoCoordinate> e)
         {
             double speed = e.Position.Location.Speed*3.6;
+            if (speed > _maxSpeed)
+                _maxSpeed = speed;
+            _count++;
+            _avgSpeed += speed;
             SpeedChanged(speed);
         }
 
@@ -172,26 +193,29 @@ namespace BeatIt_.AppCode.Pages
             }
             else
             {
-                _isRunning = false;
-                var mySolidColorBrush = new SolidColorBrush {Color = Color.FromArgb(255, 0, 138, 0)};
-                SpeedRec.Fill = mySolidColorBrush;
-                if (!_timer.IsEnabled) return;
-                //Desafío no completado
-                _timer.Stop();
-                _seconds = _minTime;
-
-                _currentChallenge.CompleteChallenge(false, 0, 0);
-
-                //CAMBIO DE GRILLA (InProgressGrid ==> StartRunningGrid)
-                StartRunningGrid.Visibility = Visibility.Visible;
-                InProgressGrid.Visibility = Visibility.Collapsed;
-
-                if (_useEmulation)
+                if (!_finish)
                 {
-                    _speedEmulator.Stop();
-                }
+                    _isRunning = false;
+                    var mySolidColorBrush = new SolidColorBrush {Color = Color.FromArgb(255, 0, 138, 0)};
+                    SpeedRec.Fill = mySolidColorBrush;
+                    if (!_timer.IsEnabled) return;
+                    //Desafío no completado
+                    _timer.Stop();
+                    _seconds = _minTime;
 
-                MessageBox.Show("Desafio no completado.");
+                    _currentChallenge.CompleteChallenge(false, 0, 0);
+
+                    //CAMBIO DE GRILLA (InProgressGrid ==> StartRunningGrid)
+                    StartRunningGrid.Visibility = Visibility.Visible;
+                    InProgressGrid.Visibility = Visibility.Collapsed;
+
+                    if (_useEmulation)
+                    {
+                        _speedEmulator.Stop();
+                    }
+
+                    MessageBox.Show("Desafio no completado.");
+                }
             }
         }
 

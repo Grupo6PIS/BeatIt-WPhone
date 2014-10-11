@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using BeatIt_.AppCode.Classes;
@@ -7,55 +8,62 @@ using BeatIt_.AppCode.Interfaces;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
-namespace BeatIt_.Pages
+namespace BeatIt_.AppCode.Pages
 {
-    public partial class ChallengeDetail : PhoneApplicationPage
+    public partial class ChallengeDetail
     {
-        Challenge challenge;
+        readonly Challenge _challenge;
 
         public ChallengeDetail()
         {
             InitializeComponent();
 
-            NavigationInTransition navigateInTransition = new NavigationInTransition();
-            navigateInTransition.Backward = new SlideTransition { Mode = SlideTransitionMode.SlideRightFadeIn };
-            navigateInTransition.Forward = new SlideTransition { Mode = SlideTransitionMode.SlideLeftFadeIn };
+            var navigateInTransition = new NavigationInTransition
+            {
+                Backward = new SlideTransition {Mode = SlideTransitionMode.SlideRightFadeIn},
+                Forward = new SlideTransition {Mode = SlideTransitionMode.SlideLeftFadeIn}
+            };
 
-            NavigationOutTransition navigateOutTransition = new NavigationOutTransition();
-            navigateOutTransition.Backward = new SlideTransition { Mode = SlideTransitionMode.SlideRightFadeOut };
-            navigateOutTransition.Forward = new SlideTransition { Mode = SlideTransitionMode.SlideLeftFadeOut };
+            var navigateOutTransition = new NavigationOutTransition
+            {
+                Backward = new SlideTransition {Mode = SlideTransitionMode.SlideRightFadeOut},
+                Forward = new SlideTransition {Mode = SlideTransitionMode.SlideLeftFadeOut}
+            };
             TransitionService.SetNavigationInTransition(this, navigateInTransition);
             TransitionService.SetNavigationOutTransition(this, navigateOutTransition);
 
             IFacadeController ifc = FacadeController.GetInstance();
-            challenge = ifc.getCurrentChallenge();
+            _challenge = ifc.getCurrentChallenge();
 
-            ApplicationBar = new ApplicationBar();
+            ApplicationBar = new ApplicationBar
+            {
+                Mode = ApplicationBarMode.Minimized,
+                Opacity = 0.7,
+                IsVisible = _challenge.State.CurrentAttempt < _challenge.MaxAttempt,
+                IsMenuEnabled = false
+            };
 
-            ApplicationBar.Mode = ApplicationBarMode.Minimized;
-            ApplicationBar.Opacity = 0.7;
-            ApplicationBar.IsVisible = challenge.State.CurrentAttempt < challenge.MaxAttempt;
-            ApplicationBar.IsMenuEnabled = false;
-
-            ApplicationBarIconButton retryBtn = new ApplicationBarIconButton();
-            retryBtn.IconUri = new Uri("/Images/appbar_retry.png", UriKind.Relative);
-            retryBtn.Text = "Reintentar";
+            var retryBtn = new ApplicationBarIconButton
+            {
+                IconUri = new Uri("/Images/appbar_retry.png", UriKind.Relative),
+                Text = "Reintentar"
+            };
             ApplicationBar.Buttons.Add(retryBtn);
-            retryBtn.Click += new EventHandler(retryBtn_Click);
+            retryBtn.Click += retryBtn_Click;
 
-            this.PageTitle.Text = challenge.Name;
-            this.imageRec.Fill = GetColorFromHexa(challenge.ColorHex);
+            PageTitle.Text = _challenge.Name;
+            imageRec.Fill = GetColorFromHexa(_challenge.ColorHex);
             
-            this.lastScoreRec.Fill = GetColorFromHexa(challenge.ColorHex);
-            this.lastScoreTxtBlock.Text = challenge.State.LastScore.ToString();
+            lastScoreRec.Fill = GetColorFromHexa(_challenge.ColorHex);
+            lastScoreTxtBlock.Text = _challenge.State.LastScore.ToString(CultureInfo.InvariantCulture);
 
-            this.bestScoreRec.Fill = GetColorFromHexa(challenge.ColorHex);
-            this.bestScoreTxtBlock.Text = challenge.State.BestScore.ToString();
+            bestScoreRec.Fill = GetColorFromHexa(_challenge.ColorHex);
+            bestScoreTxtBlock.Text = _challenge.State.BestScore.ToString(CultureInfo.InvariantCulture);
 
-            Uri uri = new Uri("/BeatIt!;component/Images/icon_challenge_" + challenge.ChallengeId + ".png", UriKind.Relative);
-            this.iconImage.Source = new BitmapImage(uri);
-            this.startDateTxtBlock.Text = challenge.GetDtChallenge().StartTime.ToString();
-            this.attemptsTxtBlock.Text = challenge.State.CurrentAttempt + "/" + challenge.MaxAttempt;
+            var uri = new Uri("/BeatIt!;component/Images/icon_challenge_" + _challenge.ChallengeId + ".png", UriKind.Relative);
+            iconImage.Source = new BitmapImage(uri);
+            startDateTxtBlock.Text = _challenge.GetDtChallenge().StartTime.ToString(CultureInfo.InvariantCulture);
+            attemptsTxtBlock.Text = _challenge.State.CurrentAttempt + "/" + _challenge.MaxAttempt;
         }
 
         public static SolidColorBrush GetColorFromHexa(string hexaColor)
@@ -72,7 +80,7 @@ namespace BeatIt_.Pages
 
         private void retryBtn_Click(object sender, EventArgs e)
         {
-            Uri uri = new Uri("/BeatIt!;component/AppCode/Pages/Challenge" + challenge.ChallengeId + ".xaml", UriKind.Relative);
+            var uri = new Uri("/BeatIt!;component/AppCode/Pages/Challenge" + _challenge.ChallengeId + ".xaml", UriKind.Relative);
             NavigationService.Navigate(uri);
         }
 
