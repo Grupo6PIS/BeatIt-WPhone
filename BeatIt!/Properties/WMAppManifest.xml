@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.1">
-  <App xmlns="" ProductID="{f02f796b-00e7-48aa-a8de-0205c4291d7d}" Title="BeatIt!" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="BeatIt_ author" Description="Sample description" Publisher="BeatIt_">
+  <App xmlns="" ProductID="{66fa9546-f6ae-4a10-8acb-91472ac3ff96}" Title="BeatIt!" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="BeatIt_ author" Description="Sample description" Publisher="BeatIt_">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_GAMERSERVICES" />
