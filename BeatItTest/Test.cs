@@ -29,7 +29,6 @@ namespace BeatIt.Tests
             ////Si esta bien debería ser 174 el puntaje de en el desafío (42+45)*2
             Assert.AreEqual(174, currentChallenge.State.LastScore);
         }
-
     };
 
     [TestClass] // Logica Wake Me Up!
@@ -71,8 +70,7 @@ namespace BeatIt.Tests
             Assert.AreEqual(challenge.State.BestScore, 40);
             Assert.AreEqual(challenge.State.LastScore, 0);
         }
-    }
-
+    };
 
     [TestClass] // Logica Challenge
     public class TestingChallenge
@@ -98,7 +96,6 @@ namespace BeatIt.Tests
             Assert.AreEqual(dtc.Finished, true);
         }
 
-
         [TestMethod]
         public void TestingFunction_GetDurationString()
         {
@@ -118,13 +115,11 @@ namespace BeatIt.Tests
                 System.DateTime.Now.AddMinutes(1).AddSeconds(-1));
             Assert.AreEqual(cont.getChallenge(2).GetDurationString(), "Menos de un minuto!!");
         }
-
-    }
+    };
 
     [TestClass] // Logica Can you play?
     public class TestingChallengeDetail3
     {
-
         [TestMethod]
         public void TestingFunction_CompleteChallenge(bool error)
         {
@@ -151,8 +146,6 @@ namespace BeatIt.Tests
             Assert.AreEqual(130, result.Value);
         }
 
-
-
         [TestMethod]
         public void TestingFunction_AddFacebook()
         {
@@ -169,11 +162,9 @@ namespace BeatIt.Tests
             Assert.AreEqual(4, ch.GetCountFacebook());
             ch.AddFacebook();
             Assert.AreEqual(5, ch.GetCountFacebook());
-          
+
 
         }
-
-
 
         [TestMethod]
         public void TestingFunction_AddSms()
@@ -193,8 +184,42 @@ namespace BeatIt.Tests
             Assert.AreEqual(5, ch.GetCountSms());
 
         }
+    };
 
+    [TestClass] // Logica Callar al Perro
+    public class TestingChallengeDetail4
+    {
+        [TestMethod]
+        public void TestingFunction_CompleteChallenge()
+        {
+            var ifc = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
+            var ch = (ChallengeDetail4)ifc.getChallenge(4);
 
+            Assert.IsNotNull(ch);
+
+            Assert.AreEqual(ch.State.BestScore, 0);
+            Assert.AreEqual(ch.State.LastScore, 0);
+            Assert.AreEqual(ch.State.CurrentAttempt, 0);
+            Assert.IsFalse(ch.State.Finished);
+
+            ch.CompleteChallenge(new [] {100, 100, 100});
+            Assert.AreEqual(ch.State.LastScore, 30);
+            Assert.AreEqual(ch.State.BestScore, 30);
+            Assert.AreEqual(ch.State.CurrentAttempt, 1);
+            Assert.IsFalse(ch.State.Finished);
+
+            ch.CompleteChallenge(new []{0, 0, 0});
+            Assert.AreEqual(ch.State.LastScore, 0);
+            Assert.AreEqual(ch.State.BestScore, 30);
+            Assert.AreEqual(ch.State.CurrentAttempt, 2);
+            Assert.IsFalse(ch.State.Finished);
+
+            ch.CompleteChallenge(new[] { 20, 20, 20 });
+            Assert.AreEqual(ch.State.LastScore, 150);
+            Assert.AreEqual(ch.State.BestScore, 150);
+            Assert.AreEqual(ch.State.CurrentAttempt, 3);
+            Assert.IsTrue(ch.State.Finished);
+        }
     };
 }
 
