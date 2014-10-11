@@ -1,5 +1,6 @@
 ﻿using BeatIt_.AppCode.Classes;
 using BeatIt_.AppCode.Controllers;
+using BeatIt_.Resources;
 
 namespace BeatIt_.AppCode.Challenges
 {
@@ -10,11 +11,11 @@ namespace BeatIt_.AppCode.Challenges
         public ChallengeDetail4(int challengeId, string name, string colorHex, int level, int maxAttempts)
         {
             ChallengeId = challengeId;
-            Name = name;
+            Name = AppResources.Challenge4_Title;
             ColorHex = colorHex;
-            Description = "En este desafio debes callar al perro presionando el boton 'Cállate!' 3 veces.";
             IsEnabled = true;
             Level = level;
+            Description = level == 1 ? AppResources.Challenge4_DescriptionTxtBlockText : AppResources.Challenge4_DescriptionHardTxtBlockText;
             MaxAttempt = maxAttempts;
             TimerValues = Level == 1 ? new[] { 2, 4, 6 } : new[] { 1, 2, 3, 4, 5 };
         }
@@ -22,13 +23,13 @@ namespace BeatIt_.AppCode.Challenges
         public ChallengeDetail4() 
         {
             ChallengeId = 4;
-            Name = "Callar al Perro";
+            Name = AppResources.Challenge4_Title;
             ColorHex = "#FF647687";
-            Description = "En este desafio debes callar al perro presionando el boton 'Cállate!' 3 veces.";
+            Description = AppResources.Challenge4_DescriptionTxtBlockText;
             IsEnabled = true;
             Level = 1;
             MaxAttempt = 3;
-            TimerValues = Level == 1 ? new[] { 2, 4, 6 } : new[] { 1, 2, 3, 4, 5 };
+            TimerValues = new[] { 2, 4, 6 };
         }
 
         private int CalculateScore(int[] miliseconds)
@@ -58,7 +59,6 @@ namespace BeatIt_.AppCode.Challenges
                 State.Finished = true;
             }
 
-            // Esto no se si esta bien, como en los testing no tenemos sqlite, si estamos testeando no persistimos.
             if (!FacadeController.GetInstance().GetIsForTesting())
                 FacadeController.GetInstance().SaveState(State);
         }

@@ -121,8 +121,8 @@ namespace BeatIt_.AppCode.Pages
                 _currentChallenge.CompleteChallenge(_result);
                 ToBeatTextBlock.Text = _currentChallenge.State.BestScore + " pts";
 
-                MessageBox.Show("El desafio ha finalizado, has obtenido " + _currentChallenge.State.BestScore +
-                                " puntos.");
+                //MessageBox.Show("El desafio ha finalizado, has obtenido " + _currentChallenge.State.BestScore +
+                //                " puntos.");
 
                 var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
                 NavigationService.Navigate(uri);

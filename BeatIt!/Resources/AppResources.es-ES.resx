@@ -117,14 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Challenge1_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value />
-  </data>
   <data name="Challenge1_DescriptionHardTxtBlockTitle" xml:space="preserve">
     <value>En este desafío debes correr a mas de 15 km/h durante 45 segundos.</value>
   </data>
   <data name="Challenge1_DescriptionTxtBlockText" xml:space="preserve">
     <value>En este desafío debes correr a mas de 10 km/h durante 30 segundos.</value>
+  </data>
+  <data name="Challenge1_DescriptionTxtBlockTitle" xml:space="preserve">
+    <value>Descripción</value>
   </data>
   <data name="Challenge1_DetailsTxtBlockTitle" xml:space="preserve">
     <value>Detalle</value>
