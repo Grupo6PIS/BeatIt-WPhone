@@ -70,7 +70,7 @@ namespace BeatIt_.AppCode.Controllers
             wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
             wc.UploadStringCompleted += WcOnUploadStringCompleted;
 
-            wc.UploadStringAsync(new Uri(URL + "/user/updateUser/"), "POST", parameter);
+            wc.UploadStringAsync(new Uri(URL + "/round/sendScore/"), "POST", parameter);
 
         }
 

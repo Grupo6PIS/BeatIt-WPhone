@@ -53,11 +53,10 @@ namespace BeatIt_.AppCode.Pages
 
                 _user = new User
                 {
-                    UserId = (int) IsolatedStorageSettings.ApplicationSettings["Id"],
+                    UserId = (string) IsolatedStorageSettings.ApplicationSettings["Id"],
                     FbId = (string) IsolatedStorageSettings.ApplicationSettings["FbId"],
                     FbAccessToken = (string) IsolatedStorageSettings.ApplicationSettings["FbAccessToken"],
-                    FirstName = (string) IsolatedStorageSettings.ApplicationSettings["FirstName"],
-                    LastName = (string) IsolatedStorageSettings.ApplicationSettings["LastName"],
+                    Name = (string) IsolatedStorageSettings.ApplicationSettings["Name"],
                     Country = (string) IsolatedStorageSettings.ApplicationSettings["Country"],
                     BirthDate = (DateTime) IsolatedStorageSettings.ApplicationSettings["BirthDate"],
                     ImageUrl = (string) IsolatedStorageSettings.ApplicationSettings["ImageUrl"],
@@ -149,11 +148,10 @@ namespace BeatIt_.AppCode.Pages
 
                 _user = new User
                 {
-                    UserId = 1,
+                    UserId = (string)result["id"],
                     FbId = (string) result["id"],
                     FbAccessToken = accessToken,
-                    FirstName = (string) result["first_name"],
-                    LastName = (string) result["last_name"],
+                    Name = (string)result["first_name"] + " " + (string)result["last_name"],
                     Country = "Uruguay",
                     BirthDate = new DateTime(1989, 08, 07)
                 };
@@ -170,8 +168,7 @@ namespace BeatIt_.AppCode.Pages
                 IsolatedStorageSettings.ApplicationSettings["Id"] = _user.UserId;
                 IsolatedStorageSettings.ApplicationSettings["FbId"] = _user.FbId;
                 IsolatedStorageSettings.ApplicationSettings["FbAccessToken"] = _user.FbAccessToken;
-                IsolatedStorageSettings.ApplicationSettings["FirstName"] = _user.FirstName;
-                IsolatedStorageSettings.ApplicationSettings["LastName"] = _user.LastName;
+                IsolatedStorageSettings.ApplicationSettings["Name"] = _user.Name;
                 IsolatedStorageSettings.ApplicationSettings["Country"] = _user.Country;
                 IsolatedStorageSettings.ApplicationSettings["BirthDate"] = _user.BirthDate;
                 IsolatedStorageSettings.ApplicationSettings["ImageUrl"] = _user.ImageUrl;
@@ -179,7 +176,7 @@ namespace BeatIt_.AppCode.Pages
                 IsolatedStorageSettings.ApplicationSettings.Save();
 
                 var ws = new WebServicesController();
-                ws.UpdateUser(_user.FbId, _user.FirstName, _user.ImageUrl, UpdateUserFinished);
+                ws.UpdateUser(_user.FbId, _user.Name, _user.ImageUrl, UpdateUserFinished);
             };
 
             fb.GetAsync("me");

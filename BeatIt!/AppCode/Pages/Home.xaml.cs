@@ -58,8 +58,6 @@ namespace BeatIt_.AppCode.Pages
             refreshBtn.Click += RefreshBtn_Click;
 
             ////////////////////////////////////////////////////////////////////////////
-            /// OJOOOOOOOOOOOOOOO! SOLO PARA IR PROBANDO
-            ////////////////////////////////////////////////////////////////////////////
             var sendBtn = new ApplicationBarIconButton
             {
                 IconUri = new Uri("/Images/appbar_upload.png", UriKind.Relative),
@@ -73,7 +71,7 @@ namespace BeatIt_.AppCode.Pages
             _facade = FacadeController.GetInstance();
             var loggedUser = _facade.getCurrentUser();
 
-            ProfileNameTxtBlock.Text = loggedUser.FirstName + " " + loggedUser.LastName;
+            ProfileNameTxtBlock.Text = loggedUser.Name;
             ProfileCountryTxtBlock.Text = loggedUser.Country;
             ProfileEmailTextBlock.Text = loggedUser.Email;
             var uri = new Uri(loggedUser.ImageUrl, UriKind.Absolute);
@@ -147,8 +145,7 @@ namespace BeatIt_.AppCode.Pages
                 {
                     selectedRec =
                     {
-                        Visibility =
-                            (_facade.getCurrentUser().UserId == dtr.UserId) ? Visibility.Visible : Visibility.Collapsed
+                        Visibility = _facade.getCurrentUser().UserId.Equals(dtr.UserId) ? Visibility.Visible : Visibility.Collapsed
                     },
                     positionTxtBlock = {Text = dtr.Position.ToString(CultureInfo.InvariantCulture)},
                     scoreTxtBlock = {Text = dtr.Score.ToString(CultureInfo.InvariantCulture)},
@@ -224,6 +221,7 @@ namespace BeatIt_.AppCode.Pages
             //if (_isRefreshingRanking) return;
             //_isRefreshingRanking = true;
             ProgressBar.Visibility = Visibility.Visible;
+            FacadeController.GetInstance().SetHayCambiosParaEnviar();
             FacadeController.GetInstance().UploadPuntaje(GetSendFinished);
         }
 
@@ -234,6 +232,10 @@ namespace BeatIt_.AppCode.Pages
             if ((bool)jsonResponse["error"])
             {
                 Dispatcher.BeginInvoke(() => MessageBox.Show("Ha ocurrido un error al actualizar el ranking"));
+            }
+            else
+            {
+                Dispatcher.BeginInvoke(() => MessageBox.Show("Puntaje enviado con exito!"));   
             }
         }
         ////////////////////////////////////////////////////////////////////////////

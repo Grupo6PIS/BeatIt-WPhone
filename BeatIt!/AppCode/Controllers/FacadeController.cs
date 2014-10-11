@@ -177,7 +177,7 @@ namespace BeatIt_.AppCode.Controllers
             for (var i = 0; i < rankingJson.Count; i++)
             {
                 jObjectTemp = (JObject) rankingJson[i];
-                _ranking.Add(new DTRanking(i, i + 1, (int) jObjectTemp["score"], (string) jObjectTemp["userName"],
+                _ranking.Add(new DTRanking((string)jObjectTemp["id"], i + 1, (int)jObjectTemp["score"], (string)jObjectTemp["userName"],
                     (string) jObjectTemp["imageURL"]));
             }
         }
@@ -235,7 +235,7 @@ namespace BeatIt_.AppCode.Controllers
                 for (int i = 0; i < rankingLastRound0.Count; i++)
                 {
                     var jObjectTemp = (JObject) rankingLastRound0[i];
-                    _ranking.Add(new DTRanking(i, i + 1, (int) jObjectTemp["score"], (string) jObjectTemp["userName"],
+                    _ranking.Add(new DTRanking((string)jObjectTemp["id"], i + 1, (int)jObjectTemp["score"], (string)jObjectTemp["userName"],
                         (string) jObjectTemp["imageURL"]));
                 }
             }
@@ -338,16 +338,16 @@ namespace BeatIt_.AppCode.Controllers
             ch10State.Challenge = ch10;
 
             var r1 = new DTRanking(_instance._currentUser.UserId, 1, 280,
-                _instance._currentUser.FirstName + " " + _instance._currentUser.LastName,
+                _instance._currentUser.Name,
                 _instance._currentUser.ImageUrl);
-            var r2 = new DTRanking(2, 2, 127, "Martín Berguer",
+            var r2 = new DTRanking("2", 2, 127, "Martín Berguer",
                 "http://graph.facebook.com/100002316914037/picture?type=square");
-            var r3 = new DTRanking(3, 3, 106, "Cristian Bauza", "http://graph.facebook.com/cristian.bauza/picture");
-            var r4 = new DTRanking(4, 4, 94, "Pablo Olivera", "http://graph.facebook.com/pablo.olivera/picture");
-            var r5 = new DTRanking(5, 5, 73, "Alejandro Brusco",
+            var r3 = new DTRanking("3", 3, 106, "Cristian Bauza", "http://graph.facebook.com/cristian.bauza/picture");
+            var r4 = new DTRanking("4", 4, 94, "Pablo Olivera", "http://graph.facebook.com/pablo.olivera/picture");
+            var r5 = new DTRanking("5", 5, 73, "Alejandro Brusco",
                 "http://graph.facebook.com/alejandro.brusco/picture?type=square");
-            var r6 = new DTRanking(6, 6, 22, "Felipe Garcia", "http://graph.facebook.com/felipe92/picture?type=square");
-            var r7 = new DTRanking(7, 7, 15, "Martín Steglich",
+            var r6 = new DTRanking("6", 6, 22, "Felipe Garcia", "http://graph.facebook.com/felipe92/picture?type=square");
+            var r7 = new DTRanking("7", 7, 15, "Martín Steglich",
                 "http://graph.facebook.com/tinchoste/picture?type=square");
 
             _instance._ranking = new List<DTRanking> {r1, r2, r3, r4, r5, r6, r7};
