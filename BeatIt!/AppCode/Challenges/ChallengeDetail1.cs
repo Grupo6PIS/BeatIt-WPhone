@@ -58,7 +58,7 @@ namespace BeatIt_.AppCode.Challenges
                 if (State.LastScore > State.BestScore)
                 {
                     State.BestScore = State.LastScore;
-                    FacadeController.GetInstance().SetHayCambiosParaEnviar();
+                    FacadeController.GetInstance().ShouldSendScore = true;
                 }
             }
             else 

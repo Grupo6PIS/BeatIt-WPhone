@@ -6,101 +6,100 @@ namespace BeatIt_.AppCode.Controllers
 {
     public class WebServicesController
     {
-        private const string URL = "http://beatit-udelar.rhcloud.com";
-
         public delegate void CallbackWebService(JObject json);
 
-        private CallbackWebService callback;
+        private const string Url = "http://beatit-udelar.rhcloud.com";
+
+        private CallbackWebService _callback;
 
         public void Login(string userId, CallbackWebService callbackLogin)
         {
-            if (callbackLogin!=null)
-                callback = callbackLogin;
+            if (callbackLogin != null)
+                _callback = callbackLogin;
             string parameter = "userID=" + userId;
 
-            WebClient wc = new WebClient();
+            var wc = new WebClient();
             wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
             wc.UploadStringCompleted += WcOnUploadStringCompleted;
 
 
-            wc.UploadStringAsync(new Uri(URL + "/user/login/"), "POST", parameter);
+            wc.UploadStringAsync(new Uri(Url + "/user/login/"), "POST", parameter);
         }
 
-        public void UpdateUser(string userId, string name, string imageURL, CallbackWebService callbackUpdateuser )
+        public void UpdateUser(string userId, string name, string imageUrl, CallbackWebService callbackUpdateuser)
         {
-            if (callbackUpdateuser!=null)
-                callback = callbackUpdateuser;
-            string parameter = "userID=" + userId + "&name=" + name + "&imageURL=" + imageURL;
+            if (callbackUpdateuser != null)
+                _callback = callbackUpdateuser;
+            string parameter = "userID=" + userId + "&name=" + name + "&imageURL=" + imageUrl;
 
-            WebClient wc = new WebClient();
+            var wc = new WebClient();
             wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
             wc.UploadStringCompleted += WcOnUploadStringCompleted;
 
-            wc.UploadStringAsync(new Uri(URL + "/user/updateUser/"), "POST", parameter);
+            wc.UploadStringAsync(new Uri(Url + "/user/updateUser/"), "POST", parameter);
         }
 
 
         public void GetRound(CallbackWebService callbackGetRound)
         {
-            if (callbackGetRound!=null)
-                callback = callbackGetRound;
-            WebClient wc = new WebClient();
+            if (callbackGetRound != null)
+                _callback = callbackGetRound;
+            var wc = new WebClient();
 
-            wc.DownloadStringCompleted+= WcOnDownloadStringCompleted;
-            wc.DownloadStringAsync(new Uri(URL + "/round/getRound/"), "GET");
+            wc.DownloadStringCompleted += WcOnDownloadStringCompleted;
+            wc.DownloadStringAsync(new Uri(Url + "/round/getRound/"), "GET");
         }
 
         public void GetRanking(CallbackWebService callbackGetRanking)
         {
-            if (callbackGetRanking!=null)
-                callback = callbackGetRanking;
-            WebClient wc = new WebClient();
+            if (callbackGetRanking != null)
+                _callback = callbackGetRanking;
+            var wc = new WebClient();
 
             wc.DownloadStringCompleted += WcOnDownloadStringCompleted;
-            wc.DownloadStringAsync(new Uri(URL + "/round/getRanking/"), "GET");
+            wc.DownloadStringAsync(new Uri(Url + "/round/getRanking/"), "GET");
         }
 
         public void SendScore(string userId, int score, CallbackWebService callbackSendScore)
         {
-            if (callbackSendScore!=null)
-                callback = callbackSendScore;
+            if (callbackSendScore != null)
+                _callback = callbackSendScore;
             string parameter = "userID=" + userId + "&score=" + score;
-            
-            WebClient wc = new WebClient();
+
+            var wc = new WebClient();
             wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
             wc.UploadStringCompleted += WcOnUploadStringCompleted;
 
-            wc.UploadStringAsync(new Uri(URL + "/round/sendScore/"), "POST", parameter);
-
+            wc.UploadStringAsync(new Uri(Url + "/round/sendScore/"), "POST", parameter);
         }
 
         private void WcOnDownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
-            if (e.Error == null && callback != null)
+            if (e.Error == null && _callback != null)
             {
-                callback(JObject.Parse(e.Result));
-                callback = null;
+                _callback(JObject.Parse(e.Result));
+                _callback = null;
             }
             else
             {
-                string errorStr = "{'error':true}";
-                callback(JObject.Parse(errorStr));
-                callback = null;
+                const string errorStr = "{'error':true}";
+                _callback(JObject.Parse(errorStr));
+                _callback = null;
             }
         }
 
         public void WcOnUploadStringCompleted(object sender, UploadStringCompletedEventArgs e)
         {
-            if (e.Error == null && callback != null)
+            if (e.Error == null && _callback != null)
             {
-                callback(JObject.Parse(e.Result));
-                callback = null;
+                _callback(JObject.Parse(e.Result));
+                _callback = null;
             }
             else
             {
-                string errorStr = "{'error':true}";
-                callback(JObject.Parse(errorStr));
-                callback = null;
+                const string errorStr = "{'error':true}";
+                _callback(JObject.Parse(errorStr));
+                _callback = null;
             }
         }
     }

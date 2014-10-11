@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO.IsolatedStorage;
 using System.Linq;
 using BeatIt_.AppCode.Challenges;
@@ -14,8 +13,6 @@ namespace BeatIt_.AppCode.Controllers
 {
     public class FacadeController : IFacadeController
     {
-        //public delegate void CallbackMethod();
-
         private static FacadeController _instance;
 
         private readonly SQLiteConnection _db;
@@ -24,11 +21,10 @@ namespace BeatIt_.AppCode.Controllers
         private Round _currentRound;
         private User _currentUser;
         private List<DTRanking> _ranking;
-        private bool _hayCambiosParaEnviar;
 
         private FacadeController()
         {
-            _hayCambiosParaEnviar = false;
+            ShouldSendScore = false;
             _db = new SQLiteConnection("BeatItDB.db");
             _db.CreateTable<DTStatePersistible>();
             _isForTesting = false;
@@ -38,6 +34,8 @@ namespace BeatIt_.AppCode.Controllers
         {
             _isForTesting = isForTesting;
         }
+
+        public bool ShouldSendScore { get; set; }
 
         public bool isLoggedUser()
         {
@@ -73,7 +71,7 @@ namespace BeatIt_.AppCode.Controllers
 
             var challenges = new Dictionary<int, Challenge>();
 
-            foreach (var t in challengList)
+            foreach (JToken t in challengList)
             {
                 jObjectTemp = (JObject) t;
                 Challenge c;
@@ -122,15 +120,15 @@ namespace BeatIt_.AppCode.Controllers
 
             // GENERO ESTADOS DE DESAFIOS
 
-            var states = _db.Query<DTStatePersistible>("select * from DTStatePersistible");
+            List<DTStatePersistible> states = _db.Query<DTStatePersistible>("select * from DTStatePersistible");
 
-            var addNewStates = false;
+            bool addNewStates = false;
 
             if (states.Count > 0) // Si hay estados guardados.
             {
                 IEnumerator<DTStatePersistible> enumerator = states.GetEnumerator();
                 enumerator.MoveNext();
-                var dt = enumerator.Current;
+                DTStatePersistible dt = enumerator.Current;
                 if (_currentRound.RoundId == dt.RoundId) // Si los estados guardados corresponden a la ronda actual.
                 {
                     foreach (DTStatePersistible aux in states)
@@ -164,7 +162,7 @@ namespace BeatIt_.AppCode.Controllers
                 {
                     var s = new State {Challenge = aux.Value};
                     aux.Value.State = s;
-                    var dts = s.GetDtStatePersistible();
+                    DTStatePersistible dts = s.GetDtStatePersistible();
                     _db.Insert(dts);
                 }
             }
@@ -174,10 +172,11 @@ namespace BeatIt_.AppCode.Controllers
             _ranking = new List<DTRanking>();
             var rankingJson = (JArray) round["ranking"];
 
-            for (var i = 0; i < rankingJson.Count; i++)
+            for (int i = 0; i < rankingJson.Count; i++)
             {
                 jObjectTemp = (JObject) rankingJson[i];
-                _ranking.Add(new DTRanking((string)jObjectTemp["id"], i + 1, (int)jObjectTemp["score"], (string)jObjectTemp["userName"],
+                _ranking.Add(new DTRanking((string) jObjectTemp["id"], i + 1, (int) jObjectTemp["score"],
+                    (string) jObjectTemp["userName"],
                     (string) jObjectTemp["imageURL"]));
             }
         }
@@ -235,7 +234,8 @@ namespace BeatIt_.AppCode.Controllers
                 for (int i = 0; i < rankingLastRound0.Count; i++)
                 {
                     var jObjectTemp = (JObject) rankingLastRound0[i];
-                    _ranking.Add(new DTRanking((string)jObjectTemp["id"], i + 1, (int)jObjectTemp["score"], (string)jObjectTemp["userName"],
+                    _ranking.Add(new DTRanking((string) jObjectTemp["id"], i + 1, (int) jObjectTemp["score"],
+                        (string) jObjectTemp["userName"],
                         (string) jObjectTemp["imageURL"]));
                 }
             }
@@ -253,7 +253,7 @@ namespace BeatIt_.AppCode.Controllers
 
         public bool SaveState(State state)
         {
-            var dts = state.GetDtStatePersistible();
+            DTStatePersistible dts = state.GetDtStatePersistible();
             int rowsAffected = _db.Update(dts);
 
             return rowsAffected > 0;
@@ -355,26 +355,11 @@ namespace BeatIt_.AppCode.Controllers
             return _instance;
         }
 
-        public void SetHayCambiosParaEnviar()
+        public int GetRoundScore()
         {
-            _hayCambiosParaEnviar = true;
-        }
-
-        public void UploadPuntaje(WebServicesController.CallbackWebService callback)
-        {
-            // Primero Si hay cambios para enviar vemos si hay cambios para enviar, en caso positivo
-            // calculamos el puntaje total y lo enviamos.
-            if (_hayCambiosParaEnviar)
-            {
-                int totalPuntos = _currentRound.Challenges.Where(variable => variable.Value.IsEnabled).Sum(variable => variable.Value.State.BestScore);
-                var wsController = new WebServicesController();
-                wsController.SendScore(_currentUser.UserId.ToString(CultureInfo.InvariantCulture), totalPuntos, callback);
-            }
-            else
-            {
-                const string errorStr = "{'error':true}";
-                callback(JObject.Parse(errorStr));
-            }
+            return
+                _currentRound.Challenges.Where(variable => variable.Value.IsEnabled)
+                    .Sum(variable => variable.Value.State.BestScore);
         }
     }
 }

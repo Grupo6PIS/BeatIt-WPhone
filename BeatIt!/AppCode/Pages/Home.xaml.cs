@@ -20,6 +20,7 @@ namespace BeatIt_.AppCode.Pages
     {
         private readonly IFacadeController _facade;
         private bool _isRefreshingRanking;
+        private bool _isSendingScore;
 
         public Home()
         {
@@ -61,7 +62,8 @@ namespace BeatIt_.AppCode.Pages
             var sendBtn = new ApplicationBarIconButton
             {
                 IconUri = new Uri("/Images/appbar_upload.png", UriKind.Relative),
-                Text = "Enviar Puntaje"
+                Text = "Enviar Puntaje",
+                //IsEnabled = FacadeController.GetInstance().ShouldSendScore
             };
             ApplicationBar.Buttons.Add(sendBtn);
             sendBtn.Click += SendBtn_Click;
@@ -186,7 +188,7 @@ namespace BeatIt_.AppCode.Pages
         {
             var selectedIndex = Pivot.SelectedIndex;
             ApplicationBar.IsVisible = selectedIndex == 1;
-            ProgressBar.Visibility = (selectedIndex == 1 && _isRefreshingRanking) ? Visibility.Visible : Visibility.Collapsed;
+            ProgressBar.Visibility = (selectedIndex == 1 && (_isRefreshingRanking || _isSendingScore )) ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private void RefreshBtn_Click(object sender, EventArgs e)
@@ -214,27 +216,30 @@ namespace BeatIt_.AppCode.Pages
         }
 
         ////////////////////////////////////////////////////////////////////////////
-        /// OJOOOOOOOOOOOOOOO! SOLO PARA IR PROBANDO
-        ////////////////////////////////////////////////////////////////////////////
         private void SendBtn_Click(object sender, EventArgs e)
         {
-            //if (_isRefreshingRanking) return;
-            //_isRefreshingRanking = true;
+            if (_isSendingScore) return;
+            _isSendingScore = true;
+
             ProgressBar.Visibility = Visibility.Visible;
-            FacadeController.GetInstance().SetHayCambiosParaEnviar();
-            FacadeController.GetInstance().UploadPuntaje(GetSendFinished);
+            var ws = new WebServicesController();
+            var userId = FacadeController.GetInstance().getCurrentUser().UserId;
+            var score = FacadeController.GetInstance().GetRoundScore();
+            ws.SendScore(userId, score, SendScoreFinished);
         }
 
-        private void GetSendFinished(JObject jsonResponse)
+        private void SendScoreFinished(JObject jsonResponse)
         {
-            //_isRefreshingRanking = false;
+
+            _isSendingScore = false;
             ProgressBar.Visibility = Visibility.Collapsed;
             if ((bool)jsonResponse["error"])
             {
-                Dispatcher.BeginInvoke(() => MessageBox.Show("Ha ocurrido un error al actualizar el ranking"));
+                Dispatcher.BeginInvoke(() => MessageBox.Show("Ha ocurrido un error al enviar el puntaje"));
             }
             else
             {
+                FacadeController.GetInstance().ShouldSendScore = false;
                 Dispatcher.BeginInvoke(() => MessageBox.Show("Puntaje enviado con exito!"));   
             }
         }
