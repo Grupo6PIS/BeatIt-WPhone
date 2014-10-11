@@ -45,13 +45,20 @@ namespace BeatIt_.AppCode.Pages
 
         protected override void OnBackKeyPress(CancelEventArgs e)
         {
-            if (!NavigationService.CanGoBack) return;
-            while (NavigationService.RemoveBackEntry() != null)
+            if (AuthenticationBrowser.Visibility == Visibility.Visible)
             {
-                NavigationService.RemoveBackEntry();
+                AuthenticationBrowser.Visibility = Visibility.Collapsed;
+                e.Cancel = true;
             }
-
-            e.Cancel = false;
+            else
+            {
+                if (!NavigationService.CanGoBack) return;
+                while (NavigationService.RemoveBackEntry() != null)
+                {
+                    NavigationService.RemoveBackEntry();
+                }
+                e.Cancel = false;   
+            }
             base.OnBackKeyPress(e);
         }
 
