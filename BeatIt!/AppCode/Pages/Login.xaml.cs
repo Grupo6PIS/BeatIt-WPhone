@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO.IsolatedStorage;
 using System.Net;
 using System.Text;
@@ -39,6 +40,19 @@ namespace BeatIt_.AppCode.Pages
             TransitionService.SetNavigationOutTransition(this, navigateOutTransition);
 
             ProgressBar.IsIndeterminate = true;
+        }
+
+
+        protected override void OnBackKeyPress(CancelEventArgs e)
+        {
+            if (!NavigationService.CanGoBack) return;
+            while (NavigationService.RemoveBackEntry() != null)
+            {
+                NavigationService.RemoveBackEntry();
+            }
+
+            e.Cancel = false;
+            base.OnBackKeyPress(e);
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
