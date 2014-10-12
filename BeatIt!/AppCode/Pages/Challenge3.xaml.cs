@@ -94,11 +94,7 @@ namespace BeatIt_.AppCode.Pages
             NavigationService.Navigate(uri);
         }
 
-        protected override void OnBackKeyPress(CancelEventArgs e)
-        {
-            var uri = new Uri("/BeatIt!;component/AppCode/Pages/Home.xaml", UriKind.Relative);
-            NavigationService.Navigate(uri);
-        }
+
 
         private void PhoneNumberChooserTask_Completed(object sender, PhoneNumberResult e)
         {

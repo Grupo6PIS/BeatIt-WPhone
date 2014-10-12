@@ -45,7 +45,7 @@ namespace BeatIt_.AppCode.Challenges
         {
             if ((maxSpeed > 0) && (avgSpeed > 0))
             {
-                return Convert.ToInt32(Math.Floor(2 * (maxSpeed + avgSpeed)));
+                return Convert.ToInt32(Math.Floor(4 * (maxSpeed + avgSpeed)));
             }
             return 0;
         }

@@ -78,6 +78,7 @@ namespace BeatIt_.AppCode.Pages
             _minSpeed = _currentChallenge.MinSpeed;
             _seconds = _minTime;
             _finish = false;
+            _ifc.setCurrentChallenge(_currentChallenge);
             _maxSpeed = 0;
             _avgSpeed = 0;
             _count = 0;
@@ -139,7 +140,7 @@ namespace BeatIt_.AppCode.Pages
                     
                     MessageBox.Show("Desafio completado!");
                     _currentChallenge = (ChallengeDetail1)_ifc.getChallenge(1);
-                    _currentChallenge.CompleteChallenge(true, _maxSpeed, (_avgSpeed / _count));
+                    _currentChallenge.CompleteChallenge(false, _maxSpeed, (_avgSpeed / _count));
                     _ifc.setCurrentChallenge(_currentChallenge);
                     ToBeatTextBlock.Text = _currentChallenge.State.BestScore + " pts";
                     var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
@@ -169,16 +170,18 @@ namespace BeatIt_.AppCode.Pages
         private void PositionChanged(object obj, GeoPositionChangedEventArgs<GeoCoordinate> e)
         {
             double speed = e.Position.Location.Speed*3.6;
-            if (speed > _maxSpeed)
-                _maxSpeed = speed;
-            _count++;
-            _avgSpeed += speed;
+
             SpeedChanged(speed);
         }
 
         private void SpeedChanged(double speed)
         {
             UpdateLabels(speed);
+
+            if (speed > _maxSpeed)
+                _maxSpeed = speed;
+            _count++;
+            _avgSpeed += speed;
 
             if (speed >= _minSpeed)
             {

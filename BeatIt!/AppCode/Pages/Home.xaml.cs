@@ -161,21 +161,27 @@ namespace BeatIt_.AppCode.Pages
 
         private void LogoutBtn_Click(object sender, RoutedEventArgs e)
         {
-            var fb = new FacebookClient();
-            var parameters = new Dictionary<string, object>();
-            parameters["next"] = "https://www.facebook.com/connect/login_success.html";
-            parameters["access_token"] = _facade.getCurrentUser().FbAccessToken;
-            var logoutUrl = fb.GetLogoutUrl(parameters);
-            var webBrowser = new WebBrowser();
-            webBrowser.Navigate(logoutUrl);
-            webBrowser.Navigated += (o, args) =>
+            var m = MessageBox.Show("Are you sure?", "Logout", MessageBoxButton.OKCancel);
+            if (m == MessageBoxResult.OK)
             {
-                if (args.Uri.AbsoluteUri == "https://www.facebook.com/connect/login_success.html")
+                // user clicked yes
+                var fb = new FacebookClient();
+                var parameters = new Dictionary<string, object>();
+                parameters["next"] = "https://www.facebook.com/connect/login_success.html";
+                parameters["access_token"] = _facade.getCurrentUser().FbAccessToken;
+                var logoutUrl = fb.GetLogoutUrl(parameters);
+                var webBrowser = new WebBrowser();
+                webBrowser.Navigate(logoutUrl);
+                webBrowser.Navigated += (o, args) =>
                 {
-                    _facade.logoutUser();
-                    NavigationService.Navigate(new Uri("/BeatIt!;component/AppCode/Pages/Login.xaml", UriKind.Relative));
-                }
-            };
+                    if (args.Uri.AbsoluteUri == "https://www.facebook.com/connect/login_success.html")
+                    {
+                        _facade.logoutUser();
+                        NavigationService.Navigate(new Uri("/BeatIt!;component/AppCode/Pages/Login.xaml",
+                            UriKind.Relative));
+                    }
+                };
+            }
         }
 
         protected override void OnBackKeyPress(CancelEventArgs e)
