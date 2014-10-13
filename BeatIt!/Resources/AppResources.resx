@@ -203,6 +203,9 @@ Also available for android!</value>
   <data name="Challenge4_Title" xml:space="preserve">
     <value>Shut the dog!</value>
   </data>
+  <data name="Challenge5_Title" xml:space="preserve">
+    <value>Bouncing Game!</value>
+  </data>
   <data name="Challenge6_DescriptionHardTxtBlockText" xml:space="preserve">
     <value>In this challenge you have to throw your cellphone as high as you can. Minimum you have to reach two meters.</value>
   </data>

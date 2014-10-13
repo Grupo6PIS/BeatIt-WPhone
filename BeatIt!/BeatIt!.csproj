@@ -252,6 +252,8 @@
     <Content Include="Images\appbar_retry.png" />
     <Resource Include="Sounds\ring.wav" />
     <Content Include="Images\appbar_upload.png" />
+    <Resource Include="Images\blackBall.png" />
+    <Resource Include="Images\redBall.png" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup />

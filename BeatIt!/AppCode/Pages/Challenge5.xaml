@@ -23,11 +23,82 @@
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock x:Name="ApplicationTitle" Text="BeatIt!" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="Challenge 5" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock x:Name="PageTitle" Text="{Binding Path=AppResources.Challenge5_Title,  Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
+        <Grid  Margin="12,160,12,28" Grid.Row="0" Grid.RowSpan="2">
+            <Rectangle Fill="#FFFA6800" Height="200" Width="200" VerticalAlignment="top" HorizontalAlignment="Left"
+                       Margin="12,20,8,8" />
+            <Image Height="200" HorizontalAlignment="Left" Margin="10,21,0,0" Name="ChallengeImage" Stretch="Fill"
+                   VerticalAlignment="Top" Width="200"
+                   Source="/BeatIt!;component/Images/icon_challenge_8.png" />
+            <TextBlock Height="30" Margin="230,20,0,0" Name="DetailsTextBlock"
+                       Text="{Binding Path=AppResources.Challenge1_DetailsTxtBlockTitle, Source={StaticResource LocalizedStrings}}"
+                       VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Left" Width="196" />
+            <TextBlock FontWeight="Light" Foreground="#FF867A7A" Height="30" HorizontalAlignment="Left"
+                       Margin="230,55,0,0" Name="StartTimeTitleTextBlock"
+                       Text="{Binding Path=AppResources.Challenge1_StartTimeTxtBlockTitle, Source={StaticResource LocalizedStrings}}"
+                       VerticalAlignment="Top" Width="196" />
+            <TextBlock FontWeight="Light" Foreground="#FF867A7A" Height="30" HorizontalAlignment="Left"
+                       Margin="230,110,0,0" Name="DurationTitleTextBlock"
+                       Text="{Binding Path=AppResources.Challenge1_DurationTxtBlockTitle, Source={StaticResource LocalizedStrings}}"
+                       VerticalAlignment="Top" Width="196" />
+            <TextBlock FontWeight="Light" Foreground="#FF867A7A" Height="30" HorizontalAlignment="Left"
+                       Margin="230,165,0,0" Name="ToBeatTitleTextBlock"
+                       Text="{Binding Path=AppResources.Challenge1_ToBeatTxtBlockTitle, Source={StaticResource LocalizedStrings}}"
+                       VerticalAlignment="Top" Width="196" />
+            <TextBlock FontWeight="Normal" Height="63" HorizontalAlignment="Left" Margin="10,240,0,0"
+                       Name="DescriptionTitleTextBlock"
+                       Text="{Binding Path=AppResources.Challenge1_DescriptionTxtBlockTitle, Source={StaticResource LocalizedStrings}}"
+                       VerticalAlignment="Top" Width="246" FontSize="40" />
+            <TextBlock FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="12,300,0,0"
+                       Name="TextDescription"
+                       Text="Falta"
+                       Width="414" Height="100" VerticalAlignment="Top" TextWrapping="Wrap" />
+
+            <Grid Visibility="Visible" Name="StartGrid">
+                <Rectangle Fill="#FFFA6800" Height="80" Width="438" VerticalAlignment="Bottom"
+                           HorizontalAlignment="Center" Margin="12,0,12,50" IsHitTestVisible="True"
+                           Name="StartRectangle" />
+                <TextBlock FontWeight="ExtraBlack" Height="57" HorizontalAlignment="Left" Margin="12,460,0,0"
+                           Name="StartTitleTextBlock"
+                           Text="{Binding Path=AppResources.Challenge4_StartButton, Source={StaticResource LocalizedStrings}}"
+                           VerticalAlignment="Top" Width="435" FontSize="40" TextAlignment="Center" />
+                <HyperlinkButton Content="" Height="80" HorizontalAlignment="Left" Margin="12,450,0,0"
+                                 Name="StartButton" VerticalAlignment="Top" Width="435"
+                                 Click="StartButton_Click" />
+            </Grid>
+            <TextBlock FontWeight="Light" Foreground="White" Height="30" HorizontalAlignment="Left" Margin="230,80,0,0"
+                       Name="StartTimeTextBlock" Text="---" VerticalAlignment="Top" Width="196" />
+            <TextBlock FontWeight="Light" Foreground="White" Height="30" HorizontalAlignment="Left"
+                       Margin="230,135,0,0" Name="DurationTextBlock" Text="---" VerticalAlignment="Top" Width="196" />
+            <TextBlock FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="230,190,0,0"
+                       Name="ToBeatTextBlock" Text="---" Width="196" Height="30" VerticalAlignment="Top" />
+        </Grid>
+
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0"></Grid>
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Background="#FFFA6800">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Cantidad:" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <TextBlock Name="counterLabel" Grid.Column="1" Text="0" VerticalAlignment="Center"></TextBlock>
+                <TextBlock Grid.Column="2" Text="Tiempo restante: " VerticalAlignment="Center"></TextBlock>
+                <TextBlock Name="timerLabel" Grid.Column="3" Text="30s" VerticalAlignment="Center"></TextBlock>
+            </Grid>
+            <Canvas Name="canvasPanel" Grid.Row="1" Background="GreenYellow" >
+                <Image Name="blackBall" Canvas.Left="0" Canvas.Top="0" Source="/BeatIt!;component/Images/blackBall.png" Width="150" Height="150"></Image>
+                <Image Name="redBall" Canvas.Left="0" Canvas.Top="160" Source="/BeatIt!;component/Images/redBall.png" Width="20" Height="20"></Image>
+            </Canvas>
+        </Grid>
     </Grid>
  
     <!--Sample code showing usage of ApplicationBar-->
