@@ -121,7 +121,7 @@ namespace BeatIt_.AppCode.Controllers
 
             var ch = new ChallengeDetail5(5,
                             "Boucing Game!",
-                            "#FFFA6800",
+                            "#FFe51400",
                             1,
                             3) { Round = roundObj };
             challenges.Add(5, ch);

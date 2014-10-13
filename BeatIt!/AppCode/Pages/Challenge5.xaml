@@ -27,11 +27,11 @@
         </StackPanel>
 
         <Grid  Margin="12,160,12,28" Grid.Row="0" Grid.RowSpan="2">
-            <Rectangle Fill="#FFFA6800" Height="200" Width="200" VerticalAlignment="top" HorizontalAlignment="Left"
+            <Rectangle Fill="#FFe51400" Height="200" Width="200" VerticalAlignment="top" HorizontalAlignment="Left"
                        Margin="12,20,8,8" />
             <Image Height="200" HorizontalAlignment="Left" Margin="10,21,0,0" Name="ChallengeImage" Stretch="Fill"
                    VerticalAlignment="Top" Width="200"
-                   Source="/BeatIt!;component/Images/icon_challenge_8.png" />
+                   Source="/BeatIt!;component/Images/icon_challenge_5.png" />
             <TextBlock Height="30" Margin="230,20,0,0" Name="DetailsTextBlock"
                        Text="{Binding Path=AppResources.Challenge1_DetailsTxtBlockTitle, Source={StaticResource LocalizedStrings}}"
                        VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Left" Width="196" />
@@ -57,7 +57,7 @@
                        Width="414" Height="100" VerticalAlignment="Top" TextWrapping="Wrap" />
 
             <Grid Visibility="Visible" Name="StartGrid">
-                <Rectangle Fill="#FFFA6800" Height="80" Width="438" VerticalAlignment="Bottom"
+                <Rectangle Fill="#FFe51400" Height="80" Width="438" VerticalAlignment="Bottom"
                            HorizontalAlignment="Center" Margin="12,0,12,50" IsHitTestVisible="True"
                            Name="StartRectangle" />
                 <TextBlock FontWeight="ExtraBlack" Height="57" HorizontalAlignment="Left" Margin="12,460,0,0"
@@ -82,7 +82,7 @@
                 <RowDefinition Height="50"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Background="#FFFA6800">
+            <Grid Grid.Row="0" Background="#FFe51400">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
@@ -94,7 +94,7 @@
                 <TextBlock Grid.Column="2" Text="Tiempo restante: " VerticalAlignment="Center"></TextBlock>
                 <TextBlock Name="timerLabel" Grid.Column="3" Text="30s" VerticalAlignment="Center"></TextBlock>
             </Grid>
-            <Canvas Name="canvasPanel" Grid.Row="1" Background="GreenYellow" >
+            <Canvas Name="canvasPanel" Grid.Row="1" Background="#DBCDB4" >
                 <Image Name="blackBall" Canvas.Left="0" Canvas.Top="0" Source="/BeatIt!;component/Images/blackBall.png" Width="150" Height="150"></Image>
                 <Image Name="redBall" Canvas.Left="0" Canvas.Top="160" Source="/BeatIt!;component/Images/redBall.png" Width="20" Height="20"></Image>
             </Canvas>

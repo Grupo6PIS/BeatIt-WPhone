@@ -8,7 +8,7 @@ namespace BeatIt_.AppCode.Challenges
         {
             ChallengeId = 5;
             Name = "Bouncing Game!";
-            ColorHex = "#FFFA6800";
+            ColorHex = "#FFe51400";
             Description = "Description 5";
             IsEnabled = false;
             Level = 1;
