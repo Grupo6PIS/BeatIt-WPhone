@@ -7,6 +7,7 @@ using Microsoft.Devices.Sensors;
 using System;
 using System.Windows.Controls;
 using System.Windows;
+using System.Globalization;
 
 namespace BeatIt_.AppCode.Pages
 {
@@ -50,6 +51,10 @@ namespace BeatIt_.AppCode.Pages
         {
             challenge =(ChallengeDetail5) FacadeController.GetInstance().getChallenge(challengeID);
             randomNumber = new Random();
+
+            StartTimeTextBlock.Text = challenge.State.StartDate.ToString(CultureInfo.InvariantCulture);
+            DurationTextBlock.Text = challenge.GetDurationString();
+            ToBeatTextBlock.Text = challenge.State.BestScore + "pts";
         }
 
         private void StartButton_Click(object sender, System.Windows.RoutedEventArgs e)

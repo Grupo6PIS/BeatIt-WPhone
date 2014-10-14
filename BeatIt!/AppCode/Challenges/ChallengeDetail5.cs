@@ -1,4 +1,5 @@
 ﻿using BeatIt_.AppCode.Classes;
+using BeatIt_.AppCode.Controllers;
 
 namespace BeatIt_.AppCode.Challenges
 {
@@ -33,6 +34,7 @@ namespace BeatIt_.AppCode.Challenges
             State.BestScore = puntaje > State.BestScore ? puntaje : State.BestScore;
             State.CurrentAttempt++;
 
+            FacadeController.GetInstance().SaveState(State);
 
         }
     }

@@ -239,7 +239,6 @@
     <Resource Include="Images\profileImage.jpg" />
     <Resource Include="Sounds\dog_bark.wav" />
     <Resource Include="Images\icon_challenge_1.png" />
-    <Resource Include="Images\icon_challenge_10.png" />
     <Resource Include="Images\icon_challenge_2.png" />
     <Resource Include="Images\icon_challenge_3.png" />
     <Resource Include="Images\icon_challenge_4.png" />

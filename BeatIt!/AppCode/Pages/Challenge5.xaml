@@ -53,7 +53,7 @@
                        VerticalAlignment="Top" Width="246" FontSize="40" />
             <TextBlock FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="12,300,0,0"
                        Name="TextDescription"
-                       Text="Falta"
+                       Text="{Binding Path=AppResources.Challenge1_Description, Source={StaticResource LocalizedStrings}}"
                        Width="414" Height="100" VerticalAlignment="Top" TextWrapping="Wrap" />
 
             <Grid Visibility="Visible" Name="StartGrid">

@@ -264,7 +264,6 @@ namespace BeatIt_.AppCode.Controllers
         {
             DTStatePersistible dts = state.GetDtStatePersistible();
             int rowsAffected = _db.Update(dts);
-
             return rowsAffected > 0;
         }
 

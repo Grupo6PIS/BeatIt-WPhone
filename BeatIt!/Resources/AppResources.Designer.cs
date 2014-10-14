@@ -61,6 +61,15 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Bump the gray ball as much as possible !.
+        /// </summary>
+        public static string Challenge1_Description {
+            get {
+                return ResourceManager.GetString("Challenge1_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a In this challenge you have to run faster than 15 km/h for 45 seconds..
         /// </summary>
         public static string Challenge1_DescriptionHardTxtBlockText {
