@@ -28,7 +28,7 @@ namespace BeatIt_.AppCode.Challenges
 
         public void ChanllengeComplete( int  collisionCount ){
 
-            var puntaje = collisionCount * 2;
+            var puntaje = collisionCount * 5;
 
             State.LastScore = puntaje;
             State.BestScore = puntaje > State.BestScore ? puntaje : State.BestScore;
