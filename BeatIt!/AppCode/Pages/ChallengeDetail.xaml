@@ -37,8 +37,8 @@
             <TextBlock FontSize="50" FontWeight="SemiBold" Height="73" HorizontalAlignment="Left" Margin="248,471,0,0" Name="bestScoreTxtBlock" Text="120" TextAlignment="Center" VerticalAlignment="Top" Width="193" />
             <TextBlock Height="35" HorizontalAlignment="Left" Margin="13,418,0,0" Name="textBlock1" Text="Last Score" VerticalAlignment="Top" Width="111" FontWeight="Medium" FontSize="24" TextAlignment="Center" />
             <TextBlock Height="35" HorizontalAlignment="Left" Margin="246,417,0,0" Name="textBlock2" Text="Best Score" VerticalAlignment="Top" Width="115" FontWeight="Medium" FontSize="24" TextAlignment="Center" />
-            <TextBlock Foreground="#FF867A7A" Height="30" HorizontalAlignment="Left" Margin="12,285,0,0" Name="startDateTitleTxtBlock" Text="Start Date:" VerticalAlignment="Top" Width="196" />
-            <TextBlock Foreground="#FF867A7A" Height="30" HorizontalAlignment="Right" Margin="0,285,12,0" Name="attemptsTitleTxtBlock" Text="Attempts:" VerticalAlignment="Top" Width="196" />
+            <TextBlock Foreground="#FF867A7A" Height="30" HorizontalAlignment="Left" Margin="12,285,0,0" Name="startDateTitleTxtBlock" Text="{Binding Path=AppResources.Challenge1_StartTimeTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="196" />
+            <TextBlock Foreground="#FF867A7A" Height="30" HorizontalAlignment="Right" Margin="0,285,12,0" Name="attemptsTitleTxtBlock" Text="{Binding Path=AppResources.ChallengeDetail_Attempts, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="196" />
             <TextBlock Foreground="White" Height="30" HorizontalAlignment="Left" Margin="12,321,0,0" Name="startDateTxtBlock" Text="---" VerticalAlignment="Top" Width="196" />
             <TextBlock Foreground="White" Height="30" HorizontalAlignment="Left" Margin="248,321,0,0" Name="attemptsTxtBlock" Text="---" VerticalAlignment="Top" Width="196" />
         </Grid>

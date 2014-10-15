@@ -64,6 +64,7 @@ namespace BeatIt_.AppCode.Pages
         //onClick publish wall facebook
         private void hyperlinkButtonPublish_Click(object sender, RoutedEventArgs e)
         {
+            _currentChallenge.AddFacebook();
             var fb = new FacebookClient(_ifc.getCurrentUser().FbAccessToken);
             _currentChallenge = (ChallengeDetail3) _ifc.getChallenge(3);
 
@@ -75,7 +76,7 @@ namespace BeatIt_.AppCode.Pages
             fb.PostAsync("me/feed", parameters);
 
             //Refresh countFacebook
-            _currentChallenge.AddFacebook();
+            
         }
 
 
@@ -98,6 +99,8 @@ namespace BeatIt_.AppCode.Pages
 
         private void PhoneNumberChooserTask_Completed(object sender, PhoneNumberResult e)
         {
+            //Refresh countSMS
+            _currentChallenge.AddSms();
             if (e.TaskResult != TaskResult.OK) return;
 
             var smsComposeTask = new SmsComposeTask
@@ -107,8 +110,7 @@ namespace BeatIt_.AppCode.Pages
             };
             smsComposeTask.Show();
 
-            //Refresh countSMS
-            _currentChallenge.AddSms();
+            
         }
     }
 }

@@ -166,7 +166,7 @@
     <value>Delete publication form wall </value>
   </data>
   <data name="Challenge3_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to invite your fiends using facebook or SMS, minimum five sms and the post on your wall. Remember more friends more score!</value>
+    <value>In this challenge you have to invite your friends using facebook or SMS, minimum five sms and the post on your wall. Remember more friends more score!</value>
   </data>
   <data name="Challenge3_DescriptionTxtBlockText" xml:space="preserve">
     <value>In this challenge you have to invite your fiends using facebook or SMS, minimum two sms and the post on your wall. Remember more friends more score!</value>
@@ -189,7 +189,7 @@ Also available for android!</value>
     <value>Send SMS</value>
   </data>
   <data name="Challenge3_Title" xml:space="preserve">
-    <value>Invite Friends</value>
+    <value>Can You Play?</value>
   </data>
   <data name="Challenge4_DescriptionHardTxtBlockText" xml:space="preserve">
     <value>In this challenge you need to shut up the dog as quickly as you can by pressing the red button. The dog will bark five times.</value>
@@ -215,6 +215,9 @@ Also available for android!</value>
   <data name="Challenge6_DescriptionTxtBlockText" xml:space="preserve">
     <value>In this challenge you have to throw your cellphone as high as you can. Minimum you have to reach one meter.</value>
   </data>
+  <data name="ChallengeDetail_Attempts" xml:space="preserve">
+    <value>Attempts:</value>
+  </data>
   <data name="HomePage_ChallengesPivotTitle" xml:space="preserve">
     <value>Challenges</value>
   </data>
@@ -231,6 +234,6 @@ Also available for android!</value>
     <value>SETTINGS</value>
   </data>
   <data name="LoginPage_LoginBtnTitle" xml:space="preserve">
-    <value>Login with Facebook</value>
+    <value>Log in with Facebook</value>
   </data>
 </root>

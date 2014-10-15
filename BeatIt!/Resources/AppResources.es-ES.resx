@@ -189,7 +189,7 @@ También disponible para andoid!</value>
     <value>Enviar SMS</value>
   </data>
   <data name="Challenge3_Title" xml:space="preserve">
-    <value>Invita amigos</value>
+    <value>¿Quieres Jugar?</value>
   </data>
   <data name="Challenge4_DescriptionHardTxtBlockText" xml:space="preserve">
     <value>En este desafío debes callar lo mas pronto posible a el perro presionando el botón rojo. El perro ladrará cinco veces.</value>
@@ -215,6 +215,9 @@ También disponible para andoid!</value>
   <data name="Challenge6_DescriptionTxtBlockText" xml:space="preserve">
     <value>En este desafío debes lanzar el celular lo más alto que puedas, debiendo sobrepasar como mínimo un metro.</value>
   </data>
+  <data name="ChallengeDetail_Attempts" xml:space="preserve">
+    <value>Intentos:</value>
+  </data>
   <data name="HomePage_ChallengesPivotTitle" xml:space="preserve">
     <value>Desafíos</value>
   </data>
@@ -231,6 +234,6 @@ También disponible para andoid!</value>
     <value>CONFIGURACIONES</value>
   </data>
   <data name="LoginPage_LoginBtnTitle" xml:space="preserve">
-    <value>Ingresar con Facebook</value>
+    <value>Iniciar sesión con Facebook</value>
   </data>
 </root>
