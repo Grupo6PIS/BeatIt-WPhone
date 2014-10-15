@@ -69,12 +69,8 @@ namespace BeatIt_.Resources {
             }
         }
         
-        /// <summary>
-        ///   Busca una cadena traducida similar a In this challenge you have to run faster than 15 km/h for 45 seconds..
-=======
         ///   Looks up a localized string similar to In this challenge you have to run faster than 15 km/h for 45 seconds..
->>>>>>> Stashed changes
-        /// </summary>
+
         public static string Challenge1_DescriptionHardTxtBlockText {
             get {
                 return ResourceManager.GetString("Challenge1_DescriptionHardTxtBlockText", resourceCulture);
