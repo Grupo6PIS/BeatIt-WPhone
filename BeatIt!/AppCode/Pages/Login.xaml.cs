@@ -9,6 +9,7 @@ using System.Windows.Navigation;
 using BeatIt_.AppCode.Classes;
 using BeatIt_.AppCode.Controllers;
 using BeatIt_.AppCode.Interfaces;
+using BeatIt_.Resources;
 using Facebook;
 using Microsoft.Phone.Controls;
 using Newtonsoft.Json.Linq;
@@ -246,7 +247,7 @@ namespace BeatIt_.AppCode.Pages
                 {
                     ProgressBar.Visibility = Visibility.Collapsed;
                     LoginBtn.IsEnabled = true;
-                    MessageBox.Show("Ha ocurrido un error al iniciar sesion");
+                    MessageBox.Show(AppResources.Login_Error);
                 });
             }
         }

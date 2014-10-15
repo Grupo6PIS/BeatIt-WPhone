@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using BeatIt_.AppCode.Controllers;
 using BeatIt_.AppCode.CustomControls;
 using BeatIt_.AppCode.Interfaces;
+using BeatIt_.Resources;
 using Facebook;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
@@ -161,9 +162,11 @@ namespace BeatIt_.AppCode.Pages
 
         private void LogoutBtn_Click(object sender, RoutedEventArgs e)
         {
-            var m = MessageBox.Show("Are you sure?", "Logout", MessageBoxButton.OKCancel);
+            var m = MessageBox.Show(AppResources.HomePage_LogoutMessage, "Logout", MessageBoxButton.OKCancel);
+            
             if (m == MessageBoxResult.OK)
             {
+                ProgressBar.Visibility = Visibility.Visible;
                 // user clicked yes
                 var fb = new FacebookClient();
                 var parameters = new Dictionary<string, object>();
@@ -217,7 +220,7 @@ namespace BeatIt_.AppCode.Pages
             }
             else
             {
-                Dispatcher.BeginInvoke(() => MessageBox.Show("Ha ocurrido un error al actualizar el ranking"));   
+                Dispatcher.BeginInvoke(() => MessageBox.Show(AppResources.HomePage_RankingError));   
             }
         }
 
@@ -241,12 +244,12 @@ namespace BeatIt_.AppCode.Pages
             ProgressBar.Visibility = Visibility.Collapsed;
             if ((bool)jsonResponse["error"])
             {
-                Dispatcher.BeginInvoke(() => MessageBox.Show("Ha ocurrido un error al enviar el puntaje"));
+                Dispatcher.BeginInvoke(() => MessageBox.Show(AppResources.HomePage_ScoreError));
             }
             else
             {
                 FacadeController.GetInstance().ShouldSendScore = false;
-                Dispatcher.BeginInvoke(() => MessageBox.Show("Puntaje enviado con exito!"));   
+                Dispatcher.BeginInvoke(() => MessageBox.Show(AppResources.HomePage_ScoreSuccess));   
             }
         }
         ////////////////////////////////////////////////////////////////////////////

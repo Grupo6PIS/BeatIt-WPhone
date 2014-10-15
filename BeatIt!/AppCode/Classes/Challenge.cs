@@ -1,5 +1,6 @@
 ﻿using System;
 using BeatIt_.AppCode.Datatypes;
+using BeatIt_.Resources;
 
 namespace BeatIt_.AppCode.Classes
 {
@@ -41,25 +42,25 @@ namespace BeatIt_.AppCode.Classes
             int days = dif.Days;
             if (days > 0)
             {
-                result = days + " dias";
+                result = days + " " + AppResources.Challenge_Days;
             }
             else
             {
                 int hours = dif.Hours % 24;
                 if (hours > 0)
                 {
-                    result = hours + " horas";
+                    result = hours + " " + AppResources.Challenge_Hours;
                 }
                 else
                 {
                     int minutes = dif.Minutes % 60;
                     if (minutes > 0)
                     {
-                        result = minutes + " minutos";
+                        result = minutes + " " + AppResources.Challenge_Minutes;
                     }
                     else
                     {
-                        result = "Menos de un minuto!!";
+                        result = AppResources.Challenge_LessMinutes;
                     }
                 }
             }

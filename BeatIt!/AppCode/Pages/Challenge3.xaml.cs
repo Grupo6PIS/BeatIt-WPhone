@@ -69,7 +69,7 @@ namespace BeatIt_.AppCode.Pages
             _currentChallenge = (ChallengeDetail3) _ifc.getChallenge(3);
 
             fb.PostCompleted +=
-                (o, args) => Dispatcher.BeginInvoke(() => MessageBox.Show("Message Posted successfully"));
+                (o, args) => Dispatcher.BeginInvoke(() => MessageBox.Show(AppResources.Challenge3_MessagePosted));
 
             var parameters = new Dictionary<string, object>();
             parameters["message"] = _message;
@@ -90,7 +90,7 @@ namespace BeatIt_.AppCode.Pages
         {
             _currentChallenge = (ChallengeDetail3) _ifc.getChallenge(3);
             var ks = _currentChallenge.CompleteChallenge(false);
-            MessageBox.Show(ks.Key ? "Nuevo puntaje mas alto!" : "No has superado tu puntaje actual.");
+            MessageBox.Show(ks.Key ? AppResources.Challenge3_NewHighScore : AppResources.Challenge3_NotBeat);
             var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
             NavigationService.Navigate(uri);
         }
@@ -109,7 +109,6 @@ namespace BeatIt_.AppCode.Pages
                 Body = _message
             };
             smsComposeTask.Show();
-
             
         }
     }

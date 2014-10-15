@@ -61,7 +61,43 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Bump the gray ball as much as possible !.
+        ///   Looks up a localized string similar to Days.
+        /// </summary>
+        public static string Challenge_Days {
+            get {
+                return ResourceManager.GetString("Challenge_Days", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hours.
+        /// </summary>
+        public static string Challenge_Hours {
+            get {
+                return ResourceManager.GetString("Challenge_Hours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Less Than A Minute!!!.
+        /// </summary>
+        public static string Challenge_LessMinutes {
+            get {
+                return ResourceManager.GetString("Challenge_LessMinutes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minutes.
+        /// </summary>
+        public static string Challenge_Minutes {
+            get {
+                return ResourceManager.GetString("Challenge_Minutes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bump the gray ball as much as possible !.
         /// </summary>
         public static string Challenge1_Description {
             get {
@@ -69,8 +105,9 @@ namespace BeatIt_.Resources {
             }
         }
         
+        /// <summary>
         ///   Looks up a localized string similar to In this challenge you have to run faster than 15 km/h for 45 seconds..
-
+        /// </summary>
         public static string Challenge1_DescriptionHardTxtBlockText {
             get {
                 return ResourceManager.GetString("Challenge1_DescriptionHardTxtBlockText", resourceCulture);
@@ -242,6 +279,33 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Message Posted successfully.
+        /// </summary>
+        public static string Challenge3_MessagePosted {
+            get {
+                return ResourceManager.GetString("Challenge3_MessagePosted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New High Score!.
+        /// </summary>
+        public static string Challenge3_NewHighScore {
+            get {
+                return ResourceManager.GetString("Challenge3_NewHighScore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You Haven&apos;t Beaten Your Current Score.
+        /// </summary>
+        public static string Challenge3_NotBeat {
+            get {
+                return ResourceManager.GetString("Challenge3_NotBeat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Post on my wall.
         /// </summary>
         public static string Challenge3_PostWallButton {
@@ -377,11 +441,29 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are You Sure?.
+        /// </summary>
+        public static string HomePage_LogoutMessage {
+            get {
+                return ResourceManager.GetString("HomePage_LogoutMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Profile.
         /// </summary>
         public static string HomePage_ProfilePivotTitle {
             get {
                 return ResourceManager.GetString("HomePage_ProfilePivotTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An Error Has Occurred When Updating The Ranking.
+        /// </summary>
+        public static string HomePage_RankingError {
+            get {
+                return ResourceManager.GetString("HomePage_RankingError", resourceCulture);
             }
         }
         
@@ -395,11 +477,38 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An Error Has Occurred While Sending The Score.
+        /// </summary>
+        public static string HomePage_ScoreError {
+            get {
+                return ResourceManager.GetString("HomePage_ScoreError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Score Has Been Sent Successfully!.
+        /// </summary>
+        public static string HomePage_ScoreSuccess {
+            get {
+                return ResourceManager.GetString("HomePage_ScoreSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SETTINGS.
         /// </summary>
         public static string HomePage_SettingsTxtBlockTitle {
             get {
                 return ResourceManager.GetString("HomePage_SettingsTxtBlockTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An Error Has Occurred When Log In.
+        /// </summary>
+        public static string Login_Error {
+            get {
+                return ResourceManager.GetString("Login_Error", resourceCulture);
             }
         }
         

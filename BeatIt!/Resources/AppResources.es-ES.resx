@@ -179,6 +179,15 @@
 Windows: http://www.windowsphone.com/en-us/store/app/beatit/66fa9546-f6ae-4a10-8acb-91472ac3ff96
 También disponible para andoid!</value>
   </data>
+  <data name="Challenge3_MessagePosted" xml:space="preserve">
+    <value>Mensaje Publicado Exitosamente</value>
+  </data>
+  <data name="Challenge3_NewHighScore" xml:space="preserve">
+    <value>Nuevo puntaje mas alto!</value>
+  </data>
+  <data name="Challenge3_NotBeat" xml:space="preserve">
+    <value>No has superado tu puntaje actual.</value>
+  </data>
   <data name="Challenge3_PostWallButton" xml:space="preserve">
     <value>Publicar en el muro</value>
   </data>
@@ -218,22 +227,49 @@ También disponible para andoid!</value>
   <data name="ChallengeDetail_Attempts" xml:space="preserve">
     <value>Intentos:</value>
   </data>
+  <data name="Challenge_Days" xml:space="preserve">
+    <value>Días</value>
+  </data>
+  <data name="Challenge_Hours" xml:space="preserve">
+    <value>Horas</value>
+  </data>
+  <data name="Challenge_LessMinutes" xml:space="preserve">
+    <value>¡¡Menos de un Minuto!!!</value>
+  </data>
+  <data name="Challenge_Minutes" xml:space="preserve">
+    <value>Minutos</value>
+  </data>
   <data name="HomePage_ChallengesPivotTitle" xml:space="preserve">
     <value>Desafíos</value>
   </data>
   <data name="HomePage_LogoutBtnTitle" xml:space="preserve">
     <value>Cerrar sesión</value>
   </data>
+  <data name="HomePage_LogoutMessage" xml:space="preserve">
+    <value>¿Estas Seguro?</value>
+  </data>
   <data name="HomePage_ProfilePivotTitle" xml:space="preserve">
     <value>Perfil</value>
   </data>
+  <data name="HomePage_RankingError" xml:space="preserve">
+    <value>Ha Ocurrido Un Error Al Actualizar El Ranking</value>
+  </data>
   <data name="HomePage_RankingPivotTitle" xml:space="preserve">
     <value>Ranking</value>
+  </data>
+  <data name="HomePage_ScoreError" xml:space="preserve">
+    <value>Ha Ocurrido Un Error Al Enviar El Puntaje</value>
+  </data>
+  <data name="HomePage_ScoreSuccess" xml:space="preserve">
+    <value>¡Puntaje enviado con éxito!</value>
   </data>
   <data name="HomePage_SettingsTxtBlockTitle" xml:space="preserve">
     <value>CONFIGURACIONES</value>
   </data>
   <data name="LoginPage_LoginBtnTitle" xml:space="preserve">
     <value>Iniciar sesión con Facebook</value>
+  </data>
+  <data name="Login_Error" xml:space="preserve">
+    <value>Ha Ocurrido Un Error Al Iniciar Sesión</value>
   </data>
 </root>

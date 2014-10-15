@@ -179,6 +179,15 @@
 Windows: http://www.windowsphone.com/en-us/store/app/beatit/66fa9546-f6ae-4a10-8acb-91472ac3ff96
 Also available for android!</value>
   </data>
+  <data name="Challenge3_MessagePosted" xml:space="preserve">
+    <value>Message Posted successfully</value>
+  </data>
+  <data name="Challenge3_NewHighScore" xml:space="preserve">
+    <value>New High Score!</value>
+  </data>
+  <data name="Challenge3_NotBeat" xml:space="preserve">
+    <value>You Haven't Beaten Your Current Score</value>
+  </data>
   <data name="Challenge3_PostWallButton" xml:space="preserve">
     <value>Post on my wall</value>
   </data>
@@ -218,22 +227,49 @@ Also available for android!</value>
   <data name="ChallengeDetail_Attempts" xml:space="preserve">
     <value>Attempts:</value>
   </data>
+  <data name="Challenge_Days" xml:space="preserve">
+    <value>Days</value>
+  </data>
+  <data name="Challenge_Hours" xml:space="preserve">
+    <value>Hours</value>
+  </data>
+  <data name="Challenge_LessMinutes" xml:space="preserve">
+    <value>Less Than A Minute!!!</value>
+  </data>
+  <data name="Challenge_Minutes" xml:space="preserve">
+    <value>Minutes</value>
+  </data>
   <data name="HomePage_ChallengesPivotTitle" xml:space="preserve">
     <value>Challenges</value>
   </data>
   <data name="HomePage_LogoutBtnTitle" xml:space="preserve">
     <value>Logout</value>
   </data>
+  <data name="HomePage_LogoutMessage" xml:space="preserve">
+    <value>Are You Sure?</value>
+  </data>
   <data name="HomePage_ProfilePivotTitle" xml:space="preserve">
     <value>Profile</value>
   </data>
+  <data name="HomePage_RankingError" xml:space="preserve">
+    <value>An Error Has Occurred When Updating The Ranking</value>
+  </data>
   <data name="HomePage_RankingPivotTitle" xml:space="preserve">
     <value>Ranking</value>
+  </data>
+  <data name="HomePage_ScoreError" xml:space="preserve">
+    <value>An Error Has Occurred While Sending The Score</value>
+  </data>
+  <data name="HomePage_ScoreSuccess" xml:space="preserve">
+    <value>Score Has Been Sent Successfully!</value>
   </data>
   <data name="HomePage_SettingsTxtBlockTitle" xml:space="preserve">
     <value>SETTINGS</value>
   </data>
   <data name="LoginPage_LoginBtnTitle" xml:space="preserve">
     <value>Log in with Facebook</value>
+  </data>
+  <data name="Login_Error" xml:space="preserve">
+    <value>An Error Has Occurred When Log In</value>
   </data>
 </root>
