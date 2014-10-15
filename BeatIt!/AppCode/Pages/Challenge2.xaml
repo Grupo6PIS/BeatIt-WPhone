@@ -25,7 +25,7 @@
             <TextBlock x:Name="ApplicationTitle" Text="BeatIt!" Style="{StaticResource PhoneTextNormalStyle}"/>
             <TextBlock x:Name="PageTitle" Text="Wake Me Up!" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
-        
+
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Margin="12,160,12,28" Grid.RowSpan="2">
             <Rectangle Name="image1Rectangle" Fill="#FF00aba9" Height="200" Width="200" VerticalAlignment="top" HorizontalAlignment="Left" Margin="12,20,8,8" />
@@ -46,9 +46,9 @@
 
             <!-- Estas se activan y desactivan de acuerdo si esta comenzado-->
             <Grid Visibility="Collapsed"  Name="InProgressGrid">
-                <TextBlock FontSize="28" FontWeight="Normal" Height="52" HorizontalAlignment="Center" Margin="30,399,0,0" Name="titleTime" Text="{Binding Path=AppResources.Challenge1_TimeLeftTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="250" TextAlignment="Center" />
-                <Rectangle Name="InProgressGridRectangle" Fill="#FF00aba9" Height="80" Width="250" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="30,20,8,50" />
-                <TextBlock FontSize="30" FontWeight="ExtraBold" Height="50" HorizontalAlignment="Center" Margin="30,465,0,0" Name="ShowTime" Text="---" VerticalAlignment="Top" Width="250" TextAlignment="Center" />                
+                <TextBlock FontSize="28" FontWeight="Normal" Height="52" HorizontalAlignment="Center" Margin="110,399,96,0" Name="titleTime" Text="{Binding Path=AppResources.Challenge1_TimeLeftTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="250" TextAlignment="Center" />
+                <Rectangle Name="InProgressGridRectangle" Fill="#FF00aba9" Height="80" Width="250" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="106,0,100,50" />
+                <TextBlock FontSize="30" FontWeight="ExtraBold" Height="50" HorizontalAlignment="Center" Margin="110,465,96,0" Name="ShowTime" Text="---" VerticalAlignment="Top" Width="250" TextAlignment="Center" />
             </Grid>
 
             <TextBlock FontWeight="Light" Foreground="White" Height="30" HorizontalAlignment="Left" Margin="230,80,0,0" Name="ShowST" Text="---" VerticalAlignment="Top" Width="196" />

@@ -75,24 +75,24 @@
 
             <!-- Estas se activan y desactivan de acuerdo si esta comenzado-->
             <Grid Visibility="Collapsed" Name="InProgressGrid">
-                <TextBlock FontSize="28" FontWeight="Normal" Height="52" HorizontalAlignment="Left" Margin="30,399,0,0"
+                <TextBlock FontSize="28" FontWeight="Normal" Height="52" HorizontalAlignment="Left" Margin="16,399,0,0"
                            Name="TimeTitleTextBlock"
                            Text="{Binding Path=AppResources.Challenge1_TimeLeftTxtBlockTitle, Source={StaticResource LocalizedStrings}}"
-                           VerticalAlignment="Top" Width="182" TextAlignment="Center" />
-                <Rectangle Fill="#FF008A00" Height="80" Width="180" VerticalAlignment="Bottom"
-                           HorizontalAlignment="Left" Margin="30,20,8,50" />
+                           VerticalAlignment="Top" Width="153" TextAlignment="Center" RenderTransformOrigin="0.412,0.481" />
+                <Rectangle Fill="#FF008A00" Height="80" Width="195" VerticalAlignment="Bottom"
+                           HorizontalAlignment="Left" Margin="15,0,0,50" />
 
                 <TextBlock FontSize="28" FontWeight="Normal" Height="52" HorizontalAlignment="Left"
-                           Margin="246,399,0,0" Name="SpeedTextBlock"
+                           Margin="240,399,0,0" Name="SpeedTextBlock"
                            Text="{Binding Path=AppResources.Challenge1_SpeedTxtBlockTitle, Source={StaticResource LocalizedStrings}}"
                            VerticalAlignment="Top" Width="180" TextAlignment="Center" />
-                <Rectangle Fill="#FF008A00" Height="80" Width="180" VerticalAlignment="Bottom"
-                           HorizontalAlignment="Right" Margin="8,20,30,50" Name="SpeedRec" />
+                <Rectangle Fill="#FF008A00" Height="80" Width="196" VerticalAlignment="Bottom"
+                           HorizontalAlignment="Right" Margin="0,0,14,50" Name="SpeedRec" />
                 <TextBlock FontSize="30" FontWeight="ExtraBold" Height="50" HorizontalAlignment="Left"
-                           Margin="30,465,0,0" Name="ShowTime" Text="---" VerticalAlignment="Top" Width="180"
+                           Margin="15,465,0,0" Name="ShowTime" Text="---" VerticalAlignment="Top" Width="195"
                            TextAlignment="Center" />
                 <TextBlock FontSize="30" FontWeight="ExtraBold" Height="50" HorizontalAlignment="Right"
-                           Margin="0,465,30,0" Name="ShowSpeed" Text="---" VerticalAlignment="Top" Width="180"
+                           Margin="0,465,16,0" Name="ShowSpeed" Text="---" VerticalAlignment="Top" Width="194"
                            TextAlignment="Center" />
             </Grid>
 

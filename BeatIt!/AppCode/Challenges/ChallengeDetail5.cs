@@ -22,7 +22,7 @@ namespace BeatIt_.AppCode.Challenges
             this.Name = name;
             this.ColorHex = colorHex;
             this.Level = level;
-            this.IsEnabled = true;
+            this.IsEnabled = false;
             this.MaxAttempt = maxAttempts;
         }
 

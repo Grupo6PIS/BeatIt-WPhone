@@ -241,7 +241,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In this challenge you have to invite your friends using facebook or SMS, minimum five sms and the post on your wall. Remember more friends more score!.
+        ///   Looks up a localized string similar to In this challenge you have to invite your friends using facebook or SMS, minimum four sms and the post on your wall. Remember more friends more score!.
         /// </summary>
         public static string Challenge3_DescriptionHardTxtBlockText {
             get {
@@ -270,7 +270,7 @@ namespace BeatIt_.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Try BeatIt! 
         ///Windows: http://www.windowsphone.com/en-us/store/app/beatit/66fa9546-f6ae-4a10-8acb-91472ac3ff96
-        ///Also available for android!.
+        ///Also available for Android!.
         /// </summary>
         public static string Challenge3_Message {
             get {

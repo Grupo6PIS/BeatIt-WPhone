@@ -118,13 +118,13 @@ namespace BeatIt_.AppCode.Controllers
                         break;
                 }
             }
-
+            /*
             var ch = new ChallengeDetail5(5,
                             "Boucing Game!",
                             "#FFe51400",
                             1,
                             3) { Round = roundObj };
-            challenges.Add(5, ch);
+            challenges.Add(5, ch);*/
 
             roundObj.Challenges = challenges;
 

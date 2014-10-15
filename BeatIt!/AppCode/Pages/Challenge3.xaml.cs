@@ -52,6 +52,9 @@ namespace BeatIt_.AppCode.Pages
                 // Ojo ver el tema de la fecha y hora (Cuando estamos en el limite de una ronda y la otra).
             ShowToBeat.Text = _currentChallenge.State.BestScore + " pts";
             ShowDuration.Text = _currentChallenge.GetDurationString();
+            textDescription.Text = ((_currentChallenge.Level == 1)
+                ? AppResources.Challenge3_DescriptionTxtBlockText
+                : AppResources.Challenge3_DescriptionHardTxtBlockText);
         }
 
         //onClick start playing
@@ -83,12 +86,14 @@ namespace BeatIt_.AppCode.Pages
         //onClick send SMS
         private void hyperlinkButtonSMS_Click(object sender, RoutedEventArgs e)
         {
+            //Refresh countSMS
+            _currentChallenge.AddSms();
             _phoneNumberChooserTask.Show();
         }
 
         private void hyperlinkButtonFinish_Click(object sender, RoutedEventArgs e)
         {
-            _currentChallenge = (ChallengeDetail3) _ifc.getChallenge(3);
+            //_currentChallenge = (ChallengeDetail3) _ifc.getChallenge(3);
             var ks = _currentChallenge.CompleteChallenge(false);
             MessageBox.Show(ks.Key ? AppResources.Challenge3_NewHighScore : AppResources.Challenge3_NotBeat);
             var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
@@ -99,8 +104,7 @@ namespace BeatIt_.AppCode.Pages
 
         private void PhoneNumberChooserTask_Completed(object sender, PhoneNumberResult e)
         {
-            //Refresh countSMS
-            _currentChallenge.AddSms();
+            
             if (e.TaskResult != TaskResult.OK) return;
 
             var smsComposeTask = new SmsComposeTask
