@@ -8,6 +8,7 @@ using System.Windows.Threading;
 using BeatIt_.AppCode.Challenges;
 using BeatIt_.AppCode.Controllers;
 using BeatIt_.AppCode.Interfaces;
+using BeatIt_.Resources;
 using Microsoft.Devices;
 using Microsoft.Phone.Controls;
 using Environment = Microsoft.Devices.Environment;
@@ -21,15 +22,13 @@ namespace BeatIt_.AppCode.Pages
         /******************************************************************************************************************/
 
         private readonly bool _useEmulation = (Environment.DeviceType == DeviceType.Emulator);
-            // Indica si estamos corriendo la aplicacion en el emulador o en el dispositivo.
 
-        private ChallengeDetail1 _currentChallenge; // Instancia del desafio que se esta corriendo. 
-        private GeoCoordinateWatcher _gps; // Instancia del GPS que se utilizara para el calculo de la velocidad.
+        private ChallengeDetail1 _currentChallenge; 
+        private GeoCoordinateWatcher _gps; 
         private IFacadeController _ifc;
 
         private Boolean _isRunning;
         private Boolean _finish;
-            //SE CAMBIA A TRUE CUANDO LA VELOCIDAD ACTUAL ES MAYOR O IGUAL A LA VELOCIDAD MINIMA DEL DESAFíO
 
         /******************************************************************************************************************/
 
@@ -43,7 +42,6 @@ namespace BeatIt_.AppCode.Pages
 
         public Challenge1()
         {
-            // INICIALIZAMOS LOS COMPONENTES GRAFICOS.
             InitializeComponent();
 
             var navigateInTransition = new NavigationInTransition
@@ -66,9 +64,7 @@ namespace BeatIt_.AppCode.Pages
 
         private void InitChallenge()
         {
-            // OBTENEMOS LA INSTANCIA DEL DESAFIO.
-            /* hay que prolijear esto con una factory */
-            _ifc = FacadeController.GetInstance();
+             _ifc = FacadeController.GetInstance();
             _currentChallenge = (ChallengeDetail1) _ifc.getChallenge(1);
 
             _timer = new DispatcherTimer {Interval = new TimeSpan(0, 0, 1)};
@@ -83,9 +79,7 @@ namespace BeatIt_.AppCode.Pages
             _avgSpeed = 0;
             _count = 0;
 
-            // INICIALIZAMOS LAS ETIQUETAS DEL DETALLE DEL DESAFIO
             StartTimeTextBlock.Text = _currentChallenge.GetDtChallenge().StartTime.ToString(CultureInfo.InvariantCulture);
-                // Ojo ver el tema de la fecha y hora (Cuando estamos en el limite de una ronda y la otra).
             ToBeatTextBlock.Text = _currentChallenge.State.BestScore + " pts";
             DurationTextBlock.Text = _currentChallenge.GetDurationString();
 
@@ -118,14 +112,13 @@ namespace BeatIt_.AppCode.Pages
             {
                 if (!_finish)
                 {
-                    //Desafio completado
+
                     _timer.Stop();
                     _seconds = _minTime;
                     _isRunning = false;
 
                     ShowTime.Text = "0.00";
 
-                    //CAMBIO DE GRILLA (InProgressGrid ==> StartRunningGrid)
                     StartRunningGrid.Visibility = Visibility.Visible;
                     InProgressGrid.Visibility = Visibility.Collapsed;
 
@@ -135,10 +128,8 @@ namespace BeatIt_.AppCode.Pages
                     }
                     _seconds = _minTime;
 
-                    //Hay que corregir esto... calcular las velocidades
 
-                    
-                    MessageBox.Show("Desafio completado!");
+                    MessageBox.Show(AppResources.Challenge1_Win);
                     _currentChallenge = (ChallengeDetail1)_ifc.getChallenge(1);
                     _currentChallenge.CompleteChallenge(false, _maxSpeed, (_avgSpeed / _count));
                     _ifc.setCurrentChallenge(_currentChallenge);
@@ -150,7 +141,6 @@ namespace BeatIt_.AppCode.Pages
             }
             else
             {
-                //Desafio en curso
                 ShowTime.Text = _seconds.ToString(CultureInfo.InvariantCulture);
             }
         }
@@ -202,13 +192,12 @@ namespace BeatIt_.AppCode.Pages
                     var mySolidColorBrush = new SolidColorBrush {Color = Color.FromArgb(255, 0, 138, 0)};
                     SpeedRec.Fill = mySolidColorBrush;
                     if (!_timer.IsEnabled) return;
-                    //Desafío no completado
+                   
                     _timer.Stop();
                     _seconds = _minTime;
 
                     _currentChallenge.CompleteChallenge(false, 0, 0);
 
-                    //CAMBIO DE GRILLA (InProgressGrid ==> StartRunningGrid)
                     StartRunningGrid.Visibility = Visibility.Visible;
                     InProgressGrid.Visibility = Visibility.Collapsed;
 
@@ -217,7 +206,7 @@ namespace BeatIt_.AppCode.Pages
                         _speedEmulator.Stop();
                     }
 
-                    MessageBox.Show("Desafio no completado.");
+                    MessageBox.Show(AppResources.Challenge1_Loss);
                 }
             }
         }
@@ -250,7 +239,7 @@ namespace BeatIt_.AppCode.Pages
         {
             if (_isRunning)
             {
-                MessageBox.Show("Debes bajar la velocidad para comenzar el desafío");
+                MessageBox.Show(AppResources.Challenge1_ReduceSpeed);
             }
             else
             {

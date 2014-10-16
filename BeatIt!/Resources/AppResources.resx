@@ -135,6 +135,12 @@
   <data name="Challenge1_DurationTxtBlockTitle" xml:space="preserve">
     <value>Duration:</value>
   </data>
+  <data name="Challenge1_Loss" xml:space="preserve">
+    <value>Challenge not Completed.</value>
+  </data>
+  <data name="Challenge1_ReduceSpeed" xml:space="preserve">
+    <value>You Must Slow Down to Begin The Challenge!</value>
+  </data>
   <data name="Challenge1_SpeedTxtBlockTitle" xml:space="preserve">
     <value>Speed (km/h)</value>
   </data>
@@ -149,6 +155,9 @@
   </data>
   <data name="Challenge1_ToBeatTxtBlockTitle" xml:space="preserve">
     <value>To Beat:</value>
+  </data>
+  <data name="Challenge1_Win" xml:space="preserve">
+    <value>Challenge Completed!</value>
   </data>
   <data name="Challenge2_DescriptionHardTxtBlockText" xml:space="preserve">
     <value>In this challenge you have to shake your cellphone when you think the timer reachs 0, the timer will hide 4 times so pay attention.</value>

@@ -151,6 +151,24 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Challenge not Completed..
+        /// </summary>
+        public static string Challenge1_Loss {
+            get {
+                return ResourceManager.GetString("Challenge1_Loss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You Must Slow Down to Begin The Challenge!.
+        /// </summary>
+        public static string Challenge1_ReduceSpeed {
+            get {
+                return ResourceManager.GetString("Challenge1_ReduceSpeed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Speed (km/h).
         /// </summary>
         public static string Challenge1_SpeedTxtBlockTitle {
@@ -192,6 +210,15 @@ namespace BeatIt_.Resources {
         public static string Challenge1_ToBeatTxtBlockTitle {
             get {
                 return ResourceManager.GetString("Challenge1_ToBeatTxtBlockTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Challenge Completed!.
+        /// </summary>
+        public static string Challenge1_Win {
+            get {
+                return ResourceManager.GetString("Challenge1_Win", resourceCulture);
             }
         }
         
