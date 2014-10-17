@@ -153,6 +153,9 @@
   <data name="Challenge1_TimeLeftTxtBlockTitle" xml:space="preserve">
     <value>Tiempo (s)</value>
   </data>
+  <data name="Challenge1_Title" xml:space="preserve">
+    <value>Usain Bolt</value>
+  </data>
   <data name="Challenge1_ToBeatTxtBlockTitle" xml:space="preserve">
     <value>A vencer:</value>
   </data>
@@ -167,6 +170,9 @@
   </data>
   <data name="Challenge2_StartButton" xml:space="preserve">
     <value>Comenzar!</value>
+  </data>
+  <data name="Challenge2_Title" xml:space="preserve">
+    <value>Wake Me Up!</value>
   </data>
   <data name="Challenge3_BackButton" xml:space="preserve">
     <value>Volver al desafío</value>
@@ -255,7 +261,7 @@ También disponible para Andoid!</value>
     <value>Horas</value>
   </data>
   <data name="Challenge_LessMinutes" xml:space="preserve">
-    <value>¡¡Menos de un Minuto!!!</value>
+    <value>¡Menos de un Minuto!</value>
   </data>
   <data name="Challenge_Minutes" xml:space="preserve">
     <value>Minutos</value>

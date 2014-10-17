@@ -1,10 +1,10 @@
 ﻿using System;
 using BeatIt_.AppCode.Classes;
 using BeatIt_.AppCode.Controllers;
-
 /*****************************/
 //DESAFIO USAIN BOLT
 /*****************************/
+using BeatIt_.Resources;
 
 namespace BeatIt_.AppCode.Challenges
 {
@@ -15,27 +15,27 @@ namespace BeatIt_.AppCode.Challenges
         public int Time { get; set; }
 
 
-        public ChallengeDetail1(int challengeId, string name, string colorHex, int level, int maxAttempts)
+        public ChallengeDetail1(int challengeId, string colorHex, int level, int maxAttempts)
         {
             ChallengeId = challengeId;
-            Name = name;
+            Name = AppResources.Challenge1_Title;
             ColorHex = colorHex;
             MinSpeed = 10;
             Time = 30;
-            Description = "Se deberrá correr una velocidad minima de " + MinSpeed + " Km/h durante " + Time + " s.";
             IsEnabled = true;
             Level = level;
             MaxAttempt = maxAttempts;
+            Description = level == 1 ? AppResources.Challenge1_DescriptionTxtBlockText : AppResources.Challenge1_DescriptionHardTxtBlockText;
         }
 
         public ChallengeDetail1() 
         {
             ChallengeId = 1;
-            Name = "Usain Bolt";
+            Name = AppResources.Challenge1_Title;
             ColorHex = "#FF008A00";
             MinSpeed = 10;
             Time = 30;
-            Description = "Se deberrá correr una velocidad minima de " + MinSpeed + " Km/h durante " + Time + " s.";
+            Description = AppResources.Challenge1_DescriptionTxtBlockText;
             IsEnabled = true;
             Level = 1;
             MaxAttempt = 3;

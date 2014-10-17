@@ -1,28 +1,29 @@
 ﻿using BeatIt_.AppCode.Classes;
 using BeatIt_.AppCode.Controllers;
+using BeatIt_.Resources;
 
 namespace BeatIt_.AppCode.Challenges
 {
     public class ChallengeDetail2 : Challenge
     {
-        public ChallengeDetail2(int challengeId, string name, string colorHex, int level, int maxAttempts)
+        public ChallengeDetail2(int challengeId, string colorHex, int level, int maxAttempts)
         {
             ChallengeId = challengeId;
-            Name = name;
+            Name = AppResources.Challenge2_Title;
             ColorHex = colorHex;
-            Description = "Description 2";
             IsEnabled = true;
             Level = level;
             MaxAttempt = maxAttempts;
+            Description = level == 1 ? AppResources.Challenge2_DescriptionTxtBlockText : AppResources.Challenge2_DescriptionHardTxtBlockText;
         }
 
 
         public ChallengeDetail2() 
         {
             ChallengeId = 2;
-            Name = "Wake Me Up!";
+            Name = AppResources.Challenge2_Title;
             ColorHex = "#FF00aba9";
-            Description = "Description 2";
+            Description = AppResources.Challenge2_DescriptionTxtBlockText;
             IsEnabled = true;
             Level = 1;
             MaxAttempt = 3;

@@ -79,7 +79,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Less Than A Minute!!!.
+        ///   Looks up a localized string similar to Less Than A Minute!.
         /// </summary>
         public static string Challenge_LessMinutes {
             get {
@@ -205,6 +205,15 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Usain Bolt.
+        /// </summary>
+        public static string Challenge1_Title {
+            get {
+                return ResourceManager.GetString("Challenge1_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to To Beat:.
         /// </summary>
         public static string Challenge1_ToBeatTxtBlockTitle {
@@ -246,6 +255,15 @@ namespace BeatIt_.Resources {
         public static string Challenge2_StartButton {
             get {
                 return ResourceManager.GetString("Challenge2_StartButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wake Me Up!.
+        /// </summary>
+        public static string Challenge2_Title {
+            get {
+                return ResourceManager.GetString("Challenge2_Title", resourceCulture);
             }
         }
         

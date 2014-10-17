@@ -82,7 +82,6 @@ namespace BeatIt_.AppCode.Controllers
                 {
                     case 1: // Usain Bolt
                         c = new ChallengeDetail1((int) jObjectTemp["id"],
-                            (string) jObjectTemp["challengeName"],
                             (string) jObjectTemp["colorHex"],
                             (int) jObjectTemp["challengeLevel"],
                             (int) jObjectTemp["maxAttemps"]) {Round = roundObj};
@@ -91,7 +90,6 @@ namespace BeatIt_.AppCode.Controllers
                         break;
                     case 2: // Wake Me Up!
                         c = new ChallengeDetail2((int) jObjectTemp["id"],
-                            (string) jObjectTemp["challengeName"],
                             (string) jObjectTemp["colorHex"],
                             (int) jObjectTemp["challengeLevel"],
                             (int) jObjectTemp["maxAttemps"]) {Round = roundObj};
