@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using BeatIt_.Resources;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BeatIt_.AppCode.Challenges;
 using BeatIt_.AppCode.Classes;
 using BeatIt_.AppCode.Controllers;
@@ -26,8 +27,8 @@ namespace BeatIt.Tests
             var currentChallenge = (ChallengeDetail1)ifc.getChallenge(1);
             currentChallenge.CompleteChallenge(false, 45, 42);
 
-            ////Si esta bien debería ser 174 el puntaje de en el desafío (42+45)*2
-            Assert.AreEqual(174, currentChallenge.State.LastScore);
+            ////Si esta bien debería ser 348 el puntaje de en el desafío (42+45)*4
+            Assert.AreEqual(348, currentChallenge.State.LastScore);
         }
     };
 
@@ -78,13 +79,13 @@ namespace BeatIt.Tests
         [TestMethod]
         public void TestingFunction_GetDTChallenge()
         {
-            FacadeController cont = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1),
+            var cont = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1),
                 System.DateTime.Now.AddDays(6));
 
             var challenge = (ChallengeDetail2) cont.getChallenge(2);
             challenge.Level = 1;
 
-            for (int i = 1; i <= challenge.MaxAttempt; i++)
+            for (var i = 1; i <= challenge.MaxAttempt; i++)
             {
                 var r = new System.Random();
                 challenge.CompleteChallenge(r.Next(1, challenge.GetSecondsToWakeMeUp().Length + 1));
@@ -99,21 +100,21 @@ namespace BeatIt.Tests
         [TestMethod]
         public void TestingFunction_GetDurationString()
         {
-            FacadeController cont = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1),
+            var cont = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1),
                 System.DateTime.Now.AddDays(6).AddMinutes(-1));
-            Assert.AreEqual(cont.getChallenge(2).GetDurationString(), "5 dias");
+            Assert.AreEqual(cont.getChallenge(2).GetDurationString(), "5 " + AppResources.Challenge_Days);
 
             cont = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1),
                 System.DateTime.Now.AddHours(6).AddMinutes(-1));
-            Assert.AreEqual(cont.getChallenge(2).GetDurationString(), "5 horas");
+            Assert.AreEqual(cont.getChallenge(2).GetDurationString(), "5 " + AppResources.Challenge_Hours);
 
             cont = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1),
                 System.DateTime.Now.AddMinutes(6).AddSeconds(-1));
-            Assert.AreEqual(cont.getChallenge(2).GetDurationString(), "5 minutos");
+            Assert.AreEqual(cont.getChallenge(2).GetDurationString(), "5 " + AppResources.Challenge_Minutes);
 
             cont = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1),
                 System.DateTime.Now.AddMinutes(1).AddSeconds(-1));
-            Assert.AreEqual(cont.getChallenge(2).GetDurationString(), "Menos de un minuto!!");
+            Assert.AreEqual(cont.getChallenge(2).GetDurationString(), AppResources.Challenge_LessMinutes);
         }
     };
 
@@ -162,8 +163,6 @@ namespace BeatIt.Tests
             Assert.AreEqual(4, ch.GetCountFacebook());
             ch.AddFacebook();
             Assert.AreEqual(5, ch.GetCountFacebook());
-
-
         }
 
         [TestMethod]
@@ -182,7 +181,6 @@ namespace BeatIt.Tests
             Assert.AreEqual(4, ch.GetCountSms());
             ch.AddSms();
             Assert.AreEqual(5, ch.GetCountSms());
-
         }
     };
 
