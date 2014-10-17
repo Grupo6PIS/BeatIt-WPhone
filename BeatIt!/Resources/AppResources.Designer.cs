@@ -432,6 +432,24 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Description 5 Level 2.
+        /// </summary>
+        public static string Challenge5_DescriptionHardTxtBlockText {
+            get {
+                return ResourceManager.GetString("Challenge5_DescriptionHardTxtBlockText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description 5 Level 1.
+        /// </summary>
+        public static string Challenge5_DescriptionTxtBlockText {
+            get {
+                return ResourceManager.GetString("Challenge5_DescriptionTxtBlockText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bouncing Game!.
         /// </summary>
         public static string Challenge5_Title {
@@ -455,6 +473,96 @@ namespace BeatIt_.Resources {
         public static string Challenge6_DescriptionTxtBlockText {
             get {
                 return ResourceManager.GetString("Challenge6_DescriptionTxtBlockText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flying Phone.
+        /// </summary>
+        public static string Challenge6_Title {
+            get {
+                return ResourceManager.GetString("Challenge6_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description 7 Level 2.
+        /// </summary>
+        public static string Challenge7_DescriptionHardTxtBlockText {
+            get {
+                return ResourceManager.GetString("Challenge7_DescriptionHardTxtBlockText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description 7 Level 1.
+        /// </summary>
+        public static string Challenge7_DescriptionTxtBlockText {
+            get {
+                return ResourceManager.GetString("Challenge7_DescriptionTxtBlockText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Catch Me.
+        /// </summary>
+        public static string Challenge7_Title {
+            get {
+                return ResourceManager.GetString("Challenge7_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description 8 Level 2.
+        /// </summary>
+        public static string Challenge8_DescriptionHardTxtBlockText {
+            get {
+                return ResourceManager.GetString("Challenge8_DescriptionHardTxtBlockText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description 8 Level 1.
+        /// </summary>
+        public static string Challenge8_DescriptionTxtBlockText {
+            get {
+                return ResourceManager.GetString("Challenge8_DescriptionTxtBlockText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color &amp; Text.
+        /// </summary>
+        public static string Challenge8_Title {
+            get {
+                return ResourceManager.GetString("Challenge8_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description 9 Level 2.
+        /// </summary>
+        public static string Challenge9_DescriptionHardTxtBlockText {
+            get {
+                return ResourceManager.GetString("Challenge9_DescriptionHardTxtBlockText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description 9 Level 1.
+        /// </summary>
+        public static string Challenge9_DescriptionTxtBlockText {
+            get {
+                return ResourceManager.GetString("Challenge9_DescriptionTxtBlockText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Song Complete.
+        /// </summary>
+        public static string Challenge9_Title {
+            get {
+                return ResourceManager.GetString("Challenge9_Title", resourceCulture);
             }
         }
         

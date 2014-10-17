@@ -22,7 +22,7 @@ namespace BeatIt_.AppCode.Challenges
         {
             ChallengeId = 2;
             Name = AppResources.Challenge2_Title;
-            ColorHex = "#FF00aba9";
+            ColorHex = "#FF00ABA9";
             Description = AppResources.Challenge2_DescriptionTxtBlockText;
             IsEnabled = true;
             Level = 1;

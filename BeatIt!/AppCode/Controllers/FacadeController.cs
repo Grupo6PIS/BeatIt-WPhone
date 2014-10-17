@@ -60,8 +60,8 @@ namespace BeatIt_.AppCode.Controllers
             JObject round = (JObject) jsonResponse["round"],
                 jObjectTemp;
             var challengList = (JArray) round["challengeList"];
-            
-            var unixEpoch  = new DateTime(1970, 1, 1, 0, 0, 0, 0);
+
+            var unixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, 0);
 
             var roundObj = new Round
             {
@@ -98,7 +98,6 @@ namespace BeatIt_.AppCode.Controllers
                         break;
                     case 3: // Can you play?
                         c = new ChallengeDetail3((int) jObjectTemp["id"],
-                            (string) jObjectTemp["challengeName"],
                             (string) jObjectTemp["colorHex"],
                             (int) jObjectTemp["challengeLevel"],
                             (int) jObjectTemp["maxAttemps"]) {Round = roundObj};
@@ -107,7 +106,6 @@ namespace BeatIt_.AppCode.Controllers
                         break;
                     case 4: // Calla al perro!
                         c = new ChallengeDetail4((int) jObjectTemp["id"],
-                            (string) jObjectTemp["challengeName"],
                             (string) jObjectTemp["colorHex"],
                             (int) jObjectTemp["challengeLevel"],
                             (int) jObjectTemp["maxAttemps"]) {Round = roundObj};
@@ -116,13 +114,38 @@ namespace BeatIt_.AppCode.Controllers
                         break;
                 }
             }
-            /*
-            var ch = new ChallengeDetail5(5,
-                            "Boucing Game!",
-                            "#FFe51400",
-                            1,
-                            3) { Round = roundObj };
-            challenges.Add(5, ch);*/
+
+            //Se agregan los desafios restantes por codigo
+
+            var ch5 = new ChallengeDetail5(5,
+                "#FFE51400",
+                1,
+                3) {Round = roundObj};
+            challenges.Add(5, ch5);
+
+            var ch6 = new ChallengeDetail6(6,
+                "#FFAA00FF",
+                1,
+                3) { Round = roundObj };
+            challenges.Add(6, ch6);
+
+            var ch7 = new ChallengeDetail7(7,
+                "#FFD80073",
+                1,
+                3) { Round = roundObj };
+            challenges.Add(7, ch7);
+
+            var ch8 = new ChallengeDetail8(8,
+                "#FF0050EF",
+                1,
+                3) { Round = roundObj };
+            challenges.Add(8, ch8);
+
+            var ch9 = new ChallengeDetail9(9,
+                "#FFE3C800",
+                1,
+                3) { Round = roundObj };
+            challenges.Add(9, ch9);
 
             roundObj.Challenges = challenges;
 
@@ -154,7 +177,8 @@ namespace BeatIt_.AppCode.Controllers
                         _currentRound.Challenges[aux.ChallengeId].State = s;
                     }
                 }
-                else // Si no se corresponden con la ronda actual, los borramos ya que no los necesitamos //????????????? ES ASI?
+                else
+                    // Si no se corresponden con la ronda actual, los borramos ya que no los necesitamos //????????????? ES ASI?
                 {
                     _db.Query<DTStatePersistible>("delete from DTStatePersistible");
                     addNewStates = true;
@@ -279,7 +303,6 @@ namespace BeatIt_.AppCode.Controllers
             var ch7 = new ChallengeDetail7();
             var ch8 = new ChallengeDetail8();
             var ch9 = new ChallengeDetail9();
-            var ch10 = new ChallengeDetail10();
 
             var round = new Round {RoundId = 1, StartDate = fechaDesdeRonda, EndDate = fechaHastaRonda};
             _instance._currentRound = round;
@@ -295,7 +318,6 @@ namespace BeatIt_.AppCode.Controllers
                 {ch7.ChallengeId, ch7},
                 {ch8.ChallengeId, ch8},
                 {ch9.ChallengeId, ch9},
-                {ch10.ChallengeId, ch10}
             };
 
             round.Challenges = challenges;
@@ -309,7 +331,6 @@ namespace BeatIt_.AppCode.Controllers
             ch7.Round = round;
             ch8.Round = round;
             ch9.Round = round;
-            ch10.Round = round;
 
             var ch1State = new State();
             var ch2State = new State();
@@ -320,7 +341,6 @@ namespace BeatIt_.AppCode.Controllers
             var ch7State = new State();
             var ch8State = new State();
             var ch9State = new State();
-            var ch10State = new State();
 
             ch1.State = ch1State;
             ch1State.Challenge = ch1;
@@ -340,8 +360,6 @@ namespace BeatIt_.AppCode.Controllers
             ch8State.Challenge = ch8;
             ch9.State = ch9State;
             ch9State.Challenge = ch9;
-            ch10.State = ch10State;
-            ch10State.Challenge = ch10;
 
             var r1 = new DTRanking(_instance._currentUser.UserId, 1, 280,
                 _instance._currentUser.Name,

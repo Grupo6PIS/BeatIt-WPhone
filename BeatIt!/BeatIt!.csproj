@@ -78,7 +78,6 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="AppCode\Challenges\ChallengeDetail1.cs" />
-    <Compile Include="AppCode\Challenges\ChallengeDetail10.cs" />
     <Compile Include="AppCode\Challenges\ChallengeDetail2.cs" />
     <Compile Include="AppCode\Challenges\ChallengeDetail3.cs" />
     <Compile Include="AppCode\Challenges\ChallengeDetail4.cs" />
@@ -104,9 +103,6 @@
     <Compile Include="AppCode\Datatypes\DTStatePersistible.cs" />
     <Compile Include="AppCode\Datatypes\DTChallenge.cs" />
     <Compile Include="AppCode\Interfaces\IFacadeController.cs" />
-    <Compile Include="AppCode\Pages\Challenge10.xaml.cs">
-      <DependentUpon>Challenge10.xaml</DependentUpon>
-    </Compile>
     <Compile Include="AppCode\Pages\Challenge2.xaml.cs">
       <DependentUpon>Challenge2.xaml</DependentUpon>
     </Compile>
@@ -170,10 +166,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AppCode\Pages\Challenge1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AppCode\Pages\Challenge10.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

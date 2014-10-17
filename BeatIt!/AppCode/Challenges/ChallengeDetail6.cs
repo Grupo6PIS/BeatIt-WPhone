@@ -1,5 +1,6 @@
 ﻿using BeatIt_.AppCode.Classes;
 using System;
+using BeatIt_.Resources;
 
 namespace BeatIt_.AppCode.Challenges
 {
@@ -7,14 +8,25 @@ namespace BeatIt_.AppCode.Challenges
     {
         private const double GravitationalAcceleration = -9.80665f;
 
+        public ChallengeDetail6(int challengeId, string colorHex, int level, int maxAttempts)
+        {
+            ChallengeId = challengeId;
+            Name = AppResources.Challenge6_Title;
+            ColorHex = colorHex;
+            IsEnabled = true;
+            Level = level;
+            Description = level == 1 ? AppResources.Challenge6_DescriptionTxtBlockText : AppResources.Challenge6_DescriptionHardTxtBlockText;
+            MaxAttempt = maxAttempts;
+        }
+
         public ChallengeDetail6() 
         {
             ChallengeId = 6;
-            Name = "Flying Phone";
+            Name = AppResources.Challenge6_Title;
             ColorHex = "#FFAA00FF";
-            Description = "Description 6";
             IsEnabled = true;
             Level = 1;
+            Description = AppResources.Challenge6_DescriptionTxtBlockText;
             MaxAttempt = 3;
         }
 
