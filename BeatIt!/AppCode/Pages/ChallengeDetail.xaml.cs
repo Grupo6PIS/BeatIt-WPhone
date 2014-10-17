@@ -5,6 +5,7 @@ using System.Windows.Media.Imaging;
 using BeatIt_.AppCode.Classes;
 using BeatIt_.AppCode.Controllers;
 using BeatIt_.AppCode.Interfaces;
+using BeatIt_.Resources;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
@@ -46,24 +47,24 @@ namespace BeatIt_.AppCode.Pages
             var retryBtn = new ApplicationBarIconButton
             {
                 IconUri = new Uri("/Images/appbar_retry.png", UriKind.Relative),
-                Text = "Reintentar"
+                Text = AppResources.HomePage_RetryBtnTitle
             };
             ApplicationBar.Buttons.Add(retryBtn);
             retryBtn.Click += retryBtn_Click;
 
             PageTitle.Text = _challenge.Name;
-            imageRec.Fill = GetColorFromHexa(_challenge.ColorHex);
+            ImageRectangle.Fill = GetColorFromHexa(_challenge.ColorHex);
             
-            lastScoreRec.Fill = GetColorFromHexa(_challenge.ColorHex);
-            lastScoreTxtBlock.Text = _challenge.State.LastScore.ToString(CultureInfo.InvariantCulture);
+            LastScoreRectangle.Fill = GetColorFromHexa(_challenge.ColorHex);
+            LastScoreTextBlock.Text = _challenge.State.LastScore.ToString(CultureInfo.InvariantCulture);
 
-            bestScoreRec.Fill = GetColorFromHexa(_challenge.ColorHex);
-            bestScoreTxtBlock.Text = _challenge.State.BestScore.ToString(CultureInfo.InvariantCulture);
+            BestScoreRectangle.Fill = GetColorFromHexa(_challenge.ColorHex);
+            BestScoreTextBlock.Text = _challenge.State.BestScore.ToString(CultureInfo.InvariantCulture);
 
             var uri = new Uri("/BeatIt!;component/Images/icon_challenge_" + _challenge.ChallengeId + ".png", UriKind.Relative);
-            iconImage.Source = new BitmapImage(uri);
-            startDateTxtBlock.Text = _challenge.GetDtChallenge().StartTime.ToString(CultureInfo.InvariantCulture);
-            attemptsTxtBlock.Text = _challenge.State.CurrentAttempt + "/" + _challenge.MaxAttempt;
+            IconImage.Source = new BitmapImage(uri);
+            StartTimeTextBlock.Text = _challenge.GetDtChallenge().StartTime.ToString(CultureInfo.InvariantCulture);
+            AttemptsTextBlock.Text = _challenge.State.CurrentAttempt + "/" + _challenge.MaxAttempt;
         }
 
         public static SolidColorBrush GetColorFromHexa(string hexaColor)

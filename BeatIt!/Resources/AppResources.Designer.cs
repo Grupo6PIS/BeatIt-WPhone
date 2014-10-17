@@ -443,9 +443,45 @@ namespace BeatIt_.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Attempts:.
         /// </summary>
-        public static string ChallengeDetail_Attempts {
+        public static string ChallengeDetail_AttemptsTxtBlockTitle {
             get {
-                return ResourceManager.GetString("ChallengeDetail_Attempts", resourceCulture);
+                return ResourceManager.GetString("ChallengeDetail_AttemptsTxtBlockTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Best Score.
+        /// </summary>
+        public static string ChallengeDetail_BestScoreTxtBlockTitle {
+            get {
+                return ResourceManager.GetString("ChallengeDetail_BestScoreTxtBlockTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        public static string ChallengeDetail_DetailsTxtBlockTitle {
+            get {
+                return ResourceManager.GetString("ChallengeDetail_DetailsTxtBlockTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Score.
+        /// </summary>
+        public static string ChallengeDetail_LastScoreTxtBlockTitle {
+            get {
+                return ResourceManager.GetString("ChallengeDetail_LastScoreTxtBlockTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Time:.
+        /// </summary>
+        public static string ChallengeDetail_StartTimeTxtBlockTitle {
+            get {
+                return ResourceManager.GetString("ChallengeDetail_StartTimeTxtBlockTitle", resourceCulture);
             }
         }
         
@@ -500,6 +536,15 @@ namespace BeatIt_.Resources {
         public static string HomePage_RankingPivotTitle {
             get {
                 return ResourceManager.GetString("HomePage_RankingPivotTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to retry.
+        /// </summary>
+        public static string HomePage_RetryBtnTitle {
+            get {
+                return ResourceManager.GetString("HomePage_RetryBtnTitle", resourceCulture);
             }
         }
         

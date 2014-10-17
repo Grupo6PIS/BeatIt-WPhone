@@ -233,8 +233,20 @@ También disponible para Andoid!</value>
   <data name="Challenge6_DescriptionTxtBlockText" xml:space="preserve">
     <value>En este desafío debes lanzar el celular lo más alto que puedas, debiendo sobrepasar como mínimo un metro.</value>
   </data>
-  <data name="ChallengeDetail_Attempts" xml:space="preserve">
+  <data name="ChallengeDetail_AttemptsTxtBlockTitle" xml:space="preserve">
     <value>Intentos:</value>
+  </data>
+  <data name="ChallengeDetail_BestScoreTxtBlockTitle" xml:space="preserve">
+    <value>Mejor Puntaje</value>
+  </data>
+  <data name="ChallengeDetail_DetailsTxtBlockTitle" xml:space="preserve">
+    <value>Detalle</value>
+  </data>
+  <data name="ChallengeDetail_LastScoreTxtBlockTitle" xml:space="preserve">
+    <value>Ultimo Puntaje</value>
+  </data>
+  <data name="ChallengeDetail_StartTimeTxtBlockTitle" xml:space="preserve">
+    <value>Comienzo:</value>
   </data>
   <data name="Challenge_Days" xml:space="preserve">
     <value>Días</value>
@@ -265,6 +277,9 @@ También disponible para Andoid!</value>
   </data>
   <data name="HomePage_RankingPivotTitle" xml:space="preserve">
     <value>Ranking</value>
+  </data>
+  <data name="HomePage_RetryBtnTitle" xml:space="preserve">
+    <value>reintentar</value>
   </data>
   <data name="HomePage_ScoreError" xml:space="preserve">
     <value>Ha Ocurrido Un Error Al Enviar El Puntaje</value>

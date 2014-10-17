@@ -1,4 +1,4 @@
-﻿<phone:PhoneApplicationPage 
+﻿<phone:PhoneApplicationPage
     x:Class="BeatIt_.AppCode.Pages.ChallengeDetail"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -16,44 +16,52 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="ApplicationTitle" Text="BeatIt!" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="Challenge Detail" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock x:Name="ApplicationTitle" Text="BeatIt!" Style="{StaticResource PhoneTextNormalStyle}" />
+            <TextBlock x:Name="PageTitle" Text="Challenge Detail" Margin="9,-7,0,0"
+                       Style="{StaticResource PhoneTextTitle1Style}" />
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <Rectangle Fill="#FF008A00" Height="210" HorizontalAlignment="Center" Name="imageRec" Stroke="Black" StrokeThickness="1" VerticalAlignment="Top" Width="438" Margin="10,0" />
-            <Image Height="210" HorizontalAlignment="Center" Name="iconImage" Stretch="Fill" VerticalAlignment="Top" Width="210" Source="/BeatIt!;component/Images/icon_challenge_1.png" />
-            <TextBlock Height="35" HorizontalAlignment="Left" Margin="12,241,0,0" Name="detailsTxtBlock" Text="Details" VerticalAlignment="Top" Width="435" FontSize="24" />
-            <Rectangle Fill="#FF008A00" Height="100" HorizontalAlignment="Center" Name="lastScoreRec" Stroke="White" StrokeThickness="1" VerticalAlignment="Bottom" Width="194" Margin="14,0,248,50" />
-            <Rectangle Fill="#FF008A00" Height="100" HorizontalAlignment="Center" Name="bestScoreRec" Margin="248,0,15,50" Stroke="White" StrokeThickness="1" VerticalAlignment="Bottom" Width="193" />
-            <TextBlock Height="73" HorizontalAlignment="Left" Margin="17,471,0,0" Name="lastScoreTxtBlock" Text="108" VerticalAlignment="Top" Width="191" TextAlignment="Center" FontSize="50" FontWeight="SemiBold" />
-            <TextBlock FontSize="50" FontWeight="SemiBold" Height="73" HorizontalAlignment="Left" Margin="248,471,0,0" Name="bestScoreTxtBlock" Text="120" TextAlignment="Center" VerticalAlignment="Top" Width="193" />
-            <TextBlock Height="35" HorizontalAlignment="Left" Margin="13,418,0,0" Name="textBlock1" Text="Last Score" VerticalAlignment="Top" Width="111" FontWeight="Medium" FontSize="24" TextAlignment="Center" />
-            <TextBlock Height="35" HorizontalAlignment="Left" Margin="246,417,0,0" Name="textBlock2" Text="Best Score" VerticalAlignment="Top" Width="115" FontWeight="Medium" FontSize="24" TextAlignment="Center" />
-            <TextBlock Foreground="#FF867A7A" Height="30" HorizontalAlignment="Left" Margin="12,285,0,0" Name="startDateTitleTxtBlock" Text="{Binding Path=AppResources.Challenge1_StartTimeTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="196" />
-            <TextBlock Foreground="#FF867A7A" Height="30" HorizontalAlignment="Right" Margin="0,285,12,0" Name="attemptsTitleTxtBlock" Text="{Binding Path=AppResources.ChallengeDetail_Attempts, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="196" />
-            <TextBlock Foreground="White" Height="30" HorizontalAlignment="Left" Margin="12,321,0,0" Name="startDateTxtBlock" Text="---" VerticalAlignment="Top" Width="196" />
-            <TextBlock Foreground="White" Height="30" HorizontalAlignment="Left" Margin="248,321,0,0" Name="attemptsTxtBlock" Text="---" VerticalAlignment="Top" Width="196" />
+            <Rectangle Fill="#FF008A00" Height="210" HorizontalAlignment="Center" Name="ImageRectangle" Stroke="Black"
+                       StrokeThickness="1" VerticalAlignment="Top" Width="438" Margin="10,0" />
+            <Image Height="210" HorizontalAlignment="Center" Name="IconImage" Stretch="Fill" VerticalAlignment="Top"
+                   Width="210" Source="/BeatIt!;component/Images/icon_challenge_1.png" />
+            <TextBlock Height="35" HorizontalAlignment="Left" Margin="12,241,0,0" Name="DetailsTextBlock"
+                       Text="{Binding Path=AppResources.ChallengeDetail_DetailsTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="435" FontSize="24" />
+            <Rectangle Fill="#FF008A00" Height="100" HorizontalAlignment="Center" Name="LastScoreRectangle"
+                       Stroke="White" StrokeThickness="1" VerticalAlignment="Bottom" Width="194" Margin="14,0,248,50" />
+            <Rectangle Fill="#FF008A00" Height="100" HorizontalAlignment="Center" Name="BestScoreRectangle"
+                       Margin="248,0,15,50" Stroke="White" StrokeThickness="1" VerticalAlignment="Bottom" Width="193" />
+            <TextBlock Height="73" HorizontalAlignment="Left" Margin="17,471,0,0" Name="LastScoreTextBlock" Text="108"
+                       VerticalAlignment="Top" Width="191" TextAlignment="Center" FontSize="50" FontWeight="SemiBold" />
+            <TextBlock FontSize="50" FontWeight="SemiBold" Height="73" HorizontalAlignment="Left" Margin="248,471,0,0"
+                       Name="BestScoreTextBlock" Text="120" TextAlignment="Center" VerticalAlignment="Top" Width="193" />
+            <TextBlock Height="35" HorizontalAlignment="Left" Margin="13,418,0,0" Name="LastScoreTitleTextBlock"
+                       Text="{Binding Path=AppResources.ChallengeDetail_LastScoreTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="195" FontWeight="Medium" FontSize="24"
+                       TextAlignment="Left" />
+            <TextBlock Height="35" HorizontalAlignment="Left" Margin="246,417,0,0" Name="BestScoreTitleTextBlock"
+                       Text="{Binding Path=AppResources.ChallengeDetail_BestScoreTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="195" FontWeight="Medium" FontSize="24"
+                       TextAlignment="Left" />
+            <TextBlock Foreground="#FF867A7A" Height="30" HorizontalAlignment="Left" Margin="12,285,0,0"
+                       Name="StartTimeTitleTextBlock"
+                       Text="{Binding Path=AppResources.ChallengeDetail_StartTimeTxtBlockTitle, Source={StaticResource LocalizedStrings}}"
+                       VerticalAlignment="Top" Width="196" />
+            <TextBlock Foreground="#FF867A7A" Height="30" HorizontalAlignment="Right" Margin="0,285,12,0"
+                       Name="AttemptsTitleTextBlock"
+                       Text="{Binding Path=AppResources.ChallengeDetail_AttemptsTxtBlockTitle, Source={StaticResource LocalizedStrings}}"
+                       VerticalAlignment="Top" Width="196" />
+            <TextBlock Foreground="White" Height="30" HorizontalAlignment="Left" Margin="12,321,0,0"
+                       Name="StartTimeTextBlock" Text="---" VerticalAlignment="Top" Width="196" />
+            <TextBlock Foreground="White" Height="30" HorizontalAlignment="Left" Margin="248,321,0,0"
+                       Name="AttemptsTextBlock" Text="---" VerticalAlignment="Top" Width="196" />
         </Grid>
     </Grid>
-
-    <!--Sample code showing usage of ApplicationBar-->
-    <!--<phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
-                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
-            </shell:ApplicationBar.MenuItems>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>-->
 
 </phone:PhoneApplicationPage>
