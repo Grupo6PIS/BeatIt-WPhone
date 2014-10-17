@@ -8,12 +8,12 @@ namespace BeatIt_.AppCode.Challenges
     {
         private const double GravitationalAcceleration = -9.80665f;
 
-        public ChallengeDetail6(int challengeId, string colorHex, int level, int maxAttempts)
+        public ChallengeDetail6(int challengeId, string colorHex, int level, int maxAttempts, bool isEnabled)
         {
             ChallengeId = challengeId;
             Name = AppResources.Challenge6_Title;
             ColorHex = colorHex;
-            IsEnabled = true;
+            IsEnabled = isEnabled;
             Level = level;
             Description = level == 1 ? AppResources.Challenge6_DescriptionTxtBlockText : AppResources.Challenge6_DescriptionHardTxtBlockText;
             MaxAttempt = maxAttempts;

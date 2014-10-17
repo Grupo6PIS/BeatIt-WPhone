@@ -7,12 +7,12 @@ namespace BeatIt_.AppCode.Challenges
     public class ChallengeDetail5 : Challenge
     {
 
-        public ChallengeDetail5(int challengeId, string colorHex, int level, int maxAttempts)
+        public ChallengeDetail5(int challengeId, string colorHex, int level, int maxAttempts, bool isEnabled)
         {
             ChallengeId = challengeId;
             Name = AppResources.Challenge5_Title;
             ColorHex = colorHex;
-            IsEnabled = true;
+            IsEnabled = isEnabled;
             Level = level;
             Description = level == 1 ? AppResources.Challenge5_DescriptionTxtBlockText : AppResources.Challenge5_DescriptionHardTxtBlockText;
             MaxAttempt = maxAttempts;

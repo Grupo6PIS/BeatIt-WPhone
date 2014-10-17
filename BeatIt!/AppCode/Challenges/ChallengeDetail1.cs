@@ -15,14 +15,14 @@ namespace BeatIt_.AppCode.Challenges
         public int Time { get; set; }
 
 
-        public ChallengeDetail1(int challengeId, string colorHex, int level, int maxAttempts)
+        public ChallengeDetail1(int challengeId, string colorHex, int level, int maxAttempts, bool isEnabled)
         {
             ChallengeId = challengeId;
             Name = AppResources.Challenge1_Title;
             ColorHex = colorHex;
             MinSpeed = 10;
             Time = 30;
-            IsEnabled = true;
+            IsEnabled = isEnabled;
             Level = level;
             MaxAttempt = maxAttempts;
             Description = level == 1 ? AppResources.Challenge1_DescriptionTxtBlockText : AppResources.Challenge1_DescriptionHardTxtBlockText;

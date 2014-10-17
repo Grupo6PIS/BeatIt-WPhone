@@ -84,7 +84,8 @@ namespace BeatIt_.AppCode.Controllers
                         c = new ChallengeDetail1((int) jObjectTemp["id"],
                             (string) jObjectTemp["colorHex"],
                             (int) jObjectTemp["challengeLevel"],
-                            (int) jObjectTemp["maxAttemps"]) {Round = roundObj};
+                            (int) jObjectTemp["maxAttemps"],
+                            (bool) jObjectTemp["active"]) {Round = roundObj};
                         challenges.Add(1, c);
 
                         break;
@@ -92,7 +93,8 @@ namespace BeatIt_.AppCode.Controllers
                         c = new ChallengeDetail2((int) jObjectTemp["id"],
                             (string) jObjectTemp["colorHex"],
                             (int) jObjectTemp["challengeLevel"],
-                            (int) jObjectTemp["maxAttemps"]) {Round = roundObj};
+                            (int)jObjectTemp["maxAttemps"],
+                            (bool)jObjectTemp["active"]) { Round = roundObj };
                         challenges.Add(2, c);
 
                         break;
@@ -100,51 +102,71 @@ namespace BeatIt_.AppCode.Controllers
                         c = new ChallengeDetail3((int) jObjectTemp["id"],
                             (string) jObjectTemp["colorHex"],
                             (int) jObjectTemp["challengeLevel"],
-                            (int) jObjectTemp["maxAttemps"]) {Round = roundObj};
+                            (int)jObjectTemp["maxAttemps"],
+                            (bool)jObjectTemp["active"]) { Round = roundObj };
                         challenges.Add(3, c);
 
                         break;
-                    case 4: // Calla al perro!
+                    case 4: // Shut the Dog!
                         c = new ChallengeDetail4((int) jObjectTemp["id"],
                             (string) jObjectTemp["colorHex"],
                             (int) jObjectTemp["challengeLevel"],
-                            (int) jObjectTemp["maxAttemps"]) {Round = roundObj};
+                            (int)jObjectTemp["maxAttemps"],
+                            (bool)jObjectTemp["active"]) { Round = roundObj };
                         challenges.Add(4, c);
 
+                        break;
+                    case  5: // Bouncing Game
+                        c = new ChallengeDetail5((int) jObjectTemp["id"],
+                            (string) jObjectTemp["colorHex"],
+                            (int) jObjectTemp["challengeLevel"],
+                            (int)jObjectTemp["maxAttemps"],
+                            (bool)jObjectTemp["active"]) { Round = roundObj };
+                        challenges.Add(5, c);
+                        break;
+
+                    case  6: // Throw the Phone
+                        break;
+
+                    case  7: // Catch Me!
+                        break;
+
+                    case 8: // Color & Text
+                        break;
+
+                    case 9: // Song Complete
                         break;
                 }
             }
 
             //Se agregan los desafios restantes por codigo
 
-            var ch5 = new ChallengeDetail5(5,
-                "#FFE51400",
-                1,
-                3) {Round = roundObj};
-            challenges.Add(5, ch5);
-
             var ch6 = new ChallengeDetail6(6,
                 "#FFAA00FF",
                 1,
-                3) { Round = roundObj };
+                3,
+                true) { Round = roundObj };
             challenges.Add(6, ch6);
 
             var ch7 = new ChallengeDetail7(7,
                 "#FFD80073",
                 1,
-                3) { Round = roundObj };
+                3,
+                true) { Round = roundObj };
             challenges.Add(7, ch7);
 
             var ch8 = new ChallengeDetail8(8,
                 "#FF0050EF",
                 1,
-                3) { Round = roundObj };
+                3,
+                true) { Round = roundObj };
             challenges.Add(8, ch8);
 
             var ch9 = new ChallengeDetail9(9,
                 "#FFE3C800",
                 1,
-                3) { Round = roundObj };
+                3,
+                true) { Round = roundObj };
             challenges.Add(9, ch9);
 
             roundObj.Challenges = challenges;

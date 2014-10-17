@@ -10,12 +10,12 @@ namespace BeatIt_.AppCode.Challenges
         private int _countFacebook;
         private int _countSms;
 
-        public ChallengeDetail3(int challengeId, string colorHex, int level, int maxAttempts)
+        public ChallengeDetail3(int challengeId, string colorHex, int level, int maxAttempts, bool isEnabled)
         {
             ChallengeId = challengeId;
             Name = AppResources.Challenge3_Title;
             ColorHex = colorHex;
-            IsEnabled = true;
+            IsEnabled = isEnabled;
             Level = level;
             Description = level == 1 ? AppResources.Challenge3_DescriptionTxtBlockText : AppResources.Challenge3_DescriptionHardTxtBlockText;
             _countFacebook = 0;

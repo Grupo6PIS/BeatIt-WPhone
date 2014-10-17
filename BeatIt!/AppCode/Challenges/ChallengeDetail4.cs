@@ -8,12 +8,12 @@ namespace BeatIt_.AppCode.Challenges
     {
         public int[] TimerValues { get; set; }
 
-        public ChallengeDetail4(int challengeId, string colorHex, int level, int maxAttempts)
+        public ChallengeDetail4(int challengeId, string colorHex, int level, int maxAttempts, bool isEnabled)
         {
             ChallengeId = challengeId;
             Name = AppResources.Challenge4_Title;
             ColorHex = colorHex;
-            IsEnabled = true;
+            IsEnabled = isEnabled;
             Level = level;
             Description = level == 1 ? AppResources.Challenge4_DescriptionTxtBlockText : AppResources.Challenge4_DescriptionHardTxtBlockText;
             MaxAttempt = maxAttempts;
