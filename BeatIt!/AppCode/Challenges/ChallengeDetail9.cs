@@ -6,7 +6,15 @@ namespace BeatIt_.AppCode.Challenges
 {
     public class ChallengeDetail9 : Challenge
     {
+        public struct Song
+        {
+            public int SelectedIndex;
+            public string SongName;
+            public string[] OptionsName;
+        };
+
         public int TimerValue { get; set; }
+        public Song[] Songs { get; set; }
 
         public ChallengeDetail9(int challengeId, string colorHex, int level, int maxAttempts, bool isEnabled)
         {
@@ -18,6 +26,14 @@ namespace BeatIt_.AppCode.Challenges
             Description = level == 1 ? AppResources.Challenge9_DescriptionTxtBlockText : AppResources.Challenge9_DescriptionHardTxtBlockText;
             MaxAttempt = maxAttempts;
             TimerValue = Level == 1 ? 20 : 10;
+
+            var s1 = new Song { SelectedIndex = 0, SongName = "dog_bark.wav", OptionsName = new[] { "Perro", "Gato", "Vaca" } };
+            var s2 = new Song { SelectedIndex = 1, SongName = "dog_bark.wav", OptionsName = new[] { "Gato", "Perro", "Vaca" } };
+            var s3 = new Song { SelectedIndex = 2, SongName = "dog_bark.wav", OptionsName = new[] { "Vaca", "Gato", "Perro" } };
+            var s4 = new Song { SelectedIndex = 2, SongName = "dog_bark.wav", OptionsName = new[] { "Gato", "Vaca", "Perro" } };
+            var s5 = new Song { SelectedIndex = 2, SongName = "dog_bark.wav", OptionsName = new[] { "Vaca", "Gato", "Perro" } };
+
+            Songs = new[] {s1, s2, s3, s4, s5};
         }
 
         public ChallengeDetail9() 

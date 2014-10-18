@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Media;
@@ -71,7 +72,7 @@ namespace BeatIt_.AppCode.Pages
             else
             {
                 songError = false;
-                _result[_currentRound] = 50;
+                _result[_currentRound] = 40;
             }
             _currentRound++;
             UpdateRectangle(_currentRound, songError);
@@ -89,13 +90,15 @@ namespace BeatIt_.AppCode.Pages
             }
             else
             {
+                UpdateButtons();
+
                 ProgressBar.Value = 0;
                 ProgressBar.Minimum = 0;
                 ProgressBar.Maximum = _currentChallenge.TimerValue;
 
                 _timer.Start();
 
-                PlaySound("/BeatIt!;component/Sounds/dog_bark.wav");
+                PlaySound("/BeatIt!;component/Sounds/" + _currentChallenge.Songs[_currentRound].SongName);
             }
         }
 
@@ -111,10 +114,12 @@ namespace BeatIt_.AppCode.Pages
 
         private void hyperlinkButtonStart_Click(object sender, RoutedEventArgs e)
         {
+            _currentRound = 0;
+
+            UpdateButtons();
+
             StartGrid.Visibility = Visibility.Collapsed;
             InProgressGrid.Visibility = Visibility.Visible;
-
-            _currentRound = 0;
 
             ProgressBar.Value = 0;
             ProgressBar.Minimum = 0;
@@ -122,7 +127,7 @@ namespace BeatIt_.AppCode.Pages
 
             _timer.Start();
 
-            PlaySound("/BeatIt!;component/Sounds/dog_bark.wav");
+            PlaySound("/BeatIt!;component/Sounds/" + _currentChallenge.Songs[_currentRound].SongName);
         }
 
         private void image1_ImageFailed(object sender, ExceptionRoutedEventArgs e)
@@ -132,17 +137,18 @@ namespace BeatIt_.AppCode.Pages
 
         private void Option1Button_Click(object sender, RoutedEventArgs e)
         {
-            NextStep(false);
+
+            NextStep(_currentChallenge.Songs[_currentRound].SelectedIndex != 0);
         }
 
         private void Option2Button_Click(object sender, RoutedEventArgs e)
         {
-            NextStep(false);
+            NextStep(_currentChallenge.Songs[_currentRound].SelectedIndex != 1);
         }
 
         private void Option3Button_Click(object sender, RoutedEventArgs e)
         {
-            NextStep(false);
+            NextStep(_currentChallenge.Songs[_currentRound].SelectedIndex != 2);
         }
 
         private void PlaySound(string path)
@@ -181,6 +187,20 @@ namespace BeatIt_.AppCode.Pages
                         Item5Rectangle.Fill = mySolidColorBrush;
                     break;
             }
+        }
+
+        private void UpdateButtons()
+        {
+            Option1Button.Content = _currentChallenge.Songs[_currentRound].OptionsName[0];
+            Option2Button.Content = _currentChallenge.Songs[_currentRound].OptionsName[1];
+            Option3Button.Content = _currentChallenge.Songs[_currentRound].OptionsName[2];
+        }
+
+        protected override void OnBackKeyPress(CancelEventArgs e)
+        {
+            _timer.Stop();
+            e.Cancel = false;
+            base.OnBackKeyPress(e);
         }
     }
 }
