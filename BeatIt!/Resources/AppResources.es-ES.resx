@@ -168,6 +168,18 @@
   <data name="Challenge2_DescriptionTxtBlockText" xml:space="preserve">
     <value>En este desafío deberás agitar el celular cuando pienses que el timer finalizo. El timer se ocultará 3 veces asi que presta atención.</value>
   </data>
+  <data name="Challenge2_Finish" xml:space="preserve">
+    <value>El desafío ha finalizado, usted ha obtenido @score puntos.</value>
+  </data>
+  <data name="Challenge2_MaxAttemptsExeeded" xml:space="preserve">
+    <value>No se puede jugar de nuevo, se ha superado el número máximo de intentos.</value>
+  </data>
+  <data name="Challenge2_NotSuported" xml:space="preserve">
+    <value>Lamentablemente su dispositivo no tiene las caracteristicas necesarias para jugar este desafio.</value>
+  </data>
+  <data name="Challenge2_ShareMeUp" xml:space="preserve">
+    <value />
+  </data>
   <data name="Challenge2_StartButton" xml:space="preserve">
     <value>Comenzar!</value>
   </data>
