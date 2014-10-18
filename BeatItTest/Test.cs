@@ -220,6 +220,42 @@ namespace BeatIt.Tests
             Assert.IsTrue(ch.State.Finished);
         }
     };
+
+    [TestClass] // Logica Song Complete
+    public class TestingChallengeDetail9
+    {
+        [TestMethod]
+        public void TestingFunction_CompleteChallenge()
+        {
+            var ifc = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
+            var ch = (ChallengeDetail9)ifc.getChallenge(9);
+
+            Assert.IsNotNull(ch);
+
+            Assert.AreEqual(ch.State.BestScore, 0);
+            Assert.AreEqual(ch.State.LastScore, 0);
+            Assert.AreEqual(ch.State.CurrentAttempt, 0);
+            Assert.IsFalse(ch.State.Finished);
+
+            ch.CompleteChallenge(new[] { 40, 40, 40, 40, 40 });
+            Assert.AreEqual(ch.State.LastScore, 200);
+            Assert.AreEqual(ch.State.BestScore, 200);
+            Assert.AreEqual(ch.State.CurrentAttempt, 1);
+            Assert.IsFalse(ch.State.Finished);
+
+            ch.CompleteChallenge(new[] { 0, 0, 0, 0, 0 });
+            Assert.AreEqual(ch.State.LastScore, 0);
+            Assert.AreEqual(ch.State.BestScore, 200);
+            Assert.AreEqual(ch.State.CurrentAttempt, 2);
+            Assert.IsFalse(ch.State.Finished);
+
+            ch.CompleteChallenge(new[] { 40, 0, 40, 0, 40 });
+            Assert.AreEqual(ch.State.LastScore, 120);
+            Assert.AreEqual(ch.State.BestScore, 200);
+            Assert.AreEqual(ch.State.CurrentAttempt, 3);
+            Assert.IsTrue(ch.State.Finished);
+        }
+    };
 }
 
 

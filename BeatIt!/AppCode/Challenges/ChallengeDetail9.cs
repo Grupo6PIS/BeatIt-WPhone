@@ -48,13 +48,12 @@ namespace BeatIt_.AppCode.Challenges
             TimerValue = 20;
         }
 
-        private int CalculateScore(int[] miliseconds)
+        private int CalculateScore(int[] scores)
         {
             var res = 0;
-            for (int i = 0; i < miliseconds.Length; i++)
+            for (var i = 0; i < scores.Length; i++)
             {
-                if (miliseconds[i] > 0)
-                    res = res + miliseconds[i];
+                res = res + scores[i];
             }
             return res;
         }
