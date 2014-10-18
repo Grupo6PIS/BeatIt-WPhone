@@ -21,12 +21,13 @@ namespace BeatIt_.AppCode.Pages
 {
     public partial class Challenge2
     {
-        private const int FreeTime = 5;
+        private const int StartTime = 10;
 
         private ChallengeDetail2 _currentChallenge;    // Instancia del desafio.
         private IFacadeController _ifc;                // Interface del controlador Fachada.
 
         private int _aciertos;                         // Cantidad de haciertos.
+        private int _indice;
 
         private int[] _secondsToWakeMeUp;
         private DateTime _finishTime;
@@ -78,8 +79,12 @@ namespace BeatIt_.AppCode.Pages
             _currentChallenge = (ChallengeDetail2)_ifc.getChallenge(2);
 
             // Si ya juegue todos los intentos, muestro un mensaje y vuelvo al detalle del desafio
-            if (_currentChallenge.State.CurrentAttempt == _currentChallenge.MaxAttempt)
+            if (_currentChallenge.State.CurrentAttempt >= _currentChallenge.MaxAttempt)
             {
+                // Si por alguna razon ingresa al desafio con una cantidad de intentos mayor a la permitida, se setea en la mayor.
+                _currentChallenge.State.CurrentAttempt = _currentChallenge.MaxAttempt;
+                FacadeController.GetInstance().SaveState(_currentChallenge.State);
+
                 MessageBox.Show(AppResources.Challenge2_MaxAttemptsExeeded);
                 Dispatcher.BeginInvoke(delegate
                 {
@@ -96,7 +101,7 @@ namespace BeatIt_.AppCode.Pages
             ShowTime.Text = "---"; // Tiempo transcurrido.
 
             // IINICIALIZAMOS EL TIMER
-            _timer = new DispatcherTimer { Interval = new TimeSpan(0, 0, 1) };
+            _timer = new DispatcherTimer { Interval = new TimeSpan(0, 0, 0, 0, 100) };
             _timer.Tick += TimerTick;
 
             // INICIALIZAMOS EL ACELEROMETRO.
@@ -104,6 +109,7 @@ namespace BeatIt_.AppCode.Pages
 
             // ACIERTOS            
             _aciertos = 0;
+            _indice = 0;
 
             // Color del Boton start.
             InProgressGridRectangle.Fill = GetColorFromHexa(_currentChallenge.ColorHex);
@@ -115,7 +121,7 @@ namespace BeatIt_.AppCode.Pages
             var aux = _startTime.Add(tiempoTranscurrido);
 
             // Si es tiempo de desaparecer el timer, lo borramos.
-            if (!(tiempoTranscurrido.TotalSeconds <= FreeTime))
+            if (Math.Round((StartTime - tiempoTranscurrido.TotalSeconds), 0) <= _secondsToWakeMeUp[_indice])
             {
                 ShowTime.Text = "Wake Me Up!";
                 InProgressGridRectangle.Fill = GetColorFromHexa("#FFe51400");
@@ -123,7 +129,7 @@ namespace BeatIt_.AppCode.Pages
             else
             {
                 ShowTime.Text =
-                    Math.Round((_secondsToWakeMeUp[_aciertos] + FreeTime - tiempoTranscurrido.TotalSeconds), 0)
+                    Math.Round((StartTime - tiempoTranscurrido.TotalSeconds), 0)
                         .ToString(CultureInfo.InvariantCulture);
                 InProgressGridRectangle.Fill = GetColorFromHexa(_currentChallenge.ColorHex);
             }
@@ -131,16 +137,26 @@ namespace BeatIt_.AppCode.Pages
 
             if (aux > _finishTime && (aux - _finishTime).TotalMilliseconds > 500) // Si me pase del tiempo y no desperte a nadie, termina el juego.
             {
-                _timer.Stop();
-                _acelerometro.Stop();
-                _stopwatch.Stop();
+                _indice++;
 
-                MessageBox.Show(AppResources.Challenge2_Finish.Replace("@score", _currentChallenge.CalculatPuntaje(_aciertos).ToString(CultureInfo.InvariantCulture)));
+                if (_indice == _secondsToWakeMeUp.Length) // Si lla recorrimos todas las despertadas.
+                {
+                    _timer.Stop();
+                    _acelerometro.Stop();
+                    _stopwatch.Stop();
 
-                _currentChallenge.CompleteChallenge(_aciertos);
+                    MessageBox.Show(AppResources.Challenge2_Finish.Replace("@score",
+                        _currentChallenge.CalculatPuntaje(_aciertos).ToString(CultureInfo.InvariantCulture)));
 
-                var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
-                NavigationService.Navigate(uri);
+                    _currentChallenge.CompleteChallenge(_aciertos);
+
+                    var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
+                    NavigationService.Navigate(uri);
+                }
+                else // Tengo que reiniciar el sistema.
+                {
+                    RestartIteration();
+                }
             }
         }
 
@@ -151,7 +167,7 @@ namespace BeatIt_.AppCode.Pages
 
             _secondsToWakeMeUp = _currentChallenge.GetSecondsToWakeMeUp();
             _startTime = DateTime.Now;
-            _finishTime = _startTime.Add(new TimeSpan(0, 0, _secondsToWakeMeUp[0] + FreeTime));
+            _finishTime = _startTime.Add(new TimeSpan(0, 0, StartTime));
 
             // INICIALIZAMOS EL TIMER.
             _timer.Start();
@@ -184,35 +200,21 @@ namespace BeatIt_.AppCode.Pages
             {
                 var vector = e.SensorReading.Acceleration;
 
-                if ((Math.Abs(Math.Round(Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y + vector.Z * vector.Z), 1)) > 2) && _stopwatch.ElapsedMilliseconds > FreeTime * 1000) // Si Sacudi el celular lo suficiente.
+                if ((Math.Abs(Math.Round(Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y + vector.Z * vector.Z), 1)) > 2) && // Si Sacudi el celular lo suficiente.
+                    _stopwatch.ElapsedMilliseconds > (StartTime - _secondsToWakeMeUp[_indice]) * 1000)  // Y ya no estoy mostrando el ctronometro.
                 {
+                    PlaySound("/BeatIt!;component/Sounds/ring.wav");
+
                     _acelerometro.Stop();
                     _timer.Stop();
                     _stopwatch.Stop();
 
-                    PlaySound("/BeatIt!;component/Sounds/ring.wav");
+                    _indice ++;
 
-                    bool finalizar = false;
+                    if (Math.Abs(StartTime*1000 - _stopwatch.ElapsedMilliseconds) <= 500) // Si me desperto a tiempo.
+                        _aciertos ++;
 
-                    if (Math.Abs(FreeTime * 1000 + _secondsToWakeMeUp[_aciertos] * 1000 - _stopwatch.ElapsedMilliseconds) <= 500) // Si me desperto a tiempo.
-                    {
-                        _aciertos++;
-                        if (_aciertos == _secondsToWakeMeUp.Length)
-                            finalizar = true;
-                        else
-                        {
-                            _startTime = DateTime.Now;
-                            _finishTime = _startTime.Add(new TimeSpan(0, 0, _secondsToWakeMeUp[_aciertos] + FreeTime));
-                            _timer.Start();
-                            _stopwatch.Reset();
-                            _stopwatch.Start();
-                            _acelerometro.Start();
-                        }
-                    }
-                    else
-                        finalizar = true;
-
-                    if (finalizar) // Si el desafio finalizo, ya sea porque se equivoco al despertar o porque acerto en todas las despertadas.
+                    if (_indice == _secondsToWakeMeUp.Length) // Si no quedan despertadas por intentar.
                     {
                         _currentChallenge.CompleteChallenge(_aciertos);
 
@@ -222,6 +224,8 @@ namespace BeatIt_.AppCode.Pages
                         var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
                         NavigationService.Navigate(uri);
                     }
+                    else // Intentamos con la siguiente despertada.
+                        RestartIteration();
                 }
             });
         }
@@ -245,6 +249,16 @@ namespace BeatIt_.AppCode.Pages
                     Convert.ToByte(hexaColor.Substring(7, 2), 16)
                 )
             );
+        }
+
+        public void RestartIteration()
+        {
+            _startTime = DateTime.Now;
+            _finishTime = _startTime.Add(new TimeSpan(0, 0, StartTime));
+            _timer.Start();
+            _stopwatch.Reset();
+            _stopwatch.Start();
+            _acelerometro.Start();
         }
     }
 }
