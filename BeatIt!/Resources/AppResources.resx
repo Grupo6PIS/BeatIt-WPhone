@@ -284,6 +284,9 @@ Also available for Android!</value>
   <data name="Challenge9_DescriptionTxtBlockText" xml:space="preserve">
     <value>Description 9 Level 1</value>
   </data>
+  <data name="Challenge9_StartButton" xml:space="preserve">
+    <value>Start!</value>
+  </data>
   <data name="Challenge9_Title" xml:space="preserve">
     <value>Song Complete</value>
   </data>

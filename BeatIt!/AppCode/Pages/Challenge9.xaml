@@ -1,4 +1,4 @@
-﻿<phone:PhoneApplicationPage 
+﻿<phone:PhoneApplicationPage
     x:Class="BeatIt_.AppCode.Pages.Challenge9"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -16,14 +16,16 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock x:Name="ApplicationTitle" Text="BeatIt!" Style="{StaticResource PhoneTextNormalStyle}" />
-            <TextBlock x:Name="PageTitle" Text="{Binding Path=AppResources.Challenge9_Title, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0"
+            <TextBlock x:Name="PageTitle"
+                       Text="{Binding Path=AppResources.Challenge9_Title, Source={StaticResource LocalizedStrings}}"
+                       Margin="9,-7,0,0"
                        Style="{StaticResource PhoneTextTitle1Style}" FontSize="66" />
         </StackPanel>
 
@@ -49,21 +51,64 @@
                        Margin="230,165,0,0" Name="ToBeatTitleTextBlock"
                        Text="{Binding Path=AppResources.Challenge1_ToBeatTxtBlockTitle, Source={StaticResource LocalizedStrings}}"
                        VerticalAlignment="Top" Width="196" />
-            <TextBlock FontWeight="Normal" Height="63" HorizontalAlignment="Left" Margin="10,240,0,0"
-                       Name="DescriptionTitleTextBlock"
-                       Text="{Binding Path=AppResources.Challenge1_DescriptionTxtBlockTitle, Source={StaticResource LocalizedStrings}}"
-                       VerticalAlignment="Top" Width="246" FontSize="40" />
-            <TextBlock FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="12,300,0,0"
-                       Name="TextDescription"
-                       Text="{Binding Path=AppResources.Challenge9_DescriptionTxtBlockText, Source={StaticResource LocalizedStrings}}"
-                       Width="414" Height="100" VerticalAlignment="Top" TextWrapping="Wrap" />
             <TextBlock FontWeight="Light" Foreground="White" Height="30" HorizontalAlignment="Left" Margin="230,80,0,0"
                        Name="StartTimeTextBlock" Text="---" VerticalAlignment="Top" Width="196" />
             <TextBlock FontWeight="Light" Foreground="White" Height="30" HorizontalAlignment="Left"
                        Margin="230,135,0,0" Name="DurationTextBlock" Text="---" VerticalAlignment="Top" Width="196" />
             <TextBlock FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="230,190,0,0"
                        Name="ToBeatTextBlock" Text="---" Width="196" Height="30" VerticalAlignment="Top" />
+
+            <Grid Visibility="Visible" Name="StartGrid">
+                <TextBlock FontWeight="Normal" Height="63" HorizontalAlignment="Left" Margin="10,240,0,0"
+                           Name="DescriptionTitleTextBlock"
+                           Text="{Binding Path=AppResources.Challenge1_DescriptionTxtBlockTitle, Source={StaticResource LocalizedStrings}}"
+                           VerticalAlignment="Top" Width="246" FontSize="40" />
+                <TextBlock FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="12,300,0,0"
+                           Name="TextDescription"
+                           Text="{Binding Path=AppResources.Challenge9_DescriptionTxtBlockText, Source={StaticResource LocalizedStrings}}"
+                           Width="414" Height="100" VerticalAlignment="Top" TextWrapping="Wrap" />
+                <Rectangle Fill="#FFE3C800" Height="80" Width="438" VerticalAlignment="Bottom"
+                           HorizontalAlignment="Center" Margin="12,0,12,50" IsHitTestVisible="True"
+                           Name="StartRectangle" />
+                <TextBlock FontWeight="ExtraBlack" Height="57" HorizontalAlignment="Left" Margin="12,460,0,0"
+                           Name="StartTitleTextBlock"
+                           Text="{Binding Path=AppResources.Challenge9_StartButton, Source={StaticResource LocalizedStrings}}"
+                           VerticalAlignment="Top" Width="435" FontSize="40" TextAlignment="Center" />
+                <HyperlinkButton Content="" Height="80" HorizontalAlignment="Left" Margin="12,450,0,0"
+                                 Name="StartButton" VerticalAlignment="Top" Width="435"
+                                 Click="hyperlinkButtonStart_Click" />
+            </Grid>
+
+            <Grid Visibility="Collapsed" Name="InProgressGrid">
+                <Rectangle Fill="#FF867A7A" Height="10" Width="82"
+                           HorizontalAlignment="Left" Margin="12,30,12,0" IsHitTestVisible="True"
+                           Name="Item1Rectangle" />
+                <Rectangle Fill="#FF867A7A" Height="10" Width="82"
+                           HorizontalAlignment="Left" Margin="101,30,12,0" IsHitTestVisible="True"
+                           Name="Item2Rectangle" />
+                <Rectangle Fill="#FF867A7A" Height="10" Width="82"
+                           HorizontalAlignment="Left" Margin="190,30,12,0" IsHitTestVisible="True"
+                           Name="Item3Rectangle" />
+                <Rectangle Fill="#FF867A7A" Height="10" Width="82"
+                           HorizontalAlignment="Left" Margin="279,30,12,0" IsHitTestVisible="True"
+                           Name="Item4Rectangle" />
+                <Rectangle Fill="#FF867A7A" Height="10" Width="82"
+                           HorizontalAlignment="Left" Margin="368,30,12,0" IsHitTestVisible="True"
+                           Name="Item5Rectangle" />
+                <ProgressBar x:Name="ProgressBar" HorizontalAlignment="Left" VerticalAlignment="Center" Height="15" Width="455" Margin="0,75,0,0" Background="White" Foreground="Red"/>
+                <Rectangle Fill="#FFE3C800" Height="65" Width="438"
+                           HorizontalAlignment="Center" Margin="12,170,12,0" IsHitTestVisible="True"
+                           Name="Option1Rectangle" />
+                <Rectangle Fill="#FFE3C800" Height="65" Width="438"
+                           HorizontalAlignment="Center" Margin="12,330,12,0" IsHitTestVisible="True"
+                           Name="Option2Rectangle" />
+                <Rectangle Fill="#FFE3C800" Height="65" Width="438"
+                           HorizontalAlignment="Center" Margin="12,490,12,0" IsHitTestVisible="True"
+                           Name="Option3Rectangle" />
+                <Button x:Name="Option1Button" Content="Option 1" HorizontalAlignment="Center" Margin="12,170,12,0" Width="438" Height="64" BorderBrush="{x:Null}" BorderThickness="0" Click="Option1Button_Click" Background="{x:Null}" Foreground="White"/>
+                <Button x:Name="Option2Button" Content="Option 2" HorizontalAlignment="Center" Margin="12,330,12,0" Width="438" Height="64" BorderBrush="Transparent" BorderThickness="0" Click="Option2Button_Click"/>
+                <Button x:Name="Option3Button" Content="Option 3" HorizontalAlignment="Center" Margin="12,490,12,0" Width="438" Height="64" BorderBrush="Transparent" BorderThickness="0" Click="Option3Button_Click"/>
+            </Grid>
         </Grid>
     </Grid>
-
 </phone:PhoneApplicationPage>
