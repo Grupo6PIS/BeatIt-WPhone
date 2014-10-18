@@ -245,6 +245,7 @@
     <Content Include="Images\appbar_upload.png" />
     <Resource Include="Images\blackBall.png" />
     <Resource Include="Images\redBall.png" />
+    <Resource Include="Images\clock.png" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup />

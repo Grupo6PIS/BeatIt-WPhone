@@ -58,7 +58,7 @@
             <TextBlock FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="230,190,0,0"
                        Name="ToBeatTextBlock" Text="---" Width="196" Height="30" VerticalAlignment="Top" />
 
-            <Grid Visibility="Visible" Name="StartGrid">
+            <Grid Visibility="Collapsed" Name="StartGrid">
                 <TextBlock FontWeight="Normal" Height="63" HorizontalAlignment="Left" Margin="10,240,0,0"
                            Name="DescriptionTitleTextBlock"
                            Text="{Binding Path=AppResources.Challenge1_DescriptionTxtBlockTitle, Source={StaticResource LocalizedStrings}}"
@@ -79,23 +79,24 @@
                                  Click="hyperlinkButtonStart_Click" />
             </Grid>
 
-            <Grid Visibility="Collapsed" Name="InProgressGrid">
+            <Grid Visibility="Visible" Name="InProgressGrid">
+                <Image x:Name="ClockImage" HorizontalAlignment="Left" Height="30" Margin="15,275,0,0" VerticalAlignment="Top" Width="30" Source="/BeatIt!;component/Images/clock.png"/>
+                <ProgressBar x:Name="ProgressBar" HorizontalAlignment="Left" VerticalAlignment="Center" Height="15" Width="415" Margin="40,5,0,0" Background="White" Foreground="White"/>
                 <Rectangle Fill="#FF867A7A" Height="10" Width="82"
-                           HorizontalAlignment="Left" Margin="12,30,12,0" IsHitTestVisible="True"
+                           HorizontalAlignment="Left" Margin="12,60,12,0" IsHitTestVisible="True"
                            Name="Item1Rectangle" />
                 <Rectangle Fill="#FF867A7A" Height="10" Width="82"
-                           HorizontalAlignment="Left" Margin="101,30,12,0" IsHitTestVisible="True"
+                           HorizontalAlignment="Left" Margin="101,60,12,0" IsHitTestVisible="True"
                            Name="Item2Rectangle" />
                 <Rectangle Fill="#FF867A7A" Height="10" Width="82"
-                           HorizontalAlignment="Left" Margin="190,30,12,0" IsHitTestVisible="True"
+                           HorizontalAlignment="Left" Margin="190,60,12,0" IsHitTestVisible="True"
                            Name="Item3Rectangle" />
                 <Rectangle Fill="#FF867A7A" Height="10" Width="82"
-                           HorizontalAlignment="Left" Margin="279,30,12,0" IsHitTestVisible="True"
+                           HorizontalAlignment="Left" Margin="279,60,12,0" IsHitTestVisible="True"
                            Name="Item4Rectangle" />
                 <Rectangle Fill="#FF867A7A" Height="10" Width="82"
-                           HorizontalAlignment="Left" Margin="368,30,12,0" IsHitTestVisible="True"
+                           HorizontalAlignment="Left" Margin="368,60,12,0" IsHitTestVisible="True"
                            Name="Item5Rectangle" />
-                <ProgressBar x:Name="ProgressBar" HorizontalAlignment="Left" VerticalAlignment="Center" Height="15" Width="455" Margin="0,75,0,0" Background="White" Foreground="Red"/>
                 <Rectangle Fill="#FFE3C800" Height="65" Width="438"
                            HorizontalAlignment="Center" Margin="12,170,12,0" IsHitTestVisible="True"
                            Name="Option1Rectangle" />
@@ -105,9 +106,9 @@
                 <Rectangle Fill="#FFE3C800" Height="65" Width="438"
                            HorizontalAlignment="Center" Margin="12,490,12,0" IsHitTestVisible="True"
                            Name="Option3Rectangle" />
-                <Button x:Name="Option1Button" Content="Option 1" HorizontalAlignment="Center" Margin="12,170,12,0" Width="438" Height="64" BorderBrush="{x:Null}" BorderThickness="0" Click="Option1Button_Click" Background="{x:Null}" Foreground="White"/>
-                <Button x:Name="Option2Button" Content="Option 2" HorizontalAlignment="Center" Margin="12,330,12,0" Width="438" Height="64" BorderBrush="Transparent" BorderThickness="0" Click="Option2Button_Click"/>
-                <Button x:Name="Option3Button" Content="Option 3" HorizontalAlignment="Center" Margin="12,490,12,0" Width="438" Height="64" BorderBrush="Transparent" BorderThickness="0" Click="Option3Button_Click"/>
+                <HyperlinkButton x:Name="Option1Button" Content="Option 1" HorizontalAlignment="Center" Margin="12,170,12,0" Width="438" Height="64" BorderBrush="Transparent" BorderThickness="0" Click="Option1Button_Click"/>
+                <HyperlinkButton x:Name="Option2Button" Content="Option 2" HorizontalAlignment="Center" Margin="12,330,12,0" Width="438" Height="64" BorderBrush="Transparent" BorderThickness="0" Click="Option2Button_Click"/>
+                <HyperlinkButton x:Name="Option3Button" Content="Option 3" HorizontalAlignment="Center" Margin="12,490,12,0" Width="438" Height="64" BorderBrush="Transparent" BorderThickness="0" Click="Option3Button_Click"/>
             </Grid>
         </Grid>
     </Grid>

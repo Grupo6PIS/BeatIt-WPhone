@@ -39,6 +39,10 @@ namespace BeatIt_.AppCode.Pages
             TransitionService.SetNavigationInTransition(this, navigateInTransition);
             TransitionService.SetNavigationOutTransition(this, navigateOutTransition);
 
+            Option1Button.Style = (Style)Application.Current.Resources["HyperlinkButtonStyle"];
+            Option2Button.Style = (Style)Application.Current.Resources["HyperlinkButtonStyle"];
+            Option3Button.Style = (Style)Application.Current.Resources["HyperlinkButtonStyle"];
+
             InitChallenge();
         }
 
@@ -166,7 +170,7 @@ namespace BeatIt_.AppCode.Pages
             var mySolidColorBrush = new SolidColorBrush
             {
                 Color = error
-                    ? System.Windows.Media.Color.FromArgb(255, 229, 20, 0)
+                    ? System.Windows.Media.Color.FromArgb(255, 255, 20, 0)
                     : System.Windows.Media.Color.FromArgb(255, 0, 138, 0)
             };
             switch (round)
