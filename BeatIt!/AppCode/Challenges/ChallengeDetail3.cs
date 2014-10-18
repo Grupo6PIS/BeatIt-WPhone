@@ -75,6 +75,7 @@ namespace BeatIt_.AppCode.Challenges
         public KeyValuePair<bool, int> CompleteChallenge(bool error)
         {
             var newScore = false;
+
             var score = State.BestScore;
             State.CurrentAttempt = State.CurrentAttempt + 1;
             if (!error)
@@ -96,6 +97,8 @@ namespace BeatIt_.AppCode.Challenges
             {
                 State.Finished = true;
             }
+
+            if (!FacadeController.GetInstance().GetIsForTesting())
             FacadeController.GetInstance().SaveState(State);
             
             _countFacebook = 0;

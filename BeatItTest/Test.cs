@@ -122,9 +122,10 @@ namespace BeatIt.Tests
     public class TestingChallengeDetail3
     {
         [TestMethod]
-        public void TestingFunction_CompleteChallenge(bool error)
+        public void TestingFunction_CompleteChallenge()
         {
-            var ch = new ChallengeDetail3();
+            var ifc = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
+            var ch = (ChallengeDetail3)ifc.getChallenge(3);
 
             var result = ch.CompleteChallenge(true);
             Assert.AreEqual(false, result.Key);
@@ -135,14 +136,14 @@ namespace BeatIt.Tests
             ch.AddSms();
             ch.AddSms();
             ch.AddSms();
-            result = ch.CompleteChallenge(true);
+            result = ch.CompleteChallenge(false);
             Assert.AreEqual(true, result.Key);
             Assert.AreEqual(130, result.Value);
 
             ch.AddFacebook();
             ch.AddSms();
             ch.AddSms();
-            result = ch.CompleteChallenge(true);
+            result = ch.CompleteChallenge(false);
             Assert.AreEqual(false, result.Key);
             Assert.AreEqual(130, result.Value);
         }
