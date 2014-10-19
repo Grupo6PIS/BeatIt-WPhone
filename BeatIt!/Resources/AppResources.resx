@@ -171,12 +171,6 @@
   <data name="Challenge2_Finish" xml:space="preserve">
     <value>The challenge is over, you have earned @score points.</value>
   </data>
-  <data name="Challenge2_MaxAttemptsExeeded" xml:space="preserve">
-    <value>You can't play again, The maximum number of attempts was exceeded.</value>
-  </data>
-  <data name="Challenge2_NotSuported" xml:space="preserve">
-    <value>Unfortunately, your device does not have the necessary features to play this challenge.</value>
-  </data>
   <data name="Challenge2_StartButton" xml:space="preserve">
     <value>Start!</value>
   </data>
@@ -251,6 +245,9 @@ Also available for Android!</value>
   <data name="Challenge5_Title" xml:space="preserve">
     <value>Bouncing Game!</value>
   </data>
+  <data name="Challenge6_Alert" xml:space="preserve">
+    <value>Before launching the device up, try to have a proper position to catch it when it comes down.</value>
+  </data>
   <data name="Challenge6_DescriptionHardTxtBlockText" xml:space="preserve">
     <value>In this challenge you have to throw your cellphone as high as you can. Minimum you have to reach two meters.</value>
   </data>
@@ -258,7 +255,7 @@ Also available for Android!</value>
     <value>In this challenge you have to throw your cellphone as high as you can. Minimum you have to reach one meter.</value>
   </data>
   <data name="Challenge6_Title" xml:space="preserve">
-    <value>Flying Phone</value>
+    <value>Throw the Phone</value>
   </data>
   <data name="Challenge7_DescriptionHardTxtBlockText" xml:space="preserve">
     <value>Description 7 Level 2</value>
@@ -314,8 +311,14 @@ Also available for Android!</value>
   <data name="Challenge_LessMinutes" xml:space="preserve">
     <value>Less Than A Minute!</value>
   </data>
+  <data name="Challenge_MaxAttemptsExeeded" xml:space="preserve">
+    <value>You can't play again, The maximum number of attempts was exceeded.</value>
+  </data>
   <data name="Challenge_Minutes" xml:space="preserve">
     <value>Minutes</value>
+  </data>
+  <data name="Challenge_NotSuported" xml:space="preserve">
+    <value>Unfortunately, your device does not have the necessary features to play this challenge.</value>
   </data>
   <data name="HomePage_ChallengesPivotTitle" xml:space="preserve">
     <value>Challenges</value>

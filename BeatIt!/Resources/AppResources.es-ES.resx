@@ -171,12 +171,6 @@
   <data name="Challenge2_Finish" xml:space="preserve">
     <value>El desafío ha finalizado, usted ha obtenido @score puntos.</value>
   </data>
-  <data name="Challenge2_MaxAttemptsExeeded" xml:space="preserve">
-    <value>No se puede jugar de nuevo, se ha superado el número máximo de intentos.</value>
-  </data>
-  <data name="Challenge2_NotSuported" xml:space="preserve">
-    <value>Lamentablemente su dispositivo no tiene las caracteristicas necesarias para jugar este desafio.</value>
-  </data>
   <data name="Challenge2_ShareMeUp" xml:space="preserve">
     <value />
   </data>
@@ -251,6 +245,9 @@ También disponible para Andoid!</value>
   <data name="Challenge5_Title" xml:space="preserve">
     <value>Bouncing Game!</value>
   </data>
+  <data name="Challenge6_Alert" xml:space="preserve">
+    <value>Antes de lanzar el dispositivo hacia arriba, procure tener una posicion adecuada para capturarlo cuando el mismo venga bajando.</value>
+  </data>
   <data name="Challenge6_DescriptionHardTxtBlockText" xml:space="preserve">
     <value>En este desafío debes lanzar el celular lo más alto que puedas, debiendo sobrepasar como mínimo dos metros.</value>
   </data>
@@ -258,7 +255,7 @@ También disponible para Andoid!</value>
     <value>En este desafío debes lanzar el celular lo más alto que puedas, debiendo sobrepasar como mínimo un metro.</value>
   </data>
   <data name="Challenge6_Title" xml:space="preserve">
-    <value>Flying Phone</value>
+    <value>Throw the Phone</value>
   </data>
   <data name="Challenge7_DescriptionHardTxtBlockText" xml:space="preserve">
     <value>Descripcion 7 Nivel 2</value>
@@ -314,8 +311,14 @@ También disponible para Andoid!</value>
   <data name="Challenge_LessMinutes" xml:space="preserve">
     <value>¡Menos de un Minuto!</value>
   </data>
+  <data name="Challenge_MaxAttemptsExeeded" xml:space="preserve">
+    <value>No se puede jugar de nuevo, se ha superado el número máximo de intentos.</value>
+  </data>
   <data name="Challenge_Minutes" xml:space="preserve">
     <value>Minutos</value>
+  </data>
+  <data name="Challenge_NotSuported" xml:space="preserve">
+    <value>Lamentablemente su dispositivo no tiene las caracteristicas necesarias para jugar este desafio.</value>
   </data>
   <data name="HomePage_ChallengesPivotTitle" xml:space="preserve">
     <value>Desafíos</value>

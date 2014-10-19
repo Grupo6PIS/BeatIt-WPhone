@@ -1,5 +1,6 @@
 ﻿using BeatIt_.AppCode.Classes;
 using System;
+using BeatIt_.AppCode.Controllers;
 using BeatIt_.Resources;
 
 namespace BeatIt_.AppCode.Challenges
@@ -7,9 +8,12 @@ namespace BeatIt_.AppCode.Challenges
     public class ChallengeDetail6 : Challenge
     {
         private const double GravitationalAcceleration = -9.80665f;
-
+        private readonly double[] _metrosMinimosNivel;
+        
         public ChallengeDetail6(int challengeId, string colorHex, int level, int maxAttempts, bool isEnabled)
         {
+            _metrosMinimosNivel = new double[] {1f, 2f};
+
             ChallengeId = challengeId;
             Name = AppResources.Challenge6_Title;
             ColorHex = colorHex;
@@ -21,6 +25,8 @@ namespace BeatIt_.AppCode.Challenges
 
         public ChallengeDetail6() 
         {
+            _metrosMinimosNivel = new double[] {1f, 2f};
+
             ChallengeId = 6;
             Name = AppResources.Challenge6_Title;
             ColorHex = "#FFAA00FF";
@@ -36,8 +42,25 @@ namespace BeatIt_.AppCode.Challenges
 
             double altura = -((GravitationalAcceleration * aux * aux) / 2);
 
-            // Por ahora retornamos los centimetros que subio.
-            return Convert.ToInt32(Math.Round(altura * 100, 0));
+            // Retornamos Segun el nivel (< altura minima, 0; si no 60 + (altura - altura minima) * 60);
+            return altura < _metrosMinimosNivel[Level-1] ? 0 : (Convert.ToInt32(Math.Round(60 + (altura - _metrosMinimosNivel[Level-1])*60)));
+        }
+
+        public void CompleteChallenge(double airTime)
+        {
+            State.LastScore = CalcularPuntaje(airTime);
+            if (State.LastScore > State.BestScore)
+            {
+                State.BestScore = State.LastScore;
+                FacadeController.GetInstance().ShouldSendScore = true;
+            }
+            State.CurrentAttempt = State.CurrentAttempt + 1;
+            if (State.CurrentAttempt == MaxAttempt)
+                State.Finished = true;
+
+            // Esto no se si esta bien, como en los testing no tenemos sqlite, si estamos testeando no persistimos.
+            if (!FacadeController.GetInstance().GetIsForTesting())
+                FacadeController.GetInstance().SaveState(State);
         }
     }
 }

@@ -88,11 +88,29 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You can&apos;t play again, The maximum number of attempts was exceeded..
+        /// </summary>
+        public static string Challenge_MaxAttemptsExeeded {
+            get {
+                return ResourceManager.GetString("Challenge_MaxAttemptsExeeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Minutes.
         /// </summary>
         public static string Challenge_Minutes {
             get {
                 return ResourceManager.GetString("Challenge_Minutes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unfortunately, your device does not have the necessary features to play this challenge..
+        /// </summary>
+        public static string Challenge_NotSuported {
+            get {
+                return ResourceManager.GetString("Challenge_NotSuported", resourceCulture);
             }
         }
         
@@ -255,24 +273,6 @@ namespace BeatIt_.Resources {
         public static string Challenge2_Finish {
             get {
                 return ResourceManager.GetString("Challenge2_Finish", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You can&apos;t play again, The maximum number of attempts was exceeded..
-        /// </summary>
-        public static string Challenge2_MaxAttemptsExeeded {
-            get {
-                return ResourceManager.GetString("Challenge2_MaxAttemptsExeeded", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Unfortunately, your device does not have the necessary features to play this challenge..
-        /// </summary>
-        public static string Challenge2_NotSuported {
-            get {
-                return ResourceManager.GetString("Challenge2_NotSuported", resourceCulture);
             }
         }
         
@@ -495,6 +495,15 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Before launching the device up, try to have a proper position to catch it when it comes down..
+        /// </summary>
+        public static string Challenge6_Alert {
+            get {
+                return ResourceManager.GetString("Challenge6_Alert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to In this challenge you have to throw your cellphone as high as you can. Minimum you have to reach two meters..
         /// </summary>
         public static string Challenge6_DescriptionHardTxtBlockText {
@@ -513,7 +522,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Flying Phone.
+        ///   Looks up a localized string similar to Throw the Phone.
         /// </summary>
         public static string Challenge6_Title {
             get {

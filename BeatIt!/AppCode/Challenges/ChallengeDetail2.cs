@@ -55,7 +55,7 @@ namespace BeatIt_.AppCode.Challenges
 
         public void CompleteChallenge(int cantCorrectWakeUp)
         {
-            State.LastScore = CalculatPuntaje(cantCorrectWakeUp);
+            State.LastScore = CalcularPuntaje(cantCorrectWakeUp);
             if (State.LastScore > State.BestScore)
             {
                 State.BestScore = State.LastScore;
@@ -70,7 +70,7 @@ namespace BeatIt_.AppCode.Challenges
                 FacadeController.GetInstance().SaveState(State);
         }
 
-        public int CalculatPuntaje(int cantCorrectWakeUp)
+        public int CalcularPuntaje(int cantCorrectWakeUp)
         {
             return cantCorrectWakeUp*20;
         }

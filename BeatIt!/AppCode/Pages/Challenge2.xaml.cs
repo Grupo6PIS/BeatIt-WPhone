@@ -65,7 +65,7 @@ namespace BeatIt_.AppCode.Pages
             // Si el acelerometro no es soportado por el dispositivo, mostramos un mensaje y volvemos al listado de desafios.
             if (!Accelerometer.IsSupported)
             {
-                MessageBox.Show(AppResources.Challenge2_NotSuported);
+                MessageBox.Show(AppResources.Challenge_NotSuported);
                 Dispatcher.BeginInvoke(delegate
                 {
                     var uri = new Uri("/BeatIt!;component/AppCode/Pages/Home.xaml", UriKind.Relative);
@@ -85,7 +85,7 @@ namespace BeatIt_.AppCode.Pages
                 _currentChallenge.State.CurrentAttempt = _currentChallenge.MaxAttempt;
                 FacadeController.GetInstance().SaveState(_currentChallenge.State);
 
-                MessageBox.Show(AppResources.Challenge2_MaxAttemptsExeeded);
+                MessageBox.Show(AppResources.Challenge_MaxAttemptsExeeded);
                 Dispatcher.BeginInvoke(delegate
                 {
                     var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
@@ -146,7 +146,7 @@ namespace BeatIt_.AppCode.Pages
                     _stopwatch.Stop();
 
                     MessageBox.Show(AppResources.Challenge2_Finish.Replace("@score",
-                        _currentChallenge.CalculatPuntaje(_aciertos).ToString(CultureInfo.InvariantCulture)));
+                        _currentChallenge.CalcularPuntaje(_aciertos).ToString(CultureInfo.InvariantCulture)));
 
                     _currentChallenge.CompleteChallenge(_aciertos);
 
