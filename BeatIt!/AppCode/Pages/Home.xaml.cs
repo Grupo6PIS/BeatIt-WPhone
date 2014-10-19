@@ -102,8 +102,8 @@ namespace BeatIt_.AppCode.Pages
             {
                 var ch = entry.Value;
                 var listItem = new ChallenesListItem {backgroundRec = {Fill = GetColorFromHexa(ch.ColorHex)}};
-                var uri = new Uri("/BeatIt!;component/Images/icon_challenge_" + ch.ChallengeId + ".png",
-                    UriKind.Relative);
+                var str = "/BeatIt!;component/Images/icon_challenge_" + ch.ChallengeId + ".png";
+                var uri = new Uri(str,UriKind.Relative);
                 listItem.image.Source = new BitmapImage(uri);
                 listItem.linkBtn.Click += LinkBtn_Click;
                 listItem.linkBtn.Tag = ch.ChallengeId;

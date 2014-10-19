@@ -58,7 +58,7 @@
             <TextBlock FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="230,190,0,0"
                        Name="ToBeatTextBlock" Text="---" Width="196" Height="30" VerticalAlignment="Top" />
 
-            <Grid Visibility="Visible" Name="StartGrid">
+            <Grid Visibility="Collapsed" Name="StartGrid">
                 <TextBlock FontWeight="Normal" Height="63" HorizontalAlignment="Left" Margin="10,240,0,0"
                            Name="DescriptionTitleTextBlock"
                            Text="{Binding Path=AppResources.Challenge1_DescriptionTxtBlockTitle, Source={StaticResource LocalizedStrings}}"
@@ -79,7 +79,7 @@
                                  Click="hyperlinkButtonStart_Click" />
             </Grid>
 
-            <Grid Visibility="Collapsed" Name="InProgressGrid">
+            <Grid Visibility="Visible" Name="InProgressGrid">
                 <Image x:Name="ClockImage" HorizontalAlignment="Left" Height="30" Margin="15,275,0,0" VerticalAlignment="Top" Width="30" Source="/BeatIt!;component/Images/clock.png"/>
                 <ProgressBar x:Name="ProgressBar" HorizontalAlignment="Left" VerticalAlignment="Center" Height="15" Width="415" Margin="40,5,0,0" Background="White" Foreground="White"/>
                 <Rectangle Fill="#FF867A7A" Height="10" Width="82"

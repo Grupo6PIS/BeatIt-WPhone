@@ -136,6 +136,8 @@ namespace BeatIt_.AppCode.Controllers
 
                     case 9: // Song Complete
                         break;
+                    case 10: // Song Complete
+                        break;
                 }
             }
 
@@ -168,6 +170,13 @@ namespace BeatIt_.AppCode.Controllers
                 3,
                 true) { Round = roundObj };
             challenges.Add(9, ch9);
+
+            var ch10 = new ChallengeDetail10(10,
+                "#FFFA6800",
+                1,
+                3,
+                true) { Round = roundObj };
+            challenges.Add(10, ch10);
 
             roundObj.Challenges = challenges;
 
@@ -325,6 +334,7 @@ namespace BeatIt_.AppCode.Controllers
             var ch7 = new ChallengeDetail7();
             var ch8 = new ChallengeDetail8();
             var ch9 = new ChallengeDetail9();
+            var ch10 = new ChallengeDetail10();
 
             var round = new Round {RoundId = 1, StartDate = fechaDesdeRonda, EndDate = fechaHastaRonda};
             _instance._currentRound = round;
@@ -340,6 +350,7 @@ namespace BeatIt_.AppCode.Controllers
                 {ch7.ChallengeId, ch7},
                 {ch8.ChallengeId, ch8},
                 {ch9.ChallengeId, ch9},
+                {ch10.ChallengeId, ch10},
             };
 
             round.Challenges = challenges;
@@ -353,6 +364,7 @@ namespace BeatIt_.AppCode.Controllers
             ch7.Round = round;
             ch8.Round = round;
             ch9.Round = round;
+            ch10.Round = round;
 
             var ch1State = new State();
             var ch2State = new State();
@@ -363,6 +375,8 @@ namespace BeatIt_.AppCode.Controllers
             var ch7State = new State();
             var ch8State = new State();
             var ch9State = new State();
+            var ch10State = new State();
+
 
             ch1.State = ch1State;
             ch1State.Challenge = ch1;
@@ -382,6 +396,8 @@ namespace BeatIt_.AppCode.Controllers
             ch8State.Challenge = ch8;
             ch9.State = ch9State;
             ch9State.Challenge = ch9;
+            ch10.State = ch10State;
+            ch10State.Challenge = ch10;
 
             var r1 = new DTRanking(_instance._currentUser.UserId, 1, 280,
                 _instance._currentUser.Name,

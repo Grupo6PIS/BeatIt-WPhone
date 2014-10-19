@@ -221,6 +221,29 @@ namespace BeatIt.Tests
         }
     };
 
+
+    [TestClass] // Logica Catch Me
+    public class TestingChallengeDetail7
+    {
+        [TestMethod]
+        public void TestingFunction_CompleteChallenge()
+        {
+            var ifc = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
+            var ch = (ChallengeDetail7)ifc.getChallenge(7);
+
+            ch.CompleteChallenge(new[] {2});
+            Assert.AreEqual(16, ch.State.BestScore);
+
+            ch.CompleteChallenge(new[] { 2, 16, 28 });
+            Assert.AreEqual(61, ch.State.BestScore);
+
+            ch.CompleteChallenge(new[] { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 });
+            Assert.AreEqual(480, ch.State.BestScore);
+            
+        }
+        
+    };
+
     [TestClass] // Logica Song Complete
     public class TestingChallengeDetail9
     {

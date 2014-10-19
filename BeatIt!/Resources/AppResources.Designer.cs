@@ -250,6 +250,33 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Desc 10 Dificil Ingles.
+        /// </summary>
+        public static string Challenge10_DescriptionHardTxtBlockText {
+            get {
+                return ResourceManager.GetString("Challenge10_DescriptionHardTxtBlockText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desc 10 Facil Ingles.
+        /// </summary>
+        public static string Challenge10_DescriptionTxtBlockText {
+            get {
+                return ResourceManager.GetString("Challenge10_DescriptionTxtBlockText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selfie Groupie!.
+        /// </summary>
+        public static string Challenge10_Title {
+            get {
+                return ResourceManager.GetString("Challenge10_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to In this challenge you have to shake your cellphone when you think the timer reachs 0, the timer will hide 4 times so pay attention..
         /// </summary>
         public static string Challenge2_DescriptionHardTxtBlockText {
@@ -531,7 +558,8 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Description 7 Level 2.
+        ///   Looks up a localized string similar to In This Challenge You Have To Catch The Button That Shows Up, That Will Be 30 Times.
+        ///Remember Do It Faster To Have More Score!..
         /// </summary>
         public static string Challenge7_DescriptionHardTxtBlockText {
             get {
@@ -540,7 +568,8 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Description 7 Level 1.
+        ///   Looks up a localized string similar to In This Challenge You Have To Catch The Button That Shows Up, That Will Be 15 Times.
+        ///Remember Do It Faster To Have More Score!..
         /// </summary>
         public static string Challenge7_DescriptionTxtBlockText {
             get {
