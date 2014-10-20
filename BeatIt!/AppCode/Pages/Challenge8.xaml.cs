@@ -1,4 +1,5 @@
-﻿using Microsoft.Phone.Controls;
+﻿using System.Windows;
+using Microsoft.Phone.Controls;
 
 namespace BeatIt_.AppCode.Pages
 {
@@ -21,6 +22,19 @@ namespace BeatIt_.AppCode.Pages
             };
             TransitionService.SetNavigationInTransition(this, navigateInTransition);
             TransitionService.SetNavigationOutTransition(this, navigateOutTransition);
+        }
+
+        private void hyperlinkButtonStart_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
+        private void hyperlinkButtonNo_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
+        private void hyperlinkButtonYes_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
         }
     }
 }

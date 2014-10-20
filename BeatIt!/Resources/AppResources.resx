@@ -286,8 +286,14 @@ Remember Do It Faster To Have More Score!.</value>
   <data name="Challenge8_DescriptionTxtBlockText" xml:space="preserve">
     <value>Description 8 Level 1</value>
   </data>
+  <data name="Challenge8_NoButton" xml:space="preserve">
+    <value>No</value>
+  </data>
   <data name="Challenge8_Title" xml:space="preserve">
     <value>Color &amp; Text</value>
+  </data>
+  <data name="Challenge8_YesButton" xml:space="preserve">
+    <value>Yes</value>
   </data>
   <data name="Challenge9_DescriptionHardTxtBlockText" xml:space="preserve">
     <value>Description 9 Level 2</value>

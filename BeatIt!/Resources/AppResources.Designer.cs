@@ -614,11 +614,29 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string Challenge8_NoButton {
+            get {
+                return ResourceManager.GetString("Challenge8_NoButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Color &amp; Text.
         /// </summary>
         public static string Challenge8_Title {
             get {
                 return ResourceManager.GetString("Challenge8_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string Challenge8_YesButton {
+            get {
+                return ResourceManager.GetString("Challenge8_YesButton", resourceCulture);
             }
         }
         

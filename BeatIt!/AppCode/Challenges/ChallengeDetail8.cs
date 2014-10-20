@@ -1,4 +1,5 @@
-﻿using BeatIt_.AppCode.Classes;
+﻿using System.Windows;
+using BeatIt_.AppCode.Classes;
 using BeatIt_.Resources;
 
 namespace BeatIt_.AppCode.Challenges
@@ -26,5 +27,7 @@ namespace BeatIt_.AppCode.Challenges
             Description = AppResources.Challenge8_DescriptionTxtBlockText;
             MaxAttempt = 3;
         }
+
+       
     }
 }
