@@ -1,6 +1,5 @@
 ﻿using Microsoft.Phone.Controls;
 using BeatIt_.AppCode.Challenges;
-using BeatIt_.AppCode.Interfaces;
 using BeatIt_.AppCode.Controllers;
 using System.Windows.Threading;
 using Microsoft.Devices.Sensors;
@@ -11,53 +10,64 @@ using System.Globalization;
 
 namespace BeatIt_.AppCode.Pages
 {
-    public partial class Challenge5 : PhoneApplicationPage
+    public partial class Challenge5
     {
-        private int challengeID = 5,
-                    timeTop = 60; // segundos
+        private const int ChallengeId = 5; // segundos
 
-        private ChallengeDetail5 challenge;
-        private int timeCounter, collisionCounter;
-        private double canvasWidth, 
-            canvasHeight, 
-            positionRedX = 0, 
-            positionRedY = 0,
-            positionBlackX =0,
-            positionBlackY = 0, fraccion;
+        private const int TimeTop = 60; // segundos
 
-        private DispatcherTimer timer;
-        private Accelerometer acelerometer;
-        private Random randomNumber;
+        private ChallengeDetail5 _challenge;
+        private int _timeCounter, _collisionCounter;
+        private double _positionRedX;
+
+        private double _positionRedY;
+
+        private double _positionBlackX;
+
+        private double _positionBlackY;
+        private double _fraccion;
+
+        private DispatcherTimer _timer;
+        private Accelerometer _acelerometer;
+        private Random _randomNumber;
 
         public Challenge5()
         {
+            _positionBlackX = 0;
+            _positionBlackY = 0;
+            _positionRedX = 0;
+            _positionRedY = 0;
             InitializeComponent();
 
-            NavigationInTransition navigateInTransition = new NavigationInTransition();
-            navigateInTransition.Backward = new SlideTransition { Mode = SlideTransitionMode.SlideRightFadeIn };
-            navigateInTransition.Forward = new SlideTransition { Mode = SlideTransitionMode.SlideLeftFadeIn };
+            var navigateInTransition = new NavigationInTransition
+            {
+                Backward = new SlideTransition {Mode = SlideTransitionMode.SlideRightFadeIn},
+                Forward = new SlideTransition {Mode = SlideTransitionMode.SlideLeftFadeIn}
+            };
 
-            NavigationOutTransition navigateOutTransition = new NavigationOutTransition();
-            navigateOutTransition.Backward = new SlideTransition { Mode = SlideTransitionMode.SlideRightFadeOut };
-            navigateOutTransition.Forward = new SlideTransition { Mode = SlideTransitionMode.SlideLeftFadeOut };
+            var navigateOutTransition = new NavigationOutTransition
+            {
+                Backward = new SlideTransition {Mode = SlideTransitionMode.SlideRightFadeOut},
+                Forward = new SlideTransition {Mode = SlideTransitionMode.SlideLeftFadeOut}
+            };
             TransitionService.SetNavigationInTransition(this, navigateInTransition);
             TransitionService.SetNavigationOutTransition(this, navigateOutTransition);
 
-            initChallenge();
+            InitChallenge();
             
         }
 
-        private void initChallenge()
+        private void InitChallenge()
         {
-            challenge =(ChallengeDetail5) FacadeController.GetInstance().getChallenge(challengeID);
-            randomNumber = new Random();
+            _challenge =(ChallengeDetail5) FacadeController.GetInstance().getChallenge(ChallengeId);
+            _randomNumber = new Random();
 
-            StartTimeTextBlock.Text = challenge.State.StartDate.ToString(CultureInfo.InvariantCulture);
-            DurationTextBlock.Text = challenge.GetDurationString();
-            ToBeatTextBlock.Text = challenge.State.BestScore + "pts";
+            StartTimeTextBlock.Text = _challenge.State.StartDate.ToString(CultureInfo.InvariantCulture);
+            DurationTextBlock.Text = _challenge.GetDurationString();
+            ToBeatTextBlock.Text = _challenge.State.BestScore + "pts";
         }
 
-        private void StartButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void StartButton_Click(object sender, RoutedEventArgs e)
         {
             if (!Accelerometer.IsSupported)
             {
@@ -70,7 +80,7 @@ namespace BeatIt_.AppCode.Pages
                 return;
             }
 
-            if (challenge.State.CurrentAttempt == challenge.MaxAttempt)
+            if (_challenge.State.CurrentAttempt == _challenge.MaxAttempt)
             {
                 MessageBox.Show("Ya ha realizado el número máximo de intentos en la ronda actual.");
                 Dispatcher.BeginInvoke(delegate
@@ -82,46 +92,42 @@ namespace BeatIt_.AppCode.Pages
                 return;
             }
 
-            timeCounter = timeTop;
-            collisionCounter = 0;
+            _timeCounter = TimeTop;
+            _collisionCounter = 0;
 
-            fraccion = challenge.Level == 2 ? 0.7 : 0.9;
+            _fraccion = _challenge.Level == 2 ? 0.7 : 0.9;
 
-            canvasHeight = canvasPanel.ActualHeight;
-            canvasWidth = canvasPanel.Width;
-            
-            acelerometer = new Accelerometer();
-            acelerometer.CurrentValueChanged += acelerometer_ReadingChanged;
-            timer = new DispatcherTimer();
-            timer.Interval = new System.TimeSpan(0, 0, 1);
-            timer.Tick += timer_Tick;
+            _acelerometer = new Accelerometer();
+            _acelerometer.CurrentValueChanged += acelerometer_ReadingChanged;
+            _timer = new DispatcherTimer {Interval = new TimeSpan(0, 0, 1)};
+            _timer.Tick += timer_Tick;
 
-            acelerometer.Start();
-            timer.Start();
+            _acelerometer.Start();
+            _timer.Start();
 
-            ContentPanel.Visibility = System.Windows.Visibility.Visible;
+            ContentPanel.Visibility = Visibility.Visible;
 
-            generateRandomPosition();
+            GenerateRandomPosition();
         }
 
 
-        void timer_Tick(object sender, System.EventArgs e)
+        void timer_Tick(object sender, EventArgs e)
         {
-            timeCounter--;
+            _timeCounter--;
 
-            if (timeCounter < 0)
+            if (_timeCounter < 0)
             {
-                ContentPanel.Visibility = System.Windows.Visibility.Collapsed;
+                ContentPanel.Visibility = Visibility.Collapsed;
 
-                timeCounter = 0;
-                timer.Stop();
-                acelerometer.Stop();
+                _timeCounter = 0;
+                _timer.Stop();
+                _acelerometer.Stop();
 
-                timer = null;
-                acelerometer = null;
+                _timer = null;
+                _acelerometer = null;
 
-                challenge.ChanllengeComplete(collisionCounter);
-                MessageBox.Show("Time finished!! You got " + challenge.State.BestScore + " points");
+                _challenge.ChanllengeComplete(_collisionCounter);
+                MessageBox.Show("Time finished!! You got " + _challenge.State.BestScore + " points");
 
                 var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
                 NavigationService.Navigate(uri);
@@ -129,82 +135,83 @@ namespace BeatIt_.AppCode.Pages
             }
             else
             {
-                timerLabel.Text = timeCounter + "s";
+                timerLabel.Text = _timeCounter + "s";
             }
         }
 
         void acelerometer_ReadingChanged(object sender, SensorReadingEventArgs<AccelerometerReading> e)
         {
-            Dispatcher.BeginInvoke(() => { updatePositions(e.SensorReading.Acceleration.X * 9.8, e.SensorReading.Acceleration.Y * 9.8); });
+            Dispatcher.BeginInvoke(() => UpdatePositions(e.SensorReading.Acceleration.X * 9.8, e.SensorReading.Acceleration.Y * 9.8));
+
 
         }
 
-        private void updatePositions(double x,double y ){
+        private void UpdatePositions(double x,double y ){
 
-            positionBlackX += x;
-            positionBlackY -= y;
+            _positionBlackX += x;
+            _positionBlackY -= y;
 
-            if (positionBlackX < 0)
+            if (_positionBlackX < 0)
             {
-                positionBlackX = 0;
+                _positionBlackX = 0;
             }
-            else if (positionBlackX > (canvasPanel.ActualWidth - blackBall.Width))
+            else if (_positionBlackX > (canvasPanel.ActualWidth - blackBall.Width))
             {
-                positionBlackX = canvasPanel.ActualWidth - blackBall.Width;
-            }
-
-            if (positionBlackY < 0)
-            {
-                positionBlackY = 0;
-            }
-            else if (positionBlackY > (canvasPanel.ActualHeight - blackBall.Height))
-            {
-                positionBlackY = canvasPanel.ActualHeight - blackBall.Height;
+                _positionBlackX = canvasPanel.ActualWidth - blackBall.Width;
             }
 
-            Canvas.SetLeft(blackBall, positionBlackX);
-
-            Canvas.SetTop(blackBall, positionBlackY);
-
-            if (collision())
+            if (_positionBlackY < 0)
             {
-                if (blackBall.Width > 10 && randomNumber.Next(0,2) == 1)
+                _positionBlackY = 0;
+            }
+            else if (_positionBlackY > (canvasPanel.ActualHeight - blackBall.Height))
+            {
+                _positionBlackY = canvasPanel.ActualHeight - blackBall.Height;
+            }
+
+            Canvas.SetLeft(blackBall, _positionBlackX);
+
+            Canvas.SetTop(blackBall, _positionBlackY);
+
+            if (Collision())
+            {
+                if (blackBall.Width > 10 && _randomNumber.Next(0,2) == 1)
                 {
-                    blackBall.Width = blackBall.Width * fraccion;
-                    blackBall.Height = blackBall.Height * fraccion;
+                    blackBall.Width = blackBall.Width * _fraccion;
+                    blackBall.Height = blackBall.Height * _fraccion;
                 }
 
-                collisionCounter++;
-                counterLabel.Text = collisionCounter.ToString();
-                generateRandomPosition();
+                _collisionCounter++;
+                counterLabel.Text = _collisionCounter.ToString(CultureInfo.InvariantCulture);
+                GenerateRandomPosition();
             }
         }
 
 
-        private bool collision()
+        private bool Collision()
         {
-            var x = positionBlackX + (blackBall.Width / 2);
-            var y = positionBlackY + (blackBall.Height / 2);
+            var x = _positionBlackX + (blackBall.Width / 2);
+            var y = _positionBlackY + (blackBall.Height / 2);
 
             var sumRadius = (blackBall.Width + redBall.Width) / 2;
 
-            var module = Math.Sqrt((x - positionRedX)*(x - positionRedX) + (y - positionRedY)*(y - positionRedY) );
+            var module = Math.Sqrt((x - _positionRedX)*(x - _positionRedX) + (y - _positionRedY)*(y - _positionRedY) );
 
             return (module < sumRadius );
         }
 
-        private void generateRandomPosition()
+        private void GenerateRandomPosition()
         {
             if (canvasPanel.ActualWidth == 0)
             {
                 canvasPanel.UpdateLayout();
             }
 
-            var x = randomNumber.Next(0, (int)(canvasPanel.ActualWidth - redBall.Width));
-            var y = randomNumber.Next(0, (int)(canvasPanel.ActualHeight - redBall.Height));
+            var x = _randomNumber.Next(0, (int)(canvasPanel.ActualWidth - redBall.Width));
+            var y = _randomNumber.Next(0, (int)(canvasPanel.ActualHeight - redBall.Height));
 
-            positionRedX = x + (redBall.Width / 2);
-            positionRedY = y + (redBall.Height / 2);
+            _positionRedX = x + (redBall.Width / 2);
+            _positionRedY = y + (redBall.Height / 2);
 
             Canvas.SetLeft(redBall, x);
             Canvas.SetTop(redBall, y);
