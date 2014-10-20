@@ -160,7 +160,7 @@
     <value>Comienzo:</value>
   </data>
   <data name="Challenge1_TimeLeftTxtBlockTitle" xml:space="preserve">
-    <value>Tiempo (s)</value>
+    <value>Tiempo</value>
   </data>
   <data name="Challenge1_Title" xml:space="preserve">
     <value>Usain Bolt</value>
@@ -179,6 +179,9 @@
   </data>
   <data name="Challenge2_Finish" xml:space="preserve">
     <value>El Desafío Ha Finalizado, Usted Ha Obtenido @score Puntos.</value>
+  </data>
+  <data name="Challenge2_Fly" xml:space="preserve">
+    <value>Estoy Listo Para Volar!</value>
   </data>
   <data name="Challenge2_ShareMeUp" xml:space="preserve">
     <value />
@@ -264,7 +267,7 @@ También Disponible Para Andoid!</value>
     <value>En Este Desafío Debes Lanzar El Celular Lo Más Alto Que Puedas, Debiendo Sobrepasar Como Mínimo Un Metro.</value>
   </data>
   <data name="Challenge6_Title" xml:space="preserve">
-    <value>Throw the Phone</value>
+    <value>Throw The Phone</value>
   </data>
   <data name="Challenge7_DescriptionHardTxtBlockText" xml:space="preserve">
     <value>En Este Desafío Debes Pulsar El Botón Que Se Enciende Lo Más Rápido Posible, El Botón Se Penderá 30 Veces.
@@ -356,13 +359,13 @@ Recuerda, Cuanto Mas Rápido Mayor Puntaje!</value>
     <value>Ha Ocurrido Un Error Al Enviar El Puntaje</value>
   </data>
   <data name="HomePage_ScoreSuccess" xml:space="preserve">
-    <value>¡Puntaje enviado con éxito!</value>
+    <value>¡Puntaje Enviado Con Éxito!</value>
   </data>
   <data name="HomePage_SettingsTxtBlockTitle" xml:space="preserve">
     <value>CONFIGURACIONES</value>
   </data>
   <data name="LoginPage_LoginBtnTitle" xml:space="preserve">
-    <value>Iniciar sesión con Facebook</value>
+    <value>Iniciar Sesión Con Facebook</value>
   </data>
   <data name="Login_Error" xml:space="preserve">
     <value>Ha Ocurrido Un Error Al Iniciar Sesión</value>

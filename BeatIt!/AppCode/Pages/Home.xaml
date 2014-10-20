@@ -15,7 +15,7 @@
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
 
-    
+
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <ProgressBar x:Name="ProgressBar" HorizontalAlignment="Left" VerticalAlignment="Top" Height="10" Width="460" Margin="0,00,0,0" Background="White" Foreground="White" Visibility="Collapsed" />
@@ -44,7 +44,7 @@
             <!--Pivot item three-->
             <controls:PivotItem Header="{Binding Path=AppResources.HomePage_ProfilePivotTitle, Source={StaticResource LocalizedStrings}}">
                 <Grid x:Name="ProfileGrid" ShowGridLines="False">
-                    <Button Content="{Binding Path=AppResources.HomePage_LogoutBtnTitle, Source={StaticResource LocalizedStrings}}" Height="60" HorizontalAlignment="Left" Margin="270,108,0,0" x:Name="LogoutBtn" VerticalAlignment="Top" Width="160" Click="LogoutBtn_Click" FontSize="16" Padding="0,0,0,3" />
+                    <Button Content="{Binding Path=AppResources.HomePage_LogoutBtnTitle, Source={StaticResource LocalizedStrings}}" Height="60" HorizontalAlignment="Left" Margin="4,204,0,0" x:Name="LogoutBtn" VerticalAlignment="Top" Width="424" Click="LogoutBtn_Click" FontSize="16" Padding="0,0,0,3" />
                     <Image Height="140" HorizontalAlignment="Left" Margin="15,15,0,0" x:Name="ProfileImage" Stretch="Fill" VerticalAlignment="Top" Width="140" Source="/BeatIt!;component/Images/profileImage.jpg" />
                     <TextBlock Height="50" HorizontalAlignment="Left" Margin="170,15,0,0" x:Name="ProfileNameTxtBlock" Text="Juan Perez" VerticalAlignment="Top" Width="260" FontSize="32" />
                     <TextBlock Height="30" HorizontalAlignment="Left" Margin="169,87,0,0" x:Name="ProfileCountryTxtBlock" Text="Uruguay" VerticalAlignment="Top" Width="260" FontSize="18" />
@@ -66,5 +66,5 @@
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>-->
-    
+
 </phone:PhoneApplicationPage>

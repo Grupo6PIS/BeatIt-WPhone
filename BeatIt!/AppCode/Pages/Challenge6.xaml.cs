@@ -97,7 +97,7 @@ namespace BeatIt_.AppCode.Pages
                 // Tiempo de iniciado el desafio.
             ShowToBeat.Text = _currentChallenge.State.BestScore + " pts"; // Puntaje a vencer.
             ShowDuration.Text = _currentChallenge.GetDurationString(); // Tiempo retante para realizar el desafio.   
-            ShowTime.Text = "---"; // Tiempo transcurrido.
+            //ShowTime.Text = "---"; // Tiempo transcurrido.
 
             // INICIALIZAMOS EL ACELEROMETRO.
             _accelerometer = new Accelerometer();
@@ -109,7 +109,7 @@ namespace BeatIt_.AppCode.Pages
         private void hyperlinkButtonStartRunning_Click(object sender, RoutedEventArgs e)
         {
             StartPlayGrid.Visibility = Visibility.Collapsed;
-            //this.InProgressGrid.Visibility = Visibility.Visible;
+            InProgressGrid.Visibility = Visibility.Visible;
 
             MessageBox.Show(AppResources.Challenge6_Alert);
 

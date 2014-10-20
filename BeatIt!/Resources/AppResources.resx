@@ -160,7 +160,7 @@
     <value>Start Time:</value>
   </data>
   <data name="Challenge1_TimeLeftTxtBlockTitle" xml:space="preserve">
-    <value>Time Left (s)</value>
+    <value>Time Left</value>
   </data>
   <data name="Challenge1_Title" xml:space="preserve">
     <value>Usain Bolt</value>
@@ -179,6 +179,9 @@
   </data>
   <data name="Challenge2_Finish" xml:space="preserve">
     <value>The Challenge Is Over, You Have Earned @score Points.</value>
+  </data>
+  <data name="Challenge2_Fly" xml:space="preserve">
+    <value>I'm Ready To Fly!</value>
   </data>
   <data name="Challenge2_StartButton" xml:space="preserve">
     <value>Start!</value>

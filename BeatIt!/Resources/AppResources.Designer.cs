@@ -214,7 +214,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Time Left (s).
+        ///   Looks up a localized string similar to Time Left.
         /// </summary>
         public static string Challenge1_TimeLeftTxtBlockTitle {
             get {
@@ -300,6 +300,15 @@ namespace BeatIt_.Resources {
         public static string Challenge2_Finish {
             get {
                 return ResourceManager.GetString("Challenge2_Finish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I&apos;m Ready To Fly!.
+        /// </summary>
+        public static string Challenge2_Fly {
+            get {
+                return ResourceManager.GetString("Challenge2_Fly", resourceCulture);
             }
         }
         
