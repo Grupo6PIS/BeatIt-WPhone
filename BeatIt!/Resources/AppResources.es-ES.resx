@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Challenge10_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>Desc 19 dificil español</value>
+    <value>En Este Desafío Debes Tomar Una Fotografía Con Cinco Amigos o Más</value>
   </data>
   <data name="Challenge10_DescriptionTxtBlockText" xml:space="preserve">
-    <value>Desc 19 Facil español</value>
+    <value>En Este Desafío Debes Tomar Una Fotografía Con Dos Amigos o Más</value>
   </data>
   <data name="Challenge10_Title" xml:space="preserve">
     <value>Selfie En Grupo!</value>
@@ -172,13 +172,13 @@
     <value>Desafio completado!</value>
   </data>
   <data name="Challenge2_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>En este desafío deberás agitar el celular cuando pienses que el timer finalizo.  El timer se ocultará 4 veces asi que presta atención.</value>
+    <value>En Este Desafío Deberás Agitar El Celular Cuando Pienses Que El Timer Finalizó.  El timer Se Ocultará Cuatro Veces Asi Que Presta Atención.</value>
   </data>
   <data name="Challenge2_DescriptionTxtBlockText" xml:space="preserve">
-    <value>En este desafío deberás agitar el celular cuando pienses que el timer finalizo. El timer se ocultará 3 veces asi que presta atención.</value>
+    <value>En Este Desafío Deberás Agitar El Celular Cuando Pienses Que El Timer Finalizó.  El timer Se Ocultará Tres Veces Asi Que Presta Atención.</value>
   </data>
   <data name="Challenge2_Finish" xml:space="preserve">
-    <value>El desafío ha finalizado, usted ha obtenido @score puntos.</value>
+    <value>El Desafío Ha Finalizado, Usted Ha Obtenido @score Puntos.</value>
   </data>
   <data name="Challenge2_ShareMeUp" xml:space="preserve">
     <value />
@@ -190,16 +190,16 @@
     <value>Wake Me Up!</value>
   </data>
   <data name="Challenge3_BackButton" xml:space="preserve">
-    <value>Volver al desafío</value>
+    <value>Volver Al Desafío</value>
   </data>
   <data name="Challenge3_Delete" xml:space="preserve">
-    <value>Borrar Publicación del muro</value>
+    <value>Borrar Publicación Del Muro</value>
   </data>
   <data name="Challenge3_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>En este desafío deberás enviar invitaciones a tus amigos por medio de mensajes y redes sociales, minimo cuatro SMS y la publicación en tu muro. Cuantos mas invites mayor puntaje!</value>
+    <value>En Este Desafío Deberás Enviar Invitaciones A Tus amigos por Medio De Mensajes y Redes Sociales, Minimo Cuatro SMS y La Publicación En Tu muro. Cuantos Mas Invites Mayor Puntaje!</value>
   </data>
   <data name="Challenge3_DescriptionTxtBlockText" xml:space="preserve">
-    <value>En este desafío deberás enviar invitaciones a tus amigos por medio de mensajes y redes sociales, minimo dos SMS y la publicación en tu muro. Cuantos mas invites mayor puntaje!</value>
+    <value>En Este Desafío Deberás Enviar Invitaciones A Tus amigos por Medio De Mensajes y Redes Sociales, Minimo Dos SMS y La Publicación En Tu muro. Cuantos Mas Invites Mayor Puntaje!</value>
   </data>
   <data name="Challenge3_Done" xml:space="preserve">
     <value>Listo!</value>
@@ -207,7 +207,7 @@
   <data name="Challenge3_Message" xml:space="preserve">
     <value>Descarga BeatIt!
 Windows: http://www.windowsphone.com/en-us/store/app/beatit/66fa9546-f6ae-4a10-8acb-91472ac3ff96
-También disponible para Andoid!</value>
+También Disponible Para Andoid!</value>
   </data>
   <data name="Challenge3_MessagePosted" xml:space="preserve">
     <value>Mensaje Publicado Exitosamente</value>
@@ -216,10 +216,10 @@ También disponible para Andoid!</value>
     <value>Nuevo puntaje mas alto!</value>
   </data>
   <data name="Challenge3_NotBeat" xml:space="preserve">
-    <value>No has superado tu puntaje actual.</value>
+    <value>No Has Superado Tu Puntaje Actual.</value>
   </data>
   <data name="Challenge3_PostWallButton" xml:space="preserve">
-    <value>Publicar en el muro</value>
+    <value>Publicar En El Muro</value>
   </data>
   <data name="Challenge3_SendBtn" xml:space="preserve">
     <value>Enviar</value>
@@ -231,10 +231,10 @@ También disponible para Andoid!</value>
     <value>¿Quieres Jugar?</value>
   </data>
   <data name="Challenge4_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>En este desafío debes callar lo mas pronto posible a el perro presionando el botón rojo. El perro ladrará cinco veces.</value>
+    <value>En Este Desafío Debes Callar Lo Mas Pronto Posible A El Perro Presionando El Botón Rojo. El Perro Ladrará Cinco Veces.</value>
   </data>
   <data name="Challenge4_DescriptionTxtBlockText" xml:space="preserve">
-    <value>En este desafío debes callar lo mas pronto posible a el perro presionando el botón rojo. El perro ladrará tres veces.</value>
+    <value>En Este Desafío Debes Callar Lo Mas Pronto Posible A El Perro Presionando El Botón Rojo. El Perro Ladrará Cinco Veces.</value>
   </data>
   <data name="Challenge4_StartButton" xml:space="preserve">
     <value>Comenzar!</value>
@@ -243,7 +243,7 @@ También disponible para Andoid!</value>
     <value>Cállate!</value>
   </data>
   <data name="Challenge4_Title" xml:space="preserve">
-    <value>Callar al perro!</value>
+    <value>Callar Al Perro!</value>
   </data>
   <data name="Challenge5_DescriptionHardTxtBlockText" xml:space="preserve">
     <value>Descripcion 5 Nivel 2</value>
@@ -255,13 +255,13 @@ También disponible para Andoid!</value>
     <value>Bouncing Game!</value>
   </data>
   <data name="Challenge6_Alert" xml:space="preserve">
-    <value>Antes de lanzar el dispositivo hacia arriba, procure tener una posicion adecuada para capturarlo cuando el mismo venga bajando.</value>
+    <value>Antes De Lanzar El Dispositivo Hacia Arriba, Procure Tener Una Posicion Adecuada Para Capturarlo Cuando El Mismo Venga Bajando.</value>
   </data>
   <data name="Challenge6_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>En este desafío debes lanzar el celular lo más alto que puedas, debiendo sobrepasar como mínimo dos metros.</value>
+    <value>En Este Desafío Debes Lanzar El Celular Lo Más Alto Que Puedas, Debiendo Sobrepasar Como Mínimo Dos Metros.</value>
   </data>
   <data name="Challenge6_DescriptionTxtBlockText" xml:space="preserve">
-    <value>En este desafío debes lanzar el celular lo más alto que puedas, debiendo sobrepasar como mínimo un metro.</value>
+    <value>En Este Desafío Debes Lanzar El Celular Lo Más Alto Que Puedas, Debiendo Sobrepasar Como Mínimo Un Metro.</value>
   </data>
   <data name="Challenge6_Title" xml:space="preserve">
     <value>Throw the Phone</value>
@@ -350,7 +350,7 @@ Recuerda, Cuanto Mas Rápido Mayor Puntaje!</value>
     <value>Ranking</value>
   </data>
   <data name="HomePage_RetryBtnTitle" xml:space="preserve">
-    <value>reintentar</value>
+    <value>Reintentar</value>
   </data>
   <data name="HomePage_ScoreError" xml:space="preserve">
     <value>Ha Ocurrido Un Error Al Enviar El Puntaje</value>

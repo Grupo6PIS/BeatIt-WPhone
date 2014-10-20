@@ -285,7 +285,7 @@
     <Resource Include="Images\blackBall.png" />
     <Resource Include="Images\redBall.png" />
     <Resource Include="Images\clock.png" />
-    <Content Include="Images\icon_challenge_10.png" />
+    <Resource Include="Images\icon_challenge_10.png" />
     <Resource Include="Images\Messi_Cara.png" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>

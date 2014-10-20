@@ -1,4 +1,5 @@
 ﻿using BeatIt_.AppCode.Classes;
+using BeatIt_.AppCode.Controllers;
 using BeatIt_.Resources;
 
 namespace BeatIt_.AppCode.Challenges
@@ -25,6 +26,38 @@ namespace BeatIt_.AppCode.Challenges
             Level = 1;
             Description = AppResources.Challenge10_DescriptionTxtBlockText;
             MaxAttempt = 3;
+        }
+
+
+        private int CalculateScore(int cantPersonas)
+        {
+            var points = 0;
+            var needed = (Level == 1) ? 2 : 5;
+            if (((Level == 1) && (cantPersonas>=needed)) || ((Level == 2) && (cantPersonas>=needed)))
+            {
+                points = 60 + (cantPersonas - needed)*(60/needed);
+            }
+            return (points >= 0) ? points : 0;
+        }
+
+        public void CompleteChallenge(int cantPersonas)
+        {
+            State.CurrentAttempt = State.CurrentAttempt + 1;
+
+            State.LastScore = CalculateScore(cantPersonas);
+            if (State.LastScore > State.BestScore)
+            {
+                State.BestScore = State.LastScore;
+                FacadeController.GetInstance().ShouldSendScore = true;
+            }
+
+            if (State.CurrentAttempt == MaxAttempt)
+            {
+                State.Finished = true;
+            }
+
+            if (!FacadeController.GetInstance().GetIsForTesting())
+                FacadeController.GetInstance().SaveState(State);
         }
     }
 }

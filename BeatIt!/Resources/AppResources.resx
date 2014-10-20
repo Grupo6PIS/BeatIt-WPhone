@@ -118,22 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Challenge10_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>Desc 10 Dificil Ingles</value>
+    <value>In This Challenge You Have To Take A Picture With Five Or More Friends!</value>
   </data>
   <data name="Challenge10_DescriptionTxtBlockText" xml:space="preserve">
-    <value>Desc 10 Facil Ingles</value>
+    <value>In This Challenge You Have To Take A Picture With Two Or More Friends!</value>
   </data>
   <data name="Challenge10_Title" xml:space="preserve">
     <value>Selfie Groupie!</value>
   </data>
   <data name="Challenge1_Description" xml:space="preserve">
-    <value>Bump the gray ball as much as possible !</value>
+    <value>Bump The Gray Ball As Much As Possible !</value>
   </data>
   <data name="Challenge1_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to run faster than 15 km/h for 45 seconds.</value>
+    <value>In This Challenge You Have To Run Faster Than 15 km/h for 45 Seconds.</value>
   </data>
   <data name="Challenge1_DescriptionTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to run faster than 10 km/h for 30 seconds.</value>
+    <value>In This Challenge You Have To Run Faster Than 10 km/h for 30 Seconds.</value>
   </data>
   <data name="Challenge1_DescriptionTxtBlockTitle" xml:space="preserve">
     <value>Description</value>
@@ -172,13 +172,13 @@
     <value>Challenge Completed!</value>
   </data>
   <data name="Challenge2_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to shake your cellphone when you think the timer reachs 0, the timer will hide 4 times so pay attention.</value>
+    <value>In This Challenge You Have To Shake Your Cellphone When You Think The Timer Reaches 0, The Timer Will Hide 4 Times So Pay attention.</value>
   </data>
   <data name="Challenge2_DescriptionTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to shake your cellphone when you think the timer reachs 0, the timer will hide 3 times so pay attention.</value>
+    <value>In This Challenge You Have To Shake Your Cellphone When you Think The Timer Reaches 0, The Timer Will Hide 3 Times So Pay attention.</value>
   </data>
   <data name="Challenge2_Finish" xml:space="preserve">
-    <value>The challenge is over, you have earned @score points.</value>
+    <value>The Challenge Is Over, You Have Earned @score Points.</value>
   </data>
   <data name="Challenge2_StartButton" xml:space="preserve">
     <value>Start!</value>
@@ -190,16 +190,16 @@
     <value>Wake Me Up!</value>
   </data>
   <data name="Challenge3_BackButton" xml:space="preserve">
-    <value>Back to challenge</value>
+    <value>Back to Challenge</value>
   </data>
   <data name="Challenge3_Delete" xml:space="preserve">
-    <value>Delete publication form wall </value>
+    <value>Delete Publication From wall </value>
   </data>
   <data name="Challenge3_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to invite your friends using facebook or SMS, minimum four sms and the post on your wall. Remember more friends more score!</value>
+    <value>In This Challenge You Have To Invite Your Friends Using Facebook Or SMS, Minimum Four Sms And The Post On Your Wall. Remember More Friends More Score!</value>
   </data>
   <data name="Challenge3_DescriptionTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to invite your fiends using facebook or SMS, minimum two sms and the post on your wall. Remember more friends more score!</value>
+    <value>In This Challenge You Have To Invite Your Friends Using Facebook Or SMS, Minimum Two Sms And The Post On Your Wall. Remember More Friends More Score!</value>
   </data>
   <data name="Challenge3_Done" xml:space="preserve">
     <value>Done!</value>
@@ -210,7 +210,7 @@ Windows: http://www.windowsphone.com/en-us/store/app/beatit/66fa9546-f6ae-4a10-8
 Also available for Android!</value>
   </data>
   <data name="Challenge3_MessagePosted" xml:space="preserve">
-    <value>Message Posted successfully</value>
+    <value>Message Posted Successfully</value>
   </data>
   <data name="Challenge3_NewHighScore" xml:space="preserve">
     <value>New High Score!</value>
@@ -219,7 +219,7 @@ Also available for Android!</value>
     <value>You Haven't Beaten Your Current Score</value>
   </data>
   <data name="Challenge3_PostWallButton" xml:space="preserve">
-    <value>Post on my wall</value>
+    <value>Post On My Wall</value>
   </data>
   <data name="Challenge3_SendBtn" xml:space="preserve">
     <value>Send</value>
@@ -231,10 +231,10 @@ Also available for Android!</value>
     <value>Can You Play?</value>
   </data>
   <data name="Challenge4_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>In this challenge you need to shut up the dog as quickly as you can by pressing the red button. The dog will bark five times.</value>
+    <value>In This Challenge You Need To Shut Up The Dog As Quickly As You Can By Pressing The Red Button. The Dog Will Bark Five Times.</value>
   </data>
   <data name="Challenge4_DescriptionTxtBlockText" xml:space="preserve">
-    <value>In this challenge you need to shut up the dog as quickly as you can by pressing the red button. The dog will bark three times.</value>
+    <value>In This Challenge You Need To Shut Up The Dog As Quickly As You Can By Pressing The Red Button. The Dog Will Bark Three Times.</value>
   </data>
   <data name="Challenge4_StartButton" xml:space="preserve">
     <value>Start!</value>
@@ -243,7 +243,7 @@ Also available for Android!</value>
     <value>Shut up!</value>
   </data>
   <data name="Challenge4_Title" xml:space="preserve">
-    <value>Shut the dog!</value>
+    <value>Shut The Dog!</value>
   </data>
   <data name="Challenge5_DescriptionHardTxtBlockText" xml:space="preserve">
     <value>Description 5 Level 2</value>
@@ -255,16 +255,16 @@ Also available for Android!</value>
     <value>Bouncing Game!</value>
   </data>
   <data name="Challenge6_Alert" xml:space="preserve">
-    <value>Before launching the device up, try to have a proper position to catch it when it comes down.</value>
+    <value>Before Launching The Device Up, Try To Have A Proper Position To Catch It When It Comes Down, We Are NOT Responsabe For Any Damage Of Your Cellphone</value>
   </data>
   <data name="Challenge6_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to throw your cellphone as high as you can. Minimum you have to reach two meters.</value>
+    <value>In This Challenge You Have To Throw Your Cellphone As High As You Can. Minimum You Have To Reach Two Meters.</value>
   </data>
   <data name="Challenge6_DescriptionTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to throw your cellphone as high as you can. Minimum you have to reach one meter.</value>
+    <value>In This Challenge You Have To Throw Your Cellphone As High As You Can. Minimum You Have To Reach One Meter.</value>
   </data>
   <data name="Challenge6_Title" xml:space="preserve">
-    <value>Throw the Phone</value>
+    <value>Throw The Phone</value>
   </data>
   <data name="Challenge7_DescriptionHardTxtBlockText" xml:space="preserve">
     <value>In This Challenge You Have To Catch The Button That Shows Up, That Will Be 30 Times.
@@ -323,13 +323,13 @@ Remember Do It Faster To Have More Score!.</value>
     <value>Less Than A Minute!</value>
   </data>
   <data name="Challenge_MaxAttemptsExeeded" xml:space="preserve">
-    <value>You can't play again, The maximum number of attempts was exceeded.</value>
+    <value>You Can't Play Again, The Maximum Number Of Attempts Was Exceeded.</value>
   </data>
   <data name="Challenge_Minutes" xml:space="preserve">
     <value>Minutes</value>
   </data>
   <data name="Challenge_NotSuported" xml:space="preserve">
-    <value>Unfortunately, your device does not have the necessary features to play this challenge.</value>
+    <value>Unfortunately, Your Device Does Not Have The Necessary Features To Play This Challenge.</value>
   </data>
   <data name="HomePage_ChallengesPivotTitle" xml:space="preserve">
     <value>Challenges</value>
@@ -350,7 +350,7 @@ Remember Do It Faster To Have More Score!.</value>
     <value>Ranking</value>
   </data>
   <data name="HomePage_RetryBtnTitle" xml:space="preserve">
-    <value>retry</value>
+    <value>Retry</value>
   </data>
   <data name="HomePage_ScoreError" xml:space="preserve">
     <value>An Error Has Occurred While Sending The Score</value>

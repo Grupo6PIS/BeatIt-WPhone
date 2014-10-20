@@ -88,7 +88,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You can&apos;t play again, The maximum number of attempts was exceeded..
+        ///   Looks up a localized string similar to You Can&apos;t Play Again, The Maximum Number Of Attempts Was Exceeded..
         /// </summary>
         public static string Challenge_MaxAttemptsExeeded {
             get {
@@ -106,7 +106,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unfortunately, your device does not have the necessary features to play this challenge..
+        ///   Looks up a localized string similar to Unfortunately, Your Device Does Not Have The Necessary Features To Play This Challenge..
         /// </summary>
         public static string Challenge_NotSuported {
             get {
@@ -115,7 +115,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bump the gray ball as much as possible !.
+        ///   Looks up a localized string similar to Bump The Gray Ball As Much As Possible !.
         /// </summary>
         public static string Challenge1_Description {
             get {
@@ -124,7 +124,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In this challenge you have to run faster than 15 km/h for 45 seconds..
+        ///   Looks up a localized string similar to In This Challenge You Have To Run Faster Than 15 km/h for 45 Seconds..
         /// </summary>
         public static string Challenge1_DescriptionHardTxtBlockText {
             get {
@@ -133,7 +133,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In this challenge you have to run faster than 10 km/h for 30 seconds..
+        ///   Looks up a localized string similar to In This Challenge You Have To Run Faster Than 10 km/h for 30 Seconds..
         /// </summary>
         public static string Challenge1_DescriptionTxtBlockText {
             get {
@@ -250,7 +250,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Desc 10 Dificil Ingles.
+        ///   Looks up a localized string similar to In This Challenge You Have To Take A Picture With Five Or More Friends!.
         /// </summary>
         public static string Challenge10_DescriptionHardTxtBlockText {
             get {
@@ -259,7 +259,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Desc 10 Facil Ingles.
+        ///   Looks up a localized string similar to In This Challenge You Have To Take A Picture With Two Or More Friends!.
         /// </summary>
         public static string Challenge10_DescriptionTxtBlockText {
             get {
@@ -277,7 +277,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In this challenge you have to shake your cellphone when you think the timer reachs 0, the timer will hide 4 times so pay attention..
+        ///   Looks up a localized string similar to In This Challenge You Have To Shake Your Cellphone When You Think The Timer Reaches 0, The Timer Will Hide 4 Times So Pay attention..
         /// </summary>
         public static string Challenge2_DescriptionHardTxtBlockText {
             get {
@@ -286,7 +286,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In this challenge you have to shake your cellphone when you think the timer reachs 0, the timer will hide 3 times so pay attention..
+        ///   Looks up a localized string similar to In This Challenge You Have To Shake Your Cellphone When you Think The Timer Reaches 0, The Timer Will Hide 3 Times So Pay attention..
         /// </summary>
         public static string Challenge2_DescriptionTxtBlockText {
             get {
@@ -295,7 +295,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The challenge is over, you have earned @score points..
+        ///   Looks up a localized string similar to The Challenge Is Over, You Have Earned @score Points..
         /// </summary>
         public static string Challenge2_Finish {
             get {
@@ -331,7 +331,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Back to challenge.
+        ///   Looks up a localized string similar to Back to Challenge.
         /// </summary>
         public static string Challenge3_BackButton {
             get {
@@ -340,7 +340,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete publication form wall .
+        ///   Looks up a localized string similar to Delete Publication From wall .
         /// </summary>
         public static string Challenge3_Delete {
             get {
@@ -349,7 +349,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In this challenge you have to invite your friends using facebook or SMS, minimum four sms and the post on your wall. Remember more friends more score!.
+        ///   Looks up a localized string similar to In This Challenge You Have To Invite Your Friends Using Facebook Or SMS, Minimum Four Sms And The Post On Your Wall. Remember More Friends More Score!.
         /// </summary>
         public static string Challenge3_DescriptionHardTxtBlockText {
             get {
@@ -358,7 +358,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In this challenge you have to invite your fiends using facebook or SMS, minimum two sms and the post on your wall. Remember more friends more score!.
+        ///   Looks up a localized string similar to In This Challenge You Have To Invite Your Friends Using Facebook Or SMS, Minimum Two Sms And The Post On Your Wall. Remember More Friends More Score!.
         /// </summary>
         public static string Challenge3_DescriptionTxtBlockText {
             get {
@@ -387,7 +387,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Message Posted successfully.
+        ///   Looks up a localized string similar to Message Posted Successfully.
         /// </summary>
         public static string Challenge3_MessagePosted {
             get {
@@ -414,7 +414,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Post on my wall.
+        ///   Looks up a localized string similar to Post On My Wall.
         /// </summary>
         public static string Challenge3_PostWallButton {
             get {
@@ -450,7 +450,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In this challenge you need to shut up the dog as quickly as you can by pressing the red button. The dog will bark five times..
+        ///   Looks up a localized string similar to In This Challenge You Need To Shut Up The Dog As Quickly As You Can By Pressing The Red Button. The Dog Will Bark Five Times..
         /// </summary>
         public static string Challenge4_DescriptionHardTxtBlockText {
             get {
@@ -459,7 +459,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In this challenge you need to shut up the dog as quickly as you can by pressing the red button. The dog will bark three times..
+        ///   Looks up a localized string similar to In This Challenge You Need To Shut Up The Dog As Quickly As You Can By Pressing The Red Button. The Dog Will Bark Three Times..
         /// </summary>
         public static string Challenge4_DescriptionTxtBlockText {
             get {
@@ -486,7 +486,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Shut the dog!.
+        ///   Looks up a localized string similar to Shut The Dog!.
         /// </summary>
         public static string Challenge4_Title {
             get {
@@ -522,7 +522,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Before launching the device up, try to have a proper position to catch it when it comes down..
+        ///   Looks up a localized string similar to Before Launching The Device Up, Try To Have A Proper Position To Catch It When It Comes Down, We Are NOT Responsabe For Any Damage Of Your Cellphone.
         /// </summary>
         public static string Challenge6_Alert {
             get {
@@ -531,7 +531,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In this challenge you have to throw your cellphone as high as you can. Minimum you have to reach two meters..
+        ///   Looks up a localized string similar to In This Challenge You Have To Throw Your Cellphone As High As You Can. Minimum You Have To Reach Two Meters..
         /// </summary>
         public static string Challenge6_DescriptionHardTxtBlockText {
             get {
@@ -540,7 +540,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In this challenge you have to throw your cellphone as high as you can. Minimum you have to reach one meter..
+        ///   Looks up a localized string similar to In This Challenge You Have To Throw Your Cellphone As High As You Can. Minimum You Have To Reach One Meter..
         /// </summary>
         public static string Challenge6_DescriptionTxtBlockText {
             get {
@@ -549,7 +549,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Throw the Phone.
+        ///   Looks up a localized string similar to Throw The Phone.
         /// </summary>
         public static string Challenge6_Title {
             get {
@@ -749,7 +749,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to retry.
+        ///   Looks up a localized string similar to Retry.
         /// </summary>
         public static string HomePage_RetryBtnTitle {
             get {
