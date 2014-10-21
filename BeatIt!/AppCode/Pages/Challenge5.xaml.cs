@@ -13,7 +13,7 @@ namespace BeatIt_.AppCode.Pages
     public partial class Challenge5
     {
         private const int ChallengeId = 5; // segundos
-
+        private const double speed = 15;
         private const int TimeTop = 60; // segundos
 
         private ChallengeDetail5 _challenge;
@@ -141,7 +141,7 @@ namespace BeatIt_.AppCode.Pages
 
         void acelerometer_ReadingChanged(object sender, SensorReadingEventArgs<AccelerometerReading> e)
         {
-            Dispatcher.BeginInvoke(() => UpdatePositions(e.SensorReading.Acceleration.X * 9.8, e.SensorReading.Acceleration.Y * 9.8));
+            Dispatcher.BeginInvoke(() => UpdatePositions(e.SensorReading.Acceleration.X * speed, e.SensorReading.Acceleration.Y * speed));
 
 
         }
