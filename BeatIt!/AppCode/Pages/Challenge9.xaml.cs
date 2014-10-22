@@ -21,6 +21,8 @@ namespace BeatIt_.AppCode.Pages
         private int _currentRound;
         private int[] _result;
 
+        static SoundEffectInstance _soundEffect;
+
         public Challenge9()
         {
             InitializeComponent();
@@ -68,6 +70,8 @@ namespace BeatIt_.AppCode.Pages
         {
             bool songError;
             _timer.Stop();
+            if (_soundEffect != null) _soundEffect.Dispose();
+
             if (error)
             {
                 songError = true;
@@ -159,9 +163,10 @@ namespace BeatIt_.AppCode.Pages
         {
             var stream = Application.GetResourceStream(new Uri(path, UriKind.Relative));
             var soundeffect = SoundEffect.FromStream(stream.Stream);
-            var soundInstance = soundeffect.CreateInstance();
+            if (_soundEffect != null) _soundEffect.Dispose();
+            _soundEffect = soundeffect.CreateInstance();
             FrameworkDispatcher.Update();
-            soundInstance.Play();
+            _soundEffect.Play();
         }
 
         private void UpdateRectangle(int round, bool error)
@@ -203,6 +208,7 @@ namespace BeatIt_.AppCode.Pages
         protected override void OnBackKeyPress(CancelEventArgs e)
         {
             _timer.Stop();
+            if (_soundEffect != null) _soundEffect.Dispose();
             e.Cancel = false;
             base.OnBackKeyPress(e);
         }

@@ -287,6 +287,11 @@
     <Resource Include="Images\clock.png" />
     <Resource Include="Images\icon_challenge_10.png" />
     <Resource Include="Images\Messi_Cara.png" />
+    <Resource Include="Sounds\Song1Level1.wav" />
+    <Resource Include="Sounds\Song2Level1.wav" />
+    <Resource Include="Sounds\Song3Level1.wav" />
+    <Resource Include="Sounds\Song4Level1.wav" />
+    <Resource Include="Sounds\Song5Level1.wav" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup />

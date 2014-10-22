@@ -27,11 +27,28 @@ namespace BeatIt_.AppCode.Challenges
             MaxAttempt = maxAttempts;
             TimerValue = Level == 1 ? 20 : 10;
 
-            var s1 = new Song { SelectedIndex = 0, SongName = "dog_bark.wav", OptionsName = new[] { "Perro", "Gato", "Vaca" } };
-            var s2 = new Song { SelectedIndex = 1, SongName = "dog_bark.wav", OptionsName = new[] { "Gato", "Perro", "Vaca" } };
-            var s3 = new Song { SelectedIndex = 2, SongName = "dog_bark.wav", OptionsName = new[] { "Vaca", "Gato", "Perro" } };
-            var s4 = new Song { SelectedIndex = 2, SongName = "dog_bark.wav", OptionsName = new[] { "Gato", "Vaca", "Perro" } };
-            var s5 = new Song { SelectedIndex = 2, SongName = "dog_bark.wav", OptionsName = new[] { "Vaca", "Gato", "Perro" } };
+            Song s1;
+            Song s2;
+            Song s3;
+            Song s4;
+            Song s5;
+
+            if (Level == 1)
+            {
+                s1 = new Song { SelectedIndex = 0, SongName = "Song1Level1.wav", OptionsName = new[] { "Red Hot Chili Peppers", "Led Zeppelin", "Foo Fighters" } };
+                s2 = new Song { SelectedIndex = 1, SongName = "Song2Level1.wav", OptionsName = new[] { "Pitbull", "Flo Rida", "LMFAO" } };
+                s3 = new Song { SelectedIndex = 2, SongName = "Song3Level1.wav", OptionsName = new[] { "David Guetta", "Calvin Harris", "Avicii" } };
+                s4 = new Song { SelectedIndex = 2, SongName = "Song4Level1.wav", OptionsName = new[] { "Bruno Mars", "Justin Timberlake", "Maroon 5" } };
+                s5 = new Song { SelectedIndex = 1, SongName = "Song5Level1.wav", OptionsName = new[] { "Usher", "Pharrell Williams", "Kanye West" } };   
+            }
+            else
+            {
+                s1 = new Song { SelectedIndex = 0, SongName = "dog_bark.wav", OptionsName = new[] { "Perro", "Vaca", "Gato" } };
+                s2 = new Song { SelectedIndex = 1, SongName = "dog_bark.wav", OptionsName = new[] { "Vaca", "Perro", "Gato" } };
+                s3 = new Song { SelectedIndex = 2, SongName = "dog_bark.wav", OptionsName = new[] { "Vaca", "Gato", "Perro" } };
+                s4 = new Song { SelectedIndex = 2, SongName = "dog_bark.wav", OptionsName = new[] { "Gato", "Vaca", "Perro" } };
+                s5 = new Song { SelectedIndex = 2, SongName = "dog_bark.wav", OptionsName = new[] { "Vaca", "Gato", "Perro" } };   
+            }
 
             Songs = new[] {s1, s2, s3, s4, s5};
         }
