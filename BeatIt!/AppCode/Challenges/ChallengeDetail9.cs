@@ -43,11 +43,11 @@ namespace BeatIt_.AppCode.Challenges
             }
             else
             {
-                s1 = new Song { SelectedIndex = 0, SongName = "dog_bark.wav", OptionsName = new[] { "Perro", "Vaca", "Gato" } };
-                s2 = new Song { SelectedIndex = 1, SongName = "dog_bark.wav", OptionsName = new[] { "Vaca", "Perro", "Gato" } };
-                s3 = new Song { SelectedIndex = 2, SongName = "dog_bark.wav", OptionsName = new[] { "Vaca", "Gato", "Perro" } };
-                s4 = new Song { SelectedIndex = 2, SongName = "dog_bark.wav", OptionsName = new[] { "Gato", "Vaca", "Perro" } };
-                s5 = new Song { SelectedIndex = 2, SongName = "dog_bark.wav", OptionsName = new[] { "Vaca", "Gato", "Perro" } };   
+                s1 = new Song { SelectedIndex = 2, SongName = "Song1Level2.wav", OptionsName = new[] { "Paradise City", "November Rain", "Sweet Child O' Mine" } };
+                s2 = new Song { SelectedIndex = 1, SongName = "Song2Level2.wav", OptionsName = new[] { "Satisfaction", "Angie", "Start Me Up" } };
+                s3 = new Song { SelectedIndex = 0, SongName = "Song3Level2.wav", OptionsName = new[] { "One More Night", "Animals", "She Will Be Loved" } };
+                s4 = new Song { SelectedIndex = 2, SongName = "Song4Level2.wav", OptionsName = new[] { "Hey Jude", "Yesterday", "Let It Be" } };
+                s5 = new Song { SelectedIndex = 0, SongName = "Song5Level2.wav", OptionsName = new[] { "It's My Life", "Crazy", "Always" } };   
             }
 
             Songs = new[] {s1, s2, s3, s4, s5};
