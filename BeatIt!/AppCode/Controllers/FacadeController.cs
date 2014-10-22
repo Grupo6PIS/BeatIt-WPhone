@@ -126,51 +126,52 @@ namespace BeatIt_.AppCode.Controllers
                         break;
 
                     case  6: // Throw the Phone
+                        c = new ChallengeDetail6((int) jObjectTemp["id"],
+                            (string) jObjectTemp["colorHex"],
+                            (int) jObjectTemp["challengeLevel"],
+                            (int)jObjectTemp["maxAttemps"],
+                            (bool)jObjectTemp["active"]) { Round = roundObj };
+                        challenges.Add(6, c);
                         break;
 
                     case  7: // Catch Me!
+                        c = new ChallengeDetail7((int) jObjectTemp["id"],
+                            (string) jObjectTemp["colorHex"],
+                            (int) jObjectTemp["challengeLevel"],
+                            (int)jObjectTemp["maxAttemps"],
+                            (bool)jObjectTemp["active"]) { Round = roundObj };
+                        challenges.Add(7, c);
                         break;
 
                     case 8: // Color & Text
+                        c = new ChallengeDetail8((int) jObjectTemp["id"],
+                            (string) jObjectTemp["colorHex"],
+                            (int) jObjectTemp["challengeLevel"],
+                            (int)jObjectTemp["maxAttemps"],
+                            (bool)jObjectTemp["active"]) { Round = roundObj };
+                        challenges.Add(8, c);
                         break;
 
                     case 9: // Song Complete
+                        c = new ChallengeDetail9((int) jObjectTemp["id"],
+                            (string) jObjectTemp["colorHex"],
+                            (int) jObjectTemp["challengeLevel"],
+                            (int)jObjectTemp["maxAttemps"],
+                            (bool)jObjectTemp["active"]) { Round = roundObj };
+                        challenges.Add(9, c);
                         break;
-                    case 10: // Song Complete
+                    case 10: // Selfie Group
+                        //c = new ChallengeDetail10((int) jObjectTemp["id"],
+                        //    (string) jObjectTemp["colorHex"],
+                        //    (int) jObjectTemp["challengeLevel"],
+                        //    (int)jObjectTemp["maxAttemps"],
+                        //    (bool)jObjectTemp["active"]) { Round = roundObj };
+                        //challenges.Add(10, c);
                         break;
                 }
             }
 
             //Se agregan los desafios restantes por codigo
-
-            var ch6 = new ChallengeDetail6(6,
-                "#FFAA00FF",
-                1,
-                3,
-                true) { Round = roundObj };
-            challenges.Add(6, ch6);
-
-            var ch7 = new ChallengeDetail7(7,
-                "#FFD80073",
-                1,
-                3,
-                true) { Round = roundObj };
-            challenges.Add(7, ch7);
-
-            var ch8 = new ChallengeDetail8(8,
-                "#FF0050EF",
-                1,
-                3,
-                true) { Round = roundObj };
-            challenges.Add(8, ch8);
-
-            var ch9 = new ChallengeDetail9(9,
-                "#FFE3C800",
-                1,
-                3,
-                true) { Round = roundObj };
-            challenges.Add(9, ch9);
-
             var ch10 = new ChallengeDetail10(10,
                 "#FFFA6800",
                 1,
