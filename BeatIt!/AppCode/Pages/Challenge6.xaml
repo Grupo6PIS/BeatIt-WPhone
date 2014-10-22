@@ -46,7 +46,7 @@
             </Grid>
 
             <!-- Estas se activan y desactivan de acuerdo si esta comenzado-->
-            <Grid Visibility="Visible"  Name="InProgressGrid">
+            <Grid Visibility="Collapsed"  Name="InProgressGrid">
                 <Rectangle Fill="#FFAA00FF" Height="80" Width="438" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="12,0,12,50" IsHitTestVisible="True" Name="PlayingRec" />
                 <TextBlock FontSize="30" FontWeight="ExtraBold" Height="50" HorizontalAlignment="Center" Margin="14,465,13,0" Name="ShowTime" Text="{Binding Path=AppResources.Challenge2_Fly, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="429" TextAlignment="Center" />
             </Grid>
