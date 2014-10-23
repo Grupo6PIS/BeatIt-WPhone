@@ -146,7 +146,7 @@ namespace BeatIt_.AppCode.Pages
                     _stopwatch.Stop();
 
                     MessageBox.Show(AppResources.Challenge2_Finish.Replace("@score",
-                        _currentChallenge.CalcularPuntaje(_aciertos).ToString(CultureInfo.InvariantCulture)));
+                        _currentChallenge.CalculateScore(_aciertos).ToString(CultureInfo.InvariantCulture)));
 
                     _currentChallenge.CompleteChallenge(_aciertos);
 
