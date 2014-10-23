@@ -1,6 +1,9 @@
-﻿using System.Windows;
-using BeatIt_.AppCode.Classes;
+﻿using BeatIt_.AppCode.Classes;
 using BeatIt_.Resources;
+
+/*****************************/
+//COLOR & TEXT
+/*****************************/
 
 namespace BeatIt_.AppCode.Challenges
 {
@@ -13,11 +16,13 @@ namespace BeatIt_.AppCode.Challenges
             ColorHex = colorHex;
             IsEnabled = isEnabled;
             Level = level;
-            Description = level == 1 ? AppResources.Challenge8_DescriptionTxtBlockText : AppResources.Challenge8_DescriptionHardTxtBlockText;
+            Description = level == 1
+                ? AppResources.Challenge8_DescriptionTxtBlockText
+                : AppResources.Challenge8_DescriptionHardTxtBlockText;
             MaxAttempt = maxAttempts;
         }
 
-        public ChallengeDetail8() 
+        public ChallengeDetail8()
         {
             ChallengeId = 8;
             Name = AppResources.Challenge8_Title;
@@ -27,7 +32,5 @@ namespace BeatIt_.AppCode.Challenges
             Description = AppResources.Challenge8_DescriptionTxtBlockText;
             MaxAttempt = 3;
         }
-
-       
     }
 }

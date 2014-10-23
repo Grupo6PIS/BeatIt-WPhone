@@ -2,12 +2,14 @@
 using BeatIt_.AppCode.Controllers;
 using BeatIt_.Resources;
 
+/*****************************/
+//SHUT THE DOG!
+/*****************************/
+
 namespace BeatIt_.AppCode.Challenges
 {
     public class ChallengeDetail4 : Challenge
     {
-        public int[] TimerValues { get; set; }
-
         public ChallengeDetail4(int challengeId, string colorHex, int level, int maxAttempts, bool isEnabled)
         {
             ChallengeId = challengeId;
@@ -15,12 +17,14 @@ namespace BeatIt_.AppCode.Challenges
             ColorHex = colorHex;
             IsEnabled = isEnabled;
             Level = level;
-            Description = level == 1 ? AppResources.Challenge4_DescriptionTxtBlockText : AppResources.Challenge4_DescriptionHardTxtBlockText;
+            Description = level == 1
+                ? AppResources.Challenge4_DescriptionTxtBlockText
+                : AppResources.Challenge4_DescriptionHardTxtBlockText;
             MaxAttempt = maxAttempts;
-            TimerValues = Level == 1 ? new[] { 2, 4, 6 } : new[] { 1, 2, 3, 4, 5 };
+            TimerValues = Level == 1 ? new[] {2, 4, 6} : new[] {1, 2, 3, 4, 5};
         }
 
-        public ChallengeDetail4() 
+        public ChallengeDetail4()
         {
             ChallengeId = 4;
             Name = AppResources.Challenge4_Title;
@@ -29,18 +33,20 @@ namespace BeatIt_.AppCode.Challenges
             Level = 1;
             Description = AppResources.Challenge4_DescriptionTxtBlockText;
             MaxAttempt = 3;
-            TimerValues = new[] { 2, 4, 6 };
+            TimerValues = new[] {2, 4, 6};
         }
+
+        public int[] TimerValues { get; set; }
 
         private int CalculateScore(int[] miliseconds)
         {
-            var res = 0;
-            for (int i = 0; i < miliseconds.Length; i++) 
+            int res = 0;
+            for (int i = 0; i < miliseconds.Length; i++)
             {
                 if (miliseconds[i] > 0)
                     res = res + 100/miliseconds[i];
             }
-            return res * 10;
+            return res*10;
         }
 
         public void CompleteChallenge(int[] miliseconds)

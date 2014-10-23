@@ -2,6 +2,10 @@
 using BeatIt_.AppCode.Controllers;
 using BeatIt_.Resources;
 
+/*****************************/
+//WAKE ME UP!
+/*****************************/
+
 namespace BeatIt_.AppCode.Challenges
 {
     public class ChallengeDetail2 : Challenge
@@ -14,11 +18,12 @@ namespace BeatIt_.AppCode.Challenges
             IsEnabled = isEnabled;
             Level = level;
             MaxAttempt = maxAttempts;
-            Description = level == 1 ? AppResources.Challenge2_DescriptionTxtBlockText : AppResources.Challenge2_DescriptionHardTxtBlockText;
+            Description = level == 1
+                ? AppResources.Challenge2_DescriptionTxtBlockText
+                : AppResources.Challenge2_DescriptionHardTxtBlockText;
         }
 
-
-        public ChallengeDetail2() 
+        public ChallengeDetail2()
         {
             ChallengeId = 2;
             Name = AppResources.Challenge2_Title;
@@ -28,8 +33,6 @@ namespace BeatIt_.AppCode.Challenges
             Level = 1;
             MaxAttempt = 3;
         }
-
-
 
         public int[] GetSecondsToWakeMeUp()
         {
@@ -49,13 +52,12 @@ namespace BeatIt_.AppCode.Challenges
                 result[2] = 7;
                 result[3] = 9;
             }
-
             return result;
         }
 
         public void CompleteChallenge(int cantCorrectWakeUp)
         {
-            State.LastScore = CalcularPuntaje(cantCorrectWakeUp);
+            State.LastScore = CalculateScore(cantCorrectWakeUp);
             if (State.LastScore > State.BestScore)
             {
                 State.BestScore = State.LastScore;
@@ -65,12 +67,11 @@ namespace BeatIt_.AppCode.Challenges
             if (State.CurrentAttempt == MaxAttempt)
                 State.Finished = true;
 
-            // Esto no se si esta bien, como en los testing no tenemos sqlite, si estamos testeando no persistimos.
-            if(!FacadeController.GetInstance().GetIsForTesting())
+            if (!FacadeController.GetInstance().GetIsForTesting())
                 FacadeController.GetInstance().SaveState(State);
         }
 
-        public int CalcularPuntaje(int cantCorrectWakeUp)
+        public int CalculateScore(int cantCorrectWakeUp)
         {
             return cantCorrectWakeUp*20;
         }

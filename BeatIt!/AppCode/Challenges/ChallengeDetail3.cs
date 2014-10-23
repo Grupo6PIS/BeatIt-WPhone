@@ -3,6 +3,10 @@ using BeatIt_.AppCode.Classes;
 using BeatIt_.AppCode.Controllers;
 using BeatIt_.Resources;
 
+/*****************************/
+//INVITE FRIENDS
+/*****************************/
+
 namespace BeatIt_.AppCode.Challenges
 {
     public class ChallengeDetail3 : Challenge
@@ -17,13 +21,15 @@ namespace BeatIt_.AppCode.Challenges
             ColorHex = colorHex;
             IsEnabled = isEnabled;
             Level = level;
-            Description = level == 1 ? AppResources.Challenge3_DescriptionTxtBlockText : AppResources.Challenge3_DescriptionHardTxtBlockText;
+            Description = level == 1
+                ? AppResources.Challenge3_DescriptionTxtBlockText
+                : AppResources.Challenge3_DescriptionHardTxtBlockText;
             _countFacebook = 0;
             _countSms = 0;
             MaxAttempt = maxAttempts;
         }
 
-        public ChallengeDetail3() 
+        public ChallengeDetail3()
         {
             ChallengeId = 3;
             Name = AppResources.Challenge3_Title;
@@ -57,8 +63,6 @@ namespace BeatIt_.AppCode.Challenges
             return _countSms;
         }
 
-       
-
         private int CalculateScore()
         {
             if ((Level == 1) && ((_countFacebook >= 1) && (_countSms >= 2)))
@@ -74,9 +78,9 @@ namespace BeatIt_.AppCode.Challenges
 
         public KeyValuePair<bool, int> CompleteChallenge(bool error)
         {
-            var newScore = false;
+            bool newScore = false;
 
-            var score = State.BestScore;
+            int score = State.BestScore;
             State.CurrentAttempt = State.CurrentAttempt + 1;
             if (!error)
             {
@@ -99,13 +103,12 @@ namespace BeatIt_.AppCode.Challenges
             }
 
             if (!FacadeController.GetInstance().GetIsForTesting())
-            FacadeController.GetInstance().SaveState(State);
-            
+                FacadeController.GetInstance().SaveState(State);
+
             _countFacebook = 0;
             _countSms = 0;
 
-            return new KeyValuePair<bool, int>(newScore,score);
+            return new KeyValuePair<bool, int>(newScore, score);
         }
-
     }
 }

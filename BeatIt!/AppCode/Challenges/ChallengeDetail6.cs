@@ -1,7 +1,11 @@
-﻿using BeatIt_.AppCode.Classes;
-using System;
+﻿using System;
+using BeatIt_.AppCode.Classes;
 using BeatIt_.AppCode.Controllers;
 using BeatIt_.Resources;
+
+/*****************************/
+//THROW THE PHONE!
+/*****************************/
 
 namespace BeatIt_.AppCode.Challenges
 {
@@ -9,7 +13,7 @@ namespace BeatIt_.AppCode.Challenges
     {
         private const double GravitationalAcceleration = -9.80665f;
         private readonly double[] _metrosMinimosNivel;
-        
+
         public ChallengeDetail6(int challengeId, string colorHex, int level, int maxAttempts, bool isEnabled)
         {
             _metrosMinimosNivel = new double[] {1f, 2f};
@@ -19,11 +23,13 @@ namespace BeatIt_.AppCode.Challenges
             ColorHex = colorHex;
             IsEnabled = isEnabled;
             Level = level;
-            Description = level == 1 ? AppResources.Challenge6_DescriptionTxtBlockText : AppResources.Challenge6_DescriptionHardTxtBlockText;
+            Description = level == 1
+                ? AppResources.Challenge6_DescriptionTxtBlockText
+                : AppResources.Challenge6_DescriptionHardTxtBlockText;
             MaxAttempt = maxAttempts;
         }
 
-        public ChallengeDetail6() 
+        public ChallengeDetail6()
         {
             _metrosMinimosNivel = new double[] {1f, 2f};
 
@@ -38,12 +44,14 @@ namespace BeatIt_.AppCode.Challenges
 
         public int CalcularPuntaje(double tiempoEnElAire)
         {
-            double aux = tiempoEnElAire / 2;
+            double aux = tiempoEnElAire/2;
 
-            double altura = -((GravitationalAcceleration * aux * aux) / 2);
+            double altura = -((GravitationalAcceleration*aux*aux)/2);
 
             // Retornamos Segun el nivel (< altura minima, 0; si no 60 + (altura - altura minima) * 60);
-            return altura < _metrosMinimosNivel[Level-1] ? 0 : (Convert.ToInt32(Math.Round(60 + (altura - _metrosMinimosNivel[Level-1])*60)));
+            return altura < _metrosMinimosNivel[Level - 1]
+                ? 0
+                : (Convert.ToInt32(Math.Round(60 + (altura - _metrosMinimosNivel[Level - 1])*60)));
         }
 
         public void CompleteChallenge(double airTime)
@@ -58,7 +66,6 @@ namespace BeatIt_.AppCode.Challenges
             if (State.CurrentAttempt == MaxAttempt)
                 State.Finished = true;
 
-            // Esto no se si esta bien, como en los testing no tenemos sqlite, si estamos testeando no persistimos.
             if (!FacadeController.GetInstance().GetIsForTesting())
                 FacadeController.GetInstance().SaveState(State);
         }

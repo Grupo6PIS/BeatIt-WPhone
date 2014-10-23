@@ -2,11 +2,14 @@
 using BeatIt_.AppCode.Controllers;
 using BeatIt_.Resources;
 
+/*****************************/
+//BOUNCING GAME
+/*****************************/
+
 namespace BeatIt_.AppCode.Challenges
 {
     public class ChallengeDetail5 : Challenge
     {
-
         public ChallengeDetail5(int challengeId, string colorHex, int level, int maxAttempts, bool isEnabled)
         {
             ChallengeId = challengeId;
@@ -14,10 +17,11 @@ namespace BeatIt_.AppCode.Challenges
             ColorHex = colorHex;
             IsEnabled = isEnabled;
             Level = level;
-            Description = level == 1 ? AppResources.Challenge5_DescriptionTxtBlockText : AppResources.Challenge5_DescriptionHardTxtBlockText;
+            Description = level == 1
+                ? AppResources.Challenge5_DescriptionTxtBlockText
+                : AppResources.Challenge5_DescriptionHardTxtBlockText;
             MaxAttempt = maxAttempts;
         }
-
 
         public ChallengeDetail5()
         {
@@ -30,16 +34,16 @@ namespace BeatIt_.AppCode.Challenges
             MaxAttempt = 3;
         }
 
-        public void ChanllengeComplete( int  collisionCount ){
-
-            var puntaje = collisionCount * 5;
+        public void ChanllengeComplete(int collisionCount)
+        {
+            int puntaje = collisionCount*5;
 
             State.LastScore = puntaje;
             State.BestScore = puntaje > State.BestScore ? puntaje : State.BestScore;
             State.CurrentAttempt++;
 
-            FacadeController.GetInstance().SaveState(State);
-
+            if (!FacadeController.GetInstance().GetIsForTesting())
+                FacadeController.GetInstance().SaveState(State);
         }
     }
 }

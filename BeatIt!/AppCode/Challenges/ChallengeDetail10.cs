@@ -2,9 +2,13 @@
 using BeatIt_.AppCode.Controllers;
 using BeatIt_.Resources;
 
+/*****************************/
+//SELFIE GROUP
+/*****************************/
+
 namespace BeatIt_.AppCode.Challenges
 {
-    class ChallengeDetail10 : Challenge
+    internal class ChallengeDetail10 : Challenge
     {
         public ChallengeDetail10(int challengeId, string colorHex, int level, int maxAttempts, bool isEnabled)
         {
@@ -13,11 +17,13 @@ namespace BeatIt_.AppCode.Challenges
             ColorHex = colorHex;
             IsEnabled = isEnabled;
             Level = level;
-            Description = level == 1 ? AppResources.Challenge10_DescriptionTxtBlockText : AppResources.Challenge10_DescriptionHardTxtBlockText;
+            Description = level == 1
+                ? AppResources.Challenge10_DescriptionTxtBlockText
+                : AppResources.Challenge10_DescriptionHardTxtBlockText;
             MaxAttempt = maxAttempts;
         }
 
-        public ChallengeDetail10() 
+        public ChallengeDetail10()
         {
             ChallengeId = 10;
             Name = AppResources.Challenge10_Title;
@@ -33,7 +39,7 @@ namespace BeatIt_.AppCode.Challenges
         {
             var points = 0;
             var needed = (Level == 1) ? 2 : 5;
-            if (((Level == 1) && (cantPersonas>=needed)) || ((Level == 2) && (cantPersonas>=needed)))
+            if (((Level == 1) && (cantPersonas >= needed)) || ((Level == 2) && (cantPersonas >= needed)))
             {
                 points = 60 + (cantPersonas - needed)*(60/needed);
             }
