@@ -21,9 +21,7 @@ namespace BeatIt_.AppCode.Challenges
                 ? AppResources.Challenge7_DescriptionTxtBlockText
                 : AppResources.Challenge7_DescriptionHardTxtBlockText;
             MaxAttempt = maxAttempts;
-            TimerValues = Level == 1
-                ? new[] {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}
-                : new[] {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+            TimerValues = Level == 1 ? 45 : 30;
         }
 
         public ChallengeDetail7()
@@ -35,40 +33,33 @@ namespace BeatIt_.AppCode.Challenges
             Level = 1;
             Description = AppResources.Challenge7_DescriptionTxtBlockText;
             MaxAttempt = 3;
-            TimerValues = new[] {2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30};
+            TimerValues = 30;
         }
 
-        public int[] TimerValues { get; set; }
+        public int TimerValues;
 
-        private int CalculateScore(int[] miliseconds)
+        private int CalculateScore(int good)
         {
-            int sum = 0;
-            int onTime = 0;
-            int min = int.MaxValue;
-            foreach (int t in miliseconds)
+            var score = 0;
+            for (var i = 0; i < good; i++)
             {
-                sum += t;
-                if (min > t)
+                if (good < 5)
                 {
-                    min = t;
+                    score += 1;
                 }
-                if (t > 0)
+                else
                 {
-                    onTime++;
+                    score += 5;
                 }
-            }
-            /*double aux = (sum/miliseconds.Length)/1000;
-            return (int)(5*(onTime/(aux+min)));*/
-            int mul = (Level == 1) ? 16 : 8;
-            int aux = ((onTime*mul) - min) + (sum/miliseconds.Length);
-            return aux > 0 ? aux : 0;
+            }   
+            return score;
         }
 
-        public void CompleteChallenge(int[] miliseconds)
+        public void CompleteChallenge(int good)
         {
             State.CurrentAttempt = State.CurrentAttempt + 1;
 
-            State.LastScore = CalculateScore(miliseconds);
+            State.LastScore = CalculateScore(good);
             if (State.LastScore > State.BestScore)
             {
                 State.BestScore = State.LastScore;
