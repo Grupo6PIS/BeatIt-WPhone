@@ -270,12 +270,12 @@ Also available for Android!</value>
     <value>Throw The Phone</value>
   </data>
   <data name="Challenge7_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>In This Challenge You Have To Catch The Button That Shows Up, That Will Be 30 Times.
-Remember Do It Faster To Have More Score!.</value>
+    <value>In This Challenge You Have To Catch The Button That Shows Up, You Only Have 30 Seconds.
+Remember Do It Faster To Have More Score!</value>
   </data>
   <data name="Challenge7_DescriptionTxtBlockText" xml:space="preserve">
-    <value>In This Challenge You Have To Catch The Button That Shows Up, That Will Be 15 Times.
-Remember Do It Faster To Have More Score!.</value>
+    <value>In This Challenge You Have To Catch The Button That Shows Up, You Only Have 45 Seconds.
+Remember Do It Faster To Have More Score!</value>
   </data>
   <data name="Challenge7_Title" xml:space="preserve">
     <value>Catch Me</value>

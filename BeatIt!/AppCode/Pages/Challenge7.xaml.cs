@@ -17,14 +17,13 @@ namespace BeatIt_.AppCode.Pages
         private ChallengeDetail7 _currentChallenge;
         private int _currentRound;
         private IFacadeController _ifc;
-        private int _ms;
         private int _actual;
-        private int[] _result;
         private DispatcherTimer _buttonTimer;
         private DispatcherTimer _stopTimer;
 
         public Challenge7()
         {
+            
             InitializeComponent();
 
             var navigateInTransition = new NavigationInTransition
@@ -54,23 +53,25 @@ namespace BeatIt_.AppCode.Pages
             StartTimeTextBlock.Text = _currentChallenge.GetDtChallenge().StartTime.ToString(CultureInfo.InvariantCulture);
             ToBeatTextBlock.Text = _currentChallenge.State.BestScore + " pts";
             DurationTextBlock.Text = _currentChallenge.GetDurationString();
-            textDescription.Text = ((_currentChallenge.Level == 1)
+            TextDescription.Text = ((_currentChallenge.Level == 1)
                ? AppResources.Challenge7_DescriptionTxtBlockText
                : AppResources.Challenge7_DescriptionHardTxtBlockText);
 
             _buttonTimer = new DispatcherTimer();
             _buttonTimer.Tick += TickButtonTimer;
 
-            _stopTimer = new DispatcherTimer {Interval = new TimeSpan(0, 0, 0, 0, 1)};
+            _good = 0;
+            _loose = false;
+            _stopTimer = new DispatcherTimer {Interval = new TimeSpan(0, 0, _currentChallenge.TimerValues)};
             _stopTimer.Tick += TickStopTimer;
-
-            _result = new int[_currentChallenge.TimerValues.Length];
+            _stopTimer.Start();
         }
 
+        private int _good;
         private void TickButtonTimer(object o, EventArgs e)
         {
             _buttonTimer.Stop();
-            //SET OPACITY
+            //Set Opacity
             var selected = (DateTime.Now.Millisecond) % 12;
             _actual = selected;
             switch (selected)
@@ -112,12 +113,12 @@ namespace BeatIt_.AppCode.Pages
                     Paly11Rectangle.Opacity = 1;
                     break;
             }
-            _stopTimer.Start();
+            
         }
 
         private void TickStopTimer(object o, EventArgs e)
         {
-            _ms++;
+            _loose = true;
         }
 
 
@@ -126,10 +127,9 @@ namespace BeatIt_.AppCode.Pages
             StartPlayGrid.Visibility = Visibility.Collapsed;
             InProgressGrid.Visibility = Visibility.Visible;
 
-            _currentRound = 0;
-            _ms = 0;
+            _currentRound = 1;
 
-            _buttonTimer.Interval = new TimeSpan(0, 0, _currentChallenge.TimerValues[_currentRound]);
+            _buttonTimer.Interval = new TimeSpan(0, 0, 1);
             _buttonTimer.Start();
         }
 
@@ -149,93 +149,66 @@ namespace BeatIt_.AppCode.Pages
             Paly11Rectangle.Opacity = 0.3;
         }
 
-        private void Cleanitems()
+        private void SetColor(SolidColorBrush mc)
         {
-            var mySolidColorBrush = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
-            Item0Rectangle.Fill = mySolidColorBrush;
-            Item1Rectangle.Fill = mySolidColorBrush;
-            Item2Rectangle.Fill = mySolidColorBrush;
-            Item3Rectangle.Fill = mySolidColorBrush;
-            Item4Rectangle.Fill = mySolidColorBrush;
-            Item5Rectangle.Fill = mySolidColorBrush;
-            Item6Rectangle.Fill = mySolidColorBrush;
-            Item7Rectangle.Fill = mySolidColorBrush;
-            Item8Rectangle.Fill = mySolidColorBrush;
-            Item9Rectangle.Fill = mySolidColorBrush;
-            Item10Rectangle.Fill = mySolidColorBrush;
-            Item11Rectangle.Fill = mySolidColorBrush;
-            Item12Rectangle.Fill = mySolidColorBrush;
-            Item13Rectangle.Fill = mySolidColorBrush;
-            Item14Rectangle.Fill = mySolidColorBrush;
+            Item01Rectangle.Fill = mc;
+            Item02Rectangle.Fill = mc;
+            Item03Rectangle.Fill = mc;
+            Item04Rectangle.Fill = mc;
+            Item05Rectangle.Fill = mc;
+
+            Item01Rectangle.Opacity = 0.3;
+            Item02Rectangle.Opacity = 0.3;
+            Item03Rectangle.Opacity = 0.3;
+            Item04Rectangle.Opacity = 0.3;
+            Item05Rectangle.Opacity = 0.3;
+
         }
 
-        private void UpdateRectangle(int round, bool error)
+        private void UpdateRectangle(int round)
         {
 
-            var aux = round;
-            var mySolidColorBrush = new SolidColorBrush
+            var mc = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
+            if ( (round < 5))
             {
-                Color = error
-                    ? Color.FromArgb(255, 255, 20, 0)
-                    : Color.FromArgb(255, 0, 138, 0)
-            };
-            if ((aux % 15) == 0)
-            {
-                Cleanitems();
+                mc.Color = Color.FromArgb(255, 255, 20, 0);
             }
-            if (aux >= 15)
+            else if ( round < 10)
             {
-                aux -= 15;
+                mc.Color = Color.FromArgb(255, 255, 255, 0);
             }
+            else
+            {
+                mc.Color = Color.FromArgb(255, 0, 138, 0);
+            }
+            var aux = (round%5);
+            if (aux == 1)
+            {
+                SetColor(mc);
+            }
+
             switch (aux)
             {
-                case 0:
-                    Item0Rectangle.Fill = mySolidColorBrush;
-                    break;
                 case 1:
-                    Item1Rectangle.Fill = mySolidColorBrush;
+                    Item01Rectangle.Opacity = 1;
                     break;
                 case 2:
-                    Item2Rectangle.Fill = mySolidColorBrush;
+                    Item02Rectangle.Opacity = 1;
                     break;
                 case 3:
-                    Item3Rectangle.Fill = mySolidColorBrush;
+                    Item03Rectangle.Opacity = 1;
                     break;
                 case 4:
-                    Item4Rectangle.Fill = mySolidColorBrush;
+                    Item04Rectangle.Opacity = 1;
                     break;
-                case 5:
-                    Item5Rectangle.Fill = mySolidColorBrush;
+                case 0:
+                    Item05Rectangle.Opacity = 1;
                     break;
-                case 6:
-                    Item6Rectangle.Fill = mySolidColorBrush;
-                    break;
-                case 7:
-                    Item7Rectangle.Fill = mySolidColorBrush;
-                    break;
-                case 8:
-                    Item8Rectangle.Fill = mySolidColorBrush;
-                    break;
-                case 9:
-                    Item9Rectangle.Fill = mySolidColorBrush;
-                    break;
-                case 10:
-                    Item10Rectangle.Fill = mySolidColorBrush;
-                    break;
-                case 11:
-                    Item11Rectangle.Fill = mySolidColorBrush;
-                    break;
-                case 12:
-                    Item12Rectangle.Fill = mySolidColorBrush;
-                    break;
-                case 13:
-                    Item13Rectangle.Fill = mySolidColorBrush;
-                    break;
-                case 14:
-                    Item14Rectangle.Fill = mySolidColorBrush;
-                    break;
+                
             }
         }
+
+        private bool _loose;
 
         private void hyperlinkButtonPlay_Click(object sender, RoutedEventArgs e)
         {
@@ -243,25 +216,24 @@ namespace BeatIt_.AppCode.Pages
             var str = "PalyButton" + (_actual) + "HiperLink";
             if ((((HyperlinkButton) sender).Name == str) && (!_buttonTimer.IsEnabled))
             {
-                _stopTimer.Stop();
-                _result[_currentRound] = _ms;
-                UpdateRectangle(_currentRound, false);
+                _good++;
+                UpdateRectangle(_currentRound);
             }
             else
             {
                 _buttonTimer.Stop();
-                _result[_currentRound] = 0;
-                UpdateRectangle(_currentRound, true);
+                _loose = true;
+                UpdateRectangle(_currentRound);
             }
             
-            _ms = 0;
             _currentRound++;
 
-            if (_currentRound == _currentChallenge.TimerValues.Length)
+            if (_loose)
             {
-                _currentChallenge.CompleteChallenge(_result);
+                _currentChallenge.CompleteChallenge(_good);
                 ToBeatTextBlock.Text = _currentChallenge.State.BestScore + " pts";
-
+                _buttonTimer.Start();
+                _stopTimer.Stop();
                     
                 var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
                 NavigationService.Navigate(uri);
@@ -271,7 +243,7 @@ namespace BeatIt_.AppCode.Pages
             }
             else
             {
-                _buttonTimer.Interval = new TimeSpan(0, 0, _currentChallenge.TimerValues[_currentRound]);
+                _buttonTimer.Interval = new TimeSpan(0, 0, 0, 0, 500);
                 _buttonTimer.Start();
             }
         }

@@ -567,8 +567,8 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In This Challenge You Have To Catch The Button That Shows Up, That Will Be 30 Times.
-        ///Remember Do It Faster To Have More Score!..
+        ///   Looks up a localized string similar to In This Challenge You Have To Catch The Button That Shows Up, You Only Have 30 Seconds.
+        ///Remember Do It Faster To Have More Score!.
         /// </summary>
         public static string Challenge7_DescriptionHardTxtBlockText {
             get {
@@ -577,8 +577,8 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In This Challenge You Have To Catch The Button That Shows Up, That Will Be 15 Times.
-        ///Remember Do It Faster To Have More Score!..
+        ///   Looks up a localized string similar to In This Challenge You Have To Catch The Button That Shows Up, You Only Have 45 Seconds.
+        ///Remember Do It Faster To Have More Score!.
         /// </summary>
         public static string Challenge7_DescriptionTxtBlockText {
             get {
