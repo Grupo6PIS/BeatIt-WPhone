@@ -297,6 +297,9 @@
     <Resource Include="Sounds\Song3Level2.wav" />
     <Resource Include="Sounds\Song4Level2.wav" />
     <Resource Include="Sounds\Song5Level2.wav" />
+    <Resource Include="Images\check.png" />
+    <Resource Include="Images\close.png" />
+    <Resource Include="Images\star.png" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup />

@@ -280,17 +280,35 @@ Recuerda, Cuanto Mas Rápido Mayor Puntaje!</value>
   <data name="Challenge7_Title" xml:space="preserve">
     <value>Atrápame Si Puedes</value>
   </data>
+  <data name="Challenge8_BlueColorName" xml:space="preserve">
+    <value>AZUL</value>
+  </data>
   <data name="Challenge8_DescriptionHardTxtBlockText" xml:space="preserve">
     <value>Descripcion 8 Nivel 2</value>
   </data>
   <data name="Challenge8_DescriptionTxtBlockText" xml:space="preserve">
     <value>Descripcion 8 Nivel 1</value>
   </data>
+  <data name="Challenge8_GreenColorName" xml:space="preserve">
+    <value>VERDE</value>
+  </data>
   <data name="Challenge8_NoButton" xml:space="preserve">
     <value>No</value>
   </data>
+  <data name="Challenge8_OrangeColorName" xml:space="preserve">
+    <value>NARANJA</value>
+  </data>
+  <data name="Challenge8_PurpleColorName" xml:space="preserve">
+    <value>VIOLETA</value>
+  </data>
+  <data name="Challenge8_RedColorName" xml:space="preserve">
+    <value>ROJO</value>
+  </data>
   <data name="Challenge8_Title" xml:space="preserve">
     <value>Color &amp; Text</value>
+  </data>
+  <data name="Challenge8_YellowColorName" xml:space="preserve">
+    <value>AMARILLO</value>
   </data>
   <data name="Challenge8_YesButton" xml:space="preserve">
     <value>Si</value>

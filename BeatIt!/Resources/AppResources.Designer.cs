@@ -596,6 +596,15 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BLUE.
+        /// </summary>
+        public static string Challenge8_BlueColorName {
+            get {
+                return ResourceManager.GetString("Challenge8_BlueColorName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description 8 Level 2.
         /// </summary>
         public static string Challenge8_DescriptionHardTxtBlockText {
@@ -614,6 +623,15 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GREEN.
+        /// </summary>
+        public static string Challenge8_GreenColorName {
+            get {
+                return ResourceManager.GetString("Challenge8_GreenColorName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
         public static string Challenge8_NoButton {
@@ -623,11 +641,47 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ORANGE.
+        /// </summary>
+        public static string Challenge8_OrangeColorName {
+            get {
+                return ResourceManager.GetString("Challenge8_OrangeColorName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PURPLE.
+        /// </summary>
+        public static string Challenge8_PurpleColorName {
+            get {
+                return ResourceManager.GetString("Challenge8_PurpleColorName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RED.
+        /// </summary>
+        public static string Challenge8_RedColorName {
+            get {
+                return ResourceManager.GetString("Challenge8_RedColorName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Color &amp; Text.
         /// </summary>
         public static string Challenge8_Title {
             get {
                 return ResourceManager.GetString("Challenge8_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to YELLOW.
+        /// </summary>
+        public static string Challenge8_YellowColorName {
+            get {
+                return ResourceManager.GetString("Challenge8_YellowColorName", resourceCulture);
             }
         }
         
