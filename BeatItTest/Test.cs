@@ -221,7 +221,6 @@ namespace BeatIt.Tests
         }
     };
 
-
     [TestClass] // Logica Catch Me
     public class TestingChallengeDetail7
     {
@@ -231,17 +230,51 @@ namespace BeatIt.Tests
             var ifc = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
             var ch = (ChallengeDetail7)ifc.getChallenge(7);
 
-            ch.CompleteChallenge(new[] {2});
-            Assert.AreEqual(16, ch.State.BestScore);
+            //ch.CompleteChallenge(new[] {2});
+            //Assert.AreEqual(16, ch.State.BestScore);
 
-            ch.CompleteChallenge(new[] { 2, 16, 28 });
-            Assert.AreEqual(61, ch.State.BestScore);
+            //ch.CompleteChallenge(new[] { 2, 16, 28 });
+            //Assert.AreEqual(61, ch.State.BestScore);
 
-            ch.CompleteChallenge(new[] { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 });
-            Assert.AreEqual(480, ch.State.BestScore);
-            
+            //ch.CompleteChallenge(new[] { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 });
+            //Assert.AreEqual(480, ch.State.BestScore);
         }
-        
+    };
+
+    [TestClass] // Logica Color & Texto
+    public class TestingChallengeDetail8
+    {
+        [TestMethod]
+        public void TestingFunction_CompleteChallenge()
+        {
+            var ifc = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
+            var ch = (ChallengeDetail8)ifc.getChallenge(8);
+
+            Assert.IsNotNull(ch);
+
+            Assert.AreEqual(ch.State.BestScore, 0);
+            Assert.AreEqual(ch.State.LastScore, 0);
+            Assert.AreEqual(ch.State.CurrentAttempt, 0);
+            Assert.IsFalse(ch.State.Finished);
+
+            ch.CompleteChallenge(10);
+            Assert.AreEqual(ch.State.LastScore, 30);
+            Assert.AreEqual(ch.State.BestScore, 30);
+            Assert.AreEqual(ch.State.CurrentAttempt, 1);
+            Assert.IsFalse(ch.State.Finished);
+
+            ch.CompleteChallenge(5);
+            Assert.AreEqual(ch.State.LastScore, 5);
+            Assert.AreEqual(ch.State.BestScore, 30);
+            Assert.AreEqual(ch.State.CurrentAttempt, 2);
+            Assert.IsFalse(ch.State.Finished);
+
+            ch.CompleteChallenge(30);
+            Assert.AreEqual(ch.State.LastScore, 230);
+            Assert.AreEqual(ch.State.BestScore, 230);
+            Assert.AreEqual(ch.State.CurrentAttempt, 3);
+            Assert.IsTrue(ch.State.Finished);
+        }
     };
 
     [TestClass] // Logica Song Complete

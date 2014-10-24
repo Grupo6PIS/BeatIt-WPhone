@@ -56,7 +56,26 @@ namespace BeatIt_.AppCode.Challenges
 
         private int CalculateScore(int hits)
         {
-            return hits;
+            var res = 0;
+            for (var i = 0; i < hits; i++)
+            {
+                if (i < 5)
+                {
+                    res = res + 1;
+                }
+                else
+                {
+                    if (i < 10)
+                    {
+                        res = res + 5;
+                    }
+                    else
+                    {
+                        res = res + 10;
+                    }
+                }
+            }
+            return res;
         }
 
         public void CompleteChallenge(int hits)
