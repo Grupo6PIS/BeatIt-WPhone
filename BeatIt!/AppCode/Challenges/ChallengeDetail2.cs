@@ -73,7 +73,7 @@ namespace BeatIt_.AppCode.Challenges
 
         public int CalculateScore(int cantCorrectWakeUp)
         {
-            return cantCorrectWakeUp*20;
+            return cantCorrectWakeUp*80;
         }
     }
 }

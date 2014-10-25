@@ -13,6 +13,8 @@ using Microsoft.Devices.Sensors;
 using Microsoft.Phone.Controls;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
+using Color = System.Windows.Media.Color;
+using Rectangle = System.Windows.Shapes.Rectangle;
 
 
 /* DESPERTAME A TIEMPO */
@@ -37,6 +39,8 @@ namespace BeatIt_.AppCode.Pages
         private Accelerometer _acelerometro;
 
         readonly Stopwatch _stopwatch = new Stopwatch(); //un objeto tipo Cronómetro
+
+        private Rectangle[] _progresRectangles;
 
         public Challenge2()
         {
@@ -99,6 +103,7 @@ namespace BeatIt_.AppCode.Pages
             ShowToBeat.Text = _currentChallenge.State.BestScore + " pts"; // Puntaje a vencer.
             ShowDuration.Text = _currentChallenge.GetDurationString(); // Tiempo retante para realizar el desafio.   
             ShowTime.Text = "---"; // Tiempo transcurrido.
+            textDescription.Text = _currentChallenge.Description;
 
             // IINICIALIZAMOS EL TIMER
             _timer = new DispatcherTimer { Interval = new TimeSpan(0, 0, 0, 0, 100) };
@@ -113,6 +118,16 @@ namespace BeatIt_.AppCode.Pages
 
             // Color del Boton start.
             InProgressGridRectangle.Fill = GetColorFromHexa(_currentChallenge.ColorHex);
+
+            // Save the rectangles in array.
+            _progresRectangles = new Rectangle[7];
+            _progresRectangles[0] = Item1RectangleLevel1;
+            _progresRectangles[1] = Item2RectangleLevel1;
+            _progresRectangles[2] = Item3RectangleLevel1;
+            _progresRectangles[3] = Item1RectangleLevel2;
+            _progresRectangles[4] = Item2RectangleLevel2;
+            _progresRectangles[5] = Item3RectangleLevel2;
+            _progresRectangles[6] = Item4RectangleLevel2;
         }
 
         private void TimerTick(object sender, EventArgs e)
@@ -139,14 +154,16 @@ namespace BeatIt_.AppCode.Pages
             {
                 _indice++;
 
+                FillProgressBar(_indice - 1, true, _currentChallenge.Level);
+
                 if (_indice == _secondsToWakeMeUp.Length) // Si lla recorrimos todas las despertadas.
                 {
                     _timer.Stop();
                     _acelerometro.Stop();
                     _stopwatch.Stop();
 
-                    MessageBox.Show(AppResources.Challenge2_Finish.Replace("@score",
-                        _currentChallenge.CalculateScore(_aciertos).ToString(CultureInfo.InvariantCulture)));
+                    //MessageBox.Show(AppResources.Challenge2_Finish.Replace("@score",
+                    //    _currentChallenge.CalculateScore(_aciertos).ToString(CultureInfo.InvariantCulture)));
 
                     _currentChallenge.CompleteChallenge(_aciertos);
 
@@ -169,8 +186,19 @@ namespace BeatIt_.AppCode.Pages
             _startTime = DateTime.Now;
             _finishTime = _startTime.Add(new TimeSpan(0, 0, StartTime));
 
-            // INICIALIZAMOS EL TIMER.
-            _timer.Start();
+            if (_currentChallenge.Level == 1)
+            {
+                ProgressBarLevel1Grid.Visibility = Visibility.Visible;
+                ProgressBarLevel2Grid.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                ProgressBarLevel1Grid.Visibility = Visibility.Collapsed;
+                ProgressBarLevel2Grid.Visibility = Visibility.Visible;                
+            }
+
+                // INICIALIZAMOS EL TIMER.
+                _timer.Start();
             _stopwatch.Start();
 
             _acelerometro.CurrentValueChanged += acelerometro_CurrentValueChanged;
@@ -212,7 +240,12 @@ namespace BeatIt_.AppCode.Pages
                     _indice ++;
 
                     if (Math.Abs(StartTime*1000 - _stopwatch.ElapsedMilliseconds) <= 500) // Si me desperto a tiempo.
+                    {
                         _aciertos ++;
+                        FillProgressBar(_indice - 1, false, _currentChallenge.Level);
+                    }
+                    else
+                        FillProgressBar(_indice - 1, true, _currentChallenge.Level);
 
                     if (_indice == _secondsToWakeMeUp.Length) // Si no quedan despertadas por intentar.
                     {
@@ -242,7 +275,7 @@ namespace BeatIt_.AppCode.Pages
         public static SolidColorBrush GetColorFromHexa(string hexaColor)
         {
             return new SolidColorBrush(
-                System.Windows.Media.Color.FromArgb(
+                Color.FromArgb(
                     Convert.ToByte(hexaColor.Substring(1, 2), 16),
                     Convert.ToByte(hexaColor.Substring(3, 2), 16),
                     Convert.ToByte(hexaColor.Substring(5, 2), 16),
@@ -259,6 +292,20 @@ namespace BeatIt_.AppCode.Pages
             _stopwatch.Reset();
             _stopwatch.Start();
             _acelerometro.Start();
+        }
+
+        public void FillProgressBar(int indice, bool error, int level)
+        {
+            var mySolidColorBrush = new SolidColorBrush
+            {
+                Color = error
+                    ? Color.FromArgb(255, 255, 20, 0)
+                    : Color.FromArgb(255, 0, 138, 0)
+            };
+
+            Rectangle r = level == 1 ? _progresRectangles[indice] : _progresRectangles[indice + 3];
+
+            r.Fill = mySolidColorBrush;
         }
     }
 }
