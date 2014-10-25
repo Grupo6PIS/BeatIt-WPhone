@@ -216,5 +216,23 @@ namespace BeatIt_.AppCode.Pages
             Canvas.SetLeft(redBall, x);
             Canvas.SetTop(redBall, y);
         }
+
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+
+            if (_timer!= null &&  _timer.IsEnabled)
+            {
+                _timer.Stop();
+                _timer = null;
+            }
+
+            if (_acelerometer != null)
+            {
+                _acelerometer.Stop();
+                _acelerometer = null;
+            }
+                
+            base.OnBackKeyPress(e);
+        }
     }
 }
