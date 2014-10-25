@@ -58,17 +58,17 @@ namespace BeatIt.Tests
 
             challenge.CompleteChallenge(1);
             // El ultimo puntaje y el mejor deberian ser 20.
-            Assert.AreEqual(challenge.State.BestScore, 20);
-            Assert.AreEqual(challenge.State.LastScore, 20);
+            Assert.AreEqual(challenge.State.BestScore, 80);
+            Assert.AreEqual(challenge.State.LastScore, 80);
 
             challenge.CompleteChallenge(2);
             // El ultimo puntaje y el mejor deberian ser 40
-            Assert.AreEqual(challenge.State.BestScore, 40);
-            Assert.AreEqual(challenge.State.LastScore, 40);
+            Assert.AreEqual(challenge.State.BestScore, 160);
+            Assert.AreEqual(challenge.State.LastScore, 160);
 
             challenge.CompleteChallenge(0);
             // El ultimo puntaje deberia ser 0 y el mejor 40.
-            Assert.AreEqual(challenge.State.BestScore, 40);
+            Assert.AreEqual(challenge.State.BestScore, 160);
             Assert.AreEqual(challenge.State.LastScore, 0);
         }
     };
