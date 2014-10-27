@@ -43,13 +43,17 @@ namespace BeatIt_.AppCode.Challenges
             var score = 0;
             for (var i = 0; i < good; i++)
             {
-                if (good < 5)
+                if (i < 5)
                 {
                     score += 1;
                 }
-                else
+                else if (i < 20)
                 {
                     score += 5;
+                }
+                else
+                {
+                    score += 10;
                 }
             }   
             return score;

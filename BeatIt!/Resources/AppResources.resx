@@ -388,6 +388,13 @@ Remember Do It Faster To Have More Score!</value>
   <data name="HomePage_SettingsTxtBlockTitle" xml:space="preserve">
     <value>SETTINGS</value>
   </data>
+  <data name="LoginPage_Description" xml:space="preserve">
+    <value>You Think You're The Most Skilled? 
+
+Register With Facebook And Access 10 New Challenges! 
+Be The Best In The World, Beats All With Your Skills And Compare Yourself To The Global Ranking. 
+Take More Risks, More Challenges, More Fun!</value>
+  </data>
   <data name="LoginPage_LoginBtnTitle" xml:space="preserve">
     <value>Log in with Facebook</value>
   </data>

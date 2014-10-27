@@ -388,6 +388,13 @@ Recuerda, Cuanto Mas Rápido Mayor Puntaje!</value>
   <data name="HomePage_SettingsTxtBlockTitle" xml:space="preserve">
     <value>CONFIGURACIONES</value>
   </data>
+  <data name="LoginPage_Description" xml:space="preserve">
+    <value>Crees Que Eres El Más Habilidoso? 
+
+Regístrate Con Tu Cuenta De Facebook y Accede A Los 10 Nuevos Desafíos!
+Sé El Mejor Del Mundo, Supera a Todos Con Tus Habilidades y Compárate Con El Ranking Global.
+Toma Mas Riesgos, Mas Desafíos, Más Diversión!</value>
+  </data>
   <data name="LoginPage_LoginBtnTitle" xml:space="preserve">
     <value>Iniciar Sesión Con Facebook</value>
   </data>

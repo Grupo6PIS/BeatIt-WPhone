@@ -875,6 +875,19 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You Think You&apos;re The Most Skilled? 
+        ///
+        ///Register With Facebook And Access 10 New Challenges! 
+        ///Be The Best In The World, Beats All With Your Skills And Compare Yourself To The Global Ranking. 
+        ///Take More Risks, More Challenges, More Fun!.
+        /// </summary>
+        public static string LoginPage_Description {
+            get {
+                return ResourceManager.GetString("LoginPage_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Log in with Facebook.
         /// </summary>
         public static string LoginPage_LoginBtnTitle {

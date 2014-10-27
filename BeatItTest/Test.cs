@@ -230,14 +230,18 @@ namespace BeatIt.Tests
             var ifc = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
             var ch = (ChallengeDetail7)ifc.getChallenge(7);
 
-            //ch.CompleteChallenge(new[] {2});
-            //Assert.AreEqual(16, ch.State.BestScore);
+            
 
-            //ch.CompleteChallenge(new[] { 2, 16, 28 });
-            //Assert.AreEqual(61, ch.State.BestScore);
+            ch.CompleteChallenge(0);
+            Assert.AreEqual(0, ch.State.BestScore);
 
-            //ch.CompleteChallenge(new[] { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 });
-            //Assert.AreEqual(480, ch.State.BestScore);
+            ch.CompleteChallenge(5);
+            Assert.AreEqual(5, ch.State.BestScore);
+
+
+            ch.CompleteChallenge(29);
+            Assert.AreEqual(170, ch.State.BestScore);
+            
         }
     };
 
