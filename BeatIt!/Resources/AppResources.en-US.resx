@@ -118,287 +118,287 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Challenge10_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>En Este Desafío Debes Tomar Una Fotografía Con Cinco Amigos o Más</value>
+    <value>In This Challenge You Have To Take A Picture With Five Or More Friends!</value>
   </data>
   <data name="Challenge10_DescriptionTxtBlockText" xml:space="preserve">
-    <value>En Este Desafío Debes Tomar Una Fotografía Con Dos Amigos o Más</value>
+    <value>In This Challenge You Have To Take A Picture With Two Or More Friends!</value>
   </data>
   <data name="Challenge10_Title" xml:space="preserve">
-    <value>Selfie En Grupo!</value>
+    <value>Selfie Groupie!</value>
   </data>
   <data name="Challenge1_Description" xml:space="preserve">
-    <value>Choca la bola gris la mayor cantidad posible!</value>
+    <value>Bump The Gray Ball As Much As Possible !</value>
   </data>
-  <data name="Challenge1_DescriptionHardTxtBlockTitle" xml:space="preserve">
-    <value>En este desafío debes correr a mas de 15 km/h durante 45 segundos.</value>
+  <data name="Challenge1_DescriptionHardTxtBlockText" xml:space="preserve">
+    <value>In This Challenge You Have To Run Faster Than 15 km/h for 45 Seconds.</value>
   </data>
   <data name="Challenge1_DescriptionTxtBlockText" xml:space="preserve">
-    <value>En este desafío debes correr a mas de 10 km/h durante 30 segundos.</value>
+    <value>In This Challenge You Have To Run Faster Than 10 km/h for 30 Seconds.</value>
   </data>
   <data name="Challenge1_DescriptionTxtBlockTitle" xml:space="preserve">
-    <value>Descripción</value>
+    <value>Description</value>
   </data>
   <data name="Challenge1_DetailsTxtBlockTitle" xml:space="preserve">
-    <value>Detalle</value>
+    <value>Details</value>
   </data>
   <data name="Challenge1_DurationTxtBlockTitle" xml:space="preserve">
-    <value>Finaliza:</value>
+    <value>Duration:</value>
   </data>
   <data name="Challenge1_Loss" xml:space="preserve">
-    <value>Desafio no completado.</value>
+    <value>Challenge not Completed.</value>
   </data>
   <data name="Challenge1_ReduceSpeed" xml:space="preserve">
-    <value>Debes bajar la velocidad para comenzar el desafío</value>
+    <value>You Must Slow Down to Begin The Challenge!</value>
   </data>
   <data name="Challenge1_SpeedTxtBlockTitle" xml:space="preserve">
-    <value>Veloc. (km/h)</value>
+    <value>Speed (km/h)</value>
   </data>
   <data name="Challenge1_StartButton" xml:space="preserve">
-    <value>Comenzar a correr!</value>
+    <value>Start running!</value>
   </data>
   <data name="Challenge1_StartTimeTxtBlockTitle" xml:space="preserve">
-    <value>Comienzo:</value>
+    <value>Start Time:</value>
   </data>
   <data name="Challenge1_TimeLeftTxtBlockTitle" xml:space="preserve">
-    <value>Tiempo</value>
+    <value>Time Left</value>
   </data>
   <data name="Challenge1_Title" xml:space="preserve">
     <value>Usain Bolt</value>
   </data>
   <data name="Challenge1_ToBeatTxtBlockTitle" xml:space="preserve">
-    <value>A vencer:</value>
+    <value>To Beat:</value>
   </data>
   <data name="Challenge1_Win" xml:space="preserve">
-    <value>Desafio completado!</value>
+    <value>Challenge Completed!</value>
   </data>
   <data name="Challenge2_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>En Este Desafío Deberás Agitar El Celular Cuando Pienses Que El Timer Finalizó.  El timer Se Ocultará Cuatro Veces Asi Que Presta Atención.</value>
+    <value>In This Challenge You Have To Shake Your Cellphone When You Think The Timer Reaches 0, The Timer Will Hide 4 Times So Pay attention.</value>
   </data>
   <data name="Challenge2_DescriptionTxtBlockText" xml:space="preserve">
-    <value>En Este Desafío Deberás Agitar El Celular Cuando Pienses Que El Timer Finalizó.  El timer Se Ocultará Tres Veces Asi Que Presta Atención.</value>
+    <value>In This Challenge You Have To Shake Your Cellphone When you Think The Timer Reaches 0, The Timer Will Hide 3 Times So Pay attention.</value>
   </data>
   <data name="Challenge2_Finish" xml:space="preserve">
-    <value>El Desafío Ha Finalizado, Usted Ha Obtenido @score Puntos.</value>
+    <value>The Challenge Is Over, You Have Earned @score Points.</value>
   </data>
   <data name="Challenge2_Fly" xml:space="preserve">
-    <value>Estoy Listo Para Volar!</value>
-  </data>
-  <data name="Challenge2_ShareMeUp" xml:space="preserve">
-    <value />
+    <value>I'm Ready To Fly!</value>
   </data>
   <data name="Challenge2_StartButton" xml:space="preserve">
-    <value>Comenzar!</value>
+    <value>Start!</value>
+  </data>
+  <data name="Challenge2_StartButton1" xml:space="preserve">
+    <value>Start!</value>
   </data>
   <data name="Challenge2_Title" xml:space="preserve">
     <value>Wake Me Up!</value>
   </data>
   <data name="Challenge3_BackButton" xml:space="preserve">
-    <value>Volver Al Desafío</value>
+    <value>Back to Challenge</value>
   </data>
   <data name="Challenge3_Delete" xml:space="preserve">
-    <value>Borrar Publicación Del Muro</value>
+    <value>Delete Publication From wall </value>
   </data>
   <data name="Challenge3_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>En Este Desafío Deberás Enviar Invitaciones A Tus amigos por Medio De Mensajes y Redes Sociales, Minimo Cuatro SMS y La Publicación En Tu muro. Cuantos Mas Invites Mayor Puntaje!</value>
+    <value>In This Challenge You Have To Invite Your Friends Using Facebook Or SMS, Minimum Four Sms And The Post On Your Wall. Remember More Friends More Score!</value>
   </data>
   <data name="Challenge3_DescriptionTxtBlockText" xml:space="preserve">
-    <value>En Este Desafío Deberás Enviar Invitaciones A Tus amigos por Medio De Mensajes y Redes Sociales, Minimo Dos SMS y La Publicación En Tu muro. Cuantos Mas Invites Mayor Puntaje!</value>
+    <value>In This Challenge You Have To Invite Your Friends Using Facebook Or SMS, Minimum Two Sms And The Post On Your Wall. Remember More Friends More Score!</value>
   </data>
   <data name="Challenge3_Done" xml:space="preserve">
-    <value>Listo!</value>
+    <value>Done!</value>
   </data>
   <data name="Challenge3_Message" xml:space="preserve">
-    <value>Descarga BeatIt!
+    <value>Try BeatIt! 
 Windows: http://www.windowsphone.com/en-us/store/app/beatit/66fa9546-f6ae-4a10-8acb-91472ac3ff96
-También Disponible Para Andoid!</value>
+Also available for Android!</value>
   </data>
   <data name="Challenge3_MessagePosted" xml:space="preserve">
-    <value>Mensaje Publicado Exitosamente</value>
+    <value>Message Posted Successfully</value>
   </data>
   <data name="Challenge3_NewHighScore" xml:space="preserve">
-    <value>Nuevo puntaje mas alto!</value>
+    <value>New High Score!</value>
   </data>
   <data name="Challenge3_NotBeat" xml:space="preserve">
-    <value>No Has Superado Tu Puntaje Actual.</value>
+    <value>You Haven't Beaten Your Current Score</value>
   </data>
   <data name="Challenge3_PostWallButton" xml:space="preserve">
-    <value>Publicar En El Muro</value>
+    <value>Post On My Wall</value>
   </data>
   <data name="Challenge3_SendBtn" xml:space="preserve">
-    <value>Enviar</value>
+    <value>Send</value>
   </data>
   <data name="Challenge3_SmsSend" xml:space="preserve">
-    <value>Enviar SMS</value>
+    <value>Send SMS</value>
   </data>
   <data name="Challenge3_Title" xml:space="preserve">
-    <value>¿Quieres Jugar?</value>
+    <value>Can You Play?</value>
   </data>
   <data name="Challenge4_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>En Este Desafío Debes Callar Lo Mas Pronto Posible A El Perro Presionando El Botón Rojo. El Perro Ladrará Cinco Veces.</value>
+    <value>In This Challenge You Need To Shut Up The Dog As Quickly As You Can By Pressing The Red Button. The Dog Will Bark Five Times.</value>
   </data>
   <data name="Challenge4_DescriptionTxtBlockText" xml:space="preserve">
-    <value>En Este Desafío Debes Callar Lo Mas Pronto Posible A El Perro Presionando El Botón Rojo. El Perro Ladrará Cinco Veces.</value>
+    <value>In This Challenge You Need To Shut Up The Dog As Quickly As You Can By Pressing The Red Button. The Dog Will Bark Three Times.</value>
   </data>
   <data name="Challenge4_StartButton" xml:space="preserve">
-    <value>Comenzar!</value>
+    <value>Start!</value>
   </data>
   <data name="Challenge4_StopButton" xml:space="preserve">
-    <value>Cállate!</value>
+    <value>Shut up!</value>
   </data>
   <data name="Challenge4_Title" xml:space="preserve">
-    <value>Callar Al Perro!</value>
+    <value>Shut The Dog!</value>
   </data>
   <data name="Challenge5_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>Descripcion 5 Nivel 2</value>
+    <value>Description 5 Level 2</value>
   </data>
   <data name="Challenge5_DescriptionTxtBlockText" xml:space="preserve">
-    <value>Descripcion 5 Nivel 1</value>
+    <value>Description 5 Level 1</value>
   </data>
   <data name="Challenge5_Title" xml:space="preserve">
     <value>Bouncing Game!</value>
   </data>
   <data name="Challenge6_Alert" xml:space="preserve">
-    <value>Antes De Lanzar El Dispositivo Hacia Arriba, Procure Tener Una Posicion Adecuada Para Capturarlo Cuando El Mismo Venga Bajando.</value>
+    <value>Before Launching The Device Up, Try To Have A Proper Position To Catch It When It Comes Down, We Are NOT Responsabe For Any Damage Of Your Cellphone</value>
   </data>
   <data name="Challenge6_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>En Este Desafío Debes Lanzar El Celular Lo Más Alto Que Puedas, Debiendo Sobrepasar Como Mínimo Dos Metros.</value>
+    <value>In This Challenge You Have To Throw Your Cellphone As High As You Can. Minimum You Have To Reach Two Meters.</value>
   </data>
   <data name="Challenge6_DescriptionTxtBlockText" xml:space="preserve">
-    <value>En Este Desafío Debes Lanzar El Celular Lo Más Alto Que Puedas, Debiendo Sobrepasar Como Mínimo Un Metro.</value>
+    <value>In This Challenge You Have To Throw Your Cellphone As High As You Can. Minimum You Have To Reach One Meter.</value>
   </data>
   <data name="Challenge6_Title" xml:space="preserve">
     <value>Throw The Phone</value>
   </data>
   <data name="Challenge7_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>En Este Desafío Debes Pulsar El Botón Que Se Enciende Lo Más Rápido Posible, El Botón Se Penderá 30 Veces.
-Recuerda, Cuanto Mas Rápido Mayor Puntaje!</value>
+    <value>In This Challenge You Have To Catch The Button That Shows Up, You Only Have 30 Seconds.
+Remember Do It Faster To Have More Score!</value>
   </data>
   <data name="Challenge7_DescriptionTxtBlockText" xml:space="preserve">
-    <value>En Este Desafío Debes Pulsar El Botón Que Se Enciende Lo Más Rápido Posible, El Botón Se Penderá 15 Veces.
-Recuerda, Cuanto Mas Rápido Mayor Puntaje!</value>
+    <value>In This Challenge You Have To Catch The Button That Shows Up, You Only Have 45 Seconds.
+Remember Do It Faster To Have More Score!</value>
   </data>
   <data name="Challenge7_Title" xml:space="preserve">
-    <value>Atrápame Si Puedes</value>
+    <value>Catch Me</value>
   </data>
   <data name="Challenge8_BlueColorName" xml:space="preserve">
-    <value>AZUL</value>
+    <value>BLUE</value>
   </data>
   <data name="Challenge8_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>Descripcion 8 Nivel 2</value>
+    <value>Description 8 Level 2</value>
   </data>
   <data name="Challenge8_DescriptionTxtBlockText" xml:space="preserve">
-    <value>Descripcion 8 Nivel 1</value>
+    <value>Description 8 Level 1</value>
   </data>
   <data name="Challenge8_GreenColorName" xml:space="preserve">
-    <value>VERDE</value>
+    <value>GREEN</value>
   </data>
   <data name="Challenge8_NoButton" xml:space="preserve">
     <value>No</value>
   </data>
   <data name="Challenge8_OrangeColorName" xml:space="preserve">
-    <value>NARANJA</value>
+    <value>ORANGE</value>
   </data>
   <data name="Challenge8_PurpleColorName" xml:space="preserve">
-    <value>VIOLETA</value>
+    <value>PURPLE</value>
   </data>
   <data name="Challenge8_RedColorName" xml:space="preserve">
-    <value>ROJO</value>
+    <value>RED</value>
   </data>
   <data name="Challenge8_Title" xml:space="preserve">
     <value>Color &amp; Text</value>
   </data>
   <data name="Challenge8_YellowColorName" xml:space="preserve">
-    <value>AMARILLO</value>
+    <value>YELLOW</value>
   </data>
   <data name="Challenge8_YesButton" xml:space="preserve">
-    <value>Si</value>
+    <value>Yes</value>
   </data>
   <data name="Challenge9_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>Descripcion 9 Nivel 2</value>
+    <value>Description 9 Level 2</value>
   </data>
   <data name="Challenge9_DescriptionTxtBlockText" xml:space="preserve">
-    <value>Descripcion 9 Nivel 1</value>
+    <value>Description 9 Level 1</value>
   </data>
   <data name="Challenge9_StartButton" xml:space="preserve">
-    <value>Comenzar!</value>
+    <value>Start!</value>
   </data>
   <data name="Challenge9_Title" xml:space="preserve">
     <value>Song Complete</value>
   </data>
   <data name="ChallengeDetail_AttemptsTxtBlockTitle" xml:space="preserve">
-    <value>Intentos:</value>
+    <value>Attempts:</value>
   </data>
   <data name="ChallengeDetail_BestScoreTxtBlockTitle" xml:space="preserve">
-    <value>Mejor Puntaje</value>
+    <value>Best Score</value>
   </data>
   <data name="ChallengeDetail_DetailsTxtBlockTitle" xml:space="preserve">
-    <value>Detalle</value>
+    <value>Details</value>
   </data>
   <data name="ChallengeDetail_LastScoreTxtBlockTitle" xml:space="preserve">
-    <value>Ultimo Puntaje</value>
+    <value>Last Score</value>
   </data>
   <data name="ChallengeDetail_StartTimeTxtBlockTitle" xml:space="preserve">
-    <value>Comienzo:</value>
+    <value>Start Time:</value>
   </data>
   <data name="Challenge_Days" xml:space="preserve">
-    <value>Días</value>
+    <value>Days</value>
   </data>
   <data name="Challenge_Hours" xml:space="preserve">
-    <value>Horas</value>
+    <value>Hours</value>
   </data>
   <data name="Challenge_LessMinutes" xml:space="preserve">
-    <value>¡Menos de un Minuto!</value>
+    <value>Less Than A Minute!</value>
   </data>
   <data name="Challenge_MaxAttemptsExeeded" xml:space="preserve">
-    <value>No se puede jugar de nuevo, se ha superado el número máximo de intentos.</value>
+    <value>You Can't Play Again, The Maximum Number Of Attempts Was Exceeded.</value>
   </data>
   <data name="Challenge_Minutes" xml:space="preserve">
-    <value>Minutos</value>
+    <value>Minutes</value>
   </data>
   <data name="Challenge_NotSuported" xml:space="preserve">
-    <value>Lamentablemente su dispositivo no tiene las caracteristicas necesarias para jugar este desafio.</value>
+    <value>Unfortunately, Your Device Does Not Have The Necessary Features To Play This Challenge.</value>
   </data>
   <data name="HomePage_ChallengesPivotTitle" xml:space="preserve">
-    <value>Desafíos</value>
+    <value>Challenges</value>
   </data>
   <data name="HomePage_LogoutBtnTitle" xml:space="preserve">
-    <value>Cerrar sesión</value>
+    <value>Logout</value>
   </data>
   <data name="HomePage_LogoutMessage" xml:space="preserve">
-    <value>¿Estas Seguro?</value>
+    <value>Are You Sure?</value>
   </data>
   <data name="HomePage_ProfilePivotTitle" xml:space="preserve">
-    <value>Perfil</value>
+    <value>Profile</value>
   </data>
   <data name="HomePage_RankingError" xml:space="preserve">
-    <value>Ha Ocurrido Un Error Al Actualizar El Ranking</value>
+    <value>An Error Has Occurred When Updating The Ranking</value>
   </data>
   <data name="HomePage_RankingPivotTitle" xml:space="preserve">
     <value>Ranking</value>
   </data>
   <data name="HomePage_RetryBtnTitle" xml:space="preserve">
-    <value>Reintentar</value>
+    <value>Retry</value>
   </data>
   <data name="HomePage_ScoreError" xml:space="preserve">
-    <value>Ha Ocurrido Un Error Al Enviar El Puntaje</value>
+    <value>An Error Has Occurred While Sending The Score</value>
   </data>
   <data name="HomePage_ScoreSuccess" xml:space="preserve">
-    <value>¡Puntaje Enviado Con Éxito!</value>
+    <value>Score Has Been Sent Successfully!</value>
   </data>
   <data name="HomePage_SettingsTxtBlockTitle" xml:space="preserve">
-    <value>CONFIGURACIONES</value>
+    <value>SETTINGS</value>
   </data>
   <data name="LoginPage_Description" xml:space="preserve">
-    <value>Crees Que Eres El Más Habilidoso? 
+    <value>You Think You're The Most Skilled? 
 
-Regístrate Con Tu Cuenta De Facebook y Accede A Los 10 Nuevos Desafíos!
-Sé El Mejor Del Mundo, Supera a Todos Con Tus Habilidades y Compárate Con El Ranking Global.
-Toma Mas Riesgos, Mas Desafíos, Más Diversión!</value>
+Register With Facebook And Access 10 New Challenges! 
+Be The Best In The World, Beats All With Your Skills And Compare Yourself To The Global Ranking. 
+Take More Risks, More Challenges, More Fun!</value>
   </data>
   <data name="LoginPage_LoginBtnTitle" xml:space="preserve">
-    <value>Iniciar Sesión Con Facebook</value>
+    <value>Log in with Facebook</value>
   </data>
   <data name="Login_Error" xml:space="preserve">
-    <value>Ha Ocurrido Un Error Al Iniciar Sesión</value>
+    <value>An Error Has Occurred When Log In</value>
   </data>
 </root>

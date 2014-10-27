@@ -19,14 +19,14 @@
             <RowDefinition Height="0"/>
             <RowDefinition Height="768*"/>
         </Grid.RowDefinitions>
-        
+
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0">
-            <Button Content="{Binding Path=AppResources.LoginPage_LoginBtnTitle, Source={StaticResource LocalizedStrings}}" Height="72" HorizontalAlignment="Center" Name="LoginBtn" VerticalAlignment="Bottom" Width="280" Click="LoginBtn_Click" FontSize="20" Background="#FF3B5998" BorderThickness="2" UseLayoutRounding="True" Margin="0,0,0,80" />
+            <Button Content="{Binding Path=AppResources.LoginPage_LoginBtnTitle, Source={StaticResource LocalizedStrings}}" Height="72" HorizontalAlignment="Center" Name="LoginBtn" VerticalAlignment="Bottom" Width="418" Click="LoginBtn_Click" FontSize="20" Background="#FF3B5998" BorderThickness="2" UseLayoutRounding="True" Margin="38,0,24,80" />
             <Image Height="80" HorizontalAlignment="Left" Name="LogoImage" Stretch="Fill" VerticalAlignment="Center" Width="80" Source="/BeatIt!;component/Images/Desafios-V2-HD.png" Margin="50,80,0,600" />
             <TextBlock Height="123" Name="TitleTextBlock" Text="BeatIt!" VerticalAlignment="Top" FontSize="100" TextAlignment="Center" FontFamily="Segoe WP SemiLight" HorizontalAlignment="Center" Margin="100,50,0,0" />
             <TextBlock Height="350" HorizontalAlignment="Left" Margin="50,215,0,0" Name="DescriptionTextBlock" Text="{Binding Path=AppResources.LoginPage_Description, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="377" TextWrapping="Wrap" TextAlignment="Left" FontSize="24" />
             <phone:WebBrowser x:Name="AuthenticationBrowser" Visibility="Collapsed" Navigated="BrowserNavigated" IsScriptEnabled="True" />
-            
+
         </Grid>
         <ProgressBar x:Name="ProgressBar" HorizontalAlignment="Left" Height="10" Margin="10,10,0,0" Grid.Row="0"
                      Grid.RowSpan="2" VerticalAlignment="Top" Width="460" IsIndeterminate="False" Background="White" Foreground="White" Visibility="Collapsed"/>

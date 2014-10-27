@@ -44,7 +44,7 @@
             <!--Pivot item three-->
             <controls:PivotItem Header="{Binding Path=AppResources.HomePage_ProfilePivotTitle, Source={StaticResource LocalizedStrings}}">
                 <Grid x:Name="ProfileGrid" ShowGridLines="False">
-                    <Button Content="{Binding Path=AppResources.HomePage_LogoutBtnTitle, Source={StaticResource LocalizedStrings}}" Height="60" HorizontalAlignment="Left" Margin="4,204,0,0" x:Name="LogoutBtn" VerticalAlignment="Top" Width="424" Click="LogoutBtn_Click" FontSize="16" Padding="0,0,0,3" />
+                    <Button Content="{Binding Path=AppResources.HomePage_LogoutBtnTitle, Source={StaticResource LocalizedStrings}}" Height="73" HorizontalAlignment="Left" Margin="4,204,0,0" x:Name="LogoutBtn" VerticalAlignment="Top" Width="424" Click="LogoutBtn_Click" FontSize="21" Padding="0,0,0,3" />
                     <Image Height="140" HorizontalAlignment="Left" Margin="15,15,0,0" x:Name="ProfileImage" Stretch="Fill" VerticalAlignment="Top" Width="140" Source="/BeatIt!;component/Images/profileImage.jpg" />
                     <TextBlock Height="50" HorizontalAlignment="Left" Margin="170,15,0,0" x:Name="ProfileNameTxtBlock" Text="Juan Perez" VerticalAlignment="Top" Width="260" FontSize="32" />
                     <TextBlock Height="30" HorizontalAlignment="Left" Margin="169,87,0,0" x:Name="ProfileCountryTxtBlock" Text="Uruguay" VerticalAlignment="Top" Width="260" FontSize="18" />
