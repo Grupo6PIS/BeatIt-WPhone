@@ -231,7 +231,7 @@ namespace BeatIt_.AppCode.Pages
                 if ((Math.Abs(Math.Round(Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y + vector.Z * vector.Z), 1)) > 2) && // Si Sacudi el celular lo suficiente.
                     _stopwatch.ElapsedMilliseconds > (StartTime - _secondsToWakeMeUp[_indice]) * 1000)  // Y ya no estoy mostrando el ctronometro.
                 {
-                    PlaySound("/BeatIt!;component/Sounds/ring.wav");
+                    
 
                     _acelerometro.Stop();
                     _timer.Stop();
@@ -241,12 +241,15 @@ namespace BeatIt_.AppCode.Pages
 
                     if (Math.Abs(StartTime*1000 - _stopwatch.ElapsedMilliseconds) <= 500) // Si me desperto a tiempo.
                     {
+                        PlaySound("/BeatIt!;component/Sounds/ring.wav");
                         _aciertos ++;
                         FillProgressBar(_indice - 1, false, _currentChallenge.Level);
                     }
                     else
+                    {
+                        PlaySound("/BeatIt!;component/Sounds/fail.wav");
                         FillProgressBar(_indice - 1, true, _currentChallenge.Level);
-
+                    }
                     if (_indice == _secondsToWakeMeUp.Length) // Si no quedan despertadas por intentar.
                     {
                         _currentChallenge.CompleteChallenge(_aciertos);

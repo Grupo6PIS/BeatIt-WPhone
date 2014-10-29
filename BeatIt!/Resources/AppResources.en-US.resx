@@ -248,11 +248,17 @@ Also available for Android!</value>
   <data name="Challenge4_Title" xml:space="preserve">
     <value>Shut The Dog!</value>
   </data>
+  <data name="Challenge5_Count" xml:space="preserve">
+    <value>Current:</value>
+  </data>
   <data name="Challenge5_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>Description 5 Level 2</value>
+    <value>In this challenge you have to hit the red ball with the grey one several times.</value>
   </data>
   <data name="Challenge5_DescriptionTxtBlockText" xml:space="preserve">
-    <value>Description 5 Level 1</value>
+    <value>In this challenge you have to hit the red ball with the grey one several times.</value>
+  </data>
+  <data name="Challenge5_Time" xml:space="preserve">
+    <value>Time Left:</value>
   </data>
   <data name="Challenge5_Title" xml:space="preserve">
     <value>Bouncing Game!</value>
@@ -284,10 +290,10 @@ Remember Do It Faster To Have More Score!</value>
     <value>BLUE</value>
   </data>
   <data name="Challenge8_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>Description 8 Level 2</value>
+    <value>In this challenge you have to decide whether the text and color match. You have 45 seconds to hit as many as possible.</value>
   </data>
   <data name="Challenge8_DescriptionTxtBlockText" xml:space="preserve">
-    <value>Description 8 Level 1</value>
+    <value>In this challenge you have to decide whether the text and color match. You have 60 seconds to hit as many as possible.</value>
   </data>
   <data name="Challenge8_GreenColorName" xml:space="preserve">
     <value>GREEN</value>
@@ -305,7 +311,7 @@ Remember Do It Faster To Have More Score!</value>
     <value>RED</value>
   </data>
   <data name="Challenge8_Title" xml:space="preserve">
-    <value>Color &amp; Text</value>
+    <value>Text &amp; Color</value>
   </data>
   <data name="Challenge8_YellowColorName" xml:space="preserve">
     <value>YELLOW</value>
@@ -349,6 +355,9 @@ Remember Do It Faster To Have More Score!</value>
   <data name="Challenge_LessMinutes" xml:space="preserve">
     <value>Less Than A Minute!</value>
   </data>
+  <data name="Challenge_Limit" xml:space="preserve">
+    <value>You have already made ​​the maximum number of attempts in the current round.</value>
+  </data>
   <data name="Challenge_MaxAttemptsExeeded" xml:space="preserve">
     <value>You Can't Play Again, The Maximum Number Of Attempts Was Exceeded.</value>
   </data>
@@ -389,11 +398,11 @@ Remember Do It Faster To Have More Score!</value>
     <value>SETTINGS</value>
   </data>
   <data name="LoginPage_Description" xml:space="preserve">
-    <value>You Think You're The Most Skilled? 
+    <value>Do You think you're the most skilled?
 
-Register With Facebook And Access 10 New Challenges! 
-Be The Best In The World, Beats All With Your Skills And Compare Yourself To The Global Ranking. 
-Take More Risks, More Challenges, More Fun!</value>
+Register with yout Facebook account and get access to 10 amazing challenges!
+Be the best around the world, beats everyone with your skills and compare your performance in the global ranking.
+Take more risks, more challenges, more fun!</value>
   </data>
   <data name="LoginPage_LoginBtnTitle" xml:space="preserve">
     <value>Log in with Facebook</value>

@@ -79,11 +79,20 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ¡Menos de un Minuto!.
+        ///   Looks up a localized string similar to ¡Menos de un minuto!.
         /// </summary>
         public static string Challenge_LessMinutes {
             get {
                 return ResourceManager.GetString("Challenge_LessMinutes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ya ha realizado el número máximo de intentos en la ronda actual..
+        /// </summary>
+        public static string Challenge_Limit {
+            get {
+                return ResourceManager.GetString("Challenge_Limit", resourceCulture);
             }
         }
         
@@ -331,7 +340,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wake Me Up!.
+        ///   Looks up a localized string similar to Despiertame A Tiempo!.
         /// </summary>
         public static string Challenge2_Title {
             get {
@@ -504,7 +513,16 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Descripcion 5 Nivel 2.
+        ///   Looks up a localized string similar to Actual:.
+        /// </summary>
+        public static string Challenge5_Count {
+            get {
+                return ResourceManager.GetString("Challenge5_Count", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to En este desafío deberás colisionar la bola roja con la gris la mayor cantidad de veces posible..
         /// </summary>
         public static string Challenge5_DescriptionHardTxtBlockText {
             get {
@@ -513,11 +531,20 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Descripcion 5 Nivel 1.
+        ///   Looks up a localized string similar to En este desafío deberás colisionar la bola roja con la gris la mayor cantidad de veces posible..
         /// </summary>
         public static string Challenge5_DescriptionTxtBlockText {
             get {
                 return ResourceManager.GetString("Challenge5_DescriptionTxtBlockText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tiempo restante:.
+        /// </summary>
+        public static string Challenge5_Time {
+            get {
+                return ResourceManager.GetString("Challenge5_Time", resourceCulture);
             }
         }
         
@@ -605,7 +632,8 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Descripcion 8 Nivel 2.
+        ///   Looks up a localized string similar to En este desafío tienes que decidir si el texto y el color coinciden.
+        ///Tienes 45 segundos para acertar la mayor cantidad posible..
         /// </summary>
         public static string Challenge8_DescriptionHardTxtBlockText {
             get {
@@ -614,7 +642,8 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Descripcion 8 Nivel 1.
+        ///   Looks up a localized string similar to En este desafío tienes que decidir si el texto y el color coinciden.
+        ///Tienes 60 segundos para acertar la mayor cantidad posible..
         /// </summary>
         public static string Challenge8_DescriptionTxtBlockText {
             get {
@@ -875,11 +904,11 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Crees Que Eres El Más Habilidoso? 
+        ///   Looks up a localized string similar to ¿Crees que eres el más habilidoso?
         ///
-        ///Regístrate Con Tu Cuenta De Facebook y Accede A Los 10 Nuevos Desafíos!
-        ///Sé El Mejor Del Mundo, Supera a Todos Con Tus Habilidades y Compárate Con El Ranking Global.
-        ///Toma Mas Riesgos, Mas Desafíos, Más Diversión!.
+        ///Regístrate con tu cuenta de Facebook y accede a 10 desafíos apasionantes!
+        ///Sé el mejor del mundo, supera a todos con tus habilidades y compara tu desempeño en el ránking global.
+        ///Toma más riesgos, más desafíos, más diversión!.
         /// </summary>
         public static string LoginPage_Description {
             get {

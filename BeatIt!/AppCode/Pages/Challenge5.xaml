@@ -84,23 +84,25 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" Background="#FFe51400">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="150"></ColumnDefinition>
+                    <ColumnDefinition Width="100"></ColumnDefinition>
+                    <ColumnDefinition Width="160"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Cantidad:" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                <TextBlock Name="counterLabel" Grid.Column="1" Text="0" VerticalAlignment="Center"></TextBlock>
-                <TextBlock Grid.Column="2" Text="Tiempo restante: " VerticalAlignment="Center"></TextBlock>
-                <TextBlock Name="timerLabel" Grid.Column="3" Text="30s" VerticalAlignment="Center"></TextBlock>
+
+                <TextBlock VerticalAlignment="Center" Grid.Column="0" Text="{Binding Path=AppResources.Challenge5_Count, Source={StaticResource LocalizedStrings}}" Margin="0" Height="27"/>
+                <TextBlock VerticalAlignment="Center" Name="CounterLabel" Text="0" Margin="0" Height="27" Grid.Column="1"/>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="3" Text="{Binding Path=AppResources.Challenge5_Time, Source={StaticResource LocalizedStrings}}" Margin="0" Height="27" Width="154" />
+                <TextBlock VerticalAlignment="Center"   Name="TimerLabel" Text="30s" Margin="0" RenderTransformOrigin="0.5,0.5" Grid.Column="4"/>
             </Grid>
-            <Canvas Name="canvasPanel" Grid.Row="1" Background="#DBCDB4" >
-                <Image Name="blackBall" Canvas.Left="0" Canvas.Top="0" Source="/BeatIt!;component/Images/blackBall.png" Width="150" Height="150"></Image>
-                <Image Name="redBall" Canvas.Left="0" Canvas.Top="160" Source="/BeatIt!;component/Images/redBall.png" Width="20" Height="20"></Image>
+            <Canvas Name="CanvasPanel" Grid.Row="1" Background="#DBCDB4" >
+                <Image Name="BlackBall" Canvas.Left="0" Canvas.Top="0" Source="/BeatIt!;component/Images/blackBall.png" Width="150" Height="150"></Image>
+                <Image Name="RedBall" Canvas.Left="0" Canvas.Top="160" Source="/BeatIt!;component/Images/redBall.png" Width="20" Height="20"></Image>
             </Canvas>
         </Grid>
     </Grid>
- 
+
     <!--Sample code showing usage of ApplicationBar-->
     <!--<phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">

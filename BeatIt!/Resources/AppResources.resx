@@ -190,7 +190,7 @@
     <value>Comenzar!</value>
   </data>
   <data name="Challenge2_Title" xml:space="preserve">
-    <value>Wake Me Up!</value>
+    <value>Despiertame A Tiempo!</value>
   </data>
   <data name="Challenge3_BackButton" xml:space="preserve">
     <value>Volver Al Desafío</value>
@@ -248,11 +248,17 @@ También Disponible Para Andoid!</value>
   <data name="Challenge4_Title" xml:space="preserve">
     <value>Callar Al Perro!</value>
   </data>
+  <data name="Challenge5_Count" xml:space="preserve">
+    <value>Actual:</value>
+  </data>
   <data name="Challenge5_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>Descripcion 5 Nivel 2</value>
+    <value>En este desafío deberás colisionar la bola roja con la gris la mayor cantidad de veces posible.</value>
   </data>
   <data name="Challenge5_DescriptionTxtBlockText" xml:space="preserve">
-    <value>Descripcion 5 Nivel 1</value>
+    <value>En este desafío deberás colisionar la bola roja con la gris la mayor cantidad de veces posible.</value>
+  </data>
+  <data name="Challenge5_Time" xml:space="preserve">
+    <value>Tiempo restante:</value>
   </data>
   <data name="Challenge5_Title" xml:space="preserve">
     <value>Bouncing Game!</value>
@@ -284,10 +290,12 @@ Recuerda, Cuanto Mas Rápido Mayor Puntaje!</value>
     <value>AZUL</value>
   </data>
   <data name="Challenge8_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>Descripcion 8 Nivel 2</value>
+    <value>En este desafío tienes que decidir si el texto y el color coinciden.
+Tienes 45 segundos para acertar la mayor cantidad posible.</value>
   </data>
   <data name="Challenge8_DescriptionTxtBlockText" xml:space="preserve">
-    <value>Descripcion 8 Nivel 1</value>
+    <value>En este desafío tienes que decidir si el texto y el color coinciden.
+Tienes 60 segundos para acertar la mayor cantidad posible.</value>
   </data>
   <data name="Challenge8_GreenColorName" xml:space="preserve">
     <value>VERDE</value>
@@ -347,7 +355,10 @@ Recuerda, Cuanto Mas Rápido Mayor Puntaje!</value>
     <value>Horas</value>
   </data>
   <data name="Challenge_LessMinutes" xml:space="preserve">
-    <value>¡Menos de un Minuto!</value>
+    <value>¡Menos de un minuto!</value>
+  </data>
+  <data name="Challenge_Limit" xml:space="preserve">
+    <value>Ya ha realizado el número máximo de intentos en la ronda actual.</value>
   </data>
   <data name="Challenge_MaxAttemptsExeeded" xml:space="preserve">
     <value>No se puede jugar de nuevo, se ha superado el número máximo de intentos.</value>
@@ -389,11 +400,11 @@ Recuerda, Cuanto Mas Rápido Mayor Puntaje!</value>
     <value>CONFIGURACIONES</value>
   </data>
   <data name="LoginPage_Description" xml:space="preserve">
-    <value>Crees Que Eres El Más Habilidoso? 
+    <value>¿Crees que eres el más habilidoso?
 
-Regístrate Con Tu Cuenta De Facebook y Accede A Los 10 Nuevos Desafíos!
-Sé El Mejor Del Mundo, Supera a Todos Con Tus Habilidades y Compárate Con El Ranking Global.
-Toma Mas Riesgos, Mas Desafíos, Más Diversión!</value>
+Regístrate con tu cuenta de Facebook y accede a 10 desafíos apasionantes!
+Sé el mejor del mundo, supera a todos con tus habilidades y compara tu desempeño en el ránking global.
+Toma más riesgos, más desafíos, más diversión!</value>
   </data>
   <data name="LoginPage_LoginBtnTitle" xml:space="preserve">
     <value>Iniciar Sesión Con Facebook</value>

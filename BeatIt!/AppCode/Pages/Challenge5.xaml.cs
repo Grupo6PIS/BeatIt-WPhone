@@ -1,4 +1,5 @@
-﻿using Microsoft.Phone.Controls;
+﻿using BeatIt_.Resources;
+using Microsoft.Phone.Controls;
 using BeatIt_.AppCode.Challenges;
 using BeatIt_.AppCode.Controllers;
 using System.Windows.Threading;
@@ -12,9 +13,9 @@ namespace BeatIt_.AppCode.Pages
 {
     public partial class Challenge5
     {
-        private const int ChallengeId = 5; // segundos
-        private const double speed = 15;
-        private const int TimeTop = 60; // segundos
+        private const int ChallengeId = 5;
+        private const double Speed = 15;
+        private const int TimeTop = 60;
 
         private ChallengeDetail5 _challenge;
         private int _timeCounter, _collisionCounter;
@@ -71,7 +72,7 @@ namespace BeatIt_.AppCode.Pages
         {
             if (!Accelerometer.IsSupported)
             {
-                MessageBox.Show("Lamentablemente su dispositivo no tiene las caracteristicas necesarias para jugar este desafio.");
+                MessageBox.Show(AppResources.Challenge_NotSuported);
                 Dispatcher.BeginInvoke(delegate
                 {
                     var uri = new Uri("/BeatIt!;component/AppCode/Pages/Home.xaml", UriKind.Relative);
@@ -82,7 +83,7 @@ namespace BeatIt_.AppCode.Pages
 
             if (_challenge.State.CurrentAttempt == _challenge.MaxAttempt)
             {
-                MessageBox.Show("Ya ha realizado el número máximo de intentos en la ronda actual.");
+                MessageBox.Show(AppResources.Challenge_Limit);
                 Dispatcher.BeginInvoke(delegate
                 {
                     var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
@@ -127,21 +128,20 @@ namespace BeatIt_.AppCode.Pages
                 _acelerometer = null;
 
                 _challenge.ChanllengeComplete(_collisionCounter);
-                MessageBox.Show("Time finished!! You got " + _challenge.State.BestScore + " points");
-
+              
                 var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
                 NavigationService.Navigate(uri);
 
             }
             else
             {
-                timerLabel.Text = _timeCounter + "s";
+                TimerLabel.Text = _timeCounter + " s";
             }
         }
 
         void acelerometer_ReadingChanged(object sender, SensorReadingEventArgs<AccelerometerReading> e)
         {
-            Dispatcher.BeginInvoke(() => UpdatePositions(e.SensorReading.Acceleration.X * speed, e.SensorReading.Acceleration.Y * speed));
+            Dispatcher.BeginInvoke(() => UpdatePositions(e.SensorReading.Acceleration.X * Speed, e.SensorReading.Acceleration.Y * Speed));
 
 
         }
@@ -155,34 +155,34 @@ namespace BeatIt_.AppCode.Pages
             {
                 _positionBlackX = 0;
             }
-            else if (_positionBlackX > (canvasPanel.ActualWidth - blackBall.Width))
+            else if (_positionBlackX > (CanvasPanel.ActualWidth - BlackBall.Width))
             {
-                _positionBlackX = canvasPanel.ActualWidth - blackBall.Width;
+                _positionBlackX = CanvasPanel.ActualWidth - BlackBall.Width;
             }
 
             if (_positionBlackY < 0)
             {
                 _positionBlackY = 0;
             }
-            else if (_positionBlackY > (canvasPanel.ActualHeight - blackBall.Height))
+            else if (_positionBlackY > (CanvasPanel.ActualHeight - BlackBall.Height))
             {
-                _positionBlackY = canvasPanel.ActualHeight - blackBall.Height;
+                _positionBlackY = CanvasPanel.ActualHeight - BlackBall.Height;
             }
 
-            Canvas.SetLeft(blackBall, _positionBlackX);
+            Canvas.SetLeft(BlackBall, _positionBlackX);
 
-            Canvas.SetTop(blackBall, _positionBlackY);
+            Canvas.SetTop(BlackBall, _positionBlackY);
 
             if (Collision())
             {
-                if (blackBall.Width > 10 && _randomNumber.Next(0,2) == 1)
+                if (BlackBall.Width > 10 && _randomNumber.Next(0,2) == 1)
                 {
-                    blackBall.Width = blackBall.Width * _fraccion;
-                    blackBall.Height = blackBall.Height * _fraccion;
+                    BlackBall.Width = BlackBall.Width * _fraccion;
+                    BlackBall.Height = BlackBall.Height * _fraccion;
                 }
 
                 _collisionCounter++;
-                counterLabel.Text = _collisionCounter.ToString(CultureInfo.InvariantCulture);
+                CounterLabel.Text = _collisionCounter.ToString(CultureInfo.InvariantCulture);
                 GenerateRandomPosition();
             }
         }
@@ -190,10 +190,10 @@ namespace BeatIt_.AppCode.Pages
 
         private bool Collision()
         {
-            var x = _positionBlackX + (blackBall.Width / 2);
-            var y = _positionBlackY + (blackBall.Height / 2);
+            var x = _positionBlackX + (BlackBall.Width / 2);
+            var y = _positionBlackY + (BlackBall.Height / 2);
 
-            var sumRadius = (blackBall.Width + redBall.Width) / 2;
+            var sumRadius = (BlackBall.Width + RedBall.Width) / 2;
 
             var module = Math.Sqrt((x - _positionRedX)*(x - _positionRedX) + (y - _positionRedY)*(y - _positionRedY) );
 
@@ -202,19 +202,19 @@ namespace BeatIt_.AppCode.Pages
 
         private void GenerateRandomPosition()
         {
-            if (canvasPanel.ActualWidth == 0)
+            if (CanvasPanel.ActualWidth == 0)
             {
-                canvasPanel.UpdateLayout();
+                CanvasPanel.UpdateLayout();
             }
 
-            var x = _randomNumber.Next(0, (int)(canvasPanel.ActualWidth - redBall.Width));
-            var y = _randomNumber.Next(0, (int)(canvasPanel.ActualHeight - redBall.Height));
+            var x = _randomNumber.Next(0, (int)(CanvasPanel.ActualWidth - RedBall.Width));
+            var y = _randomNumber.Next(0, (int)(CanvasPanel.ActualHeight - RedBall.Height));
 
-            _positionRedX = x + (redBall.Width / 2);
-            _positionRedY = y + (redBall.Height / 2);
+            _positionRedX = x + (RedBall.Width / 2);
+            _positionRedY = y + (RedBall.Height / 2);
 
-            Canvas.SetLeft(redBall, x);
-            Canvas.SetTop(redBall, y);
+            Canvas.SetLeft(RedBall, x);
+            Canvas.SetTop(RedBall, y);
         }
 
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
