@@ -129,7 +129,7 @@ namespace BeatIt_.AppCode.Pages
                     _seconds = _minTime;
 
 
-                    MessageBox.Show(AppResources.Challenge1_Win);
+                    //MessageBox.Show(AppResources.Challenge1_Win);
                     _currentChallenge = (ChallengeDetail1)_ifc.getChallenge(1);
                     _currentChallenge.CompleteChallenge(false, _maxSpeed, (_avgSpeed / _count));
                     _ifc.setCurrentChallenge(_currentChallenge);
@@ -206,7 +206,7 @@ namespace BeatIt_.AppCode.Pages
                         _speedEmulator.Stop();
                     }
 
-                    MessageBox.Show(AppResources.Challenge1_Loss);
+                    //MessageBox.Show(AppResources.Challenge1_Loss);
                 }
             }
         }
@@ -250,7 +250,6 @@ namespace BeatIt_.AppCode.Pages
                 ShowTime.Text = _minTime.ToString(CultureInfo.InvariantCulture);
                 ShowSpeed.Text = "0.00";
 
-                //CAMBIO DE GRILLA (StartRunningGrid ==> InProgressGrid)
                 StartRunningGrid.Visibility = Visibility.Collapsed;
                 InProgressGrid.Visibility = Visibility.Visible;
             }

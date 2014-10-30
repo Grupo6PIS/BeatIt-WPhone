@@ -81,17 +81,17 @@ namespace BeatIt_.AppCode.Pages
                 return;
             }
 
-            if (_challenge.State.CurrentAttempt == _challenge.MaxAttempt)
-            {
-                MessageBox.Show(AppResources.Challenge_Limit);
-                Dispatcher.BeginInvoke(delegate
-                {
-                    var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
-                    NavigationService.Navigate(uri);
-                });
+            //if (_challenge.State.CurrentAttempt == _challenge.MaxAttempt)
+            //{
+            //    MessageBox.Show(AppResources.Challenge_Limit);
+            //    Dispatcher.BeginInvoke(delegate
+            //    {
+            //        var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
+            //        NavigationService.Navigate(uri);
+            //    });
 
-                return;
-            }
+            //    return;
+            //}
 
             _timeCounter = TimeTop;
             _collisionCounter = 0;
