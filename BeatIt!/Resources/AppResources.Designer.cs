@@ -61,7 +61,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Días.
+        ///   Looks up a localized string similar to días.
         /// </summary>
         public static string Challenge_Days {
             get {
@@ -70,7 +70,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Horas.
+        ///   Looks up a localized string similar to horas.
         /// </summary>
         public static string Challenge_Hours {
             get {
@@ -259,7 +259,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En Este Desafío Debes Tomar Una Fotografía Con Cinco Amigos o Más.
+        ///   Looks up a localized string similar to En este desafío debes tomar una fotografía con cinco amigos o más.
         /// </summary>
         public static string Challenge10_DescriptionHardTxtBlockText {
             get {
@@ -268,7 +268,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En Este Desafío Debes Tomar Una Fotografía Con Dos Amigos o Más.
+        ///   Looks up a localized string similar to En este desafío debes tomar una fotografía con dos amigos o más.
         /// </summary>
         public static string Challenge10_DescriptionTxtBlockText {
             get {
@@ -286,7 +286,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En Este Desafío Deberás Agitar El Celular Cuando Pienses Que El Timer Finalizó.  El timer Se Ocultará Cuatro Veces Asi Que Presta Atención..
+        ///   Looks up a localized string similar to En este desafío deberás agitar el celular cuando pienses que el timer finalizó.  El timer se ocultará cuatro veces asi que presta atención..
         /// </summary>
         public static string Challenge2_DescriptionHardTxtBlockText {
             get {
@@ -295,7 +295,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En Este Desafío Deberás Agitar El Celular Cuando Pienses Que El Timer Finalizó.  El timer Se Ocultará Tres Veces Asi Que Presta Atención..
+        ///   Looks up a localized string similar to En este desafío deberás agitar el celular cuando pienses que el timer finalizó.  El timer se ocultará tres veces asi que presta atención..
         /// </summary>
         public static string Challenge2_DescriptionTxtBlockText {
             get {
@@ -304,7 +304,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to El Desafío Ha Finalizado, Usted Ha Obtenido @score Puntos..
+        ///   Looks up a localized string similar to El desafío ha finalizado, usted ha obtenido @score puntos..
         /// </summary>
         public static string Challenge2_Finish {
             get {
@@ -349,7 +349,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Volver Al Desafío.
+        ///   Looks up a localized string similar to Volver al desafío.
         /// </summary>
         public static string Challenge3_BackButton {
             get {
@@ -367,7 +367,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En Este Desafío Deberás Enviar Invitaciones A Tus amigos por Medio De Mensajes y Redes Sociales, Minimo Cuatro SMS y La Publicación En Tu muro. Cuantos Mas Invites Mayor Puntaje!.
+        ///   Looks up a localized string similar to En este desafío deberás enviar invitaciones a tus amigos por medio de mensajes y redes sociales, minimo cuatro SMS y la publicación en tu muro. Cuantos mas invites mayor puntaje!.
         /// </summary>
         public static string Challenge3_DescriptionHardTxtBlockText {
             get {
@@ -376,7 +376,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En Este Desafío Deberás Enviar Invitaciones A Tus amigos por Medio De Mensajes y Redes Sociales, Minimo Dos SMS y La Publicación En Tu muro. Cuantos Mas Invites Mayor Puntaje!.
+        ///   Looks up a localized string similar to En este desafío deberás enviar invitaciones a tus amigos por medio de mensajes y redes sociales, minimo dos SMS y la publicación en tu muro. Cuantos mas invites mayor puntaje!.
         /// </summary>
         public static string Challenge3_DescriptionTxtBlockText {
             get {
@@ -405,7 +405,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mensaje Publicado Exitosamente.
+        ///   Looks up a localized string similar to Mensaje publicado exitosamente.
         /// </summary>
         public static string Challenge3_MessagePosted {
             get {
@@ -423,7 +423,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Has Superado Tu Puntaje Actual..
+        ///   Looks up a localized string similar to No has superado tu puntaje actual..
         /// </summary>
         public static string Challenge3_NotBeat {
             get {
@@ -468,7 +468,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En Este Desafío Debes Callar Lo Mas Pronto Posible A El Perro Presionando El Botón Rojo. El Perro Ladrará Cinco Veces..
+        ///   Looks up a localized string similar to En este desafío debes callar lo mas pronto posible a el perro presionando el botón rojo. El perro ladrará cinco veces..
         /// </summary>
         public static string Challenge4_DescriptionHardTxtBlockText {
             get {
@@ -477,7 +477,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En Este Desafío Debes Callar Lo Mas Pronto Posible A El Perro Presionando El Botón Rojo. El Perro Ladrará Cinco Veces..
+        ///   Looks up a localized string similar to En este desafío debes callar lo mas pronto posible a el perro presionando el botón rojo. El perro ladrará tres veces..
         /// </summary>
         public static string Challenge4_DescriptionTxtBlockText {
             get {
@@ -558,7 +558,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Antes De Lanzar El Dispositivo Hacia Arriba, Procure Tener Una Posicion Adecuada Para Capturarlo Cuando El Mismo Venga Bajando..
+        ///   Looks up a localized string similar to Antes de lanzar el dispositivo hacia arriba, procura tener una posicion adecuada para capturarlo cuando el mismo venga bajando..
         /// </summary>
         public static string Challenge6_Alert {
             get {
@@ -567,7 +567,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En Este Desafío Debes Lanzar El Celular Lo Más Alto Que Puedas, Debiendo Sobrepasar Como Mínimo Dos Metros..
+        ///   Looks up a localized string similar to En este desafío debes lanzar el celular lo más alto que puedas, debiendo sobrepasar como mínimo dos metros..
         /// </summary>
         public static string Challenge6_DescriptionHardTxtBlockText {
             get {
@@ -576,7 +576,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En Este Desafío Debes Lanzar El Celular Lo Más Alto Que Puedas, Debiendo Sobrepasar Como Mínimo Un Metro..
+        ///   Looks up a localized string similar to En este desafío debes lanzar el celular lo más alto que puedas, debiendo sobrepasar como mínimo un metro..
         /// </summary>
         public static string Challenge6_DescriptionTxtBlockText {
             get {
@@ -594,8 +594,8 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En Este Desafío Debes Pulsar El Botón Que Se Enciende Lo Más Rápido Posible, Solamente Tienes 30 Segundos!
-        ///Recuerda, Cuanto Mas Rápido Mayor Puntaje!.
+        ///   Looks up a localized string similar to En este desafío debes pulsar el botón que se enciende lo más rápido posible, solamente tienes 30 segundos!
+        ///Recuerda, cuanto mas rápido mayor puntaje!.
         /// </summary>
         public static string Challenge7_DescriptionHardTxtBlockText {
             get {
@@ -604,8 +604,8 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En Este Desafío Debes Pulsar El Botón Que Se Enciende Lo Más Rápido Posible, Solamente Tienes 45 Segundos!
-        ///Recuerda, Cuanto Mas Rápido Mayor Puntaje!.
+        ///   Looks up a localized string similar to En este desafío debes pulsar el botón que se enciende lo más rápido posible, solamente tienes 45 segundos!
+        ///Recuerda, cuanto mas rápido mayor puntaje!.
         /// </summary>
         public static string Challenge7_DescriptionTxtBlockText {
             get {
@@ -724,7 +724,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Descripcion 9 Nivel 2.
+        ///   Looks up a localized string similar to En este desafío deberás adivinar el nombre de la canción que suena en 20 segundos, 5 veces!.
         /// </summary>
         public static string Challenge9_DescriptionHardTxtBlockText {
             get {
@@ -733,7 +733,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Descripcion 9 Nivel 1.
+        ///   Looks up a localized string similar to En este desafío deberás adivinar el nombre del artista de la canción que suena en 10 segundos, 5 veces!.
         /// </summary>
         public static string Challenge9_DescriptionTxtBlockText {
             get {
@@ -841,7 +841,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ha Ocurrido Un Error Al Actualizar El Ranking.
+        ///   Looks up a localized string similar to Ha ocurrido un error al actualizar el ranking.
         /// </summary>
         public static string HomePage_RankingError {
             get {
@@ -868,7 +868,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ha Ocurrido Un Error Al Enviar El Puntaje.
+        ///   Looks up a localized string similar to Ha ocurrido un error al enviar el puntaje.
         /// </summary>
         public static string HomePage_ScoreError {
             get {
@@ -877,7 +877,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ¡Puntaje Enviado Con Éxito!.
+        ///   Looks up a localized string similar to ¡Puntaje enviado con exito!.
         /// </summary>
         public static string HomePage_ScoreSuccess {
             get {
@@ -895,7 +895,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ha Ocurrido Un Error Al Iniciar Sesión.
+        ///   Looks up a localized string similar to Ha ocurrido un error al iniciar sesión.
         /// </summary>
         public static string Login_Error {
             get {
@@ -917,7 +917,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Iniciar Sesión Con Facebook.
+        ///   Looks up a localized string similar to Iniciar Sesión con Facebook.
         /// </summary>
         public static string LoginPage_LoginBtnTitle {
             get {
