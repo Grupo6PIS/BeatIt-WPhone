@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System.Threading;
+using System.Windows;
 using System.Windows.Navigation;
+using BeatIt_.Resources;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
@@ -18,6 +20,8 @@ namespace BeatIt_
         /// </summary>
         public App()
         {
+            Thread.CurrentThread.CurrentCulture = Thread.CurrentThread.CurrentCulture.Name.Contains("es") ? new System.Globalization.CultureInfo("es-ES") : new System.Globalization.CultureInfo("en-US");
+
             // Global handler for uncaught exceptions. 
             UnhandledException += Application_UnhandledException;
 

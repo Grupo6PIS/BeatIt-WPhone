@@ -61,7 +61,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to días.
+        ///   Looks up a localized string similar to days.
         /// </summary>
         public static string Challenge_Days {
             get {
@@ -70,7 +70,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to horas.
+        ///   Looks up a localized string similar to hours.
         /// </summary>
         public static string Challenge_Hours {
             get {
@@ -79,7 +79,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ¡Menos de un minuto!.
+        ///   Looks up a localized string similar to Less than a minute!.
         /// </summary>
         public static string Challenge_LessMinutes {
             get {
@@ -88,7 +88,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ya ha realizado el número máximo de intentos en la ronda actual..
+        ///   Looks up a localized string similar to You have already made ​​the maximum number of attempts in the current round..
         /// </summary>
         public static string Challenge_Limit {
             get {
@@ -97,7 +97,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No se puede jugar de nuevo, se ha superado el número máximo de intentos..
+        ///   Looks up a localized string similar to You can&apos;t play again, the maximum number of attempts was exceeded..
         /// </summary>
         public static string Challenge_MaxAttemptsExeeded {
             get {
@@ -106,7 +106,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Minutos.
+        ///   Looks up a localized string similar to Minutes.
         /// </summary>
         public static string Challenge_Minutes {
             get {
@@ -115,7 +115,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lamentablemente su dispositivo no tiene las caracteristicas necesarias para jugar este desafio..
+        ///   Looks up a localized string similar to Unfortunately, your device does not have the necessary features to play this challenge..
         /// </summary>
         public static string Challenge_NotSuported {
             get {
@@ -124,7 +124,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Choca la bola gris la mayor cantidad posible!.
+        ///   Looks up a localized string similar to Bump the gray ball as much as possible !.
         /// </summary>
         public static string Challenge1_Description {
             get {
@@ -133,7 +133,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En este desafío debes correr a mas de 15 km/h durante 45 segundos..
+        ///   Looks up a localized string similar to In this challenge you have to run faster than 15 km/h for 45 seconds..
         /// </summary>
         public static string Challenge1_DescriptionHardTxtBlockText {
             get {
@@ -142,7 +142,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En este desafío debes correr a mas de 10 km/h durante 30 segundos..
+        ///   Looks up a localized string similar to In this challenge you have to run faster than 10 km/h for 30 seconds..
         /// </summary>
         public static string Challenge1_DescriptionTxtBlockText {
             get {
@@ -151,7 +151,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Descripción.
+        ///   Looks up a localized string similar to Description.
         /// </summary>
         public static string Challenge1_DescriptionTxtBlockTitle {
             get {
@@ -160,7 +160,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Detalle.
+        ///   Looks up a localized string similar to Details.
         /// </summary>
         public static string Challenge1_DetailsTxtBlockTitle {
             get {
@@ -169,7 +169,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Finaliza:.
+        ///   Looks up a localized string similar to Duration:.
         /// </summary>
         public static string Challenge1_DurationTxtBlockTitle {
             get {
@@ -178,7 +178,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Desafio no completado..
+        ///   Looks up a localized string similar to Challenge not completed..
         /// </summary>
         public static string Challenge1_Loss {
             get {
@@ -187,7 +187,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Debes bajar la velocidad para comenzar el desafío.
+        ///   Looks up a localized string similar to You must slow down to begin the challenge!.
         /// </summary>
         public static string Challenge1_ReduceSpeed {
             get {
@@ -196,7 +196,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Veloc. (km/h).
+        ///   Looks up a localized string similar to Speed (km/h).
         /// </summary>
         public static string Challenge1_SpeedTxtBlockTitle {
             get {
@@ -205,7 +205,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Comenzar a correr!.
+        ///   Looks up a localized string similar to Start running!.
         /// </summary>
         public static string Challenge1_StartButton {
             get {
@@ -214,7 +214,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Comienzo:.
+        ///   Looks up a localized string similar to Start Time:.
         /// </summary>
         public static string Challenge1_StartTimeTxtBlockTitle {
             get {
@@ -223,7 +223,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tiempo.
+        ///   Looks up a localized string similar to Time Left.
         /// </summary>
         public static string Challenge1_TimeLeftTxtBlockTitle {
             get {
@@ -241,7 +241,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A vencer:.
+        ///   Looks up a localized string similar to To Beat:.
         /// </summary>
         public static string Challenge1_ToBeatTxtBlockTitle {
             get {
@@ -250,7 +250,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Desafio completado!.
+        ///   Looks up a localized string similar to Challenge completed!.
         /// </summary>
         public static string Challenge1_Win {
             get {
@@ -259,7 +259,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En este desafío debes tomar una fotografía con cinco amigos o más.
+        ///   Looks up a localized string similar to In this challenge you have to take a picture with five or more friends!.
         /// </summary>
         public static string Challenge10_DescriptionHardTxtBlockText {
             get {
@@ -268,7 +268,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En este desafío debes tomar una fotografía con dos amigos o más.
+        ///   Looks up a localized string similar to In this challenge you have to take a picture with two or more friends!.
         /// </summary>
         public static string Challenge10_DescriptionTxtBlockText {
             get {
@@ -277,7 +277,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Selfie En Grupo!.
+        ///   Looks up a localized string similar to Selfie Groupie!.
         /// </summary>
         public static string Challenge10_Title {
             get {
@@ -286,7 +286,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En este desafío deberás agitar el celular cuando pienses que el timer finalizó.  El timer se ocultará cuatro veces asi que presta atención..
+        ///   Looks up a localized string similar to In this challenge you have to shake your cellphone when you think the timer reaches 0, the timer will hide 4 times so pay attention..
         /// </summary>
         public static string Challenge2_DescriptionHardTxtBlockText {
             get {
@@ -295,7 +295,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En este desafío deberás agitar el celular cuando pienses que el timer finalizó.  El timer se ocultará tres veces asi que presta atención..
+        ///   Looks up a localized string similar to In this challenge you have to shake your cellphone when you think the timer reaches 0, the timer will hide 3 times so pay attention..
         /// </summary>
         public static string Challenge2_DescriptionTxtBlockText {
             get {
@@ -304,7 +304,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to El desafío ha finalizado, usted ha obtenido @score puntos..
+        ///   Looks up a localized string similar to The challenge is over, you have earned @score points..
         /// </summary>
         public static string Challenge2_Finish {
             get {
@@ -313,7 +313,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Estoy Listo Para Volar!.
+        ///   Looks up a localized string similar to I&apos;m Ready To Fly!.
         /// </summary>
         public static string Challenge2_Fly {
             get {
@@ -322,16 +322,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Challenge2_ShareMeUp {
-            get {
-                return ResourceManager.GetString("Challenge2_ShareMeUp", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Comenzar!.
+        ///   Looks up a localized string similar to Start!.
         /// </summary>
         public static string Challenge2_StartButton {
             get {
@@ -340,7 +331,16 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Despiertame A Tiempo!.
+        ///   Looks up a localized string similar to Start!.
+        /// </summary>
+        public static string Challenge2_StartButton1 {
+            get {
+                return ResourceManager.GetString("Challenge2_StartButton1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wake Me Up!.
         /// </summary>
         public static string Challenge2_Title {
             get {
@@ -349,7 +349,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Volver al desafío.
+        ///   Looks up a localized string similar to Back to Challenge.
         /// </summary>
         public static string Challenge3_BackButton {
             get {
@@ -358,7 +358,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Borrar Publicación Del Muro.
+        ///   Looks up a localized string similar to Delete Publication From wall .
         /// </summary>
         public static string Challenge3_Delete {
             get {
@@ -367,7 +367,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En este desafío deberás enviar invitaciones a tus amigos por medio de mensajes y redes sociales, minimo cuatro SMS y la publicación en tu muro. Cuantos mas invites mayor puntaje!.
+        ///   Looks up a localized string similar to In this challenge you have to invite your friends using Facebook or SMS, minimum four SMS and the post on your wall. Remember more friends more score!.
         /// </summary>
         public static string Challenge3_DescriptionHardTxtBlockText {
             get {
@@ -376,7 +376,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En este desafío deberás enviar invitaciones a tus amigos por medio de mensajes y redes sociales, minimo dos SMS y la publicación en tu muro. Cuantos mas invites mayor puntaje!.
+        ///   Looks up a localized string similar to In this challenge you have to invite your friends using Facebook or SMS, minimum two SMS and the post on your wall. Remember more friends more score!.
         /// </summary>
         public static string Challenge3_DescriptionTxtBlockText {
             get {
@@ -385,7 +385,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Listo!.
+        ///   Looks up a localized string similar to Done!.
         /// </summary>
         public static string Challenge3_Done {
             get {
@@ -394,9 +394,9 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Descarga BeatIt!
+        ///   Looks up a localized string similar to Try BeatIt! 
         ///Windows: http://www.windowsphone.com/en-us/store/app/beatit/66fa9546-f6ae-4a10-8acb-91472ac3ff96
-        ///También Disponible Para Andoid!.
+        ///Also available for Android!.
         /// </summary>
         public static string Challenge3_Message {
             get {
@@ -405,7 +405,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mensaje publicado exitosamente.
+        ///   Looks up a localized string similar to Message posted successfully.
         /// </summary>
         public static string Challenge3_MessagePosted {
             get {
@@ -414,7 +414,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nuevo puntaje mas alto!.
+        ///   Looks up a localized string similar to New high score!.
         /// </summary>
         public static string Challenge3_NewHighScore {
             get {
@@ -423,7 +423,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No has superado tu puntaje actual..
+        ///   Looks up a localized string similar to You haven&apos;t beaten your current score.
         /// </summary>
         public static string Challenge3_NotBeat {
             get {
@@ -432,7 +432,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Publicar En El Muro.
+        ///   Looks up a localized string similar to Post On My Wall.
         /// </summary>
         public static string Challenge3_PostWallButton {
             get {
@@ -441,7 +441,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enviar.
+        ///   Looks up a localized string similar to Send.
         /// </summary>
         public static string Challenge3_SendBtn {
             get {
@@ -450,7 +450,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enviar SMS.
+        ///   Looks up a localized string similar to Send SMS.
         /// </summary>
         public static string Challenge3_SmsSend {
             get {
@@ -459,7 +459,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ¿Quieres Jugar?.
+        ///   Looks up a localized string similar to Can You Play?.
         /// </summary>
         public static string Challenge3_Title {
             get {
@@ -468,7 +468,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En este desafío debes callar lo mas pronto posible a el perro presionando el botón rojo. El perro ladrará cinco veces..
+        ///   Looks up a localized string similar to In this challenge you need to shut up the dog as quickly as you can by pressing the red button. The dog will bark five times..
         /// </summary>
         public static string Challenge4_DescriptionHardTxtBlockText {
             get {
@@ -477,7 +477,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En este desafío debes callar lo mas pronto posible a el perro presionando el botón rojo. El perro ladrará tres veces..
+        ///   Looks up a localized string similar to In this challenge you need to shut up the dog as quickly as you can by pressing the red button. The dog will bark three times..
         /// </summary>
         public static string Challenge4_DescriptionTxtBlockText {
             get {
@@ -486,7 +486,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Comenzar!.
+        ///   Looks up a localized string similar to Start!.
         /// </summary>
         public static string Challenge4_StartButton {
             get {
@@ -495,7 +495,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cállate!.
+        ///   Looks up a localized string similar to Shut up!.
         /// </summary>
         public static string Challenge4_StopButton {
             get {
@@ -504,7 +504,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Callar Al Perro!.
+        ///   Looks up a localized string similar to Shut The Dog!.
         /// </summary>
         public static string Challenge4_Title {
             get {
@@ -513,7 +513,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Actual:.
+        ///   Looks up a localized string similar to Current:.
         /// </summary>
         public static string Challenge5_Count {
             get {
@@ -522,7 +522,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En este desafío deberás colisionar la bola roja con la gris la mayor cantidad de veces posible..
+        ///   Looks up a localized string similar to In this challenge you have to hit the red ball with the grey one several times..
         /// </summary>
         public static string Challenge5_DescriptionHardTxtBlockText {
             get {
@@ -531,7 +531,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En este desafío deberás colisionar la bola roja con la gris la mayor cantidad de veces posible..
+        ///   Looks up a localized string similar to In this challenge you have to hit the red ball with the grey one several times..
         /// </summary>
         public static string Challenge5_DescriptionTxtBlockText {
             get {
@@ -540,7 +540,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tiempo restante:.
+        ///   Looks up a localized string similar to Time Left:.
         /// </summary>
         public static string Challenge5_Time {
             get {
@@ -558,7 +558,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Antes de lanzar el dispositivo hacia arriba, procura tener una posicion adecuada para capturarlo cuando el mismo venga bajando..
+        ///   Looks up a localized string similar to Before launching the device up, try to have a proper position to catch it when it comes down, we are NOT responsabe for any damage of your cellphone.
         /// </summary>
         public static string Challenge6_Alert {
             get {
@@ -567,7 +567,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En este desafío debes lanzar el celular lo más alto que puedas, debiendo sobrepasar como mínimo dos metros..
+        ///   Looks up a localized string similar to In this challenge you have to throw your cellphone as high as you can. Minimum you have to reach two meters..
         /// </summary>
         public static string Challenge6_DescriptionHardTxtBlockText {
             get {
@@ -576,7 +576,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En este desafío debes lanzar el celular lo más alto que puedas, debiendo sobrepasar como mínimo un metro..
+        ///   Looks up a localized string similar to In this challenge you have to throw your cellphone as high as you can. Minimum you have to reach one meter..
         /// </summary>
         public static string Challenge6_DescriptionTxtBlockText {
             get {
@@ -594,8 +594,8 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En este desafío debes pulsar el botón que se enciende lo más rápido posible, solamente tienes 30 segundos!
-        ///Recuerda, cuanto mas rápido mayor puntaje!.
+        ///   Looks up a localized string similar to In this challenge you have to catch the button that shows up, you only have 30 seconds.
+        ///Remember do it faster to have more score!.
         /// </summary>
         public static string Challenge7_DescriptionHardTxtBlockText {
             get {
@@ -604,8 +604,8 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En este desafío debes pulsar el botón que se enciende lo más rápido posible, solamente tienes 45 segundos!
-        ///Recuerda, cuanto mas rápido mayor puntaje!.
+        ///   Looks up a localized string similar to In this challenge you have to catch the button that shows up, you only have 45 seconds.
+        ///Remember do it faster to have more score!.
         /// </summary>
         public static string Challenge7_DescriptionTxtBlockText {
             get {
@@ -614,7 +614,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Atrápame Si Puedes.
+        ///   Looks up a localized string similar to Catch Me.
         /// </summary>
         public static string Challenge7_Title {
             get {
@@ -623,7 +623,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to AZUL.
+        ///   Looks up a localized string similar to BLUE.
         /// </summary>
         public static string Challenge8_BlueColorName {
             get {
@@ -632,8 +632,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En este desafío tienes que decidir si el texto y el color coinciden.
-        ///Tienes 45 segundos para acertar la mayor cantidad posible..
+        ///   Looks up a localized string similar to In this challenge you have to decide whether the text and color match. You have 45 seconds to hit as many as possible..
         /// </summary>
         public static string Challenge8_DescriptionHardTxtBlockText {
             get {
@@ -642,8 +641,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En este desafío tienes que decidir si el texto y el color coinciden.
-        ///Tienes 60 segundos para acertar la mayor cantidad posible..
+        ///   Looks up a localized string similar to In this challenge you have to decide whether the text and color match. You have 60 seconds to hit as many as possible..
         /// </summary>
         public static string Challenge8_DescriptionTxtBlockText {
             get {
@@ -652,7 +650,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VERDE.
+        ///   Looks up a localized string similar to GREEN.
         /// </summary>
         public static string Challenge8_GreenColorName {
             get {
@@ -670,7 +668,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to NARANJA.
+        ///   Looks up a localized string similar to ORANGE.
         /// </summary>
         public static string Challenge8_OrangeColorName {
             get {
@@ -679,7 +677,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VIOLETA.
+        ///   Looks up a localized string similar to PURPLE.
         /// </summary>
         public static string Challenge8_PurpleColorName {
             get {
@@ -688,7 +686,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ROJO.
+        ///   Looks up a localized string similar to RED.
         /// </summary>
         public static string Challenge8_RedColorName {
             get {
@@ -697,7 +695,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Color &amp; Text.
+        ///   Looks up a localized string similar to Text &amp; Color.
         /// </summary>
         public static string Challenge8_Title {
             get {
@@ -706,7 +704,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to AMARILLO.
+        ///   Looks up a localized string similar to YELLOW.
         /// </summary>
         public static string Challenge8_YellowColorName {
             get {
@@ -715,7 +713,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Si.
+        ///   Looks up a localized string similar to Yes.
         /// </summary>
         public static string Challenge8_YesButton {
             get {
@@ -724,7 +722,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En este desafío deberás adivinar el nombre de la canción que suena en 20 segundos, 5 veces!.
+        ///   Looks up a localized string similar to In this challenge you have to guess the artist name of the midi for 10 seconds, 5 times!.
         /// </summary>
         public static string Challenge9_DescriptionHardTxtBlockText {
             get {
@@ -733,7 +731,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En este desafío deberás adivinar el nombre del artista de la canción que suena en 10 segundos, 5 veces!.
+        ///   Looks up a localized string similar to In this challenge you have to guess the song name of the midi for 20 seconds, 5 times!.
         /// </summary>
         public static string Challenge9_DescriptionTxtBlockText {
             get {
@@ -742,7 +740,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Comenzar!.
+        ///   Looks up a localized string similar to Start!.
         /// </summary>
         public static string Challenge9_StartButton {
             get {
@@ -760,7 +758,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Intentos:.
+        ///   Looks up a localized string similar to Attempts:.
         /// </summary>
         public static string ChallengeDetail_AttemptsTxtBlockTitle {
             get {
@@ -769,7 +767,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mejor Puntaje.
+        ///   Looks up a localized string similar to Best Score.
         /// </summary>
         public static string ChallengeDetail_BestScoreTxtBlockTitle {
             get {
@@ -778,7 +776,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Detalle.
+        ///   Looks up a localized string similar to Details.
         /// </summary>
         public static string ChallengeDetail_DetailsTxtBlockTitle {
             get {
@@ -787,7 +785,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ultimo Puntaje.
+        ///   Looks up a localized string similar to Last Score.
         /// </summary>
         public static string ChallengeDetail_LastScoreTxtBlockTitle {
             get {
@@ -796,7 +794,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Comienzo:.
+        ///   Looks up a localized string similar to Start Time:.
         /// </summary>
         public static string ChallengeDetail_StartTimeTxtBlockTitle {
             get {
@@ -805,7 +803,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Desafíos.
+        ///   Looks up a localized string similar to Challenges.
         /// </summary>
         public static string HomePage_ChallengesPivotTitle {
             get {
@@ -814,7 +812,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cerrar sesión.
+        ///   Looks up a localized string similar to Logout.
         /// </summary>
         public static string HomePage_LogoutBtnTitle {
             get {
@@ -823,7 +821,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ¿Estas Seguro?.
+        ///   Looks up a localized string similar to Are you sure?.
         /// </summary>
         public static string HomePage_LogoutMessage {
             get {
@@ -832,7 +830,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Perfil.
+        ///   Looks up a localized string similar to Profile.
         /// </summary>
         public static string HomePage_ProfilePivotTitle {
             get {
@@ -841,7 +839,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ha ocurrido un error al actualizar el ranking.
+        ///   Looks up a localized string similar to An error has occurred when updating the ranking.
         /// </summary>
         public static string HomePage_RankingError {
             get {
@@ -859,7 +857,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reintentar.
+        ///   Looks up a localized string similar to Retry.
         /// </summary>
         public static string HomePage_RetryBtnTitle {
             get {
@@ -868,7 +866,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ha ocurrido un error al enviar el puntaje.
+        ///   Looks up a localized string similar to An error has occurred while sending the score.
         /// </summary>
         public static string HomePage_ScoreError {
             get {
@@ -877,7 +875,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ¡Puntaje enviado con exito!.
+        ///   Looks up a localized string similar to Score has been sent successfully!.
         /// </summary>
         public static string HomePage_ScoreSuccess {
             get {
@@ -886,7 +884,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CONFIGURACIONES.
+        ///   Looks up a localized string similar to SETTINGS.
         /// </summary>
         public static string HomePage_SettingsTxtBlockTitle {
             get {
@@ -895,7 +893,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ha ocurrido un error al iniciar sesión.
+        ///   Looks up a localized string similar to An error has occurred when Log In.
         /// </summary>
         public static string Login_Error {
             get {
@@ -904,11 +902,11 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ¿Crees que eres el más habilidoso?
+        ///   Looks up a localized string similar to Do you think you&apos;re the most skilled?
         ///
-        ///Regístrate con tu cuenta de Facebook y accede a 10 desafíos apasionantes!
-        ///Sé el mejor del mundo, supera a todos con tus habilidades y compara tu desempeño en el ránking global.
-        ///Toma más riesgos, más desafíos, más diversión!.
+        ///Register with yout Facebook account and get access to 10 amazing challenges!
+        ///Be the best around the world, beats everyone with your skills and compare your performance in the global ranking.
+        ///Take more risks, more challenges, more fun!.
         /// </summary>
         public static string LoginPage_Description {
             get {
@@ -917,7 +915,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Iniciar Sesión con Facebook.
+        ///   Looks up a localized string similar to Log In with Facebook.
         /// </summary>
         public static string LoginPage_LoginBtnTitle {
             get {
