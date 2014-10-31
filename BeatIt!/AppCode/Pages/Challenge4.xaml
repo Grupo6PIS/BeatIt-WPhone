@@ -56,7 +56,7 @@
             <TextBlock FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="12,300,0,0"
                        Name="TextDescription"
                        Text="{Binding Path=AppResources.Challenge4_DescriptionTxtBlockText, Source={StaticResource LocalizedStrings}}"
-                       Width="414" Height="100" VerticalAlignment="Top" TextWrapping="Wrap" />
+                       Width="414" Height="136" VerticalAlignment="Top" TextWrapping="Wrap" />
 
             <Grid Visibility="Visible" Name="StartGrid">
                 <Rectangle Fill="#FF647687" Height="80" Width="438" VerticalAlignment="Bottom"

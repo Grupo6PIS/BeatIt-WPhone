@@ -57,7 +57,7 @@
             <TextBlock FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="12,300,0,0"
                        Name="TextDescription"
                        Text="{Binding Path=AppResources.Challenge1_DescriptionTxtBlockText, Source={StaticResource LocalizedStrings}}"
-                       Width="414" Height="100" VerticalAlignment="Top" TextWrapping="Wrap" />
+                       Width="414" Height="133" VerticalAlignment="Top" TextWrapping="Wrap" />
 
             <!-- Estas se activan y desactivan de acuerdo si esta comenzado-->
             <Grid Visibility="Visible" Name="StartRunningGrid">

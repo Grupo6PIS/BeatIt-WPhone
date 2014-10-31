@@ -40,7 +40,7 @@
             <!-- Estas se activan y desactivan de acuerdo si esta comenzado-->
             <Grid Visibility="Visible" x:Name="StartPlayGrid">
                 <TextBlock FontWeight="Normal" Height="63" HorizontalAlignment="Left" Margin="10,240,0,0" x:Name="TitleDescription" Text="{Binding AppResources.Challenge1_DescriptionTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="246" FontSize="40" />
-                <TextBlock FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="12,300,0,0" x:Name="TextDescription" Text="{Binding AppResources.Challenge7_DescriptionTxtBlockText, Source={StaticResource LocalizedStrings}}" Width="414" Height="114" VerticalAlignment="Top" TextWrapping="Wrap" />
+                <TextBlock FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="12,300,0,0" x:Name="TextDescription" Text="{Binding AppResources.Challenge7_DescriptionTxtBlockText, Source={StaticResource LocalizedStrings}}" Width="414" Height="166" VerticalAlignment="Top" TextWrapping="Wrap" />
 
                 <Rectangle Fill="#FFD80073" Height="80" Width="430" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="12,0,12,20" IsHitTestVisible="True" x:Name="StartRec" />
                 <TextBlock FontWeight="ExtraBlack" Height="57" HorizontalAlignment="Left" Margin="33,486,0,0" x:Name="Start" Text="{Binding AppResources.Challenge2_StartButton, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="390" FontSize="40" TextAlignment="Center" />

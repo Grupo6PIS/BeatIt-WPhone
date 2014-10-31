@@ -138,7 +138,7 @@ namespace BeatIt_.AppCode.Pages
             // Si es tiempo de desaparecer el timer, lo borramos.
             if (Math.Round((StartTime - tiempoTranscurrido.TotalSeconds), 0) <= _secondsToWakeMeUp[_indice])
             {
-                ShowTime.Text = "Wake Me Up!";
+                ShowTime.Text = AppResources.Challenge2_Title;
                 InProgressGridRectangle.Fill = GetColorFromHexa("#FFe51400");
             }
             else

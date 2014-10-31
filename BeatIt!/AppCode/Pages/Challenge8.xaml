@@ -66,7 +66,7 @@
                 <TextBlock FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="12,300,0,0"
                            Name="TextDescription"
                            Text="{Binding Path=AppResources.Challenge8_DescriptionTxtBlockText, Source={StaticResource LocalizedStrings}}"
-                           Width="414" Height="120" VerticalAlignment="Top" TextWrapping="Wrap" />
+                           Width="414" Height="139" VerticalAlignment="Top" TextWrapping="Wrap" />
                 <Rectangle Fill="#FF0050EF" Height="80" Width="438" VerticalAlignment="Bottom"
                            HorizontalAlignment="Center" Margin="12,0,12,50" IsHitTestVisible="True"
                            Name="StartRectangle" />

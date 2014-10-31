@@ -117,20 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Challenge10_Count" xml:space="preserve">
+    <value>There is @faces people in this photo</value>
+  </data>
   <data name="Challenge10_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to take a picture with five or more friends!</value>
+    <value>In this challenge you should take a picture with five or more, Remember that more people, means highest score!</value>
   </data>
   <data name="Challenge10_DescriptionTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to take a picture with two or more friends!</value>
+    <value>In this challenge you should take a picture with two or more, Remember that more people, means highest score!</value>
   </data>
   <data name="Challenge10_Loading" xml:space="preserve">
-    <value>Analyzing the picture</value>
+    <value>Analyzing 
+the picture</value>
   </data>
   <data name="Challenge10_Title" xml:space="preserve">
     <value>Selfie Groupie!</value>
   </data>
-  <data name="Challenge1_Description" xml:space="preserve">
-    <value>Bump the gray ball as much as possible !</value>
+  <data name="Challenge10_Warning" xml:space="preserve">
+    <value>Please keep in mind that should be distinguished either faces, look forward to some place with good light.</value>
   </data>
   <data name="Challenge1_DescriptionHardTxtBlockText" xml:space="preserve">
     <value>In this challenge you have to run faster than 15 km/h for 45 seconds.</value>
@@ -175,10 +179,10 @@
     <value>Challenge completed!</value>
   </data>
   <data name="Challenge2_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to shake your cellphone when you think the timer reaches 0, the timer will hide 4 times so pay attention.</value>
+    <value>In this challenge you have to shake your phone when you thinks the timer has ended. The timer will hide four times, so pay attention.</value>
   </data>
   <data name="Challenge2_DescriptionTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to shake your cellphone when you think the timer reaches 0, the timer will hide 3 times so pay attention.</value>
+    <value>In this challenge you have to shake your phone when you thinks the timer has ended. The timer will hide three times, so pay attention.</value>
   </data>
   <data name="Challenge2_Finish" xml:space="preserve">
     <value>The challenge is over, you have earned @score points.</value>
@@ -187,9 +191,6 @@
     <value>I'm Ready To Fly!</value>
   </data>
   <data name="Challenge2_StartButton" xml:space="preserve">
-    <value>Start!</value>
-  </data>
-  <data name="Challenge2_StartButton1" xml:space="preserve">
     <value>Start!</value>
   </data>
   <data name="Challenge2_Title" xml:space="preserve">
@@ -202,10 +203,10 @@
     <value>Delete Publication From wall </value>
   </data>
   <data name="Challenge3_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to invite your friends using Facebook or SMS, minimum four SMS and the post on your wall. Remember more friends more score!</value>
+    <value>In this challenge you have to post a link on your Facebook and, also, send four SMS with the link to four different contacts. Remember more friends more score!</value>
   </data>
   <data name="Challenge3_DescriptionTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to invite your friends using Facebook or SMS, minimum two SMS and the post on your wall. Remember more friends more score!</value>
+    <value>In this challenge you have to post a link on your Facebook and, also, send two SMS with the link to two different contacts. Remember more friends more score!</value>
   </data>
   <data name="Challenge3_Done" xml:space="preserve">
     <value>Done!</value>
@@ -237,10 +238,10 @@ Also available for Android!</value>
     <value>Can You Play?</value>
   </data>
   <data name="Challenge4_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>In this challenge you need to shut up the dog as quickly as you can by pressing the red button. The dog will bark five times.</value>
+    <value>In this challenge you have to shut the barking dog up by putting your hand close to the phone as soon as possible. The dog will bark five times.</value>
   </data>
   <data name="Challenge4_DescriptionTxtBlockText" xml:space="preserve">
-    <value>In this challenge you need to shut up the dog as quickly as you can by pressing the red button. The dog will bark three times.</value>
+    <value>In this challenge you have to shut the barking dog up by putting your hand close to the phone as soon as possible. The dog will bark three times.</value>
   </data>
   <data name="Challenge4_StartButton" xml:space="preserve">
     <value>Start!</value>
@@ -255,10 +256,10 @@ Also available for Android!</value>
     <value>Current:</value>
   </data>
   <data name="Challenge5_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to hit the red ball with the grey one several times.</value>
+    <value>In this challenge you must hit the red ball with gray as many times as possible.</value>
   </data>
   <data name="Challenge5_DescriptionTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to hit the red ball with the grey one several times.</value>
+    <value>In this challenge you must hit the red ball with gray as many times as possible.</value>
   </data>
   <data name="Challenge5_Time" xml:space="preserve">
     <value>Time Left:</value>
@@ -270,21 +271,23 @@ Also available for Android!</value>
     <value>Before launching the device up, try to have a proper position to catch it when it comes down, we are NOT responsabe for any damage of your cellphone</value>
   </data>
   <data name="Challenge6_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to throw your cellphone as high as you can. Minimum you have to reach two meters.</value>
+    <value>In this challenge you should throw the phone upward one meters at a minimum height. 
+Remember, the higher higher score!</value>
   </data>
   <data name="Challenge6_DescriptionTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to throw your cellphone as high as you can. Minimum you have to reach one meter.</value>
+    <value>In this challenge you should throw the phone upward one meter at a minimum height. 
+Remember, the higher higher score!</value>
   </data>
   <data name="Challenge6_Title" xml:space="preserve">
     <value>Throw The Phone</value>
   </data>
   <data name="Challenge7_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to catch the button that shows up, you only have 30 seconds.
-Remember do it faster to have more score!</value>
+    <value>In this challenge you must pressed the points lighted as quickly as possible . You must hit as many as possible, you only have 30 seconds! 
+Remember, the faster the highest score!</value>
   </data>
   <data name="Challenge7_DescriptionTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to catch the button that shows up, you only have 45 seconds.
-Remember do it faster to have more score!</value>
+    <value>In this challenge you must pressed the points lighted as quickly as possible . You must hit as many as possible, you only have 45 seconds! 
+Remember, the faster the highest score!</value>
   </data>
   <data name="Challenge7_Title" xml:space="preserve">
     <value>Catch Me</value>
@@ -323,16 +326,16 @@ Remember do it faster to have more score!</value>
     <value>Yes</value>
   </data>
   <data name="Challenge9_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to guess the artist name of the midi for 10 seconds, 5 times!</value>
+    <value>In this challenge you have to guess the artist's name of each song that will be played for 10 seconds, Remember there will be 5 songs!</value>
   </data>
   <data name="Challenge9_DescriptionTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to guess the song name of the midi for 20 seconds, 5 times!</value>
+    <value>In this challenge you have to guess the song’s name of each song that will be played for 10 seconds, Remember there will be 5 songs!</value>
   </data>
   <data name="Challenge9_StartButton" xml:space="preserve">
     <value>Start!</value>
   </data>
   <data name="Challenge9_Title" xml:space="preserve">
-    <value>Song Complete</value>
+    <value>Song Quiz</value>
   </data>
   <data name="ChallengeDetail_AttemptsTxtBlockTitle" xml:space="preserve">
     <value>Attempts:</value>

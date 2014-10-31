@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Globalization;
 using System.Windows;
 using BeatIt_.AppCode.Challenges;
 using BeatIt_.AppCode.Controllers;
 using BeatIt_.AppCode.Interfaces;
+using BeatIt_.Resources;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Tasks;
 using Newtonsoft.Json.Linq;
@@ -65,6 +67,7 @@ namespace BeatIt_.AppCode.Pages
 
         private void hyperlinkButtonStart_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show(AppResources.Challenge10_Warning);
             _photoCameraCapture.Show();
             StartPlayGrid.Visibility = Visibility.Collapsed;
             InProgressGrid.Visibility = Visibility.Visible;
@@ -94,7 +97,7 @@ namespace BeatIt_.AppCode.Pages
                 var cantidad = ((JArray)(json["faces"])).Count;
                _currentChallenge.CompleteChallenge(cantidad);
                 
-                MessageBox.Show("Hay un total de " + cantidad + " personas");
+                MessageBox.Show(AppResources.Challenge10_Count.Replace("@faces",cantidad.ToString(CultureInfo.InvariantCulture)));
                 ProgressBar.Visibility = Visibility.Collapsed;
                 
                 var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
