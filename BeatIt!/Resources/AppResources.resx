@@ -123,6 +123,9 @@
   <data name="Challenge10_DescriptionTxtBlockText" xml:space="preserve">
     <value>In this challenge you have to take a picture with two or more friends!</value>
   </data>
+  <data name="Challenge10_Loading" xml:space="preserve">
+    <value>Analyzing the picture</value>
+  </data>
   <data name="Challenge10_Title" xml:space="preserve">
     <value>Selfie Groupie!</value>
   </data>

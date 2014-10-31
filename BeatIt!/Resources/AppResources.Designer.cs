@@ -277,6 +277,15 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Analyzing the picture.
+        /// </summary>
+        public static string Challenge10_Loading {
+            get {
+                return ResourceManager.GetString("Challenge10_Loading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Selfie Groupie!.
         /// </summary>
         public static string Challenge10_Title {

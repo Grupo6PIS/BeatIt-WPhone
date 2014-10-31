@@ -66,27 +66,19 @@ namespace BeatIt_.AppCode.Pages
         private void hyperlinkButtonStart_Click(object sender, RoutedEventArgs e)
         {
             _photoCameraCapture.Show();
+            StartPlayGrid.Visibility = Visibility.Collapsed;
+            InProgressGrid.Visibility = Visibility.Visible;
             ProgressBar.Visibility = Visibility.Visible;
             
         }
 
         private void CountFacesServices()
         {
-            // HARDCODE >>>>>>
-/*
-            var bitImage = new BitmapImage
-            {
-                CreateOptions = BitmapCreateOptions.None,
-                UriSource = new Uri("/BeatIt!;component/Images/Messi_Cara.png", UriKind.Relative)
-            };
 
-            */
             var writableBitmap = new WriteableBitmap(_image);
             var ms = new MemoryStream();
             writableBitmap.SaveJpeg(ms, _image.PixelWidth, _image.PixelHeight, 0, 100);
             var imageBytes = ms.ToArray();
-
-            //HARDCODE  <<<<<<
 
             var client = new RestClient("https://apicloud-facerect.p.mashape.com");
             var request = new RestRequest("/process-file.json", Method.POST);
