@@ -20,7 +20,8 @@ namespace BeatIt_
         /// </summary>
         public App()
         {
-            Thread.CurrentThread.CurrentCulture = Thread.CurrentThread.CurrentCulture.Name.Contains("es") ? new System.Globalization.CultureInfo("es-ES") : new System.Globalization.CultureInfo("en-US");
+            var culture = Thread.CurrentThread.CurrentCulture.Name;
+            Thread.CurrentThread.CurrentCulture = culture.Contains("es") ? new System.Globalization.CultureInfo("es-ES") : new System.Globalization.CultureInfo("en-US");
 
             // Global handler for uncaught exceptions. 
             UnhandledException += Application_UnhandledException;
