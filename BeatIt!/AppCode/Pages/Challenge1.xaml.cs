@@ -240,6 +240,11 @@ namespace BeatIt_.AppCode.Pages
             if (_isRunning)
             {
                 MessageBox.Show(AppResources.Challenge1_ReduceSpeed);
+                _timer.Stop();
+                if (_useEmulation)
+                {
+                    _speedEmulator.Stop();
+                }
             }
             else
             {

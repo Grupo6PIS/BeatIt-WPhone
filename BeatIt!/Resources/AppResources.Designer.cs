@@ -61,6 +61,42 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to FING - UdelaR - Uruguay.
+        /// </summary>
+        public static string About_Fing {
+            get {
+                return ResourceManager.GetString("About_Fing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Group  Nº:.
+        /// </summary>
+        public static string About_Group {
+            get {
+                return ResourceManager.GetString("About_Group", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Team.
+        /// </summary>
+        public static string About_Team {
+            get {
+                return ResourceManager.GetString("About_Team", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About Us.
+        /// </summary>
+        public static string About_Title {
+            get {
+                return ResourceManager.GetString("About_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to days.
         /// </summary>
         public static string Challenge_Days {

@@ -47,13 +47,13 @@
             <!-- Estas se activan y desactivan de acuerdo si esta comenzado-->
             <Grid Visibility="Collapsed"  Name="InProgressGrid">
                 <Grid Name="ProgressBarLevel1Grid" Visibility="Collapsed">
-                <Rectangle Fill="#FF867A7A" Height="10" Width="122"
+                    <Rectangle Fill="#FF867A7A" Height="10" Width="122"
                            HorizontalAlignment="Left" Margin="12,60,12,0" IsHitTestVisible="True"
                            Name="Item1RectangleLevel1" />
-                <Rectangle Fill="#FF867A7A" Height="10" Width="122"
+                    <Rectangle Fill="#FF867A7A" Height="10" Width="122"
                            HorizontalAlignment="Left" Margin="164,315,0,255" IsHitTestVisible="True"
                            Name="Item2RectangleLevel1" />
-                <Rectangle Fill="#FF867A7A" Width="122"
+                    <Rectangle Fill="#FF867A7A" Width="122"
                            HorizontalAlignment="Left" Margin="316,315,0,255" IsHitTestVisible="True"
                            Name="Item3RectangleLevel1" />
                 </Grid>
@@ -74,8 +74,8 @@
                 </Grid>
 
                 <TextBlock FontSize="28" FontWeight="Normal" Height="52" HorizontalAlignment="Center" Margin="110,399,96,0" Name="titleTime" Text="{Binding Path=AppResources.Challenge1_TimeLeftTxtBlockTitle, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="250" TextAlignment="Center" />
-                <Rectangle Name="InProgressGridRectangle" Fill="#FF00aba9" Height="80" Width="250" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="106,0,100,50" />
-                <TextBlock FontSize="30" FontWeight="ExtraBold" Height="50" HorizontalAlignment="Center" Margin="110,465,100,0" Name="ShowTime" Text="---" VerticalAlignment="Top" Width="246" TextAlignment="Center" />
+                <Rectangle Name="InProgressGridRectangle" Fill="#FF00aba9" Height="80" Width="423" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="15,0,18,50" />
+                <TextBlock FontSize="30" FontWeight="ExtraBold" Height="50" HorizontalAlignment="Center" Margin="17,465,15,0" Name="ShowTime" Text="---" VerticalAlignment="Top" Width="424" TextAlignment="Center" />
             </Grid>
 
             <TextBlock FontWeight="Light" Foreground="White" Height="30" HorizontalAlignment="Left" Margin="230,80,0,0" Name="ShowST" Text="---" VerticalAlignment="Top" Width="196" />

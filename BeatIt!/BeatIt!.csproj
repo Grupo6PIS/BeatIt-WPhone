@@ -135,6 +135,9 @@
     <Compile Include="AppCode\Datatypes\DTStatePersistible.cs" />
     <Compile Include="AppCode\Datatypes\DTChallenge.cs" />
     <Compile Include="AppCode\Interfaces\IFacadeController.cs" />
+    <Compile Include="AppCode\Pages\AboutUs.xaml.cs">
+      <DependentUpon>AboutUs.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AppCode\Pages\Challenge10.xaml.cs">
       <DependentUpon>Challenge10.xaml</DependentUpon>
     </Compile>
@@ -197,6 +200,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AppCode\CustomControls\RankingListItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppCode\Pages\AboutUs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
