@@ -10,11 +10,11 @@
     d:DesignHeight="70" d:DesignWidth="440" Height="70" VerticalAlignment="Stretch">
 
     <Grid x:Name="LayoutRoot" Height="70" ShowGridLines="True" Width="440">
-        <TextBlock Margin="145,15,0,15" Name="nameTxtBlock" Text="Name" FontSize="26" VerticalAlignment="Center" Height="40" Width="219" HorizontalAlignment="Left" />
-        <TextBlock Margin="10,0,0,0" Name="positionTxtBlock" Text="1" TextAlignment="Center" HorizontalAlignment="Left" Width="50" FontSize="20" Height="30" VerticalAlignment="Center" />
-        <Image Margin="75,15,0,15" Name="userImage" Stretch="Fill" HorizontalAlignment="Left" Width="40" Height="40" VerticalAlignment="Center" />
-        <Rectangle Fill="#FF008A00" Height="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Name="separatorRec" />
-        <Rectangle Height="70" HorizontalAlignment="Left" Margin="0" Name="selectedRec" Fill="#FF008A00" VerticalAlignment="Top" Width="8" />
-        <TextBlock FontSize="26" Margin="0,15,10,15" Name="scoreTxtBlock" Text="128" TextAlignment="Right" HorizontalAlignment="Right" Width="67" VerticalAlignment="Center" Height="40" />
+        <TextBlock Margin="145,15,0,15" Name="NameTxtBlock" Text="Name" FontSize="26" VerticalAlignment="Center" Height="40" Width="219" HorizontalAlignment="Left" />
+        <TextBlock Margin="10,0,0,0" Name="PositionTxtBlock" Text="1" TextAlignment="Center" HorizontalAlignment="Left" Width="50" FontSize="20" Height="30" VerticalAlignment="Center" />
+        <Image Margin="75,15,0,15" Name="UserImage" Stretch="Fill" HorizontalAlignment="Left" Width="40" Height="40" VerticalAlignment="Center" />
+        <Rectangle Fill="#FF008A00" Height="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Name="SeparatorRec" />
+        <Rectangle Height="70" HorizontalAlignment="Left" Margin="0" Name="SelectedRec" Fill="#FF008A00" VerticalAlignment="Top" Width="8" />
+        <TextBlock FontSize="26" Margin="0,15,10,15" Name="ScoreTxtBlock" Text="128" TextAlignment="Right" HorizontalAlignment="Right" Width="67" VerticalAlignment="Center" Height="40" />
     </Grid>
 </UserControl>

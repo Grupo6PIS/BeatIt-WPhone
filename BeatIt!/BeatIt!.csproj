@@ -125,8 +125,8 @@
     <Compile Include="AppCode\Classes\User.cs" />
     <Compile Include="AppCode\Controllers\FacadeController.cs" />
     <Compile Include="AppCode\Controllers\WebServicesController.cs" />
-    <Compile Include="AppCode\CustomControls\ChallenesListItem.xaml.cs">
-      <DependentUpon>ChallenesListItem.xaml</DependentUpon>
+    <Compile Include="AppCode\CustomControls\ChallengeListItem.xaml.cs">
+      <DependentUpon>ChallengeListItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="AppCode\CustomControls\RankingListItem.xaml.cs">
       <DependentUpon>RankingListItem.xaml</DependentUpon>
@@ -195,7 +195,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
-    <Page Include="AppCode\CustomControls\ChallenesListItem.xaml">
+    <Page Include="AppCode\CustomControls\ChallengeListItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

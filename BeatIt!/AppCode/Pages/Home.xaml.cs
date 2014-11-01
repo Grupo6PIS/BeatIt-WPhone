@@ -101,18 +101,19 @@ namespace BeatIt_.AppCode.Pages
             foreach (var entry in _facade.getChallenges())
             {
                 var ch = entry.Value;
-                var listItem = new ChallenesListItem {backgroundRec = {Fill = GetColorFromHexa(ch.ColorHex)}};
+                var listItem = new ChallenesListItem {BackgroundRec = {Fill = GetColorFromHexa(ch.ColorHex)}};
                 var str = "/BeatIt!;component/Images/icon_challenge_" + ch.ChallengeId + ".png";
                 var uri = new Uri(str,UriKind.Relative);
-                listItem.image.Source = new BitmapImage(uri);
-                listItem.linkBtn.Click += LinkBtn_Click;
-                listItem.linkBtn.Tag = ch.ChallengeId;
+                listItem.Image.Source = new BitmapImage(uri);
+                listItem.LinkBtn.Click += LinkBtn_Click;
+                listItem.LinkBtn.Tag = ch.ChallengeId;
                 if (!ch.IsEnabled)
                 {
-                    listItem.backgroundRec.Opacity = 0.2;
-                    listItem.image.Opacity = 0.2;
+                    listItem.BackgroundRec.Opacity = 0.2;
+                    listItem.Image.Opacity = 0.2;
                 }
-                listItem.linkBtn.IsEnabled = ch.IsEnabled;
+                listItem.CompletedImage.Visibility = ch.State.CurrentAttempt > 0 ? Visibility.Visible : Visibility.Collapsed;
+                listItem.LinkBtn.IsEnabled = ch.IsEnabled;
                 ChallengesListBox.Items.Add(listItem);
             }
         }
@@ -146,16 +147,16 @@ namespace BeatIt_.AppCode.Pages
             {
                 var listItem = new RankingListItem
                 {
-                    selectedRec =
+                    SelectedRec =
                     {
                         Visibility = _facade.getCurrentUser().UserId.Equals(dtr.UserId) ? Visibility.Visible : Visibility.Collapsed
                     },
-                    positionTxtBlock = {Text = dtr.Position.ToString(CultureInfo.InvariantCulture)},
-                    scoreTxtBlock = {Text = dtr.Score.ToString(CultureInfo.InvariantCulture)},
-                    nameTxtBlock = {Text = dtr.Name}
+                    PositionTxtBlock = {Text = dtr.Position.ToString(CultureInfo.InvariantCulture)},
+                    ScoreTxtBlock = {Text = dtr.Score.ToString(CultureInfo.InvariantCulture)},
+                    NameTxtBlock = {Text = dtr.Name}
                 };
                 var uri = new Uri(dtr.ImageUrl, UriKind.Absolute);
-                listItem.userImage.Source = new BitmapImage(uri);
+                listItem.UserImage.Source = new BitmapImage(uri);
                 RankingListBox.Items.Add(listItem);
             }
         }
