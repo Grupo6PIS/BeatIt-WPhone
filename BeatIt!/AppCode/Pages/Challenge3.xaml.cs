@@ -95,7 +95,7 @@ namespace BeatIt_.AppCode.Pages
         {
             //_currentChallenge = (ChallengeDetail3) _ifc.getChallenge(3);
             var ks = _currentChallenge.CompleteChallenge(false);
-            MessageBox.Show(ks.Key ? AppResources.Challenge3_NewHighScore : AppResources.Challenge3_NotBeat);
+           // MessageBox.Show(ks.Key ? AppResources.Challenge3_NewHighScore : AppResources.Challenge3_NotBeat);
             var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
             NavigationService.Navigate(uri);
         }

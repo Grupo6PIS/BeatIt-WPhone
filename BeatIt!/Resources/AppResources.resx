@@ -121,10 +121,12 @@
     <value>There is @faces people in this photo</value>
   </data>
   <data name="Challenge10_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>In this challenge you should take a picture with five or more, Remember that more people, means highest score!</value>
+    <value>In this challenge you have to take a picture with five or more people.
+Remember that more faces in the pictures, means highest score!</value>
   </data>
   <data name="Challenge10_DescriptionTxtBlockText" xml:space="preserve">
-    <value>In this challenge you should take a picture with two or more, Remember that more people, means highest score!</value>
+    <value>In this challenge you have to take a picture with two or more people.
+Remember that more faces in the pictures, means highest score!</value>
   </data>
   <data name="Challenge10_Loading" xml:space="preserve">
     <value>Analyzing 
@@ -226,7 +228,7 @@ Also available for Android!</value>
     <value>You haven't beaten your current score</value>
   </data>
   <data name="Challenge3_PostWallButton" xml:space="preserve">
-    <value>Post On My Wall</value>
+    <value>Post on Facebook</value>
   </data>
   <data name="Challenge3_SendBtn" xml:space="preserve">
     <value>Send</value>
@@ -256,13 +258,13 @@ Also available for Android!</value>
     <value>Current:</value>
   </data>
   <data name="Challenge5_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>In this challenge you must hit the red ball with gray as many times as possible.</value>
+    <value>In this challenge you have to bump the red ball against gray as many times as possible. You only have 60 seconds!.</value>
   </data>
   <data name="Challenge5_DescriptionTxtBlockText" xml:space="preserve">
-    <value>In this challenge you must hit the red ball with gray as many times as possible.</value>
+    <value>In this challenge you have to bump the red ball against gray as many times as possible. You only have 60 seconds!.</value>
   </data>
   <data name="Challenge5_Time" xml:space="preserve">
-    <value>Time Left:</value>
+    <value>Remaining time:</value>
   </data>
   <data name="Challenge5_Title" xml:space="preserve">
     <value>Bouncing Game!</value>
@@ -271,23 +273,23 @@ Also available for Android!</value>
     <value>Before launching the device up, try to have a proper position to catch it when it comes down, we are NOT responsabe for any damage of your cellphone</value>
   </data>
   <data name="Challenge6_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>In this challenge you should throw the phone upward one meters at a minimum height. 
+    <value>In this challenge you have to throw the phone upward one meters at a minimum height. 
 Remember, the higher higher score!</value>
   </data>
   <data name="Challenge6_DescriptionTxtBlockText" xml:space="preserve">
-    <value>In this challenge you should throw the phone upward one meter at a minimum height. 
+    <value>In this challenge you have to throw the phone upward one meter at a minimum height. 
 Remember, the higher higher score!</value>
   </data>
   <data name="Challenge6_Title" xml:space="preserve">
     <value>Throw The Phone</value>
   </data>
   <data name="Challenge7_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>In this challenge you must pressed the points lighted as quickly as possible . You must hit as many as possible, you only have 30 seconds! 
-Remember, the faster the highest score!</value>
+    <value>In this challenge you have to press lighted squares as quickly as possible. Hurry up, you only have 30 seconds! 
+Remember, the faster, the highest score!</value>
   </data>
   <data name="Challenge7_DescriptionTxtBlockText" xml:space="preserve">
-    <value>In this challenge you must pressed the points lighted as quickly as possible . You must hit as many as possible, you only have 45 seconds! 
-Remember, the faster the highest score!</value>
+    <value>In this challenge you have to press lighted squares as quickly as possible. Hurry up, you only have 45 seconds! 
+Remember, the faster, the highest score!</value>
   </data>
   <data name="Challenge7_Title" xml:space="preserve">
     <value>Catch Me</value>
@@ -326,10 +328,12 @@ Remember, the faster the highest score!</value>
     <value>Yes</value>
   </data>
   <data name="Challenge9_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to guess the artist's name of each song that will be played for 10 seconds, Remember there will be 5 songs!</value>
+    <value>In this challenge you have to guess the artist's name of each song that will be played for 10 seconds.
+Remember there will be 5 songs!</value>
   </data>
   <data name="Challenge9_DescriptionTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to guess the song’s name of each song that will be played for 10 seconds, Remember there will be 5 songs!</value>
+    <value>In this challenge you have to guess the song’s name of each song that will be played for 10 seconds.
+Remember there will be 5 songs!</value>
   </data>
   <data name="Challenge9_StartButton" xml:space="preserve">
     <value>Start!</value>
@@ -406,7 +410,7 @@ Remember, the faster the highest score!</value>
   <data name="LoginPage_Description" xml:space="preserve">
     <value>Do you think you're the most skilled?
 
-Register with yout Facebook account and get access to 10 amazing challenges!
+Register with your Facebook account and get access to 10 amazing challenges!
 Be the best around the world, beats everyone with your skills and compare your performance in the global ranking.
 Take more risks, more challenges, more fun!</value>
   </data>

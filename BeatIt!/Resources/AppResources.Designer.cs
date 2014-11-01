@@ -259,7 +259,8 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In this challenge you should take a picture with five or more, Remember that more people, means highest score!.
+        ///   Looks up a localized string similar to In this challenge you have to take a picture with five or more people.
+        ///Remember that more faces in the pictures, means highest score!.
         /// </summary>
         public static string Challenge10_DescriptionHardTxtBlockText {
             get {
@@ -268,7 +269,8 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In this challenge you should take a picture with two or more, Remember that more people, means highest score!.
+        ///   Looks up a localized string similar to In this challenge you have to take a picture with two or more people.
+        ///Remember that more faces in the pictures, means highest score!.
         /// </summary>
         public static string Challenge10_DescriptionTxtBlockText {
             get {
@@ -442,7 +444,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Post On My Wall.
+        ///   Looks up a localized string similar to Post on Facebook.
         /// </summary>
         public static string Challenge3_PostWallButton {
             get {
@@ -532,7 +534,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In this challenge you must hit the red ball with gray as many times as possible..
+        ///   Looks up a localized string similar to In this challenge you have to bump the red ball against gray as many times as possible. You only have 60 seconds!..
         /// </summary>
         public static string Challenge5_DescriptionHardTxtBlockText {
             get {
@@ -541,7 +543,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In this challenge you must hit the red ball with gray as many times as possible..
+        ///   Looks up a localized string similar to In this challenge you have to bump the red ball against gray as many times as possible. You only have 60 seconds!..
         /// </summary>
         public static string Challenge5_DescriptionTxtBlockText {
             get {
@@ -550,7 +552,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Time Left:.
+        ///   Looks up a localized string similar to Remaining time:.
         /// </summary>
         public static string Challenge5_Time {
             get {
@@ -577,7 +579,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In this challenge you should throw the phone upward one meters at a minimum height. 
+        ///   Looks up a localized string similar to In this challenge you have to throw the phone upward one meters at a minimum height. 
         ///Remember, the higher higher score!.
         /// </summary>
         public static string Challenge6_DescriptionHardTxtBlockText {
@@ -587,7 +589,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In this challenge you should throw the phone upward one meter at a minimum height. 
+        ///   Looks up a localized string similar to In this challenge you have to throw the phone upward one meter at a minimum height. 
         ///Remember, the higher higher score!.
         /// </summary>
         public static string Challenge6_DescriptionTxtBlockText {
@@ -606,8 +608,8 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In this challenge you must pressed the points lighted as quickly as possible . You must hit as many as possible, you only have 30 seconds! 
-        ///Remember, the faster the highest score!.
+        ///   Looks up a localized string similar to In this challenge you have to press lighted squares as quickly as possible. Hurry up, you only have 30 seconds! 
+        ///Remember, the faster, the highest score!.
         /// </summary>
         public static string Challenge7_DescriptionHardTxtBlockText {
             get {
@@ -616,8 +618,8 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In this challenge you must pressed the points lighted as quickly as possible . You must hit as many as possible, you only have 45 seconds! 
-        ///Remember, the faster the highest score!.
+        ///   Looks up a localized string similar to In this challenge you have to press lighted squares as quickly as possible. Hurry up, you only have 45 seconds! 
+        ///Remember, the faster, the highest score!.
         /// </summary>
         public static string Challenge7_DescriptionTxtBlockText {
             get {
@@ -734,7 +736,8 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In this challenge you have to guess the artist&apos;s name of each song that will be played for 10 seconds, Remember there will be 5 songs!.
+        ///   Looks up a localized string similar to In this challenge you have to guess the artist&apos;s name of each song that will be played for 10 seconds.
+        ///Remember there will be 5 songs!.
         /// </summary>
         public static string Challenge9_DescriptionHardTxtBlockText {
             get {
@@ -743,7 +746,8 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In this challenge you have to guess the song’s name of each song that will be played for 10 seconds, Remember there will be 5 songs!.
+        ///   Looks up a localized string similar to In this challenge you have to guess the song’s name of each song that will be played for 10 seconds.
+        ///Remember there will be 5 songs!.
         /// </summary>
         public static string Challenge9_DescriptionTxtBlockText {
             get {
@@ -916,7 +920,7 @@ namespace BeatIt_.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Do you think you&apos;re the most skilled?
         ///
-        ///Register with yout Facebook account and get access to 10 amazing challenges!
+        ///Register with your Facebook account and get access to 10 amazing challenges!
         ///Be the best around the world, beats everyone with your skills and compare your performance in the global ranking.
         ///Take more risks, more challenges, more fun!.
         /// </summary>

@@ -121,26 +121,28 @@
     <value>Hay un total de @faces personas en esa foto</value>
   </data>
   <data name="Challenge10_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>En este desafío debes tomar una fotografía con cinco personas o más, Recuerda cuántas más personas, mayor puntaje!</value>
+    <value>En este desafío debes tomar una fotografía con cinco personas o más.
+Recuerda cuántas más personas, mayor puntaje!</value>
   </data>
   <data name="Challenge10_DescriptionTxtBlockText" xml:space="preserve">
-    <value>En este desafío debes tomar una fotografía con dos personas o más, Recuerda cuántas más personas, mayor puntaje!</value>
+    <value>En este desafío debes tomar una fotografía con dos personas o más.
+Recuerda cuántas más personas, mayor puntaje!</value>
   </data>
   <data name="Challenge10_Loading" xml:space="preserve">
     <value>Analizando
 la fotografía</value>
   </data>
   <data name="Challenge10_Title" xml:space="preserve">
-    <value>Selfie En Grupo!</value>
+    <value>Selfie Groupie!</value>
   </data>
   <data name="Challenge10_Warning" xml:space="preserve">
     <value>Por favor, ten en consideración que deben distinguirse bien las caras, busca algún lugar con buena luminosidad</value>
   </data>
   <data name="Challenge1_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>En este desafío debes correr a más de 15 km/h durante 45 segundos.</value>
+    <value>En este desafío deberás correr a más de 15 km/h durante 45 segundos.</value>
   </data>
   <data name="Challenge1_DescriptionTxtBlockText" xml:space="preserve">
-    <value>En este desafío debes correr a más de 10 km/h durante 30 segundos.</value>
+    <value>En este desafío deberás correr a más de 10 km/h durante 30 segundos.</value>
   </data>
   <data name="Challenge1_DescriptionTxtBlockTitle" xml:space="preserve">
     <value>Descripción</value>
@@ -203,10 +205,10 @@ la fotografía</value>
     <value>Borrar Publicación Del Muro</value>
   </data>
   <data name="Challenge3_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>En este desafío deberás publicar un link en tu biografía de Facebook y deberás, también, enviar cuatro mensajes de texto a cuatro contactos diferentes con el link, cuantos mas invites mayor puntaje!.</value>
+    <value>En este desafío deberás publicar un link en tu biografía de Facebook y deberás, también, enviar cuatro mensajes de texto a cuatro contactos diferentes con el link, cuantos más invites mayor puntaje!.</value>
   </data>
   <data name="Challenge3_DescriptionTxtBlockText" xml:space="preserve">
-    <value>En este desafío deberás publicar un link en tu biografía de Facebook y deberás, también, enviar dos mensajes de texto a dos contactos diferentes con el link, cuantos mas invites mayor puntaje!.</value>
+    <value>En este desafío deberás publicar un link en tu biografía de Facebook y deberás, también, enviar dos mensajes de texto a dos contactos diferentes con el link, cuantos más invites mayor puntaje!.</value>
   </data>
   <data name="Challenge3_Done" xml:space="preserve">
     <value>Listo!</value>
@@ -226,7 +228,7 @@ También Disponible Para Andoid!</value>
     <value>No has superado tu puntaje actual.</value>
   </data>
   <data name="Challenge3_PostWallButton" xml:space="preserve">
-    <value>Publicar En El Muro</value>
+    <value>Publicar en Facebook</value>
   </data>
   <data name="Challenge3_SendBtn" xml:space="preserve">
     <value>Enviar</value>
@@ -238,10 +240,10 @@ También Disponible Para Andoid!</value>
     <value>¿Quieres Jugar?</value>
   </data>
   <data name="Challenge4_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>En este desafío deberás callar al perro cuando ladre, Para ello debes presionar el botón rojo lo más rápido posible. El perro ladrará cinco veces.</value>
+    <value>En este desafío deberás callar al perro cuando ladre, para ello debes presionar el botón rojo lo más rápido posible. El perro ladrará cinco veces.</value>
   </data>
   <data name="Challenge4_DescriptionTxtBlockText" xml:space="preserve">
-    <value>En este desafío deberás callar al perro cuando ladre, Para ello debes presionar el botón rojo lo más rápido posible. El perro ladrará tres veces.</value>
+    <value>En este desafío deberás callar al perro cuando ladre, para ello debes presionar el botón rojo lo más rápido posible. El perro ladrará tres veces.</value>
   </data>
   <data name="Challenge4_StartButton" xml:space="preserve">
     <value>Comenzar!</value>
@@ -256,10 +258,12 @@ También Disponible Para Andoid!</value>
     <value>Actual:</value>
   </data>
   <data name="Challenge5_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>En este desafío deberás chocar la bola roja con la gris la mayor cantidad de veces posible.</value>
+    <value>En este desafío deberás chocar la bola roja con la gris la mayor cantidad de veces posible. 
+Solamente tienes 60 segundos!</value>
   </data>
   <data name="Challenge5_DescriptionTxtBlockText" xml:space="preserve">
-    <value>En este desafío deberás chocar la bola roja con la gris la mayor cantidad de veces posible.</value>
+    <value>En este desafío deberás chocar la bola roja con la gris la mayor cantidad de veces posible. 
+Solamente tienes 60 segundos!</value>
   </data>
   <data name="Challenge5_Time" xml:space="preserve">
     <value>Tiempo restante:</value>
@@ -271,22 +275,22 @@ También Disponible Para Andoid!</value>
     <value>Antes de lanzar el dispositivo hacia arriba, procura tener una posicion adecuada para capturarlo cuando el mismo venga bajando.</value>
   </data>
   <data name="Challenge6_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>En este desafío debes lanzar el celular hacia arriba hasta alcanzar dos metros de altura como minimo.
+    <value>En este desafío deberás lanzar el celular hacia arriba hasta alcanzar dos metros de altura como mínimo
 Recuerda, cuanto más alto mayor puntaje!</value>
   </data>
   <data name="Challenge6_DescriptionTxtBlockText" xml:space="preserve">
-    <value>En este desafío debes lanzar el celular hacia arriba hasta alcanzar un metro de altura como minimo.
+    <value>En este desafío deberás lanzar el celular hacia arriba hasta alcanzar un metro de altura como mínimo
 Recuerda, cuanto más alto mayor puntaje!</value>
   </data>
   <data name="Challenge6_Title" xml:space="preserve">
-    <value>Throw The Phone</value>
+    <value>Celular Volador</value>
   </data>
   <data name="Challenge7_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>En este desafío debes pulsar el botón que se enciende lo más rápido posible, solamente tienes 30 segundos!
+    <value>En este desafío deberás pulsar el botón que se enciende lo más rápido posible, solamente tienes 30 segundos!
 Recuerda, cuanto más rápido mayor puntaje!</value>
   </data>
   <data name="Challenge7_DescriptionTxtBlockText" xml:space="preserve">
-    <value>En este desafío debes pulsar el botón que se enciende lo más rápido posible, solamente tienes 45 segundos!
+    <value>En este desafío deberás pulsar el botón que se enciende lo más rápido posible, solamente tienes 45 segundos!
 Recuerda, cuanto más rápido mayor puntaje!</value>
   </data>
   <data name="Challenge7_Title" xml:space="preserve">
@@ -296,10 +300,10 @@ Recuerda, cuanto más rápido mayor puntaje!</value>
     <value>AZUL</value>
   </data>
   <data name="Challenge8_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>En este desafío tienes que decidir si el texto y el color coinciden. Tienes 45 segundos para acertar la mayor cantidad posible.</value>
+    <value>En este desafío deberás decidir si el texto y el color coinciden. Tienes 45 segundos para acertar la mayor cantidad posible.</value>
   </data>
   <data name="Challenge8_DescriptionTxtBlockText" xml:space="preserve">
-    <value>En este desafío tienes que decidir si el texto y el color coinciden. Tienes 60 segundos para acertar la mayor cantidad posible.</value>
+    <value>En este desafío deberás decidir si el texto y el color coinciden. Tienes 60 segundos para acertar la mayor cantidad posible.</value>
   </data>
   <data name="Challenge8_GreenColorName" xml:space="preserve">
     <value>VERDE</value>
@@ -317,7 +321,7 @@ Recuerda, cuanto más rápido mayor puntaje!</value>
     <value>ROJO</value>
   </data>
   <data name="Challenge8_Title" xml:space="preserve">
-    <value>Color &amp; Text</value>
+    <value>Color y Texto</value>
   </data>
   <data name="Challenge8_YellowColorName" xml:space="preserve">
     <value>AMARILLO</value>
@@ -326,10 +330,12 @@ Recuerda, cuanto más rápido mayor puntaje!</value>
     <value>Si</value>
   </data>
   <data name="Challenge9_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>En este desafío deberás adivinar el nombre de cada canción que sonará por en 20 segundos, Recuerda que son 5 canciones!</value>
+    <value>En este desafío deberás adivinar el nombre de cada canción que sonará por 20 segundos.
+Recuerda que son 5 canciones!</value>
   </data>
   <data name="Challenge9_DescriptionTxtBlockText" xml:space="preserve">
-    <value>En este desafío deberás adivinar el nombre del artista de cada canción que sonará por en 10 segundos, Recuerda que son 5 canciones!</value>
+    <value>En este desafío deberás adivinar el nombre del artista de cada canción que sonará por 10 segundos.
+Recuerda que son 5 canciones!</value>
   </data>
   <data name="Challenge9_StartButton" xml:space="preserve">
     <value>Comenzar!</value>
