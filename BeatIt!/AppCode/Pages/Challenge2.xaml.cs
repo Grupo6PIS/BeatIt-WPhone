@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Navigation;
 using System.Windows.Resources;
 using System.Windows.Threading;
 using BeatIt_.AppCode.Challenges;
@@ -66,7 +67,7 @@ namespace BeatIt_.AppCode.Pages
 
         private void Inicializar()
         {
-            // Si el acelerometro no es soportado por el dispositivo, mostramos un mensaje y volvemos al listado de desafios.
+            // If the accelerometer is not supported by the device, show a message and return to the list of challenges.
             if (!Accelerometer.IsSupported)
             {
                 MessageBox.Show(AppResources.Challenge_NotSuported);
@@ -77,15 +78,14 @@ namespace BeatIt_.AppCode.Pages
                 });
             }
 
-            // OBTENEMOS LA INSTANCIA DEL DESAFIO.
-            /* hay que prolijear esto con una factory */
+            // WE GET THE INSTANCE OF CHALLENGE.
             _ifc = FacadeController.GetInstance();
             _currentChallenge = (ChallengeDetail2)_ifc.getChallenge(2);
 
-            // Si ya juegue todos los intentos, muestro un mensaje y vuelvo al detalle del desafio
+            // If you already play all attempts, a message is displayed and return to the detail of the challenge
             if (_currentChallenge.State.CurrentAttempt >= _currentChallenge.MaxAttempt)
             {
-                // Si por alguna razon ingresa al desafio con una cantidad de intentos mayor a la permitida, se setea en la mayor.
+                // If for some reason enters the challenge with an amount greater than allowed attempts, it is set to the maximum.
                 _currentChallenge.State.CurrentAttempt = _currentChallenge.MaxAttempt;
                 FacadeController.GetInstance().SaveState(_currentChallenge.State);
 
@@ -97,26 +97,26 @@ namespace BeatIt_.AppCode.Pages
                 });
             }
 
-            // INICIALIZAMOS LAS ETIQUETAS DEL DETALLE DEL DESAFIO
+            // Initialize LABEL DETAIL CHALLENGE
             ShowST.Text = _currentChallenge.GetDtChallenge().StartTime.ToString(CultureInfo.InvariantCulture);
-            // Tiempo de iniciado el desafio.
-            ShowToBeat.Text = _currentChallenge.State.BestScore + " pts"; // Puntaje a vencer.
-            ShowDuration.Text = _currentChallenge.GetDurationString(); // Tiempo retante para realizar el desafio.   
-            ShowTime.Text = "---"; // Tiempo transcurrido.
+            // Time started the challenge.
+            ShowToBeat.Text = _currentChallenge.State.BestScore + " pts"; // Score to beat.
+            ShowDuration.Text = _currentChallenge.GetDurationString(); // Challenging time for the challenge.   
+            ShowTime.Text = "---"; // Elapsed time.
             textDescription.Text = _currentChallenge.Description;
 
-            // IINICIALIZAMOS EL TIMER
+            // We initialize the TIMER
             _timer = new DispatcherTimer { Interval = new TimeSpan(0, 0, 0, 0, 100) };
             _timer.Tick += TimerTick;
 
-            // INICIALIZAMOS EL ACELEROMETRO.
+            // We initialize the ACCELEROMETER
             _acelerometro = new Accelerometer();
 
-            // ACIERTOS            
+            // SUCCESS            
             _aciertos = 0;
             _indice = 0;
 
-            // Color del Boton start.
+            // Color Button start.
             InProgressGridRectangle.Fill = GetColorFromHexa(_currentChallenge.ColorHex);
 
             // Save the rectangles in array.
@@ -135,7 +135,7 @@ namespace BeatIt_.AppCode.Pages
             var tiempoTranscurrido = _stopwatch.Elapsed;
             var aux = _startTime.Add(tiempoTranscurrido);
 
-            // Si es tiempo de desaparecer el timer, lo borramos.
+            // If it's time to disappear timer, delete it.
             if (Math.Round((StartTime - tiempoTranscurrido.TotalSeconds), 0) <= _secondsToWakeMeUp[_indice])
             {
                 ShowTime.Text = AppResources.Challenge2_Title;
@@ -150,27 +150,24 @@ namespace BeatIt_.AppCode.Pages
             }
 
 
-            if (aux > _finishTime && (aux - _finishTime).TotalMilliseconds > 500) // Si me pase del tiempo y no desperte a nadie, termina el juego.
+            if (aux > _finishTime && (aux - _finishTime).TotalMilliseconds > 500) // If I pass the time and not anyone woke, the game ends.
             {
                 _indice++;
 
                 FillProgressBar(_indice - 1, true, _currentChallenge.Level);
 
-                if (_indice == _secondsToWakeMeUp.Length) // Si lla recorrimos todas las despertadas.
+                if (_indice == _secondsToWakeMeUp.Length) // If already toured all awakened.
                 {
                     _timer.Stop();
                     _acelerometro.Stop();
                     _stopwatch.Stop();
-
-                    //MessageBox.Show(AppResources.Challenge2_Finish.Replace("@score",
-                    //    _currentChallenge.CalculateScore(_aciertos).ToString(CultureInfo.InvariantCulture)));
 
                     _currentChallenge.CompleteChallenge(_aciertos);
 
                     var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
                     NavigationService.Navigate(uri);
                 }
-                else // Tengo que reiniciar el sistema.
+                else // I have to reboot.
                 {
                     RestartIteration();
                 }
@@ -207,29 +204,28 @@ namespace BeatIt_.AppCode.Pages
         }
 
         /// <summary>
-        /// Este metodo es llamado cuando existe un cambio en los datos del acelerometro, en el mismo se determinara
-        /// si la aceleración captada es considerable, en dicho caso:
-        /// Si (Me desperto a tiempo)
+        /// This method is called when there is a change in the accelerometer data, the same is 
+        /// to determine whether the sensed acceleration is significant, in that case:
+        /// IF (WAKE ME UP)
         ///     aciertos ++
-        ///     Si (no quedan por despertar)
-        ///         finalizar
+        ///     IF (there are no attempts to wake up on time)
+        ///         finish
         ///     else
-        ///         volver a inciar con el siguiente a despertar.
+        ///         retart with the next attempt.
         /// else
-        ///     finalizar
+        ///     finish
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void acelerometro_CurrentValueChanged(object sender, SensorReadingEventArgs<AccelerometerReading> e)
         {
 
-            //Transladamos los datos a recoger del BackgroundThread y los enviamos al MainThread
             Dispatcher.BeginInvoke(() =>
             {
                 var vector = e.SensorReading.Acceleration;
 
-                if ((Math.Abs(Math.Round(Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y + vector.Z * vector.Z), 1)) > 2) && // Si Sacudi el celular lo suficiente.
-                    _stopwatch.ElapsedMilliseconds > (StartTime - _secondsToWakeMeUp[_indice]) * 1000)  // Y ya no estoy mostrando el ctronometro.
+                if ((Math.Abs(Math.Round(Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y + vector.Z * vector.Z), 1)) > 2) && // If I shook the phone enough.
+                    _stopwatch.ElapsedMilliseconds > (StartTime - _secondsToWakeMeUp[_indice]) * 1000)  // Y ya no estoy mostrando el cronometro.
                 {
                     
 
@@ -239,7 +235,7 @@ namespace BeatIt_.AppCode.Pages
 
                     _indice ++;
 
-                    if (Math.Abs(StartTime*1000 - _stopwatch.ElapsedMilliseconds) <= 500) // Si me desperto a tiempo.
+                    if (Math.Abs(StartTime*1000 - _stopwatch.ElapsedMilliseconds) <= 500) // If I woke up on time.
                     {
                         PlaySound("/BeatIt!;component/Sounds/ring.wav");
                         _aciertos ++;
@@ -250,17 +246,14 @@ namespace BeatIt_.AppCode.Pages
                         PlaySound("/BeatIt!;component/Sounds/fail.wav");
                         FillProgressBar(_indice - 1, true, _currentChallenge.Level);
                     }
-                    if (_indice == _secondsToWakeMeUp.Length) // Si no quedan despertadas por intentar.
+                    if (_indice == _secondsToWakeMeUp.Length) // If there are no attempts
                     {
                         _currentChallenge.CompleteChallenge(_aciertos);
-
-                        // No funciona dentro del begin invoke.
-                        //MessageBox.Show("El desafio ha finalizado, ha obtenido " + _currentChallenge.CalculatPuntaje(_aciertos).ToString(CultureInfo.InvariantCulture) + " puntos.");                                                
 
                         var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
                         NavigationService.Navigate(uri);
                     }
-                    else // Intentamos con la siguiente despertada.
+                    else // We tried to wake me up the next time.
                         RestartIteration();
                 }
             });
@@ -309,6 +302,20 @@ namespace BeatIt_.AppCode.Pages
             Rectangle r = level == 1 ? _progresRectangles[indice] : _progresRectangles[indice + 3];
 
             r.Fill = mySolidColorBrush;
+        }
+
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            _timer.Stop();
+            _acelerometro.Stop();
+
+            base.OnBackKeyPress(e);
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            Inicializar();
+            base.OnNavigatedTo(e);
         }
     }
 }
