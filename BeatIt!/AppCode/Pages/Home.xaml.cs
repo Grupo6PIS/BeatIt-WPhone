@@ -253,6 +253,11 @@ namespace BeatIt_.AppCode.Pages
                 Dispatcher.BeginInvoke(() => MessageBox.Show(AppResources.HomePage_ScoreSuccess));   
             }
         }
+
+        private void AboutBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/BeatIt!;component/AppCode/Pages/AboutUs.xaml", UriKind.Relative));
+        }
         ////////////////////////////////////////////////////////////////////////////
     }
 }

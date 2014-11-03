@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About_Fing" xml:space="preserve">
-    <value>FING - UdelaR - Uruguay</value>
+    <value>PIS - FING - UdelaR</value>
   </data>
   <data name="About_Group" xml:space="preserve">
     <value>Group  Nº:</value>
@@ -128,6 +128,9 @@
   </data>
   <data name="About_Title" xml:space="preserve">
     <value>About Us</value>
+  </data>
+  <data name="About_Uruguay" xml:space="preserve">
+    <value>Uruguay - 2014</value>
   </data>
   <data name="Challenge10_Count" xml:space="preserve">
     <value>There is @faces people in this photo</value>

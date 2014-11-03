@@ -61,7 +61,7 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to FING - UdelaR - Uruguay.
+        ///   Looks up a localized string similar to PIS - FING - UdelaR.
         /// </summary>
         public static string About_Fing {
             get {
@@ -93,6 +93,15 @@ namespace BeatIt_.Resources {
         public static string About_Title {
             get {
                 return ResourceManager.GetString("About_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uruguay - 2014.
+        /// </summary>
+        public static string About_Uruguay {
+            get {
+                return ResourceManager.GetString("About_Uruguay", resourceCulture);
             }
         }
         

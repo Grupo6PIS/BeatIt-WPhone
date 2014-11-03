@@ -48,21 +48,24 @@
             </Grid>
 
             <!-- Estas se activan y desactivan de acuerdo si esta comenzado-->
-            <Grid Visibility="Collapsed"  x:Name="InProgressGrid">
+            <Grid Visibility="Collapsed"  x:Name="InProgressGrid" Margin="0,16,0,-16">
+                <Image x:Name="ClockImage" HorizontalAlignment="Left" Height="30" Margin="7,211,0,0" VerticalAlignment="Top" Width="30" Source="/BeatIt!;component/Images/clock.png"/>
+                <ProgressBar Name="PBar" HorizontalAlignment="Left" VerticalAlignment="Center" Height="15" Width="415" Margin="32,219,0,346" Background="White" Foreground="White"/>
+
                 <Rectangle Fill="#FFe51400" Height="10" Width="79" Opacity="0.3"
-                           HorizontalAlignment="Right" Margin="0,240,362,330" IsHitTestVisible="True"
+                           HorizontalAlignment="Right" Margin="0,248,362,322" IsHitTestVisible="True"
                            Name="Item01Rectangle" />
                 <Rectangle Fill="#FFe51400" Height="10" Width="82" Opacity="0.3"
-                           HorizontalAlignment="Left" Margin="97,240,0,330" IsHitTestVisible="True"
+                           HorizontalAlignment="Left" Margin="97,248,0,322" IsHitTestVisible="True"
                            Name="Item02Rectangle" />
                 <Rectangle Fill="#FFe51400" Height="10" Width="82" Opacity="0.3"
-                           HorizontalAlignment="Left" Margin="182,240,0,330" IsHitTestVisible="True"
+                           HorizontalAlignment="Left" Margin="182,248,0,322" IsHitTestVisible="True"
                            Name="Item03Rectangle" />
                 <Rectangle Fill="#FFe51400" Height="10" Width="82" Opacity="0.3"
-                           HorizontalAlignment="Left" Margin="267,240,0,330" IsHitTestVisible="True"
+                           HorizontalAlignment="Left" Margin="267,248,0,322" IsHitTestVisible="True"
                            Name="Item04Rectangle" />
                 <Rectangle Fill="#FFe51400" Height="10" Width="82" Opacity="0.3"
-                           HorizontalAlignment="Left" Margin="352,240,0,330" IsHitTestVisible="True"
+                           HorizontalAlignment="Left" Margin="352,248,0,322" IsHitTestVisible="True"
                            Name="Item05Rectangle" />
 
                 <!--Play Grid-->

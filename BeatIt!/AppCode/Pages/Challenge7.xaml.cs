@@ -62,9 +62,12 @@ namespace BeatIt_.AppCode.Pages
 
             _good = 0;
             _loose = false;
-            _stopTimer = new DispatcherTimer {Interval = new TimeSpan(0, 0, _currentChallenge.TimerValues)};
+            _stopTimer = new DispatcherTimer {Interval = new TimeSpan(0, 0, 0, 1)};
             _stopTimer.Tick += TickStopTimer;
             _stopTimer.Start();
+            PBar.Value = 0;
+            PBar.Minimum = 0;
+            PBar.Maximum = _currentChallenge.TimerValues;
         }
 
         private int _good;
@@ -118,7 +121,9 @@ namespace BeatIt_.AppCode.Pages
 
         private void TickStopTimer(object o, EventArgs e)
         {
-            _loose = true;
+            this.PBar.Value += 1;
+            if ((int)PBar.Value == _currentChallenge.TimerValues)
+                _loose = true;
         }
 
 
