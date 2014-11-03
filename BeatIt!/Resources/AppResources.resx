@@ -143,6 +143,9 @@ Remember that more faces in the pictures, means highest score!</value>
     <value>In this challenge you have to take a picture with two or more people.
 Remember that more faces in the pictures, means highest score!</value>
   </data>
+  <data name="Challenge10_Error" xml:space="preserve">
+    <value>Connection Error</value>
+  </data>
   <data name="Challenge10_Loading" xml:space="preserve">
     <value>Analyzing 
 the picture</value>

@@ -93,15 +93,24 @@ namespace BeatIt_.AppCode.Pages
             {
                 if (response.ErrorMessage != null) return;
                 ProgressBar.Visibility = Visibility.Visible;
-                var json = JObject.Parse(response.Content);
-                var cantidad = ((JArray)(json["faces"])).Count;
-               _currentChallenge.CompleteChallenge(cantidad);
-                
-                MessageBox.Show(AppResources.Challenge10_Count.Replace("@faces",cantidad.ToString(CultureInfo.InvariantCulture)));
-                ProgressBar.Visibility = Visibility.Collapsed;
-                
+                if (!string.IsNullOrEmpty(response.Content))
+                {
+                    var json = JObject.Parse(response.Content);
+                    var cantidad = ((JArray) (json["faces"])).Count;
+                    _currentChallenge.CompleteChallenge(cantidad);
+
+                    MessageBox.Show(AppResources.Challenge10_Count.Replace("@faces",
+                        cantidad.ToString(CultureInfo.InvariantCulture)));
+                    ProgressBar.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    MessageBox.Show(AppResources.Challenge10_Error);
+                    _currentChallenge.CompleteChallenge(0);
+                }
                 var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
                 NavigationService.Navigate(uri);
+                
             });
         }
 

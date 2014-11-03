@@ -16,7 +16,7 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <ProgressBar x:Name="ProgressBar" HorizontalAlignment="Left" VerticalAlignment="Top" Height="10" Width="460" Margin="0,00,0,0" Background="White" Foreground="White" Visibility="Collapsed" />
+        <ProgressBar x:Name="ProgressBar" HorizontalAlignment="Left" VerticalAlignment="Top" Height="10" Width="530" Margin="-19,0,-21,0" Background="White" Foreground="White" Visibility="Collapsed" />
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock x:Name="ApplicationTitle" Text="BeatIt!" Style="{StaticResource PhoneTextNormalStyle}"/>

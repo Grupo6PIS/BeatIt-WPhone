@@ -324,6 +324,15 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Connection Error.
+        /// </summary>
+        public static string Challenge10_Error {
+            get {
+                return ResourceManager.GetString("Challenge10_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Analyzing 
         ///the picture.
         /// </summary>

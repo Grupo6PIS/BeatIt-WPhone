@@ -167,6 +167,8 @@ namespace BeatIt_.AppCode.Pages
             
             if (m == MessageBoxResult.OK)
             {
+                Pivot.IsEnabled = false;
+                Pivot.Opacity = 0.3;
                 ProgressBar.Visibility = Visibility.Visible;
                 // user clicked yes
                 var fb = new FacebookClient();

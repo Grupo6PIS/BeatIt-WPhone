@@ -143,6 +143,9 @@ Recuerda cuántas más personas, mayor puntaje!</value>
     <value>En este desafío debes tomar una fotografía con dos personas o más.
 Recuerda cuántas más personas, mayor puntaje!</value>
   </data>
+  <data name="Challenge10_Error" xml:space="preserve">
+    <value>Error con la conexión</value>
+  </data>
   <data name="Challenge10_Loading" xml:space="preserve">
     <value>Analizando
 la fotografía</value>
