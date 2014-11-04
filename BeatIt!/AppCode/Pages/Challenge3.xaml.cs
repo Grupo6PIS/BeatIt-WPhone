@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Globalization;
 using System.Windows;
 using BeatIt_.AppCode.Challenges;
@@ -49,12 +48,10 @@ namespace BeatIt_.AppCode.Pages
             TransitionService.SetNavigationOutTransition(this, navigateOutTransition);
 
             ShowST.Text = _currentChallenge.GetDtChallenge().StartTime.ToString(CultureInfo.InvariantCulture);
-                // Ojo ver el tema de la fecha y hora (Cuando estamos en el limite de una ronda y la otra).
+                
             ShowToBeat.Text = _currentChallenge.State.BestScore + " pts";
             ShowDuration.Text = _currentChallenge.GetDurationString();
-            textDescription.Text = ((_currentChallenge.Level == 1)
-                ? AppResources.Challenge3_DescriptionTxtBlockText
-                : AppResources.Challenge3_DescriptionHardTxtBlockText);
+            textDescription.Text = _currentChallenge.Description;
         }
 
         //onClick start playing
@@ -95,7 +92,7 @@ namespace BeatIt_.AppCode.Pages
         {
             //_currentChallenge = (ChallengeDetail3) _ifc.getChallenge(3);
             var ks = _currentChallenge.CompleteChallenge(false);
-           // MessageBox.Show(ks.Key ? AppResources.Challenge3_NewHighScore : AppResources.Challenge3_NotBeat);
+           
             var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
             NavigationService.Navigate(uri);
         }

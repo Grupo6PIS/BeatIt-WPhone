@@ -20,24 +20,25 @@
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock x:Name="ApplicationTitle" Text="BeatIt!" Style="{StaticResource PhoneTextNormalStyle}" />
-            <TextBlock x:Name="PageTitle" Text="About Us" Margin="9,-7,0,0"
+            <TextBlock x:Name="PageTitle" Text="{Binding AppResources.About_Title, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0"
                        Style="{StaticResource PhoneTextTitle1Style}" />
         </StackPanel>
         <!--Pivot Control-->
- <!--       <TextBlock Text="" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        <!--       <TextBlock Text="" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
 -->
         <!--   <controls:Pivot Title="BeatIt">-->
-            <!--Pivot item one-->
-            
-            <!--           <controls:PivotItem Header="{Binding AppResources.About_Title, Source={StaticResource LocalizedStrings}}" Margin="11,3,13,25">
-            --><Grid x:Name="ContentPanel"  Margin="12,100,12,0">
-                    <TextBlock FontWeight="Normal" Height="88" HorizontalAlignment="Left" Margin="13,439,0,0" x:Name="TitleDescription" Text="{Binding AppResources.About_Group, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="293" FontSize="60" />
-                    <Image Height="399" HorizontalAlignment="Left" x:Name="LogoImage" Stretch="Fill" VerticalAlignment="Center" Width="399" Source="/BeatIt!;component/Images/Desafios-V2-HD.png" Margin="14,5,0,203" />
-                    <TextBlock FontWeight="Normal" Height="63" HorizontalAlignment="Center" Margin="18,549,31,0" x:Name="Facultad" Text="{Binding AppResources.About_Fing, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="407" FontSize="30" />
-                    <TextBlock FontWeight="Normal" Height="63" HorizontalAlignment="Center" Margin="19,593,30,0" x:Name="Uruguay2014" Text="{Binding AppResources.About_Uruguay, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="407" FontSize="30" />
-                    <TextBlock FontWeight="Normal" Height="122" HorizontalAlignment="Left" Margin="312,417,-25,0" x:Name="TitleDescriptionCopy1" Text="06" VerticalAlignment="Top" Width="145" FontSize="90" />
+        <!--Pivot item one-->
 
-                </Grid>
+        <!--           <controls:PivotItem Header="{Binding AppResources.About_Title, Source={StaticResource LocalizedStrings}}" Margin="11,3,13,25">
+            -->
+        <Grid x:Name="ContentPanel"  Margin="12,100,12,0">
+            <TextBlock FontWeight="Normal" Height="88" HorizontalAlignment="Left" Margin="13,467,0,0" x:Name="TitleDescription" Text="{Binding AppResources.About_Group, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="293" FontSize="60" />
+            <Image Height="427" HorizontalAlignment="Left" x:Name="LogoImage" Stretch="Fill" VerticalAlignment="Center" Width="427" Source="/BeatIt!;component/Images/Desafios-V2-HD.png" Margin="14,36,0,205" />
+            <TextBlock FontWeight="Normal" Height="63" HorizontalAlignment="Center" Margin="18,555,31,0" x:Name="Facultad" Text="{Binding AppResources.About_Fing, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="407" FontSize="30" />
+            <TextBlock FontWeight="Normal" Height="63" HorizontalAlignment="Center" Margin="19,593,30,0" x:Name="Uruguay2014" Text="{Binding AppResources.About_Uruguay, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Top" Width="407" FontSize="30" />
+            <TextBlock FontWeight="Normal" Height="122" HorizontalAlignment="Left" Margin="312,445,-1,0" x:Name="TitleDescriptionCopy1" Text="06" VerticalAlignment="Top" Width="145" FontSize="90" />
+
+        </Grid>
         <!--       </controls:PivotItem> -->
 
         <!--Pivot item two-->
