@@ -15,7 +15,7 @@ namespace BeatIt_.AppCode.Pages
     {
         private const int ChallengeId = 5;
         private const double Speed = 15;
-        private const int TimeTop = 60;
+        private const int TimeTop = 45;
 
         private ChallengeDetail5 _challenge;
         private int _timeCounter, _collisionCounter;
@@ -175,7 +175,7 @@ namespace BeatIt_.AppCode.Pages
 
             if (Collision())
             {
-                if (BlackBall.Width > 10 && _randomNumber.Next(0,2) == 1)
+                if (BlackBall.Width > 15 && _randomNumber.Next(0,2) == 1)
                 {
                     BlackBall.Width = BlackBall.Width * _fraccion;
                     BlackBall.Height = BlackBall.Height * _fraccion;

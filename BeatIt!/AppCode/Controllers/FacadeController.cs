@@ -161,23 +161,16 @@ namespace BeatIt_.AppCode.Controllers
                         challenges.Add(9, c);
                         break;
                     case 10: // Selfie Group
-                        //c = new ChallengeDetail10((int) jObjectTemp["id"],
-                        //    (string) jObjectTemp["colorHex"],
-                        //    (int) jObjectTemp["challengeLevel"],
-                        //    (int)jObjectTemp["maxAttemps"],
-                        //    (bool)jObjectTemp["active"]) { Round = roundObj };
-                        //challenges.Add(10, c);
+                        c = new ChallengeDetail10((int) jObjectTemp["id"],
+                            (string) jObjectTemp["colorHex"],
+                            (int) jObjectTemp["challengeLevel"],
+                            (int)jObjectTemp["maxAttemps"],
+                            (bool)jObjectTemp["active"]) { Round = roundObj };
+                        challenges.Add(10, c);
                         break;
                 }
             }
 
-            //Se agregan los desafios restantes por codigo
-            var ch10 = new ChallengeDetail10(10,
-                "#FFFA6800",
-                1,
-                3,
-                true) { Round = roundObj };
-            challenges.Add(10, ch10);
 
             roundObj.Challenges = challenges;
 

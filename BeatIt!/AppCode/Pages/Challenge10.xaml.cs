@@ -87,7 +87,7 @@ namespace BeatIt_.AppCode.Pages
 
             var writableBitmap = new WriteableBitmap(_image);
             var ms = new MemoryStream();
-            writableBitmap.SaveJpeg(ms, _image.PixelWidth, _image.PixelHeight, 0, 100);
+            writableBitmap.SaveJpeg(ms, _image.PixelWidth, _image.PixelHeight, 0, 50);
             var imageBytes = ms.ToArray();
 
             var client = new RestClient("https://apicloud-facerect.p.mashape.com");
