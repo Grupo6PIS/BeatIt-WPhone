@@ -38,7 +38,7 @@ namespace BeatIt_.AppCode.Pages
             TransitionService.SetNavigationOutTransition(this, navigateOutTransition);
 
             IFacadeController ifc = FacadeController.GetInstance();
-            _challenge = ifc.getCurrentChallenge();
+            _challenge = ifc.GetCurrentChallenge();
 
             ApplicationBar = new ApplicationBar
             {
@@ -81,7 +81,7 @@ namespace BeatIt_.AppCode.Pages
         private void SendScore()
         {
             var ws = new WebServicesController();
-            var userId = _facade.getCurrentUser().UserId;
+            var userId = _facade.GetCurrentUser().UserId;
             ws.SendScore(userId, _facade.GetRoundScore(), SendScoreFinished);
         }
 

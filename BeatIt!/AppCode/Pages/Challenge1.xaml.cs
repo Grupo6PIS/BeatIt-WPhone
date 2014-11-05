@@ -65,7 +65,7 @@ namespace BeatIt_.AppCode.Pages
         private void InitChallenge()
         {
             _ifc = FacadeController.GetInstance();
-            _currentChallenge = (ChallengeDetail1)_ifc.getChallenge(1);
+            _currentChallenge = (ChallengeDetail1)_ifc.GetChallenge(1);
 
             _timer = new DispatcherTimer { Interval = new TimeSpan(0, 0, 1) };
             _timer.Tick += TickTemp;
@@ -74,7 +74,6 @@ namespace BeatIt_.AppCode.Pages
             _minSpeed = _currentChallenge.MinSpeed;
             _seconds = _minTime;
             _finish = false;
-            _ifc.setCurrentChallenge(_currentChallenge);
             _maxSpeed = 0;
             _avgSpeed = 0;
             _count = 0;
@@ -130,9 +129,8 @@ namespace BeatIt_.AppCode.Pages
 
 
                     //MessageBox.Show(AppResources.Challenge1_Win);
-                    _currentChallenge = (ChallengeDetail1)_ifc.getChallenge(1);
+                    _currentChallenge = (ChallengeDetail1)_ifc.GetChallenge(1);
                     _currentChallenge.CompleteChallenge(false, _maxSpeed, (_avgSpeed / _count));
-                    _ifc.setCurrentChallenge(_currentChallenge);
                     ToBeatTextBlock.Text = _currentChallenge.State.BestScore + " pts";
                     var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
                     NavigationService.Navigate(uri);
@@ -304,7 +302,7 @@ namespace BeatIt_.AppCode.Pages
 
         public GpsSpeedEmulator()
         {
-            var currentChallenge = (ChallengeDetail1)_ifc.getChallenge(1);
+            var currentChallenge = (ChallengeDetail1)_ifc.GetChallenge(1);
             _velocidadMinima = currentChallenge.MinSpeed;
             _randomNumber = new Random();
             _mantenerVelocidadPor = 31;

@@ -44,7 +44,7 @@ namespace BeatIt_.AppCode.Pages
             TransitionService.SetNavigationOutTransition(this, navigateOutTransition);
 
             _facade = FacadeController.GetInstance();
-            var loggedUser = _facade.getCurrentUser();
+            var loggedUser = _facade.GetCurrentUser();
 
             ProgressBar.IsIndeterminate = true;
 
@@ -98,7 +98,7 @@ namespace BeatIt_.AppCode.Pages
 
         private void InitChallengesListBox()
         {
-            foreach (var entry in _facade.getChallenges())
+            foreach (var entry in _facade.GetChallenges())
             {
                 var ch = entry.Value;
                 var listItem = new ChallenesListItem {BackgroundRec = {Fill = GetColorFromHexa(ch.ColorHex)}};
@@ -123,9 +123,9 @@ namespace BeatIt_.AppCode.Pages
             var linkBtn = sender as HyperlinkButton;
             if (linkBtn == null) return;
             var tag = Convert.ToInt32(linkBtn.Tag);
-            var ch = _facade.getChallenge(tag);
+            var ch = _facade.GetChallenge(tag);
 
-            _facade.setCurrentChallenge(ch);
+            _facade.SetCurrentChallenge(ch);
 
             String pagePath;
             if (ch.State.CurrentAttempt == 0)
@@ -141,7 +141,7 @@ namespace BeatIt_.AppCode.Pages
 
         private void InitRankingListBox()
         {
-            var ranking = _facade.getRanking();
+            var ranking = _facade.GetRanking();
             RankingListBox.Items.Clear();
             foreach (var dtr in ranking)
             {
@@ -149,7 +149,7 @@ namespace BeatIt_.AppCode.Pages
                 {
                     SelectedRec =
                     {
-                        Visibility = _facade.getCurrentUser().UserId.Equals(dtr.UserId) ? Visibility.Visible : Visibility.Collapsed
+                        Visibility = _facade.GetCurrentUser().UserId.Equals(dtr.UserId) ? Visibility.Visible : Visibility.Collapsed
                     },
                     PositionTxtBlock = {Text = dtr.Position.ToString(CultureInfo.InvariantCulture)},
                     ScoreTxtBlock = {Text = dtr.Score.ToString(CultureInfo.InvariantCulture)},
@@ -174,7 +174,7 @@ namespace BeatIt_.AppCode.Pages
                 var fb = new FacebookClient();
                 var parameters = new Dictionary<string, object>();
                 parameters["next"] = "https://www.facebook.com/connect/login_success.html";
-                parameters["access_token"] = _facade.getCurrentUser().FbAccessToken;
+                parameters["access_token"] = _facade.GetCurrentUser().FbAccessToken;
                 var logoutUrl = fb.GetLogoutUrl(parameters);
                 var webBrowser = new WebBrowser();
                 webBrowser.Navigate(logoutUrl);
@@ -182,7 +182,7 @@ namespace BeatIt_.AppCode.Pages
                 {
                     if (args.Uri.AbsoluteUri == "https://www.facebook.com/connect/login_success.html")
                     {
-                        _facade.logoutUser();
+                        _facade.LogoutUser();
                         NavigationService.Navigate(new Uri("/BeatIt!;component/AppCode/Pages/Login.xaml",
                             UriKind.Relative));
                     }
@@ -218,7 +218,7 @@ namespace BeatIt_.AppCode.Pages
             ProgressBar.Visibility = Visibility.Collapsed;
             if (!(bool) jsonResponse["error"])
             {
-                _facade.updateRanking(jsonResponse);
+                _facade.UpdateRanking(jsonResponse);
                 InitRankingListBox();
             }
             else
@@ -232,7 +232,7 @@ namespace BeatIt_.AppCode.Pages
             if (_isSendingScore) return;
             ProgressBar.Visibility = Visibility.Visible;
             var ws = new WebServicesController();
-            var userId = _facade.getCurrentUser().UserId;
+            var userId = _facade.GetCurrentUser().UserId;
             ws.SendScore(userId, _facade.GetRoundScore(), SendScoreFinished);
         }
 

@@ -34,22 +34,22 @@ namespace BeatIt_.AppCode.Controllers
             _isForTesting = isForTesting;
         }
 
-        public bool isLoggedUser()
+        public bool IsLoggedUser()
         {
             return _currentUser != null;
         }
 
-        public User getCurrentUser()
+        public User GetCurrentUser()
         {
             return _currentUser;
         }
 
-        public List<DTRanking> getRanking()
+        public List<DTRanking> GetRanking()
         {
             return _ranking;
         }
 
-        public void loginUser(User user, JObject jsonResponse)
+        public void LoginUser(User user, JObject jsonResponse)
         {
             _currentUser = user;
 
@@ -234,7 +234,7 @@ namespace BeatIt_.AppCode.Controllers
             }
         }
 
-        public void logoutUser()
+        public void LogoutUser()
         {
             _currentUser = null;
             _currentRound = null;
@@ -254,28 +254,28 @@ namespace BeatIt_.AppCode.Controllers
             IsolatedStorageSettings.ApplicationSettings.Save();
         }
 
-        public Challenge getChallenge(int challengeId)
+        public Challenge GetChallenge(int challengeId)
         {
             return _currentRound.Challenges[challengeId];
         }
 
-        public Dictionary<int, Challenge> getChallenges()
+        public Dictionary<int, Challenge> GetChallenges()
         {
             return _currentRound.Challenges;
         }
 
-        public void setCurrentChallenge(Challenge challenge)
+        public void SetCurrentChallenge(Challenge challenge)
         {
             _currentChallenge = challenge;
         }
 
-        public Challenge getCurrentChallenge()
+        public Challenge GetCurrentChallenge()
         {
             return _currentChallenge;
         }
 
 
-        public void updateRanking(JObject jsonResponse)
+        public void UpdateRanking(JObject jsonResponse)
         {
             var lastRankings = (JArray) jsonResponse["data"];
             if (lastRankings.Count > 0)

@@ -45,17 +45,13 @@ namespace BeatIt_.AppCode.Pages
         private void InitChallenge()
         {
             _ifc = FacadeController.GetInstance();
-            _currentChallenge = (ChallengeDetail7) _ifc.getChallenge(7);
-            _ifc.setCurrentChallenge(_currentChallenge);
+            _currentChallenge = (ChallengeDetail7) _ifc.GetChallenge(7);
 
             PageTitle.Text = _currentChallenge.Name;
-            //TextDescription.Text = _currentChallenge.Description;
             StartTimeTextBlock.Text = _currentChallenge.GetDtChallenge().StartTime.ToString(CultureInfo.InvariantCulture);
             ToBeatTextBlock.Text = _currentChallenge.State.BestScore + " pts";
             DurationTextBlock.Text = _currentChallenge.GetDurationString();
-            TextDescription.Text = ((_currentChallenge.Level == 1)
-               ? AppResources.Challenge7_DescriptionTxtBlockText
-               : AppResources.Challenge7_DescriptionHardTxtBlockText);
+            TextDescription.Text = _currentChallenge.Description;
 
             _buttonTimer = new DispatcherTimer();
             _buttonTimer.Tick += TickButtonTimer;

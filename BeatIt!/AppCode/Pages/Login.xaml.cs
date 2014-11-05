@@ -215,7 +215,7 @@ namespace BeatIt_.AppCode.Pages
             {
                 _user = null;
                 IFacadeController ifc = FacadeController.GetInstance();
-                ifc.logoutUser();
+                ifc.LogoutUser();
                 Dispatcher.BeginInvoke(() =>
                 {
                     ProgressBar.Visibility = Visibility.Collapsed;
@@ -230,7 +230,7 @@ namespace BeatIt_.AppCode.Pages
             if (!(bool)jsonResponse["error"])
             {
                 IFacadeController ifc = FacadeController.GetInstance();
-                ifc.loginUser(_user, jsonResponse);
+                ifc.LoginUser(_user, jsonResponse);
                 Dispatcher.BeginInvoke(() =>
                 {
                     ProgressBar.Visibility = Visibility.Collapsed;
@@ -242,7 +242,7 @@ namespace BeatIt_.AppCode.Pages
             {
                 _user = null;
                 IFacadeController ifc = FacadeController.GetInstance();
-                ifc.logoutUser();
+                ifc.LogoutUser();
                 Dispatcher.BeginInvoke(() =>
                 {
                     ProgressBar.Visibility = Visibility.Collapsed;

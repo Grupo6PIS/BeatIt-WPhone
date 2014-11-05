@@ -28,10 +28,8 @@ namespace BeatIt_.AppCode.Pages
         {
             InitializeComponent();
 
-
             _ifc = FacadeController.GetInstance();
-            _currentChallenge = (ChallengeDetail10)_ifc.getChallenge(10);
-            _ifc.setCurrentChallenge(_currentChallenge);
+            _currentChallenge = (ChallengeDetail10)_ifc.GetChallenge(10);
 
             var navigateInTransition = new NavigationInTransition
             {

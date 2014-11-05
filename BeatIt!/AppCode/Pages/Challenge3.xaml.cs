@@ -27,8 +27,7 @@ namespace BeatIt_.AppCode.Pages
             InitializeComponent();
 
             _ifc = FacadeController.GetInstance();
-            _currentChallenge = (ChallengeDetail3) _ifc.getChallenge(3);
-            _ifc.setCurrentChallenge(_currentChallenge);
+            _currentChallenge = (ChallengeDetail3) _ifc.GetChallenge(3);
 
             _phoneNumberChooserTask = new PhoneNumberChooserTask();
             _phoneNumberChooserTask.Completed += PhoneNumberChooserTask_Completed;
@@ -65,8 +64,8 @@ namespace BeatIt_.AppCode.Pages
         private void hyperlinkButtonPublish_Click(object sender, RoutedEventArgs e)
         {
             _currentChallenge.AddFacebook();
-            var fb = new FacebookClient(_ifc.getCurrentUser().FbAccessToken);
-            _currentChallenge = (ChallengeDetail3) _ifc.getChallenge(3);
+            var fb = new FacebookClient(_ifc.GetCurrentUser().FbAccessToken);
+            _currentChallenge = (ChallengeDetail3) _ifc.GetChallenge(3);
 
             fb.PostCompleted +=
                 (o, args) => Dispatcher.BeginInvoke(() => MessageBox.Show(AppResources.Challenge3_MessagePosted));

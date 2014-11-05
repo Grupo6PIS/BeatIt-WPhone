@@ -63,7 +63,7 @@ namespace BeatIt_.AppCode.Pages
             // OBTENEMOS LA INSTANCIA DEL DESAFIO.
             /* hay que prolijear esto con una factory */
             _ifc = FacadeController.GetInstance();
-            _currentChallenge = (ChallengeDetail6)_ifc.getChallenge(6);
+            _currentChallenge = (ChallengeDetail6)_ifc.GetChallenge(6);
 
             // Si el dispositivo no soporta el acelerometro.
             if (!Accelerometer.IsSupported)

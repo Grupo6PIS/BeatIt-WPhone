@@ -60,7 +60,7 @@ namespace BeatIt_.AppCode.Pages
 
         private void InitChallenge()
         {
-            _challenge =(ChallengeDetail5) FacadeController.GetInstance().getChallenge(ChallengeId);
+            _challenge =(ChallengeDetail5) FacadeController.GetInstance().GetChallenge(ChallengeId);
             _randomNumber = new Random();
 
             StartTimeTextBlock.Text = _challenge.State.StartDate.ToString(CultureInfo.InvariantCulture);

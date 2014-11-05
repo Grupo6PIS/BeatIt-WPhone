@@ -80,7 +80,7 @@ namespace BeatIt_.AppCode.Pages
 
             // WE GET THE INSTANCE OF CHALLENGE.
             _ifc = FacadeController.GetInstance();
-            _currentChallenge = (ChallengeDetail2)_ifc.getChallenge(2);
+            _currentChallenge = (ChallengeDetail2)_ifc.GetChallenge(2);
 
             // If you already play all attempts, a message is displayed and return to the detail of the challenge
             if (_currentChallenge.State.CurrentAttempt >= _currentChallenge.MaxAttempt)
