@@ -23,8 +23,8 @@ namespace BeatIt_.AppCode.Pages
 
         private readonly bool _useEmulation = (Environment.DeviceType == DeviceType.Emulator);
 
-        private ChallengeDetail1 _currentChallenge; 
-        private GeoCoordinateWatcher _gps; 
+        private ChallengeDetail1 _currentChallenge;
+        private GeoCoordinateWatcher _gps;
         private IFacadeController _ifc;
 
         private Boolean _isRunning;
@@ -46,14 +46,14 @@ namespace BeatIt_.AppCode.Pages
 
             var navigateInTransition = new NavigationInTransition
             {
-                Backward = new SlideTransition {Mode = SlideTransitionMode.SlideRightFadeIn},
-                Forward = new SlideTransition {Mode = SlideTransitionMode.SlideLeftFadeIn}
+                Backward = new SlideTransition { Mode = SlideTransitionMode.SlideRightFadeIn },
+                Forward = new SlideTransition { Mode = SlideTransitionMode.SlideLeftFadeIn }
             };
 
             var navigateOutTransition = new NavigationOutTransition
             {
-                Backward = new SlideTransition {Mode = SlideTransitionMode.SlideRightFadeOut},
-                Forward = new SlideTransition {Mode = SlideTransitionMode.SlideLeftFadeOut}
+                Backward = new SlideTransition { Mode = SlideTransitionMode.SlideRightFadeOut },
+                Forward = new SlideTransition { Mode = SlideTransitionMode.SlideLeftFadeOut }
             };
             TransitionService.SetNavigationInTransition(this, navigateInTransition);
             TransitionService.SetNavigationOutTransition(this, navigateOutTransition);
@@ -64,10 +64,10 @@ namespace BeatIt_.AppCode.Pages
 
         private void InitChallenge()
         {
-             _ifc = FacadeController.GetInstance();
-            _currentChallenge = (ChallengeDetail1) _ifc.getChallenge(1);
+            _ifc = FacadeController.GetInstance();
+            _currentChallenge = (ChallengeDetail1)_ifc.getChallenge(1);
 
-            _timer = new DispatcherTimer {Interval = new TimeSpan(0, 0, 1)};
+            _timer = new DispatcherTimer { Interval = new TimeSpan(0, 0, 1) };
             _timer.Tick += TickTemp;
 
             _minTime = _currentChallenge.Time;
@@ -96,7 +96,7 @@ namespace BeatIt_.AppCode.Pages
                 StartRunningButton.IsEnabled = false;
                 StartRunningRectangle.Opacity = 0.5;
 
-                _gps = new GeoCoordinateWatcher(GeoPositionAccuracy.High) {MovementThreshold = 3};
+                _gps = new GeoCoordinateWatcher(GeoPositionAccuracy.High) { MovementThreshold = 3 };
                 _gps.PositionChanged += PositionChanged;
                 _gps.StatusChanged += StatusChanged;
                 _gps.Start();
@@ -159,7 +159,7 @@ namespace BeatIt_.AppCode.Pages
 
         private void PositionChanged(object obj, GeoPositionChangedEventArgs<GeoCoordinate> e)
         {
-            double speed = e.Position.Location.Speed*3.6;
+            double speed = e.Position.Location.Speed * 3.6;
 
             SpeedChanged(speed);
         }
@@ -176,7 +176,7 @@ namespace BeatIt_.AppCode.Pages
             if (speed >= _minSpeed)
             {
                 _isRunning = true;
-                var mySolidColorBrush = new SolidColorBrush {Color = Color.FromArgb(255, 229, 20, 0)};
+                var mySolidColorBrush = new SolidColorBrush { Color = Color.FromArgb(255, 229, 20, 0) };
                 SpeedRec.Fill = mySolidColorBrush;
 
                 if (!_timer.IsEnabled)
@@ -189,22 +189,25 @@ namespace BeatIt_.AppCode.Pages
                 if (!_finish)
                 {
                     _isRunning = false;
-                    var mySolidColorBrush = new SolidColorBrush {Color = Color.FromArgb(255, 0, 138, 0)};
+                    var mySolidColorBrush = new SolidColorBrush { Color = Color.FromArgb(255, 0, 138, 0) };
                     SpeedRec.Fill = mySolidColorBrush;
                     if (!_timer.IsEnabled) return;
-                   
+
                     _timer.Stop();
                     _seconds = _minTime;
 
                     _currentChallenge.CompleteChallenge(false, 0, 0);
-
-                    StartRunningGrid.Visibility = Visibility.Visible;
-                    InProgressGrid.Visibility = Visibility.Collapsed;
-
+                    
                     if (_useEmulation)
                     {
                         _speedEmulator.Stop();
                     }
+
+                    var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
+                    NavigationService.Navigate(uri);
+                    _finish = true;
+
+                    
 
                     //MessageBox.Show(AppResources.Challenge1_Loss);
                 }
@@ -240,11 +243,21 @@ namespace BeatIt_.AppCode.Pages
             if (_isRunning)
             {
                 MessageBox.Show(AppResources.Challenge1_ReduceSpeed);
-                _timer.Stop();
+                
+                //Unable try; Go to Home
+                _isRunning = false;
                 if (_useEmulation)
                 {
                     _speedEmulator.Stop();
+                }else{
+                    if (!_timer.IsEnabled) return;
+                    _timer.Stop();
+                    _seconds = _minTime;
                 }
+                _finish = true;
+
+                var uri = new Uri("/BeatIt!;component/AppCode/Pages/home.xaml", UriKind.Relative);
+                NavigationService.Navigate(uri);
             }
             else
             {
@@ -291,11 +304,11 @@ namespace BeatIt_.AppCode.Pages
 
         public GpsSpeedEmulator()
         {
-            var currentChallenge = (ChallengeDetail1) _ifc.getChallenge(1);
+            var currentChallenge = (ChallengeDetail1)_ifc.getChallenge(1);
             _velocidadMinima = currentChallenge.MinSpeed;
             _randomNumber = new Random();
             _mantenerVelocidadPor = 31;
-            _timer = new DispatcherTimer {Interval = new TimeSpan(0, 0, 1)};
+            _timer = new DispatcherTimer { Interval = new TimeSpan(0, 0, 1) };
             _timer.Tick += TickTimer;
         }
 
@@ -317,11 +330,11 @@ namespace BeatIt_.AppCode.Pages
         {
             if (!_timer.IsEnabled) return;
             int sumarRestar = _randomNumber.Next(0, 2);
-            double dec = (1 + 0.0)/_randomNumber.Next(1, 11);
+            double dec = (1 + 0.0) / _randomNumber.Next(1, 11);
 
             if (_state == Estados.LlegarA10Km)
             {
-                _speed += _randomNumber.Next(1, 4) + (sumarRestar - 1)*dec + sumarRestar*dec;
+                _speed += _randomNumber.Next(1, 4) + (sumarRestar - 1) * dec + sumarRestar * dec;
                 if (_speed >= _velocidadMinima)
                 {
                     _state = Estados.MantenerTiempo;
@@ -330,7 +343,7 @@ namespace BeatIt_.AppCode.Pages
             else if (_state == Estados.MantenerTiempo && _mantenerVelocidadPor > 0)
             {
                 _mantenerVelocidadPor--;
-                double temp = _speed + (sumarRestar - 1)*dec + sumarRestar*dec;
+                double temp = _speed + (sumarRestar - 1) * dec + sumarRestar * dec;
                 _speed += temp >= _velocidadMinima && temp < 24 ? temp - _speed : 0;
 
                 if (_mantenerVelocidadPor == 0)
