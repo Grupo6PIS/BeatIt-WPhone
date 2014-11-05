@@ -415,5 +415,11 @@ namespace BeatIt_.AppCode.Controllers
                 _currentRound.Challenges.Where(variable => variable.Value.IsEnabled)
                     .Sum(variable => variable.Value.State.BestScore);
         }
+
+        public bool ShouldSendScore()
+        {
+            var lastScoreSent = (int)IsolatedStorageSettings.ApplicationSettings["LastScoreSent"];
+            return _currentRound.Challenges.Values.All(x => (x.IsEnabled && x.State.CurrentAttempt > 0) || !x.IsEnabled) && GetRoundScore() > lastScoreSent;
+        }
     }
 }

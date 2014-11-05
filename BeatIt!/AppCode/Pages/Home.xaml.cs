@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.IO.IsolatedStorage;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -69,10 +68,8 @@ namespace BeatIt_.AppCode.Pages
             {
                 IconUri = new Uri("/Images/appbar_upload.png", UriKind.Relative),
                 Text = "Enviar Puntaje",
+                IsEnabled = _facade.ShouldSendScore()
             };
-            var lastScoreSent = (int)IsolatedStorageSettings.ApplicationSettings["LastScoreSent"];
-            var sendScore = _facade.getChallenges().Values.All(x => (x.IsEnabled && x.State.CurrentAttempt > 0) || !x.IsEnabled) && _facade.GetRoundScore() > lastScoreSent;
-            _sendBtn.IsEnabled = sendScore;
 
             ApplicationBar.Buttons.Add(_sendBtn);
             _sendBtn.Click += SendBtn_Click;
@@ -249,9 +246,9 @@ namespace BeatIt_.AppCode.Pages
             }
             else
             {
-                _sendBtn.IsEnabled = false;
                 IsolatedStorageSettings.ApplicationSettings["LastScoreSent"] = _facade.GetRoundScore();
                 IsolatedStorageSettings.ApplicationSettings.Save();
+                _sendBtn.IsEnabled = _facade.ShouldSendScore();
                 Dispatcher.BeginInvoke(() => MessageBox.Show(AppResources.HomePage_ScoreSuccess));  
             }
         }

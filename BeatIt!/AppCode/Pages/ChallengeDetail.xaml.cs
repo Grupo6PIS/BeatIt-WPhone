@@ -72,14 +72,14 @@ namespace BeatIt_.AppCode.Pages
 
             _facade = FacadeController.GetInstance();
 
-            SendScore();
+            if (_facade.ShouldSendScore())
+            {
+                SendScore();   
+            }
         }
 
         private void SendScore()
         {
-            var lastScoreSent = (int)IsolatedStorageSettings.ApplicationSettings["LastScoreSent"];
-            var sendScore = _facade.getChallenges().Values.All(x => (x.IsEnabled && x.State.CurrentAttempt > 0) || !x.IsEnabled) && _facade.GetRoundScore() > lastScoreSent;
-            if (!sendScore) return;
             var ws = new WebServicesController();
             var userId = _facade.getCurrentUser().UserId;
             ws.SendScore(userId, _facade.GetRoundScore(), SendScoreFinished);

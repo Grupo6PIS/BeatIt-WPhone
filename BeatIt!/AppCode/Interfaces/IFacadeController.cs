@@ -19,5 +19,6 @@ namespace BeatIt_.AppCode.Interfaces
         void setCurrentChallenge(Challenge challenge);
         Challenge getCurrentChallenge();
         int GetRoundScore();
+        bool ShouldSendScore();
     }
 }
