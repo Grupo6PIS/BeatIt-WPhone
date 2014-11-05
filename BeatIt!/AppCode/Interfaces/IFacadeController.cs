@@ -18,5 +18,6 @@ namespace BeatIt_.AppCode.Interfaces
         Dictionary<int, Challenge> getChallenges();
         void setCurrentChallenge(Challenge challenge);
         Challenge getCurrentChallenge();
+        int GetRoundScore();
     }
 }

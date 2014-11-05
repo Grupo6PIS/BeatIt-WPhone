@@ -84,7 +84,6 @@ namespace BeatIt_.AppCode.Pages
                     ImageUrl = (string) IsolatedStorageSettings.ApplicationSettings["ImageUrl"],
                     Email = (string) IsolatedStorageSettings.ApplicationSettings["Email"]
                 };
-                _user.Country = (string)IsolatedStorageSettings.ApplicationSettings["Country"];
 
                 var ws = new WebServicesController();
                 ws.GetRound(GetRoundFinished);
@@ -195,6 +194,7 @@ namespace BeatIt_.AppCode.Pages
                 IsolatedStorageSettings.ApplicationSettings["BirthDate"] = _user.BirthDate;
                 IsolatedStorageSettings.ApplicationSettings["ImageUrl"] = _user.ImageUrl;
                 IsolatedStorageSettings.ApplicationSettings["Email"] = _user.Email;
+                IsolatedStorageSettings.ApplicationSettings["LastScoreSent"] = 0;
                 IsolatedStorageSettings.ApplicationSettings.Save();
 
                 var ws = new WebServicesController();

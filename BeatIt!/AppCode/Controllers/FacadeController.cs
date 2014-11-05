@@ -24,7 +24,6 @@ namespace BeatIt_.AppCode.Controllers
 
         private FacadeController()
         {
-            ShouldSendScore = false;
             _db = new SQLiteConnection("BeatItDB.db");
             _db.CreateTable<DTStatePersistible>();
             _isForTesting = false;
@@ -34,8 +33,6 @@ namespace BeatIt_.AppCode.Controllers
         {
             _isForTesting = isForTesting;
         }
-
-        public bool ShouldSendScore { get; set; }
 
         public bool isLoggedUser()
         {
@@ -253,6 +250,7 @@ namespace BeatIt_.AppCode.Controllers
             IsolatedStorageSettings.ApplicationSettings.Remove("BirthDate");
             IsolatedStorageSettings.ApplicationSettings.Remove("ImageUrl");
             IsolatedStorageSettings.ApplicationSettings.Remove("Email");
+            IsolatedStorageSettings.ApplicationSettings.Remove("LastScoreSent");
             IsolatedStorageSettings.ApplicationSettings.Save();
         }
 

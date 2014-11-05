@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
+using System.IO.IsolatedStorage;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -22,6 +24,7 @@ namespace BeatIt_.AppCode.Pages
         private readonly IFacadeController _facade;
         private bool _isRefreshingRanking;
         private bool _isSendingScore;
+        private readonly ApplicationBarIconButton _sendBtn;
 
         public Home()
         {
@@ -41,6 +44,9 @@ namespace BeatIt_.AppCode.Pages
             TransitionService.SetNavigationInTransition(this, navigateInTransition);
             TransitionService.SetNavigationOutTransition(this, navigateOutTransition);
 
+            _facade = FacadeController.GetInstance();
+            var loggedUser = _facade.getCurrentUser();
+
             ProgressBar.IsIndeterminate = true;
 
             ApplicationBar = new ApplicationBar
@@ -59,20 +65,17 @@ namespace BeatIt_.AppCode.Pages
             ApplicationBar.Buttons.Add(refreshBtn);
             refreshBtn.Click += RefreshBtn_Click;
 
-            ////////////////////////////////////////////////////////////////////////////
-            var sendBtn = new ApplicationBarIconButton
+            _sendBtn = new ApplicationBarIconButton
             {
                 IconUri = new Uri("/Images/appbar_upload.png", UriKind.Relative),
                 Text = "Enviar Puntaje",
-                //IsEnabled = FacadeController.GetInstance().ShouldSendScore
             };
-            ApplicationBar.Buttons.Add(sendBtn);
-            sendBtn.Click += SendBtn_Click;
-            ////////////////////////////////////////////////////////////////////////////
+            var lastScoreSent = (int)IsolatedStorageSettings.ApplicationSettings["LastScoreSent"];
+            var sendScore = _facade.getChallenges().Values.All(x => (x.IsEnabled && x.State.CurrentAttempt > 0) || !x.IsEnabled) && _facade.GetRoundScore() > lastScoreSent;
+            _sendBtn.IsEnabled = sendScore;
 
-
-            _facade = FacadeController.GetInstance();
-            var loggedUser = _facade.getCurrentUser();
+            ApplicationBar.Buttons.Add(_sendBtn);
+            _sendBtn.Click += SendBtn_Click;
 
             ProfileNameTxtBlock.Text = loggedUser.Name;
             ProfileCountryTxtBlock.Text = loggedUser.Country;
@@ -227,22 +230,17 @@ namespace BeatIt_.AppCode.Pages
             }
         }
 
-        ////////////////////////////////////////////////////////////////////////////
         private void SendBtn_Click(object sender, EventArgs e)
         {
             if (_isSendingScore) return;
-            _isSendingScore = true;
-
             ProgressBar.Visibility = Visibility.Visible;
             var ws = new WebServicesController();
-            var userId = FacadeController.GetInstance().getCurrentUser().UserId;
-            var score = FacadeController.GetInstance().GetRoundScore();
-            ws.SendScore(userId, score, SendScoreFinished);
+            var userId = _facade.getCurrentUser().UserId;
+            ws.SendScore(userId, _facade.GetRoundScore(), SendScoreFinished);
         }
 
         private void SendScoreFinished(JObject jsonResponse)
         {
-
             _isSendingScore = false;
             ProgressBar.Visibility = Visibility.Collapsed;
             if ((bool)jsonResponse["error"])
@@ -251,8 +249,10 @@ namespace BeatIt_.AppCode.Pages
             }
             else
             {
-                FacadeController.GetInstance().ShouldSendScore = false;
-                Dispatcher.BeginInvoke(() => MessageBox.Show(AppResources.HomePage_ScoreSuccess));   
+                _sendBtn.IsEnabled = false;
+                IsolatedStorageSettings.ApplicationSettings["LastScoreSent"] = _facade.GetRoundScore();
+                IsolatedStorageSettings.ApplicationSettings.Save();
+                Dispatcher.BeginInvoke(() => MessageBox.Show(AppResources.HomePage_ScoreSuccess));  
             }
         }
 
@@ -260,6 +260,5 @@ namespace BeatIt_.AppCode.Pages
         {
             NavigationService.Navigate(new Uri("/BeatIt!;component/AppCode/Pages/AboutUs.xaml", UriKind.Relative));
         }
-        ////////////////////////////////////////////////////////////////////////////
     }
 }

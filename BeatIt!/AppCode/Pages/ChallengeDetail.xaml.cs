@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Globalization;
+using System.IO.IsolatedStorage;
+using System.Linq;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using BeatIt_.AppCode.Classes;
@@ -8,12 +10,14 @@ using BeatIt_.AppCode.Interfaces;
 using BeatIt_.Resources;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Newtonsoft.Json.Linq;
 
 namespace BeatIt_.AppCode.Pages
 {
     public partial class ChallengeDetail
     {
         readonly Challenge _challenge;
+        private readonly IFacadeController _facade;
 
         public ChallengeDetail()
         {
@@ -65,6 +69,34 @@ namespace BeatIt_.AppCode.Pages
             IconImage.Source = new BitmapImage(uri);
             StartTimeTextBlock.Text = _challenge.GetDtChallenge().StartTime.ToString(CultureInfo.InvariantCulture);
             AttemptsTextBlock.Text = _challenge.State.CurrentAttempt + "/" + _challenge.MaxAttempt;
+
+            _facade = FacadeController.GetInstance();
+
+            SendScore();
+        }
+
+        private void SendScore()
+        {
+            var lastScoreSent = (int)IsolatedStorageSettings.ApplicationSettings["LastScoreSent"];
+            var sendScore = _facade.getChallenges().Values.All(x => (x.IsEnabled && x.State.CurrentAttempt > 0) || !x.IsEnabled) && _facade.GetRoundScore() > lastScoreSent;
+            if (!sendScore) return;
+            var ws = new WebServicesController();
+            var userId = _facade.getCurrentUser().UserId;
+            ws.SendScore(userId, _facade.GetRoundScore(), SendScoreFinished);
+        }
+
+        private void SendScoreFinished(JObject jsonResponse)
+        {
+            if ((bool)jsonResponse["error"])
+            {
+                System.Diagnostics.Debug.WriteLine(AppResources.HomePage_ScoreError);
+            }
+            else
+            {
+                IsolatedStorageSettings.ApplicationSettings["LastScoreSent"] = _facade.GetRoundScore();
+                IsolatedStorageSettings.ApplicationSettings.Save();
+                System.Diagnostics.Debug.WriteLine(AppResources.HomePage_ScoreSuccess);
+            }
         }
 
         public static SolidColorBrush GetColorFromHexa(string hexaColor)
