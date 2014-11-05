@@ -44,12 +44,13 @@
             <!--Pivot item three-->
             <controls:PivotItem Header="{Binding Path=AppResources.HomePage_ProfilePivotTitle, Source={StaticResource LocalizedStrings}}">
                 <Grid x:Name="ProfileGrid" ShowGridLines="False">
-                    <Button Content="{Binding Path=AppResources.HomePage_LogoutBtnTitle, Source={StaticResource LocalizedStrings}}" Height="73" HorizontalAlignment="Left" Margin="4,204,0,0" x:Name="LogoutBtn" VerticalAlignment="Top" Width="424" Click="LogoutBtn_Click" FontSize="21" Padding="0,0,0,3" />
-                    <Image Height="140" HorizontalAlignment="Left" Margin="15,15,0,0" x:Name="ProfileImage" Stretch="Fill" VerticalAlignment="Top" Width="140" Source="/BeatIt!;component/Images/profileImage.jpg" />
-                    <TextBlock Height="50" HorizontalAlignment="Left" Margin="170,15,0,0" x:Name="ProfileNameTxtBlock" Text="Juan Perez" VerticalAlignment="Top" Width="260" FontSize="32" />
-                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="169,87,0,0" x:Name="ProfileCountryTxtBlock" Text="Uruguay" VerticalAlignment="Top" Width="260" FontSize="18" />
+                    <Button Content="{Binding Path=AppResources.HomePage_LogoutBtnTitle, Source={StaticResource LocalizedStrings}}" Height="73" HorizontalAlignment="Left" Margin="4,435,0,0" x:Name="LogoutBtn" VerticalAlignment="Top" Width="424" Click="LogoutBtn_Click" FontSize="21" Padding="0,0,0,3" />
                     <Button Content="{Binding Path=AppResources.About_Title,Source={StaticResource LocalizedStrings}}" Height="73" HorizontalAlignment="Left" Margin="4,508,0,0" x:Name="AboutBtn" VerticalAlignment="Top" Width="424" FontSize="21" Padding="0,0,0,3" Click="AboutBtn_Click" />
-                    <TextBlock FontSize="18" Height="30" HorizontalAlignment="Left" Margin="170,60,0,0" x:Name="ProfileEmailTextBlock" Text="jperez@gmail.com" VerticalAlignment="Top" Width="260" />
+                    <Image Height="398" HorizontalAlignment="Left" Margin="15,15,0,0" x:Name="ProfileImage" Stretch="Fill" VerticalAlignment="Top" Width="398" Source="/BeatIt!;component/Images/profileImage.jpg" />
+                    <Rectangle Fill="#000000" Opacity="0.4" Height="103" Width="398" VerticalAlignment="top" HorizontalAlignment="Left" Margin="15,15,0,0" />
+                    <TextBlock Height="50" HorizontalAlignment="Left" Margin="31,16,0,0" x:Name="ProfileNameTxtBlock" Text="Juan Perez" VerticalAlignment="Top" Width="382" FontSize="32" />
+                    <TextBlock Height="30" HorizontalAlignment="Left" Margin="30,88,0,0" x:Name="ProfileCountryTxtBlock" Text="Uruguay" VerticalAlignment="Top" Width="383" FontSize="18" />
+                    <TextBlock FontSize="18" Height="30" HorizontalAlignment="Left" Margin="31,61,0,0" x:Name="ProfileEmailTextBlock" Text="jperez@gmail.com" VerticalAlignment="Top" Width="382" />
                 </Grid>
             </controls:PivotItem>
         </controls:Pivot>

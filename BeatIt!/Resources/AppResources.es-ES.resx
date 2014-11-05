@@ -424,8 +424,14 @@ Recuerda que son 5 canciones!</value>
   <data name="HomePage_ScoreSuccess" xml:space="preserve">
     <value>¡Puntaje enviado con exito!</value>
   </data>
+  <data name="HomePage_Send" xml:space="preserve">
+    <value>Enviar Puntaje</value>
+  </data>
   <data name="HomePage_SettingsTxtBlockTitle" xml:space="preserve">
     <value>CONFIGURACIONES</value>
+  </data>
+  <data name="HomePage_Update" xml:space="preserve">
+    <value>Actualizar</value>
   </data>
   <data name="LoginPage_Description" xml:space="preserve">
     <value>¿Crees que eres el más habilidoso?

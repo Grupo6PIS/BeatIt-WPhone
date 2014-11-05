@@ -954,11 +954,29 @@ namespace BeatIt_.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Send New Score.
+        /// </summary>
+        public static string HomePage_Send {
+            get {
+                return ResourceManager.GetString("HomePage_Send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SETTINGS.
         /// </summary>
         public static string HomePage_SettingsTxtBlockTitle {
             get {
                 return ResourceManager.GetString("HomePage_SettingsTxtBlockTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        public static string HomePage_Update {
+            get {
+                return ResourceManager.GetString("HomePage_Update", resourceCulture);
             }
         }
         

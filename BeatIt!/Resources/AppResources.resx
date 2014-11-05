@@ -422,8 +422,14 @@ Remember there will be 5 songs!</value>
   <data name="HomePage_ScoreSuccess" xml:space="preserve">
     <value>Score has been sent successfully!</value>
   </data>
+  <data name="HomePage_Send" xml:space="preserve">
+    <value>Send New Score</value>
+  </data>
   <data name="HomePage_SettingsTxtBlockTitle" xml:space="preserve">
     <value>SETTINGS</value>
+  </data>
+  <data name="HomePage_Update" xml:space="preserve">
+    <value>Update</value>
   </data>
   <data name="LoginPage_Description" xml:space="preserve">
     <value>Do you think you're the most skilled?

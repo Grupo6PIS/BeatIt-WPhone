@@ -59,7 +59,7 @@ namespace BeatIt_.AppCode.Pages
             var refreshBtn = new ApplicationBarIconButton
             {
                 IconUri = new Uri("/Images/appbar_refresh.png", UriKind.Relative),
-                Text = "Actualizar"
+                Text = AppResources.HomePage_Update
             };
             ApplicationBar.Buttons.Add(refreshBtn);
             refreshBtn.Click += RefreshBtn_Click;
@@ -67,7 +67,7 @@ namespace BeatIt_.AppCode.Pages
             _sendBtn = new ApplicationBarIconButton
             {
                 IconUri = new Uri("/Images/appbar_upload.png", UriKind.Relative),
-                Text = "Enviar Puntaje",
+                Text = AppResources.HomePage_Send,
                 IsEnabled = _facade.ShouldSendScore()
             };
 
