@@ -65,11 +65,7 @@ namespace BeatIt_.AppCode.Pages
 
         private void Inicializar()
         {
-            PageTitle.Text = _currentChallenge.Name;
-            TextDescription.Text = _currentChallenge.Description;
-            StartTimeTextBlock.Text = _currentChallenge.GetDtChallenge().StartTime.ToString(CultureInfo.InvariantCulture);
-            ToBeatTextBlock.Text = _currentChallenge.State.BestScore + " pts";
-            DurationTextBlock.Text = _currentChallenge.GetDurationString();
+            
             
             // If the accelerometer is not supported by the device, show a message and return to the list of challenges.
             if (!Accelerometer.IsSupported)
@@ -85,6 +81,12 @@ namespace BeatIt_.AppCode.Pages
             // WE GET THE INSTANCE OF CHALLENGE.
             _ifc = FacadeController.GetInstance();
             _currentChallenge = (ChallengeDetail2)_ifc.GetChallenge(2);
+
+            PageTitle.Text = _currentChallenge.Name;
+            TextDescription.Text = _currentChallenge.Description;
+            StartTimeTextBlock.Text = _currentChallenge.GetDtChallenge().StartTime.ToString(CultureInfo.InvariantCulture);
+            ToBeatTextBlock.Text = _currentChallenge.State.BestScore + " pts";
+            DurationTextBlock.Text = _currentChallenge.GetDurationString();
 
             // If you already play all attempts, a message is displayed and return to the detail of the challenge
             if (_currentChallenge.State.CurrentAttempt >= _currentChallenge.MaxAttempt)

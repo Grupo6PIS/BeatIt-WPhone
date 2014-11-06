@@ -44,12 +44,7 @@ namespace BeatIt_.AppCode.Pages
             TransitionService.SetNavigationInTransition(this, navigateInTransition);
             TransitionService.SetNavigationOutTransition(this, navigateOutTransition);
 
-            PageTitle.Text = _currentChallenge.Name;
-            TextDescription.Text = _currentChallenge.Description;
-            StartTimeTextBlock.Text = _currentChallenge.GetDtChallenge()
-                .StartTime.ToString(CultureInfo.InvariantCulture);
-            ToBeatTextBlock.Text = _currentChallenge.State.BestScore + " pts";
-            DurationTextBlock.Text = _currentChallenge.GetDurationString();
+           
 
             Inicializar();
         }
@@ -67,6 +62,12 @@ namespace BeatIt_.AppCode.Pages
             _ifc = FacadeController.GetInstance();
             _currentChallenge = (ChallengeDetail6)_ifc.GetChallenge(6);
 
+            PageTitle.Text = _currentChallenge.Name;
+            TextDescription.Text = _currentChallenge.Description;
+            StartTimeTextBlock.Text = _currentChallenge.GetDtChallenge()
+                .StartTime.ToString(CultureInfo.InvariantCulture);
+            ToBeatTextBlock.Text = _currentChallenge.State.BestScore + " pts";
+            DurationTextBlock.Text = _currentChallenge.GetDurationString();
 
             if (!Accelerometer.IsSupported)
             {
