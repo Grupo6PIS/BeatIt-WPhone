@@ -17,7 +17,7 @@ namespace BeatIt_.AppCode.Pages
         private const double Speed = 15;
         private const int TimeTop = 45;
 
-        private ChallengeDetail5 _challenge;
+        private ChallengeDetail5 _currentChallenge;
         private int _timeCounter, _collisionCounter;
         private double _positionRedX;
 
@@ -60,12 +60,15 @@ namespace BeatIt_.AppCode.Pages
 
         private void InitChallenge()
         {
-            _challenge =(ChallengeDetail5) FacadeController.GetInstance().GetChallenge(ChallengeId);
+            _currentChallenge =(ChallengeDetail5) FacadeController.GetInstance().GetChallenge(ChallengeId);
             _randomNumber = new Random();
-
-            StartTimeTextBlock.Text = _challenge.State.StartDate.ToString(CultureInfo.InvariantCulture);
-            DurationTextBlock.Text = _challenge.GetDurationString();
-            ToBeatTextBlock.Text = _challenge.State.BestScore + "pts";
+            
+            PageTitle.Text = _currentChallenge.Name;
+            TextDescription.Text = _currentChallenge.Description;
+            StartTimeTextBlock.Text = _currentChallenge.GetDtChallenge()
+                .StartTime.ToString(CultureInfo.InvariantCulture);
+            ToBeatTextBlock.Text = _currentChallenge.State.BestScore + " pts";
+            DurationTextBlock.Text = _currentChallenge.GetDurationString();
         }
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
@@ -81,22 +84,12 @@ namespace BeatIt_.AppCode.Pages
                 return;
             }
 
-            //if (_challenge.State.CurrentAttempt == _challenge.MaxAttempt)
-            //{
-            //    MessageBox.Show(AppResources.Challenge_Limit);
-            //    Dispatcher.BeginInvoke(delegate
-            //    {
-            //        var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
-            //        NavigationService.Navigate(uri);
-            //    });
-
-            //    return;
-            //}
+            
 
             _timeCounter = TimeTop;
             _collisionCounter = 0;
 
-            _fraccion = _challenge.Level == 2 ? 0.7 : 0.9;
+            _fraccion = _currentChallenge.Level == 2 ? 0.7 : 0.9;
 
             _acelerometer = new Accelerometer();
             _acelerometer.CurrentValueChanged += acelerometer_ReadingChanged;
@@ -127,7 +120,7 @@ namespace BeatIt_.AppCode.Pages
                 _timer = null;
                 _acelerometer = null;
 
-                _challenge.ChanllengeComplete(_collisionCounter);
+                _currentChallenge.ChanllengeComplete(_collisionCounter);
               
                 var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
                 NavigationService.Navigate(uri);

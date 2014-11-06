@@ -18,18 +18,16 @@ using Color = System.Windows.Media.Color;
 using Rectangle = System.Windows.Shapes.Rectangle;
 
 
-/* DESPERTAME A TIEMPO */
-
 namespace BeatIt_.AppCode.Pages
 {
     public partial class Challenge2
     {
         private const int StartTime = 10;
 
-        private ChallengeDetail2 _currentChallenge;    // Instancia del desafio.
-        private IFacadeController _ifc;                // Interface del controlador Fachada.
+        private ChallengeDetail2 _currentChallenge;    
+        private IFacadeController _ifc;               
 
-        private int _aciertos;                         // Cantidad de haciertos.
+        private int _good;                         
         private int _indice;
 
         private int[] _secondsToWakeMeUp;
@@ -37,9 +35,9 @@ namespace BeatIt_.AppCode.Pages
         private DateTime _startTime;
 
         private DispatcherTimer _timer;
-        private Accelerometer _acelerometro;
+        private Accelerometer _acelerometer;
 
-        readonly Stopwatch _stopwatch = new Stopwatch(); //un objeto tipo Cronómetro
+        readonly Stopwatch _stopwatch = new Stopwatch(); 
 
         private Rectangle[] _progresRectangles;
 
@@ -67,6 +65,12 @@ namespace BeatIt_.AppCode.Pages
 
         private void Inicializar()
         {
+            PageTitle.Text = _currentChallenge.Name;
+            TextDescription.Text = _currentChallenge.Description;
+            StartTimeTextBlock.Text = _currentChallenge.GetDtChallenge().StartTime.ToString(CultureInfo.InvariantCulture);
+            ToBeatTextBlock.Text = _currentChallenge.State.BestScore + " pts";
+            DurationTextBlock.Text = _currentChallenge.GetDurationString();
+            
             // If the accelerometer is not supported by the device, show a message and return to the list of challenges.
             if (!Accelerometer.IsSupported)
             {
@@ -97,23 +101,19 @@ namespace BeatIt_.AppCode.Pages
                 });
             }
 
-            // Initialize LABEL DETAIL CHALLENGE
-            ShowST.Text = _currentChallenge.GetDtChallenge().StartTime.ToString(CultureInfo.InvariantCulture);
-            // Time started the challenge.
-            ShowToBeat.Text = _currentChallenge.State.BestScore + " pts"; // Score to beat.
-            ShowDuration.Text = _currentChallenge.GetDurationString(); // Challenging time for the challenge.   
+             
             ShowTime.Text = "---"; // Elapsed time.
-            textDescription.Text = _currentChallenge.Description;
+
 
             // We initialize the TIMER
             _timer = new DispatcherTimer { Interval = new TimeSpan(0, 0, 0, 0, 100) };
             _timer.Tick += TimerTick;
 
             // We initialize the ACCELEROMETER
-            _acelerometro = new Accelerometer();
+            _acelerometer = new Accelerometer();
 
             // SUCCESS            
-            _aciertos = 0;
+            _good = 0;
             _indice = 0;
 
             // Color Button start.
@@ -159,10 +159,10 @@ namespace BeatIt_.AppCode.Pages
                 if (_indice == _secondsToWakeMeUp.Length) // If already toured all awakened.
                 {
                     _timer.Stop();
-                    _acelerometro.Stop();
+                    _acelerometer.Stop();
                     _stopwatch.Stop();
 
-                    _currentChallenge.CompleteChallenge(_aciertos);
+                    _currentChallenge.CompleteChallenge(_good);
 
                     var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
                     NavigationService.Navigate(uri);
@@ -194,29 +194,16 @@ namespace BeatIt_.AppCode.Pages
                 ProgressBarLevel2Grid.Visibility = Visibility.Visible;                
             }
 
-                // INICIALIZAMOS EL TIMER.
+                
                 _timer.Start();
             _stopwatch.Start();
 
-            _acelerometro.CurrentValueChanged += acelerometro_CurrentValueChanged;
-            _acelerometro.TimeBetweenUpdates = new TimeSpan(0, 0, 0, 0, 100);
-            _acelerometro.Start();
+            _acelerometer.CurrentValueChanged += acelerometro_CurrentValueChanged;
+            _acelerometer.TimeBetweenUpdates = new TimeSpan(0, 0, 0, 0, 100);
+            _acelerometer.Start();
         }
 
-        /// <summary>
-        /// This method is called when there is a change in the accelerometer data, the same is 
-        /// to determine whether the sensed acceleration is significant, in that case:
-        /// IF (WAKE ME UP)
-        ///     aciertos ++
-        ///     IF (there are no attempts to wake up on time)
-        ///         finish
-        ///     else
-        ///         retart with the next attempt.
-        /// else
-        ///     finish
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+       
         private void acelerometro_CurrentValueChanged(object sender, SensorReadingEventArgs<AccelerometerReading> e)
         {
 
@@ -229,7 +216,7 @@ namespace BeatIt_.AppCode.Pages
                 {
                     
 
-                    _acelerometro.Stop();
+                    _acelerometer.Stop();
                     _timer.Stop();
                     _stopwatch.Stop();
 
@@ -238,7 +225,7 @@ namespace BeatIt_.AppCode.Pages
                     if (Math.Abs(StartTime*1000 - _stopwatch.ElapsedMilliseconds) <= 500) // If I woke up on time.
                     {
                         PlaySound("/BeatIt!;component/Sounds/ring.wav");
-                        _aciertos ++;
+                        _good ++;
                         FillProgressBar(_indice - 1, false, _currentChallenge.Level);
                     }
                     else
@@ -248,7 +235,7 @@ namespace BeatIt_.AppCode.Pages
                     }
                     if (_indice == _secondsToWakeMeUp.Length) // If there are no attempts
                     {
-                        _currentChallenge.CompleteChallenge(_aciertos);
+                        _currentChallenge.CompleteChallenge(_good);
 
                         var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
                         NavigationService.Navigate(uri);
@@ -287,7 +274,7 @@ namespace BeatIt_.AppCode.Pages
             _timer.Start();
             _stopwatch.Reset();
             _stopwatch.Start();
-            _acelerometro.Start();
+            _acelerometer.Start();
         }
 
         public void FillProgressBar(int indice, bool error, int level)
@@ -307,7 +294,7 @@ namespace BeatIt_.AppCode.Pages
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
         {
             _timer.Stop();
-            _acelerometro.Stop();
+            _acelerometer.Stop();
 
             base.OnBackKeyPress(e);
         }

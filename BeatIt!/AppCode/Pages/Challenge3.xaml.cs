@@ -10,13 +10,11 @@ using Facebook;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Tasks;
 
-/* INVITA A TUS AMIGOS */
 
 namespace BeatIt_.AppCode.Pages
 {
     public partial class Challenge3
     {
-        //Private Variables
         private readonly IFacadeController _ifc;
         private readonly string _message = AppResources.Challenge3_Message;
         private readonly PhoneNumberChooserTask _phoneNumberChooserTask;
@@ -74,7 +72,6 @@ namespace BeatIt_.AppCode.Pages
             parameters["message"] = _message;
             fb.PostAsync("me/feed", parameters);
 
-            //Refresh countFacebook
             
         }
 
@@ -89,8 +86,7 @@ namespace BeatIt_.AppCode.Pages
 
         private void hyperlinkButtonFinish_Click(object sender, RoutedEventArgs e)
         {
-            //_currentChallenge = (ChallengeDetail3) _ifc.getChallenge(3);
-            var ks = _currentChallenge.CompleteChallenge(false);
+            _currentChallenge.CompleteChallenge(false);
            
             var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
             NavigationService.Navigate(uri);

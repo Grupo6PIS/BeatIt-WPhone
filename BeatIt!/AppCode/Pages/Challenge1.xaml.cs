@@ -78,6 +78,8 @@ namespace BeatIt_.AppCode.Pages
             _avgSpeed = 0;
             _count = 0;
 
+            PageTitle.Text = _currentChallenge.Name;
+            TextDescription.Text = _currentChallenge.Description;
             StartTimeTextBlock.Text = _currentChallenge.GetDtChallenge().StartTime.ToString(CultureInfo.InvariantCulture);
             ToBeatTextBlock.Text = _currentChallenge.State.BestScore + " pts";
             DurationTextBlock.Text = _currentChallenge.GetDurationString();
