@@ -21,6 +21,7 @@ namespace BeatIt_.AppCode.Pages
         private readonly FacebookClient _fb = new FacebookClient();
         public string AccessToken { get; set; }
         private User _user;
+        private JObject _serverUserData;
 
         public Login()
         {
@@ -208,6 +209,7 @@ namespace BeatIt_.AppCode.Pages
         {
             if (!(bool)jsonResponse["error"])
             {
+                _serverUserData = (JObject)jsonResponse["user"];
                 var ws = new WebServicesController();
                 ws.GetRound(GetRoundFinished);   
             }
