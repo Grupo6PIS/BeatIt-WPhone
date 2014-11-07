@@ -26,6 +26,17 @@ namespace BeatIt_.AppCode.Controllers
             wc.UploadStringAsync(new Uri(Url + "/user/login/"), "POST", parameter);
         }
 
+        public void SendAllStates(string json)
+        {
+            string parameter = "data=" + json;
+
+            var wc = new WebClient();
+            wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+            wc.UploadStringCompleted += WcOnUploadStringCompleted;
+
+            wc.UploadStringAsync(new Uri(Url + "/user/sendAllStates/"), "POST", parameter);
+        }
+
         public void UpdateUser(string userId, string name, string imageUrl, CallbackWebService callbackUpdateuser)
         {
             if (callbackUpdateuser != null)
@@ -90,16 +101,18 @@ namespace BeatIt_.AppCode.Controllers
 
         public void WcOnUploadStringCompleted(object sender, UploadStringCompletedEventArgs e)
         {
-            if (e.Error == null && _callback != null)
-            {
-                _callback(JObject.Parse(e.Result));
-                _callback = null;
-            }
-            else
-            {
-                const string errorStr = "{'error':true}";
-                _callback(JObject.Parse(errorStr));
-                _callback = null;
+            if (_callback!=null){
+                if (e.Error == null)
+                {
+                    _callback(JObject.Parse(e.Result));
+                    _callback = null;
+                }
+                else
+                {
+                    const string errorStr = "{'error':true}";
+                    _callback(JObject.Parse(errorStr));
+                    _callback = null;
+                }
             }
         }
     }

@@ -10,12 +10,14 @@ namespace BeatIt_.AppCode.Interfaces
         bool IsLoggedUser();
         User GetCurrentUser();
         List<DTRanking> GetRanking();
-        void LoginUser(User user, JObject jsonResponse);
+        void LoginUser(User user, JObject jsonResponse, JObject serverDataUser);
         void LogoutUser();
         void UpdateRanking(JObject jsonResponse);
         Challenge GetChallenge(int challengeId);
         Dictionary<int, Challenge> GetChallenges();
         void SetCurrentChallenge(Challenge challenge);
         Challenge GetCurrentChallenge();
+        int GetRoundScore();
+        bool ShouldSendScore();
     }
 }

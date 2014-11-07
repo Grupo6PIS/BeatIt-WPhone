@@ -49,7 +49,7 @@ namespace BeatIt_.AppCode.Controllers
             return _ranking;
         }
 
-        public void LoginUser(User user, JObject jsonResponse)
+        public void LoginUser(User user, JObject jsonResponse, JObject serverDataUser)
         {
             _currentUser = user;
 
@@ -279,7 +279,7 @@ namespace BeatIt_.AppCode.Controllers
             }
         }
 
-        public void logoutUser()
+        public void LogoutUser()
         {         
 
             //Save state instances on server
@@ -313,7 +313,7 @@ namespace BeatIt_.AppCode.Controllers
 
                 jsonString += "]}";
 
-                _ws.SendAllStates(jsonString, null);
+                _ws.SendAllStates(jsonString);
             }
 
 
@@ -497,13 +497,6 @@ namespace BeatIt_.AppCode.Controllers
             _instance._ranking = new List<DTRanking> { r1, r2, r3, r4, r5, r6, r7 };
 
             return _instance;
-        }
-
-        public int GetRoundScore()
-        {
-            return
-                _currentRound.Challenges.Where(variable => variable.Value.IsEnabled)
-                    .Sum(variable => variable.Value.State.BestScore);
         }
 
         public bool ShouldSendScore()

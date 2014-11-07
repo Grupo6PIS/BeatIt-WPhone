@@ -232,7 +232,7 @@ namespace BeatIt_.AppCode.Pages
             if (!(bool)jsonResponse["error"])
             {
                 IFacadeController ifc = FacadeController.GetInstance();
-                ifc.LoginUser(_user, jsonResponse);
+                ifc.LoginUser(_user, jsonResponse, _serverUserData);
                 Dispatcher.BeginInvoke(() =>
                 {
                     ProgressBar.Visibility = Visibility.Collapsed;
