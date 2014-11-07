@@ -7,32 +7,24 @@ using BeatIt_.AppCode.Datatypes;
 
 namespace BeatIt.Tests
 {
-    [TestClass] // Logica Usain Bolt
+    [TestClass] //Usain Bolt
     public class TestingChallengeDetail1
     {
         [TestMethod]
         public void TestingFunctioncalculatePuntaje()
         {
-            // Por algun motivo no puede el sqlite no puede crear la base 
-            // o mas bien crear un archivo, me parece que tiene algo que ver
-            // con el contexto en el que se ejecuta el test.
-            // Por eso gener un metodo a parte para generar la instancia del controlador, 
-            // en este metodos esta hardcodeado el tema de la carga de los estados que era lo
-            // que estabamos cargando de SQLite.
-
-            //Comente estas lineas para que pase el test!!! 
-
+            
             var ifc = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
 
             var currentChallenge = (ChallengeDetail1)ifc.GetChallenge(1);
             currentChallenge.CompleteChallenge(false, 45, 42);
 
-            ////Si esta bien debería ser 348 el puntaje de en el desafío (42+45)*4
+            ////348 = (42+45)*4
             Assert.AreEqual(348, currentChallenge.State.LastScore);
         }
     };
 
-    [TestClass] // Logica Wake Me Up!
+    [TestClass] //Wake Me Up!
     public class TestingChallengeDetail2
     {
         [TestMethod]
@@ -57,23 +49,23 @@ namespace BeatIt.Tests
             challenge.Level = 1;
 
             challenge.CompleteChallenge(1);
-            // El ultimo puntaje y el mejor deberian ser 20.
+            
             Assert.AreEqual(challenge.State.BestScore, 80);
             Assert.AreEqual(challenge.State.LastScore, 80);
 
             challenge.CompleteChallenge(2);
-            // El ultimo puntaje y el mejor deberian ser 40
+            
             Assert.AreEqual(challenge.State.BestScore, 160);
             Assert.AreEqual(challenge.State.LastScore, 160);
 
             challenge.CompleteChallenge(0);
-            // El ultimo puntaje deberia ser 0 y el mejor 40.
+            
             Assert.AreEqual(challenge.State.BestScore, 160);
             Assert.AreEqual(challenge.State.LastScore, 0);
         }
     };
 
-    [TestClass] // Logica Challenge
+    [TestClass] //Challenge
     public class TestingChallenge
     {
         [TestMethod]
@@ -118,7 +110,7 @@ namespace BeatIt.Tests
         }
     };
 
-    [TestClass] // Logica Can you play?
+    [TestClass] // Can you play?
     public class TestingChallengeDetail3
     {
         [TestMethod]
@@ -185,7 +177,7 @@ namespace BeatIt.Tests
         }
     };
 
-    [TestClass] // Logica Callar al Perro
+    [TestClass] //Callar al Perro
     public class TestingChallengeDetail4
     {
         [TestMethod]
@@ -221,7 +213,7 @@ namespace BeatIt.Tests
         }
     };
 
-    [TestClass] // Logica Catch Me
+    [TestClass] //Catch Me
     public class TestingChallengeDetail7
     {
         [TestMethod]
@@ -245,7 +237,7 @@ namespace BeatIt.Tests
         }
     };
 
-    [TestClass] // Logica Color & Texto
+    [TestClass] //Color & Texto
     public class TestingChallengeDetail8
     {
         [TestMethod]
@@ -281,7 +273,7 @@ namespace BeatIt.Tests
         }
     };
 
-    [TestClass] // Logica Song Complete
+    [TestClass] //Song Complete
     public class TestingChallengeDetail9
     {
         [TestMethod]
@@ -316,6 +308,44 @@ namespace BeatIt.Tests
             Assert.IsTrue(ch.State.Finished);
         }
     };
+
+
+    [TestClass] //Selfie Groupie
+    public class TestingChallengeDetail10
+    {
+        [TestMethod]
+        public void TestingFunction_CompleteChallenge()
+        {
+         /*   var ifc = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
+            var ch = (ChallengeDetail10)ifc.GetChallenge(10);
+
+            Assert.IsNotNull(ch);
+
+            Assert.AreEqual(ch.State.BestScore, 0);
+            Assert.AreEqual(ch.State.LastScore, 0);
+            Assert.AreEqual(ch.State.CurrentAttempt, 0);
+            Assert.IsFalse(ch.State.Finished);
+
+            ch.CompleteChallenge(1);
+            Assert.AreEqual(ch.State.LastScore, 0);
+            Assert.AreEqual(ch.State.BestScore, 0);
+            Assert.AreEqual(ch.State.CurrentAttempt, 1);
+            Assert.IsFalse(ch.State.Finished);
+
+            ch.CompleteChallenge(3);
+            Assert.AreEqual(ch.State.LastScore, 90);
+            Assert.AreEqual(ch.State.BestScore, 90);
+            Assert.AreEqual(ch.State.CurrentAttempt, 2);
+            Assert.IsFalse(ch.State.Finished);
+
+            ch.CompleteChallenge(2);
+            Assert.AreEqual(ch.State.LastScore, 60);
+            Assert.AreEqual(ch.State.BestScore, 90);
+            Assert.AreEqual(ch.State.CurrentAttempt, 3);
+            Assert.IsTrue(ch.State.Finished);*/
+        }
+    };
+
 }
 
 

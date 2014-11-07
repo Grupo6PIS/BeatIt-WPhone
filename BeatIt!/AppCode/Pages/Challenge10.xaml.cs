@@ -64,6 +64,9 @@ namespace BeatIt_.AppCode.Pages
             if (e.TaskResult != TaskResult.OK) return;
             _image.SetSource(e.ChosenPhoto);
             CountFacesServices();
+            StartPlayGrid.Visibility = Visibility.Collapsed;
+            InProgressGrid.Visibility = Visibility.Visible;
+            ProgressBar.Visibility = Visibility.Visible;
             
         } 
 
@@ -74,10 +77,6 @@ namespace BeatIt_.AppCode.Pages
         {
             MessageBox.Show(AppResources.Challenge10_Warning);
             _photoCameraCapture.Show();
-            StartPlayGrid.Visibility = Visibility.Collapsed;
-            InProgressGrid.Visibility = Visibility.Visible;
-            ProgressBar.Visibility = Visibility.Visible;
-            
         }
 
         private void CountFacesServices()
