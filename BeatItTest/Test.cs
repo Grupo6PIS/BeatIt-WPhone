@@ -1,4 +1,5 @@
-﻿using BeatIt_.Resources;
+﻿using System;
+using BeatIt_.Resources;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BeatIt_.AppCode.Challenges;
 using BeatIt_.AppCode.Classes;
@@ -212,6 +213,59 @@ namespace BeatIt.Tests
             Assert.IsTrue(ch.State.Finished);
         }
     };
+
+
+    [TestClass] // Throw The Phone
+    public class TestingChallengeDetail6
+    {
+        private const double GravitationalAcceleration = -9.80665f;
+
+        [TestMethod]
+        public void TestingFunction_CalcularPuntaje()
+        {
+            var ch6 = new ChallengeDetail6();
+            int puntos = ch6.CalcularPuntaje(0.1f);
+            Assert.AreEqual(puntos, 0);
+
+            double tiempo = Math.Sqrt(2 * 8 / -GravitationalAcceleration);
+            puntos = ch6.CalcularPuntaje(tiempo);
+            Assert.AreEqual(puntos, 120);
+
+            ch6 = new ChallengeDetail6(6, "", 2, 3, false);
+
+            puntos = ch6.CalcularPuntaje(0.1f);
+            Assert.AreEqual(puntos, 0);
+
+            tiempo = Math.Sqrt(2 * 8 / -GravitationalAcceleration);
+            puntos = ch6.CalcularPuntaje(tiempo);
+            Assert.AreEqual(puntos, 60);
+
+            tiempo = Math.Sqrt(3 * 8 / -GravitationalAcceleration);
+            puntos = ch6.CalcularPuntaje(tiempo);
+            Assert.AreEqual(puntos, 120);
+
+            tiempo = Math.Sqrt(4 * 8 / -GravitationalAcceleration);
+            puntos = ch6.CalcularPuntaje(tiempo);
+            Assert.AreEqual(puntos, 180);
+        }
+
+        [TestMethod]
+        public void TestingFunction_CompleteChallenge()
+        {
+            var ifc = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
+            var ch6 = (ChallengeDetail6) ifc.GetChallenge(6);
+
+            double tiempo = Math.Sqrt(2 * 8 / -GravitationalAcceleration);
+            ch6.CompleteChallenge(tiempo);
+            Assert.AreEqual(ch6.State.BestScore, 120);
+
+            tiempo = Math.Sqrt(3 * 8 / -GravitationalAcceleration);
+            ch6.CompleteChallenge(tiempo);
+            Assert.AreEqual(ch6.State.BestScore, 180);
+            Assert.AreEqual(ch6.State.LastScore, 180);
+        }
+    }
+
 
     [TestClass] //Catch Me
     public class TestingChallengeDetail7
