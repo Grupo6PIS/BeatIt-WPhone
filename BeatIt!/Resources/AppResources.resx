@@ -258,10 +258,10 @@ Also available for Android!</value>
     <value>Can You Play?</value>
   </data>
   <data name="Challenge4_DescriptionHardTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to shut the barking dog up by putting your hand close to the phone as soon as possible. The dog will bark five times.</value>
+    <value>In this challenge you have to shut the barking dog up by pressing the red button as soon as possible. The dog will bark five times.</value>
   </data>
   <data name="Challenge4_DescriptionTxtBlockText" xml:space="preserve">
-    <value>In this challenge you have to shut the barking dog up by putting your hand close to the phone as soon as possible. The dog will bark three times.</value>
+    <value>In this challenge you have to shut the barking dog up by pressing the red button as soon as possible. The dog will bark three times.</value>
   </data>
   <data name="Challenge4_StartButton" xml:space="preserve">
     <value>Start!</value>
