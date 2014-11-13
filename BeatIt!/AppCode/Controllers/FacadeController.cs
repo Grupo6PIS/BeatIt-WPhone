@@ -49,6 +49,15 @@ namespace BeatIt_.AppCode.Controllers
             return _ranking;
         }
 
+        public static bool IsNullOrEmpty(JToken token)
+        {
+            return (token == null) ||
+                   (token.Type == JTokenType.Array && !token.HasValues) ||
+                   (token.Type == JTokenType.Object && !token.HasValues) ||
+                   (token.Type == JTokenType.String && token.ToString() == String.Empty) ||
+                   (token.Type == JTokenType.Null);
+        }
+
         public void LoginUser(User user, JObject roundJsonResponse, JObject userJsonResponse)
         {
             _currentUser = user;
@@ -173,12 +182,12 @@ namespace BeatIt_.AppCode.Controllers
             // GENERO ESTADOS DE DESAFIOS
             bool addNewStates = false;
 
-            if (userJsonResponse["roundStates"] != null)
+            JToken roundStatesToken = userJsonResponse["roundStates"];
+            if (!IsNullOrEmpty(roundStatesToken))
             {
-                JToken roundState = userJsonResponse["roundStates"];
-                if (roundState["challenges"] != null)
+                if (roundStatesToken["challenges"] != null)
                 {
-                    var challengesServer = (JArray)roundState["challenges"];
+                    var challengesServer = (JArray)roundStatesToken["challenges"];
                     if (challengesServer.Count > 0) // Si hay estados guardados.
                     {
                         if (_currentRound.RoundId == (int)((JObject)userJsonResponse["roundStates"])["id"])

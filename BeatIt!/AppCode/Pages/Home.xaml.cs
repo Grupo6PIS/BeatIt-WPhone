@@ -170,14 +170,13 @@ namespace BeatIt_.AppCode.Pages
                 Pivot.IsEnabled = false;
                 Pivot.Opacity = 0.3;
                 ProgressBar.Visibility = Visibility.Visible;
-                // user clicked yes
+
                 var fb = new FacebookClient();
                 var parameters = new Dictionary<string, object>();
                 parameters["next"] = "https://www.facebook.com/connect/login_success.html";
                 parameters["access_token"] = _facade.GetCurrentUser().FbAccessToken;
                 var logoutUrl = fb.GetLogoutUrl(parameters);
                 var webBrowser = new WebBrowser();
-                webBrowser.Navigate(logoutUrl);
                 webBrowser.Navigated += (o, args) =>
                 {
                     if (args.Uri.AbsoluteUri == "https://www.facebook.com/connect/login_success.html")
@@ -187,6 +186,7 @@ namespace BeatIt_.AppCode.Pages
                             UriKind.Relative));
                     }
                 };
+                webBrowser.Navigate(logoutUrl);
             }
         }
 
