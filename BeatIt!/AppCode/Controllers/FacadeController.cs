@@ -176,35 +176,40 @@ namespace BeatIt_.AppCode.Controllers
             if (userJsonResponse["roundStates"] != null)
             {
                 JToken roundState = userJsonResponse["roundStates"];
-                var challengesServer = (JArray) roundState["challenges"];
-                if (challengesServer.Count > 0) // Si hay estados guardados.
+                if (roundState["challenges"] != null)
                 {
-                    if (_currentRound.RoundId == (int) ((JObject) userJsonResponse["roundStates"])["id"])
+                    var challengesServer = (JArray)roundState["challenges"];
+                    if (challengesServer.Count > 0) // Si hay estados guardados.
                     {
-                        foreach (JToken jToken in challengesServer)
+                        if (_currentRound.RoundId == (int)((JObject)userJsonResponse["roundStates"])["id"])
                         {
-                            var jObject = (JObject) jToken;
-                            var s = new State
+                            foreach (JToken jToken in challengesServer)
                             {
-                                Challenge = (_currentRound.Challenges[(int) jObject["id"]]),
-                                CurrentAttempt = (int) jObject["attemps"],
-                                Finished = (bool) jObject["finished"],
-                                LastScore = (int) jObject["lastScore"],
-                                BestScore = (int) jObject["bestScore"],
-                                StartDate = Convert.ToDateTime((string) jObject["start_date"])
-                            };
+                                var jObject = (JObject)jToken;
+                                var s = new State
+                                {
+                                    Challenge = (_currentRound.Challenges[(int)jObject["id"]]),
+                                    CurrentAttempt = (int)jObject["attemps"],
+                                    Finished = (bool)jObject["finished"],
+                                    LastScore = (int)jObject["lastScore"],
+                                    BestScore = (int)jObject["bestScore"],
+                                    StartDate = Convert.ToDateTime((string)jObject["start_date"])
+                                };
 
-                            _currentRound.Challenges[(int) jObject["id"]].State = s;
-                            if (!SaveState(s))
-                            {
-                                _db.Insert(s.GetDtStatePersistible());
+                                _currentRound.Challenges[(int)jObject["id"]].State = s;
+                                if (!SaveState(s))
+                                {
+                                    _db.Insert(s.GetDtStatePersistible());
+                                }
                             }
+                        }
+                        else
+                        {
+                            addNewStates = true;
                         }
                     }
                     else
-                    {
                         addNewStates = true;
-                    }
                 }
                 else
                     addNewStates = true;
