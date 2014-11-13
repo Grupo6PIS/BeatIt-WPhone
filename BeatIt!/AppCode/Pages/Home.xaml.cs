@@ -192,7 +192,11 @@ namespace BeatIt_.AppCode.Pages
 
         protected override void OnBackKeyPress(CancelEventArgs e)
         {
-            e.Cancel = true;
+            while (NavigationService.CanGoBack)
+            {
+                NavigationService.RemoveBackEntry();
+            }
+            e.Cancel = false;
             base.OnBackKeyPress(e);
         }
 
