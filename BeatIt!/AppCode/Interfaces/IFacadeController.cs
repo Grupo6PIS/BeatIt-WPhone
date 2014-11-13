@@ -10,7 +10,7 @@ namespace BeatIt_.AppCode.Interfaces
         bool IsLoggedUser();
         User GetCurrentUser();
         List<DTRanking> GetRanking();
-        void LoginUser(User user, JObject jsonResponse, JObject serverDataUser);
+        void LoginUser(User user, JObject roundJsonResponse, JObject userJsonResponse);
         void LogoutUser();
         void UpdateRanking(JObject jsonResponse);
         Challenge GetChallenge(int challengeId);

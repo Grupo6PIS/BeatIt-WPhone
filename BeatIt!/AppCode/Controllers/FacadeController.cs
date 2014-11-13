@@ -49,12 +49,12 @@ namespace BeatIt_.AppCode.Controllers
             return _ranking;
         }
 
-        public void LoginUser(User user, JObject jsonResponse, JObject serverDataUser)
+        public void LoginUser(User user, JObject roundJsonResponse, JObject userJsonResponse)
         {
             _currentUser = user;
 
             // GENERO DESAFIOS DE RONDA
-            JObject round = (JObject) jsonResponse["round"],
+            JObject round = (JObject) roundJsonResponse["round"],
                 jObjectTemp;
             var challengList = (JArray) round["challengeList"];
 
@@ -78,7 +78,7 @@ namespace BeatIt_.AppCode.Controllers
                 switch ((int) jObjectTemp["_id"])
                 {
                     case 1: // Usain Bolt
-                        c = new ChallengeDetail1((int)jObjectTemp["_id"],
+                        c = new ChallengeDetail1((int) jObjectTemp["_id"],
                             (string) jObjectTemp["colorHex"],
                             (int) jObjectTemp["challengeLevel"],
                             (int) jObjectTemp["maxAttemps"],
@@ -87,11 +87,11 @@ namespace BeatIt_.AppCode.Controllers
 
                         break;
                     case 2: // Wake Me Up!
-                        c = new ChallengeDetail2((int)jObjectTemp["_id"],
+                        c = new ChallengeDetail2((int) jObjectTemp["_id"],
                             (string) jObjectTemp["colorHex"],
                             (int) jObjectTemp["challengeLevel"],
-                            (int)jObjectTemp["maxAttemps"],
-                            (bool)jObjectTemp["active"]) { Round = roundObj };
+                            (int) jObjectTemp["maxAttemps"],
+                            (bool) jObjectTemp["active"]) {Round = roundObj};
                         challenges.Add(2, c);
 
                         break;
@@ -99,84 +99,119 @@ namespace BeatIt_.AppCode.Controllers
                         c = new ChallengeDetail3((int) jObjectTemp["_id"],
                             (string) jObjectTemp["colorHex"],
                             (int) jObjectTemp["challengeLevel"],
-                            (int)jObjectTemp["maxAttemps"],
-                            (bool)jObjectTemp["active"]) { Round = roundObj };
+                            (int) jObjectTemp["maxAttemps"],
+                            (bool) jObjectTemp["active"]) {Round = roundObj};
                         challenges.Add(3, c);
 
                         break;
                     case 4: // Shut the Dog!
-                        c = new ChallengeDetail4((int)jObjectTemp["_id"],
+                        c = new ChallengeDetail4((int) jObjectTemp["_id"],
                             (string) jObjectTemp["colorHex"],
                             (int) jObjectTemp["challengeLevel"],
-                            (int)jObjectTemp["maxAttemps"],
-                            (bool)jObjectTemp["active"]) { Round = roundObj };
+                            (int) jObjectTemp["maxAttemps"],
+                            (bool) jObjectTemp["active"]) {Round = roundObj};
                         challenges.Add(4, c);
 
                         break;
-                    case  5: // Bouncing Game
-                        c = new ChallengeDetail5((int)jObjectTemp["_id"],
+                    case 5: // Bouncing Game
+                        c = new ChallengeDetail5((int) jObjectTemp["_id"],
                             (string) jObjectTemp["colorHex"],
                             (int) jObjectTemp["challengeLevel"],
-                            (int)jObjectTemp["maxAttemps"],
-                            (bool)jObjectTemp["active"]) { Round = roundObj };
+                            (int) jObjectTemp["maxAttemps"],
+                            (bool) jObjectTemp["active"]) {Round = roundObj};
                         challenges.Add(5, c);
                         break;
 
-                    case  6: // Throw the Phone
-                        c = new ChallengeDetail6((int)jObjectTemp["_id"],
+                    case 6: // Throw the Phone
+                        c = new ChallengeDetail6((int) jObjectTemp["_id"],
                             (string) jObjectTemp["colorHex"],
                             (int) jObjectTemp["challengeLevel"],
-                            (int)jObjectTemp["maxAttemps"],
-                            (bool)jObjectTemp["active"]) { Round = roundObj };
+                            (int) jObjectTemp["maxAttemps"],
+                            (bool) jObjectTemp["active"]) {Round = roundObj};
                         challenges.Add(6, c);
                         break;
 
-                    case  7: // Catch Me!
-                        c = new ChallengeDetail7((int)jObjectTemp["_id"],
+                    case 7: // Catch Me!
+                        c = new ChallengeDetail7((int) jObjectTemp["_id"],
                             (string) jObjectTemp["colorHex"],
                             (int) jObjectTemp["challengeLevel"],
-                            (int)jObjectTemp["maxAttemps"],
-                            (bool)jObjectTemp["active"]) { Round = roundObj };
+                            (int) jObjectTemp["maxAttemps"],
+                            (bool) jObjectTemp["active"]) {Round = roundObj};
                         challenges.Add(7, c);
                         break;
 
                     case 8: // Color & Text
-                        c = new ChallengeDetail8((int)jObjectTemp["_id"],
+                        c = new ChallengeDetail8((int) jObjectTemp["_id"],
                             (string) jObjectTemp["colorHex"],
                             (int) jObjectTemp["challengeLevel"],
-                            (int)jObjectTemp["maxAttemps"],
-                            (bool)jObjectTemp["active"]) { Round = roundObj };
+                            (int) jObjectTemp["maxAttemps"],
+                            (bool) jObjectTemp["active"]) {Round = roundObj};
                         challenges.Add(8, c);
                         break;
 
                     case 9: // Song Complete
-                        c = new ChallengeDetail9((int)jObjectTemp["_id"],
+                        c = new ChallengeDetail9((int) jObjectTemp["_id"],
                             (string) jObjectTemp["colorHex"],
                             (int) jObjectTemp["challengeLevel"],
-                            (int)jObjectTemp["maxAttemps"],
-                            (bool)jObjectTemp["active"]) { Round = roundObj };
+                            (int) jObjectTemp["maxAttemps"],
+                            (bool) jObjectTemp["active"]) {Round = roundObj};
                         challenges.Add(9, c);
                         break;
                     case 10: // Selfie Group
-                        c = new ChallengeDetail10((int)jObjectTemp["_id"],
+                        c = new ChallengeDetail10((int) jObjectTemp["_id"],
                             (string) jObjectTemp["colorHex"],
                             (int) jObjectTemp["challengeLevel"],
-                            (int)jObjectTemp["maxAttemps"],
-                            (bool)jObjectTemp["active"]) { Round = roundObj };
+                            (int) jObjectTemp["maxAttemps"],
+                            (bool) jObjectTemp["active"]) {Round = roundObj};
                         challenges.Add(10, c);
                         break;
                 }
             }
 
-
             roundObj.Challenges = challenges;
 
             // GENERO ESTADOS DE DESAFIOS
             bool addNewStates = false;
-            if (serverDataUser == null)
-            {
 
-                List<DTStatePersistible> states = _db.Query<DTStatePersistible>("select * from DTStatePersistible");               
+            if (userJsonResponse["roundStates"] != null)
+            {
+                JToken roundState = userJsonResponse["roundStates"];
+                var challengesServer = (JArray) roundState["challenges"];
+                if (challengesServer.Count > 0) // Si hay estados guardados.
+                {
+                    if (_currentRound.RoundId == (int) ((JObject) userJsonResponse["roundStates"])["id"])
+                    {
+                        foreach (JToken jToken in challengesServer)
+                        {
+                            var jObject = (JObject) jToken;
+                            var s = new State
+                            {
+                                Challenge = (_currentRound.Challenges[(int) jObject["id"]]),
+                                CurrentAttempt = (int) jObject["attemps"],
+                                Finished = (bool) jObject["finished"],
+                                LastScore = (int) jObject["lastScore"],
+                                BestScore = (int) jObject["bestScore"],
+                                StartDate = Convert.ToDateTime((string) jObject["start_date"])
+                            };
+
+                            _currentRound.Challenges[(int) jObject["id"]].State = s;
+                            if (!SaveState(s))
+                            {
+                                _db.Insert(s.GetDtStatePersistible());
+                            }
+                        }
+                    }
+                    else
+                    {
+                        addNewStates = true;
+                    }
+                }
+                else
+                    addNewStates = true;
+            }
+            else
+            {
+                List<DTStatePersistible> states = _db.Query<DTStatePersistible>("select * from DTStatePersistible");
 
                 if (states.Count > 0) // Si hay estados guardados.
                 {
@@ -201,54 +236,11 @@ namespace BeatIt_.AppCode.Controllers
                         }
                     }
                     else
-                    // Si no se corresponden con la ronda actual, los borramos ya que no los necesitamos //????????????? ES ASI?
+                        // Si no se corresponden con la ronda actual, los borramos ya que no los necesitamos
                     {
                         _db.Query<DTStatePersistible>("delete from DTStatePersistible");
                         addNewStates = true;
                     }
-                }
-                else
-                    addNewStates = true;
-            }
-            else
-            {
-                var roundState = serverDataUser["roundStates"];
-
-                if (roundState != null)
-                {
-                    roundState = (JObject)roundState;
-                    var challengesServer = (JArray)roundState["challenges"];
-                    if (challengesServer.Count > 0) // Si hay estados guardados.
-                    {
-                        if (_currentRound.RoundId == (int)((JObject)serverDataUser["roundStates"])["id"])
-                        {
-
-                            foreach (JObject jObject in challengesServer)
-                            {
-                                var s = new State
-                                {
-                                    Challenge = (_currentRound.Challenges[(int)jObject["id"]]),
-                                    CurrentAttempt = (int)jObject["attemps"],
-                                    Finished = (bool)jObject["finished"],
-                                    LastScore = (int)jObject["lastScore"],
-                                    BestScore = (int)jObject["bestScore"],
-                                    StartDate = Convert.ToDateTime((string)jObject["start_date"])
-                                };
-
-                                _currentRound.Challenges[(int)jObject["id"]].State = s;
-                                if (!SaveState(s))
-                                {
-                                    _db.Insert(s.GetDtStatePersistible());
-                                }
-                            }
-                        }
-                        else
-                        {
-                            addNewStates = true;
-                        }
-                    }
-                    else
-                        addNewStates = true;
                 }
                 else
                     addNewStates = true;
@@ -280,42 +272,37 @@ namespace BeatIt_.AppCode.Controllers
         }
 
         public void LogoutUser()
-        {         
-
+        {
             //Save state instances on server
             if (_currentRound != null && _currentUser != null)
             {
-                var _challenges = _currentRound.Challenges;
-                var index = 0;
-                var jsonString = "{\"roundId\":" + _currentRound.RoundId +
+                int index = 0;
+                string jsonString = "{\"roundId\":" + _currentRound.RoundId +
                                     ", \"userId\":\"" + _currentUser.UserId + "\"" +
                                     ", \"challenges\": [";
 
-                Challenge _challengeTemp;
-                State _stateTemp;
+                var ws = new WebServicesController();
 
-                WebServicesController _ws = new WebServicesController();
-
-                foreach (KeyValuePair<int, Challenge> c in _challenges)
+                foreach (var c in _currentRound.Challenges)
                 {
-                    _challengeTemp = c.Value;
-                    _stateTemp = _challengeTemp.State;
+                    Challenge challengeTemp = c.Value;
+                    State stateTemp = challengeTemp.State;
 
-                    jsonString += "{\"challengeId\":" + _challengeTemp.ChallengeId +
-                                ", \"attemps\":" + _stateTemp.CurrentAttempt +
-                                ", \"finished\": " + (_stateTemp.Finished ? "true" : "false") +
-                                ", \"start_date\": \"" + _stateTemp.StartDate + "\"" +
-                                ", \"bestScore\" : " + _stateTemp.BestScore +
-                                ", \"lastScore\": " + _stateTemp.LastScore + (index < _challenges.Count - 1 ? "}," : "}");
+                    jsonString += "{\"challengeId\":" + challengeTemp.ChallengeId +
+                                  ", \"attemps\":" + stateTemp.CurrentAttempt +
+                                  ", \"finished\": " + (stateTemp.Finished ? "true" : "false") +
+                                  ", \"start_date\": \"" + stateTemp.StartDate + "\"" +
+                                  ", \"bestScore\" : " + stateTemp.BestScore +
+                                  ", \"lastScore\": " + stateTemp.LastScore +
+                                  (index < _currentRound.Challenges.Count - 1 ? "}," : "}");
 
                     index++;
                 }
 
                 jsonString += "]}";
 
-                _ws.SendAllStates(jsonString);
+                ws.SendAllStates(jsonString);
             }
-
 
             IsolatedStorageSettings.ApplicationSettings.Remove("IsLoggedUser");
             IsolatedStorageSettings.ApplicationSettings.Remove("Id");
@@ -332,9 +319,8 @@ namespace BeatIt_.AppCode.Controllers
 
             _currentUser = null;
             _currentRound = null;
-            _db.Query<DTStatePersistible>("delete from DTStatePersistible");
-            
 
+            _db.Query<DTStatePersistible>("delete from DTStatePersistible");
         }
 
         public Challenge GetChallenge(int challengeId)
@@ -378,6 +364,21 @@ namespace BeatIt_.AppCode.Controllers
             }
         }
 
+        public int GetRoundScore()
+        {
+            return
+                _currentRound.Challenges.Where(variable => variable.Value.IsEnabled)
+                    .Sum(variable => variable.Value.State.BestScore);
+        }
+
+        public bool ShouldSendScore()
+        {
+            var lastScoreSent = (int) IsolatedStorageSettings.ApplicationSettings["LastScoreSent"];
+            return
+                _currentRound.Challenges.Values.All(x => (x.IsEnabled && x.State.CurrentAttempt > 0) || !x.IsEnabled) &&
+                GetRoundScore() > lastScoreSent;
+        }
+
         public static FacadeController GetInstance()
         {
             return _instance ?? (_instance = new FacadeController());
@@ -395,17 +396,10 @@ namespace BeatIt_.AppCode.Controllers
             return rowsAffected > 0;
         }
 
-        public int GetRoundScore()
-        {
-            return
-                _currentRound.Challenges.Where(variable => variable.Value.IsEnabled)
-                    .Sum(variable => variable.Value.State.BestScore);
-        }
-
         public static FacadeController GetInstanceForTesting(User user, DateTime fechaDesdeRonda,
             DateTime fechaHastaRonda)
         {
-            _instance = new FacadeController(true) { _currentUser = user };
+            _instance = new FacadeController(true) {_currentUser = user};
 
             var ch1 = new ChallengeDetail1();
             var ch2 = new ChallengeDetail2();
@@ -418,7 +412,7 @@ namespace BeatIt_.AppCode.Controllers
             var ch9 = new ChallengeDetail9();
             var ch10 = new ChallengeDetail10();
 
-            var round = new Round { RoundId = 1, StartDate = fechaDesdeRonda, EndDate = fechaHastaRonda };
+            var round = new Round {RoundId = 1, StartDate = fechaDesdeRonda, EndDate = fechaHastaRonda};
             _instance._currentRound = round;
 
             var challenges = new Dictionary<int, Challenge>
@@ -494,15 +488,9 @@ namespace BeatIt_.AppCode.Controllers
             var r7 = new DTRanking("7", 7, 15, "Martín Steglich",
                 "http://graph.facebook.com/tinchoste/picture?type=square");
 
-            _instance._ranking = new List<DTRanking> { r1, r2, r3, r4, r5, r6, r7 };
+            _instance._ranking = new List<DTRanking> {r1, r2, r3, r4, r5, r6, r7};
 
             return _instance;
-        }
-
-        public bool ShouldSendScore()
-        {
-            var lastScoreSent = (int)IsolatedStorageSettings.ApplicationSettings["LastScoreSent"];
-            return _currentRound.Challenges.Values.All(x => (x.IsEnabled && x.State.CurrentAttempt > 0) || !x.IsEnabled) && GetRoundScore() > lastScoreSent;
         }
     }
 }

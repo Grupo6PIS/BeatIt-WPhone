@@ -87,7 +87,8 @@ namespace BeatIt_.AppCode.Pages
                 };
 
                 var ws = new WebServicesController();
-                ws.GetRound(GetRoundFinished);
+                ws.UpdateUser(_user.FbId, _user.Name, _user.ImageUrl, UpdateUserFinished);
+                //ws.GetRound(GetRoundFinished);
             }
             else
             {
@@ -222,7 +223,7 @@ namespace BeatIt_.AppCode.Pages
                 {
                     ProgressBar.Visibility = Visibility.Collapsed;
                     LoginBtn.IsEnabled = true;
-                    MessageBox.Show("Ha ocurrido un error al iniciar sesion");
+                    MessageBox.Show(AppResources.Login_Error);
                 });
             }
         }
