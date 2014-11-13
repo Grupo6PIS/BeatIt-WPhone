@@ -72,16 +72,7 @@
             </Grid>
 
             <Grid Visibility="Collapsed" Name="StopGrid">
-                <Rectangle Fill="#FFe51400" Height="80" Width="438" VerticalAlignment="Bottom"
-                           HorizontalAlignment="Center" Margin="12,0,12,50" IsHitTestVisible="True"
-                           Name="StopRectangle" />
-                <TextBlock FontWeight="ExtraBlack" Height="57" HorizontalAlignment="Left" Margin="12,460,0,0"
-                           Name="StopTitleTextBlock"
-                           Text="{Binding Path=AppResources.Challenge4_StopButton, Source={StaticResource LocalizedStrings}}"
-                           VerticalAlignment="Top" Width="435" FontSize="40" TextAlignment="Center" />
-                <HyperlinkButton Content="" Height="80" HorizontalAlignment="Left" Margin="12,450,0,0"
-                                 Name="StopButton" VerticalAlignment="Top" Width="435"
-                                 Click="hyperlinkButtonStop_Click" />
+                <Button x:Name="StopButton" Content="{Binding Path=AppResources.Challenge4_StopButton, Source={StaticResource LocalizedStrings}}" Height="104" Width="456" Margin="0,438,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Click="hyperlinkButtonStop_Click" Background="#FFe51400" BorderBrush="{x:Null}" BorderThickness="0" Padding="0" FontWeight="ExtraBlack" FontSize="40"/>
             </Grid>
 
             <TextBlock FontWeight="Light" Foreground="White" Height="30" HorizontalAlignment="Left" Margin="230,80,0,0"
@@ -92,17 +83,5 @@
                        Name="ToBeatTextBlock" Text="---" Width="196" Height="30" VerticalAlignment="Top" />
         </Grid>
     </Grid>
-
-    <!--Sample code showing usage of ApplicationBar-->
-    <!--<phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
-                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
-            </shell:ApplicationBar.MenuItems>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>-->
 
 </phone:PhoneApplicationPage>
