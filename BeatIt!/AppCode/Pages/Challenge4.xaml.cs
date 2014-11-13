@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Globalization;
 using System.Windows;
-using System.Windows.Resources;
 using System.Windows.Threading;
 using BeatIt_.AppCode.Challenges;
 using BeatIt_.AppCode.Controllers;
@@ -23,6 +22,8 @@ namespace BeatIt_.AppCode.Pages
         private int[] _result;
         private DispatcherTimer _soundTimer;
         private DispatcherTimer _stopTimer;
+
+        static SoundEffectInstance _soundEffect;
 
         public Challenge4()
         {
@@ -80,11 +81,12 @@ namespace BeatIt_.AppCode.Pages
 
         private void PlaySound(string path)
         {
-            StreamResourceInfo stream = Application.GetResourceStream(new Uri(path, UriKind.Relative));
-            SoundEffect soundeffect = SoundEffect.FromStream(stream.Stream);
-            SoundEffectInstance soundInstance = soundeffect.CreateInstance();
+            var stream = Application.GetResourceStream(new Uri(path, UriKind.Relative));
+            var soundeffect = SoundEffect.FromStream(stream.Stream);
+            if (_soundEffect != null) _soundEffect.Dispose();
+            _soundEffect = soundeffect.CreateInstance();
             FrameworkDispatcher.Update();
-            soundInstance.Play();
+            _soundEffect.Play();
         }
 
         private void hyperlinkButtonStart_Click(object sender, RoutedEventArgs e)
@@ -101,6 +103,8 @@ namespace BeatIt_.AppCode.Pages
 
         private void hyperlinkButtonStop_Click(object sender, RoutedEventArgs e)
         {
+            if (_soundEffect != null) _soundEffect.Dispose();
+
             if (_soundTimer.IsEnabled)
             {
                 _soundTimer.Stop();
@@ -141,6 +145,7 @@ namespace BeatIt_.AppCode.Pages
         {
             _soundTimer.Stop();
             _stopTimer.Stop();
+            if (_soundEffect != null) _soundEffect.Dispose();
             e.Cancel = false;
             base.OnBackKeyPress(e);
         }
