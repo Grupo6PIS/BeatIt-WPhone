@@ -15,7 +15,7 @@ namespace BeatIt.Tests
         public void TestingFunctioncalculatePuntaje()
         {
             
-            var ifc = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
+            var ifc = FacadeController.GetInstanceForTesting(new User(), DateTime.Now.AddDays(-1), DateTime.Now.AddDays(6));
 
             var currentChallenge = (ChallengeDetail1)ifc.GetChallenge(1);
             currentChallenge.CompleteChallenge(false, 45, 42);
@@ -43,8 +43,8 @@ namespace BeatIt.Tests
         [TestMethod]
         public void TestingFunction_CompleteChallenge()
         {
-            FacadeController cont = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1),
-                System.DateTime.Now.AddDays(6));
+            FacadeController cont = FacadeController.GetInstanceForTesting(new User(), DateTime.Now.AddDays(-1),
+                DateTime.Now.AddDays(6));
 
             var challenge = (ChallengeDetail2) cont.GetChallenge(2);
             challenge.Level = 1;
@@ -72,15 +72,15 @@ namespace BeatIt.Tests
         [TestMethod]
         public void TestingFunction_GetDTChallenge()
         {
-            var cont = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1),
-                System.DateTime.Now.AddDays(6));
+            var cont = FacadeController.GetInstanceForTesting(new User(), DateTime.Now.AddDays(-1),
+                DateTime.Now.AddDays(6));
 
             var challenge = (ChallengeDetail2) cont.GetChallenge(2);
             challenge.Level = 1;
 
             for (var i = 1; i <= challenge.MaxAttempt; i++)
             {
-                var r = new System.Random();
+                var r = new Random();
                 challenge.CompleteChallenge(r.Next(1, challenge.GetSecondsToWakeMeUp().Length + 1));
             }
 
@@ -93,20 +93,20 @@ namespace BeatIt.Tests
         [TestMethod]
         public void TestingFunction_GetDurationString()
         {
-            var cont = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1),
-                System.DateTime.Now.AddDays(6).AddMinutes(-1));
+            var cont = FacadeController.GetInstanceForTesting(new User(), DateTime.Now.AddDays(-1),
+                DateTime.Now.AddDays(6).AddMinutes(-1));
             Assert.AreEqual(cont.GetChallenge(2).GetDurationString(), "5 " + AppResources.Challenge_Days);
 
-            cont = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1),
-                System.DateTime.Now.AddHours(6).AddMinutes(-1));
+            cont = FacadeController.GetInstanceForTesting(new User(), DateTime.Now.AddDays(-1),
+                DateTime.Now.AddHours(6).AddMinutes(-1));
             Assert.AreEqual(cont.GetChallenge(2).GetDurationString(), "5 " + AppResources.Challenge_Hours);
 
-            cont = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1),
-                System.DateTime.Now.AddMinutes(6).AddSeconds(-1));
+            cont = FacadeController.GetInstanceForTesting(new User(), DateTime.Now.AddDays(-1),
+                DateTime.Now.AddMinutes(6).AddSeconds(-1));
             Assert.AreEqual(cont.GetChallenge(2).GetDurationString(), "5 " + AppResources.Challenge_Minutes);
 
-            cont = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1),
-                System.DateTime.Now.AddMinutes(1).AddSeconds(-1));
+            cont = FacadeController.GetInstanceForTesting(new User(), DateTime.Now.AddDays(-1),
+                DateTime.Now.AddMinutes(1).AddSeconds(-1));
             Assert.AreEqual(cont.GetChallenge(2).GetDurationString(), AppResources.Challenge_LessMinutes);
         }
     };
@@ -117,7 +117,7 @@ namespace BeatIt.Tests
         [TestMethod]
         public void TestingFunction_CompleteChallenge()
         {
-            var ifc = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
+            var ifc = FacadeController.GetInstanceForTesting(new User(), DateTime.Now.AddDays(-1), DateTime.Now.AddDays(6));
             var ch = (ChallengeDetail3)ifc.GetChallenge(3);
 
             var result = ch.CompleteChallenge(true);
@@ -184,7 +184,7 @@ namespace BeatIt.Tests
         [TestMethod]
         public void TestingFunction_CompleteChallenge()
         {
-            var ifc = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
+            var ifc = FacadeController.GetInstanceForTesting(new User(), DateTime.Now.AddDays(-1), DateTime.Now.AddDays(6));
             var ch = (ChallengeDetail4)ifc.GetChallenge(4);
 
             Assert.IsNotNull(ch);
@@ -221,7 +221,7 @@ namespace BeatIt.Tests
         [TestMethod]
         public void TestFunction1()
         {
-            var ifc = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
+            var ifc = FacadeController.GetInstanceForTesting(new User(), DateTime.Now.AddDays(-1), DateTime.Now.AddDays(6));
             var ch = (ChallengeDetail5)ifc.GetChallenge(5);
 
             Assert.AreEqual(ch.State.BestScore, 0);
@@ -289,7 +289,7 @@ namespace BeatIt.Tests
         [TestMethod]
         public void TestingFunction_CompleteChallenge()
         {
-            var ifc = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
+            var ifc = FacadeController.GetInstanceForTesting(new User(), DateTime.Now.AddDays(-1), DateTime.Now.AddDays(6));
             var ch6 = (ChallengeDetail6) ifc.GetChallenge(6);
 
             double tiempo = Math.Sqrt(2 * 8 / -GravitationalAcceleration);
@@ -310,7 +310,7 @@ namespace BeatIt.Tests
         [TestMethod]
         public void TestingFunction_CompleteChallenge()
         {
-            var ifc = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
+            var ifc = FacadeController.GetInstanceForTesting(new User(), DateTime.Now.AddDays(-1), DateTime.Now.AddDays(6));
             var ch = (ChallengeDetail7)ifc.GetChallenge(7);
 
             
@@ -334,7 +334,7 @@ namespace BeatIt.Tests
         [TestMethod]
         public void TestingFunction_CompleteChallenge()
         {
-            var ifc = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
+            var ifc = FacadeController.GetInstanceForTesting(new User(), DateTime.Now.AddDays(-1), DateTime.Now.AddDays(6));
             var ch = (ChallengeDetail8)ifc.GetChallenge(8);
 
             Assert.IsNotNull(ch);
@@ -370,7 +370,7 @@ namespace BeatIt.Tests
         [TestMethod]
         public void TestingFunction_CompleteChallenge()
         {
-            var ifc = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
+            var ifc = FacadeController.GetInstanceForTesting(new User(), DateTime.Now.AddDays(-1), DateTime.Now.AddDays(6));
             var ch = (ChallengeDetail9)ifc.GetChallenge(9);
 
             Assert.IsNotNull(ch);
@@ -407,8 +407,7 @@ namespace BeatIt.Tests
         [TestMethod]
         public void TestingFunction_CompleteChallenge()
         {
-            /*
-            var ifc = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
+            var ifc = FacadeController.GetInstanceForTesting(new User(), DateTime.Now.AddDays(-1), DateTime.Now.AddDays(6));
             var ch = (ChallengeDetail10)ifc.GetChallenge(10);
 
             Assert.IsNotNull(ch);
@@ -434,7 +433,7 @@ namespace BeatIt.Tests
             Assert.AreEqual(ch.State.LastScore, 60);
             Assert.AreEqual(ch.State.BestScore, 90);
             Assert.AreEqual(ch.State.CurrentAttempt, 3);
-            Assert.IsTrue(ch.State.Finished);*/
+            Assert.IsTrue(ch.State.Finished);
         }
     };
 

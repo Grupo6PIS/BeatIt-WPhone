@@ -8,7 +8,7 @@ using BeatIt_.Resources;
 
 namespace BeatIt_.AppCode.Challenges
 {
-    internal class ChallengeDetail10 : Challenge
+    public class ChallengeDetail10 : Challenge
     {
         public ChallengeDetail10(int challengeId, string colorHex, int level, int maxAttempts, bool isEnabled)
         {
