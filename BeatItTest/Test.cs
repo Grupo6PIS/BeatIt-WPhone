@@ -214,6 +214,43 @@ namespace BeatIt.Tests
         }
     };
 
+    [TestClass]
+    public class TestingChallenge5
+    {
+
+        [TestMethod]
+        public void TestFunction1()
+        {
+            var ifc = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
+            var ch = (ChallengeDetail5)ifc.GetChallenge(5);
+
+            Assert.AreEqual(ch.State.BestScore, 0);
+            Assert.AreEqual(ch.State.LastScore, 0);
+            Assert.AreEqual(ch.State.CurrentAttempt, 0);
+            Assert.IsFalse(ch.State.Finished);
+
+            ch.ChanllengeComplete(6);
+            Assert.AreEqual(ch.State.LastScore, 30);
+            Assert.AreEqual(ch.State.BestScore, 30);
+            Assert.AreEqual(ch.State.CurrentAttempt, 1);
+            Assert.IsFalse(ch.State.Finished);
+
+            ch.ChanllengeComplete(0);
+            Assert.AreEqual(ch.State.LastScore, 0);
+            Assert.AreEqual(ch.State.BestScore, 30);
+            Assert.AreEqual(ch.State.CurrentAttempt, 2);
+            Assert.IsFalse(ch.State.Finished);
+
+
+            ch.ChanllengeComplete(30);
+            Assert.AreEqual(ch.State.LastScore, 150);
+            Assert.AreEqual(ch.State.BestScore, 150);
+            Assert.AreEqual(ch.State.CurrentAttempt, 3);
+            Assert.IsTrue(ch.State.Finished);
+
+        }
+
+    }
 
     [TestClass] // Throw The Phone
     public class TestingChallengeDetail6
@@ -370,7 +407,8 @@ namespace BeatIt.Tests
         [TestMethod]
         public void TestingFunction_CompleteChallenge()
         {
-         /*   var ifc = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
+            /*
+            var ifc = FacadeController.GetInstanceForTesting(new User(), System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(6));
             var ch = (ChallengeDetail10)ifc.GetChallenge(10);
 
             Assert.IsNotNull(ch);

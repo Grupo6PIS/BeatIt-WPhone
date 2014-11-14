@@ -42,6 +42,8 @@ namespace BeatIt_.AppCode.Challenges
             State.BestScore = puntaje > State.BestScore ? puntaje : State.BestScore;
             State.CurrentAttempt++;
 
+            State.Finished = (State.CurrentAttempt == MaxAttempt);
+
             if (!FacadeController.GetInstance().GetIsForTesting())
                 FacadeController.GetInstance().SaveState(State);
         }
