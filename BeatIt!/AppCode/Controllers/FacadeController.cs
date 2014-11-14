@@ -183,8 +183,10 @@ namespace BeatIt_.AppCode.Controllers
             // GENERO ESTADOS DE DESAFIOS
             bool addNewStates = false;
 
+            List<DTStatePersistible> states = _db.Query<DTStatePersistible>("select * from DTStatePersistible");
+
             JToken roundStatesToken = userJsonResponse["roundStates"];
-            if (!IsNullOrEmpty(roundStatesToken))
+            if (!IsNullOrEmpty(roundStatesToken) && states.Count == 0)
             {
                 if (roundStatesToken["challenges"] != null)
                 {
@@ -227,8 +229,6 @@ namespace BeatIt_.AppCode.Controllers
             }
             else
             {
-                List<DTStatePersistible> states = _db.Query<DTStatePersistible>("select * from DTStatePersistible");
-
                 if (states.Count > 0) // Si hay estados guardados.
                 {
                     IEnumerator<DTStatePersistible> enumerator = states.GetEnumerator();
