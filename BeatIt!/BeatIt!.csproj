@@ -54,13 +54,13 @@
       <HintPath>..\packages\wp7sqlite.0.1.1\lib\sl4-windowsphone71\Community.CsharpSqlite.WP7.dll</HintPath>
     </Reference>
     <Reference Include="Facebook">
-      <HintPath>Librerias\Facebook.dll</HintPath>
+      <HintPath>Libraries\Facebook.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Devices.Sensors" />
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Controls, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone.Controls.Toolkit">
-      <HintPath>Librerias\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+      <HintPath>Libraries\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone.Interop" />
     <Reference Include="Microsoft.Threading.Tasks">
