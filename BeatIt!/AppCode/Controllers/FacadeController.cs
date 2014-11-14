@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO.IsolatedStorage;
 using System.Linq;
 using BeatIt_.AppCode.Challenges;
@@ -202,7 +203,8 @@ namespace BeatIt_.AppCode.Controllers
                                     Finished = (bool)jObject["finished"],
                                     LastScore = (int)jObject["lastScore"],
                                     BestScore = (int)jObject["bestScore"],
-                                    StartDate = Convert.ToDateTime((string)jObject["start_date"])
+                                    //StartDate = Convert.ToDateTime((string)jObject["start_date"])
+                                    StartDate = DateTime.ParseExact((string)jObject["start_date"], "dd/MM/yyyy HH:mm:ss",CultureInfo.InvariantCulture)
                                 };
 
                                 _currentRound.Challenges[(int)jObject["id"]].State = s;
