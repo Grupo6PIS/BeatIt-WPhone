@@ -10,13 +10,15 @@
              d:DesignHeight="210" d:DesignWidth="210">
 
     <Grid x:Name="LayoutRoot">
-        <Rectangle Height="200" HorizontalAlignment="Center" Name="BackgroundRec" Stroke="Black" StrokeThickness="1"
+        <Rectangle Fill="#FA6800" Height="200" HorizontalAlignment="Center" Name="BackgroundRec" Stroke="Black" StrokeThickness="1"
                    VerticalAlignment="Center" Width="200" Margin="15,10,0,0" />
         <Image Height="160" HorizontalAlignment="Center" Margin="15,10,0,0" Name="Image" Stretch="Fill"
-               VerticalAlignment="Center" Width="160" />
-        <HyperlinkButton Height="200" HorizontalAlignment="Left" Margin="15,10,0,0" Name="LinkBtn"
-                         VerticalAlignment="Top" Width="200" />
+               VerticalAlignment="Center" Width="160" Source="/BeatIt!;component/Images/icon_challenge_10.png" />
         <Image Height="40" HorizontalAlignment="Right" Margin="0,15,5,0" Name="CompletedImage" Stretch="Fill"
                VerticalAlignment="Top" Width="40" Source="/BeatIt!;component/Images/check.png" />
+        <TextBlock x:Name="Title" Text="Selfie Groupie!" VerticalAlignment="Bottom" Width="170" Height="25" Margin="20,0,0,2" FontSize="16"/>
+        <HyperlinkButton Height="200" HorizontalAlignment="Left" Margin="15,10,0,0" Name="LinkBtn"
+                         VerticalAlignment="Top" Width="200" >
+        </HyperlinkButton>
     </Grid>
 </UserControl>
