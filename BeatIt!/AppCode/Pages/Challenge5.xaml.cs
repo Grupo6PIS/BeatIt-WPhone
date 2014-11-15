@@ -8,6 +8,7 @@ using System;
 using System.Windows.Controls;
 using System.Windows;
 using System.Globalization;
+using Microsoft.Phone.Shell;
 
 namespace BeatIt_.AppCode.Pages
 {
@@ -84,7 +85,7 @@ namespace BeatIt_.AppCode.Pages
                 return;
             }
 
-            
+            PhoneApplicationService.Current.ApplicationIdleDetectionMode = IdleDetectionMode.Disabled;
 
             _timeCounter = TimeTop;
             _collisionCounter = 0;
@@ -121,6 +122,8 @@ namespace BeatIt_.AppCode.Pages
                 _acelerometer = null;
 
                 _currentChallenge.ChanllengeComplete(_collisionCounter);
+
+                PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Enabled;
               
                 var uri = new Uri("/BeatIt!;component/AppCode/Pages/ChallengeDetail.xaml", UriKind.Relative);
                 NavigationService.Navigate(uri);
@@ -224,6 +227,8 @@ namespace BeatIt_.AppCode.Pages
                 _acelerometer.Stop();
                 _acelerometer = null;
             }
+
+            PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Enabled;
                 
             base.OnBackKeyPress(e);
         }
